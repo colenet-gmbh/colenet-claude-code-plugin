@@ -96,6 +96,9 @@ colenet-claude-code-plugin/
 │       ├── skill-authoring.md
 │       ├── attribution.md
 │       └── plugin-development.md
+├── statusline/
+│   └── statusline.js        # Bundled status line (subagentStatusLine)
+├── settings.json            # Plugin default settings (wires the status line)
 ├── scripts/
 │   └── validate-plugin.sh   # Structural validation (used in CI)
 ├── .github/workflows/
