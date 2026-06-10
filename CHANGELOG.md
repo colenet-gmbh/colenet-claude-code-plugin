@@ -4,6 +4,14 @@ All notable changes to the `capd` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-06-10
+
+### Changed
+
+- `plugin.json` `version` is now the single source of truth: removed the per-plugin
+  `version` from the marketplace entry, and relaxed the release rule and CLAUDE.md
+  accordingly (no more dual version bump).
+
 ## [0.2.0] - 2026-06-10
 
 ### Added
