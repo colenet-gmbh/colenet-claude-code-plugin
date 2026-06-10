@@ -20,9 +20,14 @@ attribution, and the release/versioning workflow.
 ## Prerequisites
 
 - `python3` (validation script, pre-commit)
-- `node` 18+ (markdownlint)
+- `node` 18+ (markdownlint, bundled status line)
 - [`pre-commit`](https://pre-commit.com/#install) — e.g. `pipx install pre-commit` or
   `pip install --user pre-commit`
+- The **`plugin-dev`** plugin (`/plugin install plugin-dev@claude-plugins-official`) —
+  its skills (`plugin-structure`, `skill-development`, `agent-development`,
+  `hook-development`, `mcp-integration`, `plugin-settings`) encode Claude Code's own
+  plugin conventions. `superpowers` (auto-installed with `capd`) additionally offers
+  `writing-skills`, `brainstorming`, and TDD/debugging workflows.
 
 ## Activate the pre-commit hook (required, once per clone)
 
@@ -95,7 +100,8 @@ colenet-claude-code-plugin/
 │   └── rules/               # Conventions for plugin development
 │       ├── skill-authoring.md
 │       ├── attribution.md
-│       └── plugin-development.md
+│       ├── plugin-development.md
+│       └── dod.md
 ├── statusline/
 │   └── statusline.js        # Bundled status line (subagentStatusLine)
 ├── settings.json            # Plugin default settings (wires the status line)
