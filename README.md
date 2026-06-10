@@ -61,6 +61,22 @@ Invoke the skill directly:
 …or trigger it casually — the skill's trigger phrases fire on things like
 "grill me", "grill mich", or "tear my plan apart".
 
+## Status line
+
+The plugin bundles a status line (`statusline/statusline.js`, requires `node`) showing
+model, git branch, directory, a context-usage bar, RAM, cost, and rate limits. While the
+plugin is enabled it is applied automatically as the **subagent** status line.
+
+Claude Code does not let a plugin set the **main** (bottom) status bar — only your own
+settings can. To use this status line as your main bar, copy the script and point your
+`~/.claude/settings.json` at it:
+
+```json
+{
+  "statusLine": { "type": "command", "command": "node ~/.claude/statusline.js" }
+}
+```
+
 ## Contributing
 
 Want to add a skill or extend `capd`? See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the
