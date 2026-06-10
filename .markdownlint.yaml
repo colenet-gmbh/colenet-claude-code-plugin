@@ -1,0 +1,21 @@
+# markdownlint configuration — deliberately lenient (see CONTRIBUTING.md).
+# We keep structural rules but drop the cosmetic, noisy ones.
+default: true
+
+# Long lines are fine: prose wraps loosely, and tables / skill descriptions
+# legitimately exceed any line-length limit.
+MD013: false
+
+# Skills begin with YAML frontmatter + instructions, not a top-level heading.
+MD041: false
+
+# Allow code / ASCII-tree / verbatim-license blocks without a language hint.
+MD040: false
+
+# Don't enforce padded table-pipe alignment.
+MD060: false
+
+# Allow repeated headings under different parents (e.g. "### Added" per
+# release in CHANGELOG.md).
+MD024:
+  siblings_only: true

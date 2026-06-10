@@ -1,0 +1,27 @@
+# Activate once per clone:  pre-commit install   (see CONTRIBUTING.md)
+# Run on everything:        pre-commit run --all-files
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      # Cleanup: strip trailing whitespace and normalize end-of-file blank lines.
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      # Manifest must be valid JSON.
+      - id: check-json
+
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.22.1
+    hooks:
+      # Markdown lint, lenient ruleset from .markdownlint.yaml.
+      - id: markdownlint-cli2
+
+  - repo: local
+    hooks:
+      # Plugin structure: manifest schema, skill layout, internal doc links.
+      - id: validate-plugin
+        name: validate plugin structure
+        entry: bash scripts/validate-plugin.sh
+        language: system
+        pass_filenames: false
+        always_run: true

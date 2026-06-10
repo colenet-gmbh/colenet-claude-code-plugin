@@ -1,0 +1,10 @@
+# Claude Code local, per-project plugin settings (not for version control)
+.claude/*.local.md
+.claude/settings.local.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
