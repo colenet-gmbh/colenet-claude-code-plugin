@@ -64,17 +64,18 @@ ATTRIBUTION.md                # third-party licenses & sources
    disclosure if needed.
 4. **If externally sourced:** record source + license in `ATTRIBUTION.md` and add a short
    attribution footer in the SKILL.md (mandatory, see `attribution.md`).
-5. Release it: bump `version` in `.claude-plugin/plugin.json` (SemVer) **and** the
-   matching marketplace entry, then follow the release checklist in
-   [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md) — without
-   a version bump, installed users get no update.
+5. Release it: bump `version` in `.claude-plugin/plugin.json` (SemVer) — the **only**
+   place — then follow the release checklist in
+   [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md). Without a
+   version bump, installed users get no update.
 6. Update the skill table in the README.
 
 ## Plugin ↔ marketplace consistency
 
-If `name`, `description`, `version`, `keywords`, or `homepage` change in
-`.claude-plugin/plugin.json`, the corresponding entry in
-`colenet-claude-code-marketplace/.claude-plugin/marketplace.json` must follow.
+`plugin.json` `version` is the single source of truth — the marketplace entry carries no
+version. The marketplace repo only needs updating when the **listing** changes: if
+`name`, `description`, `keywords`, or `homepage` change in `.claude-plugin/plugin.json`,
+mirror them in `colenet-claude-code-marketplace/.claude-plugin/marketplace.json`.
 
 ## What does NOT belong here (yet)
 

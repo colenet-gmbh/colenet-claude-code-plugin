@@ -8,11 +8,11 @@ see [`attribution.md`](attribution.md).
 
 - Claude Code refreshes auto-update-enabled marketplaces at startup and notifies users of
   available updates (`/reload-plugins`); users can also run `/plugin update`.
-- **An update is detected only when the `version` number changes.** Our marketplace source
-  is an unpinned GitHub repo, but because we set an explicit `version`, Claude Code does
-  **not** pick up new commits on their own — pushing code without bumping the version
-  ships nothing to already-installed users. Bumping the version is mandatory for every
-  release.
+- **`plugin.json` `version` is the single source of truth.** The marketplace entry
+  carries **no** version, so there is nothing to keep in sync. On refresh Claude Code
+  reads `plugin.json` from our unpinned GitHub source; an update is detected only when
+  that version increases — pushing code without bumping it ships nothing to
+  already-installed users. Bumping the version is mandatory for every release.
 
 ## Versioning (SemVer)
 
@@ -28,18 +28,13 @@ see [`attribution.md`](attribution.md).
 
 Run this for every change that should reach users:
 
-1. Bump `version` in `.claude-plugin/plugin.json` (SemVer).
-2. Bump the **same** version in the marketplace repo entry for `capd`
-   (`colenet-claude-code-marketplace/.claude-plugin/marketplace.json`). The two versions
-   **must match**.
-3. Commit and push **both** repos.
-4. Tag the release: from the plugin repo run `claude plugin tag --push`. It creates and
-   pushes the tag `capd--vX.Y.Z` and validates that `plugin.json` and the marketplace
-   entry agree on the version (it fails if they have drifted).
-5. (Optional) Record the change in `CHANGELOG.md`.
+1. Bump `version` in `.claude-plugin/plugin.json` (SemVer). **This is the only place.**
+2. Open a PR and merge it (`main` is protected). Users with auto-update enabled receive
+   the new version at their next startup; others via `/plugin update`.
+3. (Optional) Record the change in `CHANGELOG.md`.
 
-Users with auto-update enabled receive it at their next startup; others via
-`/plugin update`.
+The marketplace repo only needs a push when its **listing** changes (description,
+keywords) — not for a version bump.
 
 CI enforces step 1 on every pull request: the `validate` check fails if `plugin.json`
 `version` is not greater than on the base branch.
@@ -48,7 +43,8 @@ CI enforces step 1 on every pull request: the `validate` check fails if `plugin.
 
 - Do not push behavior changes without a version bump — installed users will not receive
   them.
-- Do not let `plugin.json` and the marketplace entry versions diverge — the tag step fails
-  and update detection becomes ambiguous.
+- Do not re-add a `version` to the marketplace entry — `plugin.json` is the single source
+  of truth. (The `claude plugin tag` release flow would require both to match; we don't
+  use it.)
 - Do not switch to commit-SHA versioning (omitting `version`) for this plugin: we ship
-  explicit, taggable releases, not every-commit updates.
+  explicit releases, not every-commit updates.
