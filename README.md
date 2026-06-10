@@ -42,14 +42,16 @@ Locally for development/testing:
 claude --plugin-dir /path/to/colenet-claude-code-plugin
 ```
 
-### Dependencies
+### Built on two great official plugins
 
-`capd` depends on [`superpowers`](https://github.com/obra/superpowers)
-(Jesse Vincent, MIT) — declared in `plugin.json` as
-`superpowers@claude-plugins-official` and **installed automatically** with this plugin.
-Every user of `capd` gets the full superpowers skill library (TDD, debugging,
-brainstorming, planning, collaboration workflows). It resolves from the built-in
-`claude-plugins-official` marketplace, so no extra setup is required.
+- **[`superpowers`](https://github.com/obra/superpowers)** (Jesse Vincent, MIT) — a
+  **dependency**, declared as `superpowers@claude-plugins-official` and **installed
+  automatically** with `capd`. Every user gets its full skill library: TDD, debugging,
+  brainstorming, planning, and collaboration workflows. It resolves from the built-in
+  `claude-plugins-official` marketplace, so there's no extra setup.
+- **`plugin-dev`** (`@claude-plugins-official`) — Claude Code's own plugin-building
+  skills (`plugin-structure`, `skill-development`, …). Not required to *use* `capd`, but
+  recommended if you **extend** it (see [`CONTRIBUTING.md`](CONTRIBUTING.md)).
 
 ## Usage
 
@@ -67,6 +69,10 @@ Invoke the skill directly:
 The plugin bundles a status line (`statusline/statusline.js`, requires `node`) showing
 model, git branch, directory, a context-usage bar, RAM, cost, and rate limits. While the
 plugin is enabled it is applied automatically as the **subagent** status line.
+
+```text
+Opus 4.8 │ main │ colenet-claude-code-plugin │ ███░░░░░░░ 37% │ RAM 12% │ $37.177 │ 5h:23% 7d:15%
+```
 
 Claude Code does not let a plugin set the **main** (bottom) status bar — only your own
 settings can. To use this status line as your main bar, copy the script and point your
