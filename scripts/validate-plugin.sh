@@ -1,17 +1,30 @@
 #!/usr/bin/env bash
 # Structural validation for the capd plugin.
 # Runs locally (./scripts/validate-plugin.sh) and in CI. python3 stdlib only.
+#
+# Optional version-bump check: set CAPD_BASE_REF to a git ref (e.g. origin/main)
+# and the script additionally fails if .claude-plugin/plugin.json version was not
+# increased versus that ref. Used by the CI 'validate' job on pull requests.
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-python3 - "$ROOT" <<'PY'
-import json, re, sys
+# Read the manifest as it exists on the base ref (empty if unset/absent).
+BASE_MANIFEST=""
+if [[ -n "${CAPD_BASE_REF:-}" ]]; then
+    BASE_MANIFEST="$(git -C "$ROOT" show "${CAPD_BASE_REF}:.claude-plugin/plugin.json" 2>/dev/null || true)"
+fi
+
+CAPD_BASE_MANIFEST="$BASE_MANIFEST" python3 - "$ROOT" <<'PY'
+import json, os, re, sys
 from pathlib import Path
 
 root = Path(sys.argv[1])
 errors = []
 def err(msg): errors.append(msg)
+
+SEMVER = re.compile(r"\d+\.\d+\.\d+")
+KEBAB = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*")
 
 # --- plugin.json ---------------------------------------------------------
 manifest = root / ".claude-plugin" / "plugin.json"
@@ -25,10 +38,9 @@ else:
         err(f"plugin.json is not valid JSON: {e}")
 
 if data is not None:
-    name = data.get("name", "")
-    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
-        err(f"plugin.json: name '{name}' is not kebab-case")
-    if not re.fullmatch(r"\d+\.\d+\.\d+", data.get("version", "")):
+    if not KEBAB.fullmatch(data.get("name", "")):
+        err(f"plugin.json: name '{data.get('name')}' is not kebab-case")
+    if not SEMVER.fullmatch(data.get("version", "")):
         err(f"plugin.json: version '{data.get('version')}' is not MAJOR.MINOR.PATCH")
     if not data.get("description"):
         err("plugin.json: description is empty or missing")
@@ -54,7 +66,6 @@ if not skill_files:
 
 for sf in skill_files:
     rel = sf.relative_to(skills_dir)
-    # Must be exactly skills/<name>/SKILL.md — one level deep.
     if len(rel.parts) != 2:
         err(f"{sf.relative_to(root)}: skills must be one level deep "
             f"(skills/<name>/SKILL.md); nested skills are not discovered")
@@ -67,14 +78,14 @@ for sf in skill_files:
     if fm.get("name", "") != dir_name:
         err(f"{sf.relative_to(root)}: frontmatter name '{fm.get('name')}' "
             f"!= directory '{dir_name}'")
-    if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", dir_name):
+    if not KEBAB.fullmatch(dir_name):
         err(f"{sf.relative_to(root)}: skill directory '{dir_name}' is not kebab-case")
     if not fm.get("description"):
         err(f"{sf.relative_to(root)}: frontmatter description is empty or missing")
 
 # --- internal doc links --------------------------------------------------
 link_re = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
-docs = [root / "README.md", root / "CLAUDE.md"]
+docs = [root / "README.md", root / "CLAUDE.md", root / "CONTRIBUTING.md"]
 docs += list((root / ".claude" / "rules").glob("*.md"))
 for doc in docs:
     if not doc.exists():
@@ -85,6 +96,25 @@ for doc in docs:
             continue
         if not (doc.parent / t).resolve().exists():
             err(f"{doc.relative_to(root)}: broken relative link -> {target}")
+
+# --- version bump (only when a base manifest is provided) ----------------
+base_raw = os.environ.get("CAPD_BASE_MANIFEST", "").strip()
+if base_raw and data is not None:
+    def ver(v):
+        m = SEMVER.fullmatch(v or "")
+        return tuple(int(x) for x in v.split(".")) if m else None
+    try:
+        base_v = ver(json.loads(base_raw).get("version", ""))
+    except json.JSONDecodeError:
+        base_v = None
+    head_v = ver(data.get("version", ""))
+    if base_v and head_v and head_v <= base_v:
+        err(f"version not increased: base={'.'.join(map(str, base_v))} "
+            f"head={'.'.join(map(str, head_v))} — bump it (see "
+            f".claude/rules/plugin-development.md)")
+    elif base_v and head_v:
+        print(f"  ok: version bumped {'.'.join(map(str, base_v))} -> "
+              f"{'.'.join(map(str, head_v))}")
 
 # --- report --------------------------------------------------------------
 if errors:

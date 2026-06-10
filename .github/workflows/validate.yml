@@ -5,16 +5,27 @@ on:
   pull_request:
 
 jobs:
-  pre-commit:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      # Runs every hook from .pre-commit-config.yaml against all files —
-      # the same checks developers get locally. Fails (red) on any problem.
+      # Same hooks developers run locally. Fails (red) on any problem.
       - uses: pre-commit/action@v3.0.1
+      # On pull requests, also require the plugin version to be bumped vs. the
+      # base branch. BASE_REF is passed via env (not interpolated into the
+      # script) to avoid workflow injection.
+      - name: Require version bump
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          git fetch --no-tags origin "$BASE_REF"
+          CAPD_BASE_REF="origin/$BASE_REF" bash scripts/validate-plugin.sh

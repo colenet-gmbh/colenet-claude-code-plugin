@@ -34,6 +34,18 @@ Read before doing substantive work — they take precedence over default behavio
 - [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md) —
   versioning, the release checklist, and how updates reach users.
 
+## Change workflow
+
+- **All changes to the plugin go through a pull request.** Direct pushes to `main` are
+  blocked by branch protection; create a branch and open a PR.
+- `main` requires the `validate` CI check to pass before a PR can be merged. It runs the
+  full pre-commit suite (structural validation, markdownlint, JSON) and, on pull
+  requests, additionally **enforces a version bump**: `plugin.json` `version` must be
+  greater than on the base branch.
+- So bump the version on every change that should reach users (see
+  [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md)) — a PR
+  without a bump fails CI and cannot be merged.
+
 ## Layout
 
 ```text

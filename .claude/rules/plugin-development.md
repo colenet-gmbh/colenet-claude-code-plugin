@@ -41,6 +41,9 @@ Run this for every change that should reach users:
 Users with auto-update enabled receive it at their next startup; others via
 `/plugin update`.
 
+CI enforces step 1 on every pull request: the `validate` check fails if `plugin.json`
+`version` is not greater than on the base branch.
+
 ## Do not
 
 - Do not push behavior changes without a version bump — installed users will not receive

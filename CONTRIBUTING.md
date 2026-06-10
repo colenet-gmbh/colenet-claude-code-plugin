@@ -58,7 +58,9 @@ re-stage the fixed files (`git add -u`) and commit again.
 
 The same hooks run in GitHub Actions
 ([`.github/workflows/validate.yml`](.github/workflows/validate.yml)) on every push and
-pull request. CI does **not** fix anything — it only reports.
+pull request. CI does **not** fix anything — it only reports. On pull requests it also
+**requires a version bump**: `plugin.json` `version` must be greater than on the base
+branch, or the `validate` check fails.
 
 When something is wrong you find out via:
 
