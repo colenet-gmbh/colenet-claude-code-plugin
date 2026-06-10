@@ -14,6 +14,16 @@ see [`attribution.md`](attribution.md).
   that version increases — pushing code without bumping it ships nothing to
   already-installed users. Bumping the version is mandatory for every release.
 
+## Dependencies
+
+- Declare plugin dependencies in `plugin.json` under `dependencies`. **Always qualify
+  with the marketplace** (`name@marketplace`) — a bare name resolves against *this*
+  plugin's own marketplace (`@colenet`), so `"superpowers"` is looked up as
+  `superpowers@colenet` and fails. Use e.g. `"superpowers@claude-plugins-official"`.
+- The marketplace must be one users have (the built-in `claude-plugins-official` is
+  always present); otherwise the dependency cannot be resolved and the plugin fails to
+  load.
+
 ## Versioning (SemVer)
 
 `MAJOR.MINOR.PATCH` — a convention, not enforced by Claude Code (any increase counts as
