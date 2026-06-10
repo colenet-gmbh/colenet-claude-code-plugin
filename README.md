@@ -45,10 +45,11 @@ claude --plugin-dir /path/to/colenet-claude-code-plugin
 ### Dependencies
 
 `capd` depends on [`superpowers`](https://github.com/obra/superpowers)
-(Jesse Vincent, MIT) — declared in `plugin.json` and **installed automatically** with
-this plugin. Every user of `capd` gets the full superpowers skill library
-(TDD, debugging, brainstorming, planning, collaboration workflows). Resolution uses the
-built-in Anthropic plugin marketplace, so no extra setup is required.
+(Jesse Vincent, MIT) — declared in `plugin.json` as
+`superpowers@claude-plugins-official` and **installed automatically** with this plugin.
+Every user of `capd` gets the full superpowers skill library (TDD, debugging,
+brainstorming, planning, collaboration workflows). It resolves from the built-in
+`claude-plugins-official` marketplace, so no extra setup is required.
 
 ## Usage
 
