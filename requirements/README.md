@@ -11,7 +11,7 @@ capd wird das **eine Dach**, aber **kuratiert**:
 - **Von Michael Spanier (die Engineering-Substanz):** 3-Schicht-Guardrails (Hook→Git→CI), Orchestrator-mit-Präambel + Rollen-Muster, Spec-als-wandernde-Datei, Memory→deterministisches Tooling.
 - **Von Fabian (gezielt, Auswahl offen):** Höhenstufen-Prozess-Rahmen + durable Gedächtnis-Schicht als klare Kandidaten; Orchestrierungs-Engine & Council als bewusste Ja/Nein-Entscheidungen.
 
-## Steckbriefe
+## Achse 1 — Feature-Steckbriefe (*was* es gibt)
 
 | Datei | Framework | Schwerpunkt |
 |---|---|---|
@@ -20,6 +20,16 @@ capd wird das **eine Dach**, aber **kuratiert**:
 | [`03-spanier-kvjs.md`](./03-spanier-kvjs.md) | Michael Spanier — `kvjs-app` | Engineering-Substanz in echter Codebase + Guardrails |
 
 **Legende (einheitlich):** ✅ generisch & hoher Hebel → klarer Kandidat · 🔶 wertvoll, aber bedingt (überlappt/anzupassen/schwer) · ⛔ nicht sinnvoll für capd.
+
+## Achse 2 — Workflows & Philosophien (*wie* man arbeitet und *warum*)
+
+| Datei | Inhalt |
+|---|---|
+| [`04-workflows-und-philosophien.md`](./04-workflows-und-philosophien.md) | End-to-End-Workflow + Philosophie je Harness, Quervergleich, und der entscheidende Abschnitt „Wo es aus einem Guss schwer wird" (mergebare Konvergenzen vs. echte Kollisionen). |
+
+Kernerkenntnis: Jedes Harness organisiert Arbeit entlang einer **anderen Hauptachse** —
+Fabian nach *Höhe*, Pocock nach *Zustand* (Issue-Lifecycle), Spanier nach *Rolle*. Nur **eine**
+kann das Rückgrat von capd werden; die Wahl folgt aus der Zielgruppe.
 
 ## Querschnitt: Konvergenz & Überlappung
 
@@ -37,4 +47,11 @@ Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die 
 
 ## Nächster Schritt
 
-Picks aus den 🔶-Zeilen festlegen (v. a. Fabian-Cluster A/D/F + die Quelle je Doppelung) → daraus eine konkrete capd-Struktur ableiten (Ordnerbaum + Skill-Liste + Konventionen).
+1. **Zielgruppe festlegen** — wer ist capd für (Berater/PO, Engineers, beide)? Daraus folgt
+   die **Rückgrat-Achse** (Höhe / Zustand / Rolle; siehe `04`, Abschnitt „Wo es aus einem
+   Guss schwer wird", Entscheidung A).
+2. **Feature-Picks** aus den 🔶-Zeilen festlegen (v. a. Fabian-Cluster A/D/F + die Quelle je
+   Doppelung).
+3. Daraus eine konkrete capd-Struktur ableiten (Ordnerbaum + Skill-Liste + Konventionen),
+   inkl. der gesetzten Konvergenzen (Markdown-Wahrheit, Mensch-im-Loop, explizite Eskalation,
+   Grilling-Einstieg, Authoring-Standard aus Pocock-Theorie + Spanier-Praxis).
