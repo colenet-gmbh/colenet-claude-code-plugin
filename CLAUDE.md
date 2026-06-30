@@ -15,6 +15,44 @@ documentation over breadth.
 - **Marketplace repo (separate):** `colenet-gmbh/colenet-claude-code-marketplace` —
   references this plugin via a GitHub source. Future plugins get their own repos.
 
+## Current initiative: defining capd by synthesis (in progress)
+
+We are still deciding **what `capd` should become**, by synthesizing the best of three
+reference harnesses. The full feature analyses live in [`requirements/`](requirements/):
+one comparable profile ("Steckbrief") per source, plus a `README.md` index with a
+cross-cutting convergence matrix.
+
+The three reference harnesses are checked out as **sibling directories** next to this
+repo, in the shared parent folder (`../`):
+
+| Source | Sibling dir | GitHub |
+|---|---|---|
+| Fabian — `we` (APO altitudes + orchestration) | `../claude-code-plugin` | <https://github.com/weside-ai/claude-code-plugin> |
+| Matt Pocock — `skills` (skill-authoring method) | `../skills` | <https://github.com/mattpocock/skills> |
+| Michael Spanier — `kvjs-app` (harness embedded in a real product) | `../kvjs-app` | <https://github.com/colenet-gmbh/kvjs-app> |
+
+**Chosen direction:** `capd` becomes the single, *curated* umbrella — keep capd's own
+shell & governance; take the skill-authoring method and the "glue" that holds a skill set
+together from Pocock; take the engineering substance and guardrail mechanics (hook → git
+hook → CI, role + orchestrator) from Spanier; adopt *selected* aspects of Fabian's `we`.
+
+**Open decisions — the next session resumes here, started from inside this repo:**
+
+1. **Target group** — who exactly is capd for (consultants, engineers, both; which agile
+   roles)? Not yet decided; keep the architecture open until it is.
+2. **Feature selection** — which Fabian clusters to adopt (altitudes / orchestration
+   engine / council), and for each primitive that more than one source invented, which
+   source is canonical (avoid duplication). See the open "Knackpunkte" closing each
+   Steckbrief.
+
+Every feature we decide to adopt still runs through the guardian check in
+[`.claude/rules/dod.md`](.claude/rules/dod.md) and must be attributed per
+[`.claude/rules/attribution.md`](.claude/rules/attribution.md). The `requirements/` docs
+are working/planning material, not shipped plugin content — they do not reach plugin
+users. They are currently written in **German** (the working language of this
+discussion) and will be translated to English once the requirements stabilize — a
+deliberate, temporary exception to the English-only rule below.
+
 ## Language
 
 - **All repository files are written in English** — code, comments, skills,
