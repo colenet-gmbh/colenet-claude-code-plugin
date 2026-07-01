@@ -21,8 +21,8 @@ ohne das `we`-Plugin zu duplizieren.
 
 **Ist:**
 - ein **geführter Workflow** (eine Spine), der aufeinander aufbauende Schritte trägt;
-- ein **Komponist**: er nutzt Vorhandenes wieder, wo es schon exzellent ist, statt es
-  nachzubauen; er *besitzt* nur, was genuin colenet-eigen ist;
+- ein **Kurator**: er portiert Bewährtes **mit Quellenangabe**, statt es blind neu zu
+  erfinden — und *besitzt* dann den ganzen Stack (keine Runtime-Dependency);
 - **Markdown-im-Repo als Wahrheit**, Mensch-im-Loop bei folgenreichen Aktionen.
 
 **Ist nicht:**
@@ -45,13 +45,13 @@ Bucket-Struktur, deckungsgleich mit seiner Invocation-Achse:
 
 ```
 brainstorm  →  grill-with-docs  →  FEATURE  →  split  →  build
- REUSE          portieren          NEU ★       portieren  NEU ★
+ portieren      portieren          NEU ★       portieren  NEU ★
 (superpowers)  (Pocock)           (Synthese)  (Pocock)   (Synthese)
 ```
 
 | Skill | Herkunft | capd-Aktion | Rolle im Faden |
 |---|---|---|---|
-| `brainstorm` | **superpowers** | **wiederverwenden** (nicht bauen) | Ideenraum öffnen |
+| `brainstorm` | **superpowers** (Jesse Vincent / obra, MIT) | **portieren** (kopieren + Quelle nennen) | Ideenraum öffnen |
 | `grill-with-docs` | Pocock | **portieren** | schärfen **+ `CONTEXT.md`/ADRs** anlegen |
 | **`feature`** ★ | Pocock `to-prd` × Spaniers wandernde `docs/features/`-Datei | **NEU** | PRD-Ebene als versionierte **Markdown-Wahrheit** |
 | `split` | Pocock `to-issues` | **portieren/adaptieren** | Feature → unabhängige vertikale Slices |
@@ -111,7 +111,7 @@ das Team zu **`we`**. Diese Grenze wird in Prompt 2 explizit in die Skill-Regeln
 
 | Phase | Hebel | Primäre Quelle | capd-Konsequenz |
 |---|---|---|---|
-| **Phase 1 — jetzt** | Einzelperson im Dev-Team | **Pocock** (Disziplinen) + capd-Spine + `brainstorm` aus superpowers | leicht, sofort nutzbar |
+| **Phase 1 — jetzt** | Einzelperson im Dev-Team | **Pocock** (Disziplinen) + capd-Spine + `brainstorm` (portiert aus superpowers) | leicht, sofort nutzbar |
 | **Phase 2 — später** | Produktentwicklungs­geschwindigkeit des Teams | **Spanier** (Rollen, Guardrails, wandernde Spec) + **Fabian** (Höhen/Orchestrierung, ggf. via `we`) | schwerer; Orchestrierung an `we` delegieren, nicht bauen |
 
 ## Herkunft & Attribution (Pflicht bei Umsetzung)
@@ -120,27 +120,31 @@ Alle Quellen sind MIT-lizenziert. Bei der Umsetzung in Prompt 2+ verlangt
 [`attribution.md`](../.claude/rules/attribution.md) je Skill einen Eintrag in
 `ATTRIBUTION.md` + Footer:
 
-- `brainstorm` — **wiederverwendet** aus superpowers (keine Portierung, aber Nennung als Baustein).
+- `brainstorm` — **portiert** aus superpowers (Jesse Vincent / obra, MIT) → Eintrag in `ATTRIBUTION.md` + Footer.
 - `grill-with-docs`, `split` — **portiert** aus `mattpocock/skills`.
 - `feature`, `build` — **Synthesen** (Pocock × Spanier × Fabian) → adaptierte Herkunft nennen.
 
-## Offene Punkte für Prompt 2 (jeweils mit Empfehlung)
+## Phase-0-Entscheidungen (getroffen — Input für Prompt 2)
 
-1. **superpowers-Dependency bleibt** (für `brainstorm`-Reuse) — *revidiert bewusst die
-   frühere „eigener Stack, superpowers fällt weg"-Wahl.* → **bestätigen.**
-2. **Ground Truth für `split`**: Markdown-Kind-Dateien vs. Tracker-Issues. → **Empfehlung:
-   Markdown**, konsistent mit der `feature`-Datei; Tracker optionaler Index.
-3. **Router/Spine-Skill**: eigener Skill vs. reine README-Doku. → **Empfehlung: dünner
-   user-invoked Router** (`ask-capd`-Muster), sobald >4 Skills.
-4. **Namensgebung**: Plugin-Kommando/Workflow, `feature`-Datei-Konvention (`docs/features/…`?).
-5. **`build`-Details**: Rollen-Präambel optional zuschaltbar? Welche Rollen-Lens(en) zuerst?
+1. **Keine superpowers-Dependency.** `brainstorm` wird aus superpowers **portiert**
+   (kopiert + Quelle genannt, MIT); capd besitzt den ganzen Stack, keine Runtime-Dependency.
+   → `plugin.json`, README und CONTRIBUTING entsprechend zurückbauen.
+2. **Ground Truth für `split`: Markdown**-Kind-Dateien, konsistent mit der `feature`-Datei;
+   ein Tracker bleibt optionaler Index.
+3. **Router/Spine-Skill:** dünner user-invoked Router (`ask-capd`-Muster), aber erst wenn
+   ≥4 Skills stehen.
+4. **Namensgebung:** `feature`-Datei nach Spaniers Muster (`docs/features/F###-slug.md`);
+   Skill-/Kommando-Namen = Skill-Namen.
+
+**Noch offen** (Build-Detail, erst beim `build`-Skill): Rollen-Präambel optional zuschaltbar?
+Welche Rollen-Lens(en) zuerst?
 
 ## Entscheidungs-Historie (wie wir hierher kamen)
 
-- **superpowers**: capd hängt bereits davon ab; es liefert TDD/Debugging/Brainstorm/
-  Planning/Code-Review + `writing-skills`. Zunächst „eigener kuratierter Stack",
-  dann präzisiert: capd **besitzt den Workflow und die eigenen Schritte** und
-  **komponiert** superpowers, wo ein Schritt schon existiert (`brainstorm`).
+- **superpowers**: capd hing zunächst davon ab; es liefert TDD/Debugging/Brainstorm/
+  Planning/Code-Review + `writing-skills`. **Final entschieden: keine superpowers-Dependency** —
+  capd **portiert** die benötigten Bausteine (u. a. `brainstorm`) mit Quellenangabe und
+  **besitzt den ganzen Stack**.
 - **Kein loses Toolset** → ein **geführter Workflow** ist gewünscht.
 - **`orchestrate`/`build`**: **nicht** `we` übernehmen, sondern eine **eigene schlanke
   Synthese** aus Pococks `implement` + Spaniers `orchestrator` — innerhalb der Bright Line.

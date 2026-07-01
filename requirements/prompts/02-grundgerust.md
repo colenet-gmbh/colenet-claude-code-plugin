@@ -15,25 +15,25 @@ arbeitet sich mit ein.
 capd v1 = **eine geführte Spine + eine Utility-Klasse**, colenet-eigen, klein, ohne `we`
 zu duplizieren.
 
-- **Spine (Workflow-Skills):** `brainstorm` (aus superpowers **wiederverwenden**) →
+- **Spine (Workflow-Skills):** `brainstorm` (aus superpowers **portiert**) →
   `grill-with-docs` (Pocock, portieren) → **`feature`** ★ (neu) → `split` (Pocock,
   portieren) → **`build`** ★ (neu, schlank).
 - **Utility:** `grill-me` (vorhanden).
 - **Bright Line für `build`** und die Out-of-Scope-Liste (`we`-Engine,
   `writing-skills`/`retro`, Fabians Höhenstufen, Spaniers Stack-Spezifika): siehe `05`.
 
-## Phase 0 — die vier offenen Punkte entscheiden (zuerst, eine Frage nach der anderen, je mit Empfehlung)
+## Phase 0 — entschieden (siehe `05`); nur bestätigen, dann bauen
 
-Erst wenn diese vier stehen, wird gebaut:
+1. **Keine superpowers-Dependency.** `brainstorm` wird aus superpowers **portiert**
+   (kopiert + Quelle genannt, MIT). capd besitzt den ganzen Stack, keine Runtime-Dependency —
+   `plugin.json`, README und CONTRIBUTING entsprechend zurückbauen.
+2. **Ground Truth für `split`: Markdown**-Kind-Dateien (konsistent mit der `feature`-Datei);
+   ein Tracker bleibt optionaler Index.
+3. **Router/Spine-Skill:** dünner user-invoked Router (`ask-capd`-Muster), erst wenn ≥4 Skills stehen.
+4. **Namensgebung:** `feature`-Datei nach Spaniers Muster (`docs/features/F###-slug.md`);
+   Skill-/Kommando-Namen = Skill-Namen.
 
-1. **superpowers-Dependency bleibt?** (für `brainstorm`-Reuse — revidiert bewusst die
-   frühere „eigener Stack"-Wahl) — *Empfehlung: ja, bleibt.*
-2. **Ground Truth für `split`:** Markdown-Kind-Dateien vs. Tracker-Issues — *Empfehlung:
-   Markdown, konsistent mit der `feature`-Datei; ein Tracker bleibt optionaler Index.*
-3. **Router/Spine-Skill jetzt oder vertagen?** — *Empfehlung: dünner user-invoked Router
-   (`ask-capd`-Muster), aber erst wenn ≥4 Skills stehen.*
-4. **Namensgebung:** Workflow-/Router-Kommando und `feature`-Datei-Konvention
-   (`docs/features/F###-slug.md`?) — *Empfehlung entlang Spaniers wandernder Feature-Datei.*
+Noch offen (Build-Detail, erst beim `build`-Skill): Rollen-Präambel optional? welche Rollen-Lens zuerst?
 
 ## Phase 1 — Struktur/Skelett zuerst
 
@@ -63,9 +63,10 @@ Wiederhole pro Skill:
 4. Validieren: `bash scripts/validate-plugin.sh` und `pre-commit run --all-files` grün.
 5. **Checkpoint mit mir:** passt der Skill so, bevor der nächste kommt?
 
-Nutze vorhandene Skills, wo sie helfen — `superpowers:brainstorming` (jetzt selbst ein
-Spine-Baustein), `superpowers:writing-plans`, `superpowers:test-driven-development` und
-die `plugin-dev`-Skills.
+Nutze vorhandene Skills, wo sie beim *Entwickeln* helfen — `superpowers:brainstorming` als
+**Vorlage** für den zu portierenden `brainstorm`-Skill, dazu `superpowers:writing-plans`,
+`superpowers:test-driven-development` und die `plugin-dev`-Skills. (capd selbst hängt nach
+Phase 0 **nicht mehr** von superpowers ab.)
 
 ## Qualitätsvorgaben (jeder Skill)
 
