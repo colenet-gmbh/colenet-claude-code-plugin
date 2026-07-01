@@ -10,35 +10,40 @@ Invoked as `/capd:<skill>`.
 
 ## Status
 
-Early stage (`v0.4.0`). capd is being built as a **guided workflow spine** — from an idea
-to a built slice — plus standalone **utility skills**. Today it ships one utility skill
-(`grill-me`); the workflow spine is in progress. capd is **self-contained**: it owns its
-stack and declares no runtime plugin dependencies.
+Early stage (`v0.5.0`). capd is a **guided workflow spine** — from an idea to a built
+slice — plus standalone **utility skills**. capd is **self-contained**: it owns its stack
+and declares no runtime plugin dependencies.
 
 ## Skills
 
 capd groups skills into two classes: **workflow skills** form the guided spine and build
-on each other; **utility skills** are generic and usable anywhere.
+on each other; **utility skills** are generic and usable anywhere. New to capd? Run
+`/capd:ask-capd` — it routes you to the right step.
 
-### Utility skills
-
-| Skill | Invocation | Purpose |
-|-------|-----------|---------|
-| `grill-me` | `/capd:grill-me` | Stress-test for plans & designs: Claude grills you systematically, one question at a time, down the entire decision tree until you reach shared understanding. Ideal for refinement, design reviews, and as a sounding board. |
-
-> `grill-me` is a port from [`mattpocock/skills`](https://github.com/mattpocock/skills)
-> (MIT, © Matt Pocock) — details in [`ATTRIBUTION.md`](ATTRIBUTION.md).
-
-### Workflow skills — the capd spine (in progress)
-
-The spine guides a single developer from idea to a built slice. Planned steps, added one
-at a time and **not yet shipped**:
+### Workflow skills — the capd spine
 
 ```text
 brainstorm → grill-with-docs → feature → split → build
 ```
 
-See [`requirements/`](requirements/) for the direction and its rationale.
+| Skill | Invocation | Purpose |
+|-------|-----------|---------|
+| `brainstorm` | `/capd:brainstorm` | Refine a rough idea into a fully-formed design — one question at a time, exploring alternatives, validating in sections. The first step. |
+| `grill-with-docs` | `/capd:grill-with-docs` | Relentless interview that sharpens the design and builds durable docs as it goes — a `CONTEXT.md` glossary and sparing ADRs. |
+| `feature` | `/capd:feature` | Turn the sharpened idea into a durable, versioned feature spec (`docs/features/F###-slug.md`) — capd's single source of truth. |
+| `split` | `/capd:split` | Break the feature into dependency-ordered vertical slices (tracer bullets), recorded as Markdown in the repo. |
+| `build` | `/capd:build` | Implement one slice test-first (red-green-refactor), public interfaces only, then commit. Lean, single-flow — not an orchestration engine. |
+
+### Utility skills
+
+| Skill | Invocation | Purpose |
+|-------|-----------|---------|
+| `grill-me` | `/capd:grill-me` | Stress-test any plan or design: Claude grills you one question at a time down the decision tree. Off the spine, usable anytime. |
+| `ask-capd` | `/capd:ask-capd` | Router — finds the right capd skill for where you are and walks the spine. |
+
+> Ported and synthesized skills credit their sources in
+> [`ATTRIBUTION.md`](ATTRIBUTION.md): `grill-me`, `brainstorm`, `grill-with-docs`, `split`
+> (ports) and `feature`, `build` (syntheses).
 
 ## Installation
 

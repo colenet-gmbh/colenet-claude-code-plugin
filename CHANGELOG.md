@@ -4,6 +4,27 @@ All notable changes to the `capd` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-07-01
+
+### Added
+
+- The **capd workflow spine** (Phase 2): five workflow skills forming a guided path from
+  idea to built slice.
+  - `brainstorm` — port of `brainstorming` from `superpowers` (MIT, © Jesse Vincent).
+  - `grill-with-docs` — port of `grill-with-docs` / `domain-modeling` from
+    `mattpocock/skills` (MIT, © Matt Pocock).
+  - `feature` — synthesis: Pocock `to-prd` × Michael Spanier's traveling feature-file
+    convention (`docs/features/F###-slug.md`); ships a `references/feature-template.md`.
+  - `split` — port of `to-issues` from `mattpocock/skills` (MIT); records slices as repo
+    Markdown instead of tracker issues.
+  - `build` — synthesis: Pocock `tdd` / `implement` × Spanier `fullstack-orchestrator`;
+    lean and single-flow, honoring the `build` bright line (not an orchestration engine).
+- `ask-capd` — a router skill that walks the spine (pattern inspired by Pocock `ask-matt`).
+
+### Changed
+
+- README skill tables now document the shipped workflow spine and the utility skills.
+
 ## [0.4.0] - 2026-07-01
 
 ### Changed
