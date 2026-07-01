@@ -51,7 +51,9 @@ Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die 
 > [`05-richtung-capd-v1.md`](./05-richtung-capd-v1.md) festgehalten (Ergebnis Prompt 1):
 > capd v1 = eine geführte Produktentwicklungs-Spine (`brainstorm` → `grill-with-docs` →
 > `feature` → `split` → `build`) + eine Utility-Klasse (`grill-me`), colenet-eigen, ohne
-> `we` zu duplizieren. Die Punkte unten bleiben als *mittelfristiger* Rahmen bestehen.
+> `we` zu duplizieren. Die Spine ist gebaut (v0.5.0); Fit/Gap & Strategie stehen in
+> [`06-fit-gap-strategie.md`](./06-fit-gap-strategie.md). Die Punkte unten bleiben als
+> *mittelfristiger* Rahmen bestehen.
 
 1. **Zielgruppe festlegen** — wer ist capd für (Berater/PO, Engineers, beide)? Daraus folgt
    die **Rückgrat-Achse** (Höhe / Zustand / Rolle; siehe `04`, Abschnitt „Wo es aus einem
