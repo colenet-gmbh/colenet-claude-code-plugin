@@ -14,7 +14,7 @@ Jedes Harness organisiert Arbeit entlang einer **anderen Hauptachse**:
 |---|---|---|---|
 | **Fabian (`we`)** | **Höhe** (Vision→Saga→Epic→Story) | build-fertiger **Plan** (Markdown) | Markdown im Repo; Ticket = minimaler Index |
 | **Matt Pocock (`skills`)** | **Zustand** (Issue-Lifecycle) | das **Issue** | Issue im Tracker |
-| **Michael Spanier (`kvjs-app`)** | **Rolle** (Domänen-Pipeline) | wandernde **Spec-Datei** | Markdown im Repo (`docs/features/`) |
+| **Michael Spanier (Coding-Harness)** | **Rolle** (Domänen-Pipeline) | wandernde **Spec-Datei** | Markdown im Repo (`docs/features/`) |
 
 Nur **eine** dieser Achsen kann der Main Flow von capd werden. Die anderen können als
 ergänzende Schichten andocken — oder kollidieren. Welche Achse passt, hängt direkt an der
@@ -106,7 +106,7 @@ bewusst *gecleart*.
 
 ---
 
-## 3. Michael Spanier (`kvjs-app`) — rollen-getriebene Pipeline, guardrail-erzwungen
+## 3. Michael Spanier (Coding-Harness) — rollen-getriebene Pipeline, guardrail-erzwungen
 
 ### Philosophie
 
@@ -136,7 +136,7 @@ Push (`pre-push` Coverage-Gate).
 Noch keine Spec → `requirement-engineer`; Spec liegt vor → `fullstack-orchestrator`; reine
 UI-Änderung → `frontend-developer` direkt. **Delegation per Präambel-Injektion**: der
 volle SKILL-Text wird als Präambel in den Subagent-Prompt eingebettet. **Directory-scoped**
-(greift nur unter `kvjs-app/`).
+(greift nur im Projekt-Root).
 
 ### Stil (das no-fluff-Vorbild — verifiziert)
 
@@ -151,7 +151,7 @@ Ultra-knapp, aber jede Zeile trägt. Merkmale: **stabile ID-Präfixe** (`CC-01..
 
 ## Quervergleich
 
-| Achse | Fabian (`we`) | Pocock (`skills`) | Spanier (`kvjs-app`) |
+| Achse | Fabian (`we`) | Pocock (`skills`) | Spanier (Coding-Harness) |
 |---|---|---|---|
 | **Primäre Organisationsachse** | Höhe (abstrakt→konkret) | Zustand (Issue-Lifecycle) | Rolle (Domänen-Pipeline) |
 | **Arbeits-Einheit** | Plan-Markdown | Issue | wandernde Spec-Datei |

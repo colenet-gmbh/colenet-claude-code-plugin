@@ -1,45 +1,39 @@
 ---
 name: split
-description: Breaks a feature spec into independently buildable, dependency-ordered vertical slices (tracer bullets) — recorded as Markdown in the repo, not in a tracker. The decomposition step of the capd workflow, after feature and before build. Use when the user wants to slice a feature into tasks, plan the build order, or says "split", "in Slices zerlegen", "Feature aufteilen", "Tasks schneiden", "vertical slices", or "break this down".
+description: Breaks a signed-off feature into independently buildable, dependency-ordered vertical slices (tracer bullets) — recorded as Markdown in the feature file, not a tracker. Runs after the software-architect sign-off, before build; AFK (decomposes autonomously). Use when a feature is approved and needs slicing into build steps, or the user says "split", "in Slices zerlegen", "Feature aufteilen", "Tasks schneiden", "vertical slices", or "break this down".
 ---
 
-Break a feature spec into small, independently buildable pieces. This is the
-**decomposition step of the capd workflow**, after `feature` and before `build`.
+Break the **signed-off** feature into small, independently buildable pieces. This runs
+after the `software-architect` sign-off and before `build`. It is **AFK**: decompose
+autonomously from the approved spec; only escalate if something is genuinely ambiguous.
 
 ## Read the source
 
-Read the feature spec (`docs/features/F<NNN>-<slug>.md`), plus `CONTEXT.md` and any ADRs
-in the touched area. Use the project's own glossary vocabulary.
+Read the feature spec (`docs/features/F<NNN>-<slug>.md`), plus `CONTEXT.md`, the
+architecture docs, and any ADRs. Use the project's glossary vocabulary.
 
 ## Draft vertical slices (tracer bullets)
 
-- Each slice is a **thin vertical slice** cutting end-to-end through **all** layers
-  (data, logic, interface, tests) — **not** a horizontal layer.
-- Each completed slice is **demoable and verifiable on its own**.
+- Each slice is a **thin vertical slice** cutting end-to-end through **all** layers (data,
+  logic, interface, tests) — **not** a horizontal layer.
+- Each completed slice is **demoable / verifiable on its own**.
 - Do prefactoring first: *make the change easy, then make the easy change.*
-
-## Quiz the user
-
-Present the breakdown as a numbered list. Per slice: a short **title**, what it delivers,
-and **blocked-by** dependencies. Ask — one question at a time — whether the granularity
-is right and the dependencies are correct. Iterate until the user approves.
 
 ## Record the slices as Markdown
 
-Ground truth is the repo, not a tracker. Record the approved slices in **dependency
-order** in a `## Slices` section of the feature file (or as child files
-`docs/features/F<NNN>-<slug>/S<NN>-<slug>.md`). Per slice write:
+Ground truth is the repo. Record the slices in **dependency order** in the feature file's
+`## Slices` section. Per slice:
 
-- **What to build** — the end-to-end behavior (no file paths or code snippets; they go stale).
-- **Acceptance criteria** — as a checklist / Gherkin.
+- **What to build** — the end-to-end behavior (no file paths or code; they go stale).
+- **Acceptance criteria** — a checklist / Gherkin.
 - **Blocked by** — the slices it depends on, or "none — can start immediately".
 
-A ticket/tracker, if the team uses one, is an **optional index** pointing back to these files.
+A tracker, if the team uses one, is an **optional index** pointing back to these slices.
 
 ## Completion
 
-Done when ordered, approved slices are recorded and the feature `status` is `ready` (or
-`in-progress`). Then offer the next step: `build`, one slice at a time.
+Done when the ordered slices are recorded in the feature file (it stays in `02-development`). Then the
+flow continues (still AFK) with `build`, one slice at a time.
 
 ## Rules
 
@@ -50,5 +44,5 @@ Done when ordered, approved slices are recorded and the feature `status` is `rea
 
 Port of **`to-issues`** from [`mattpocock/skills`](https://github.com/mattpocock/skills)
 by **Matt Pocock** (MIT). Changes by colenet: records slices as **Markdown in the repo**
-(capd's ground truth) instead of publishing to an issue tracker; added German triggers;
-wired into the capd workflow. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+instead of tracker issues; runs **AFK** (no granularity quiz); wired into the capd Main
+Flow. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).

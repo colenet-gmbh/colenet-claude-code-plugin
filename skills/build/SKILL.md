@@ -1,61 +1,63 @@
 ---
 name: build
-description: Implements one vertical slice test-first (red-green-refactor) using only public interfaces, then optionally runs a light role-lens review before committing. The build step of the capd workflow, after split. Lean and single-flow by design — NOT an orchestration engine. Use when the user wants to implement a slice, build test-first, or says "build", "umsetzen", "implementieren", "bauen", "implement this slice", or "TDD".
+description: Implements a signed-off feature's slices test-first (red-green-refactor), following capd's engineering rules and the project's architect guidelines, then moves the feature to approval. The build step of the Main Flow, after split; AFK. Lean and single-flow by design — NOT an orchestration engine. Use when a feature is sliced and ready to implement, or the user says "build", "umsetzen", "implementieren", "bauen", "implement this slice", or "TDD".
 ---
 
-Implement **one slice** from the feature's `split`, test-first, in a single session on the
-current branch. This is the **build step of the capd workflow**.
+Implement the feature's slices, one at a time, test-first. This is the **build step** of
+the Main Flow (after `split`), and it is **AFK**: work autonomously through the slices; the
+human returns only at PR/merge.
 
 > **The bright line (see [`dod.md`](../../.claude/rules/dod.md)).** `build` stays a **lean,
 > single-flow executor**. It **NEVER** becomes an orchestration engine — no persistent
 > state machine, no resume, no worker pool, no multi-agent dispatch. That is the `we`
-> plugin's territory; when a team genuinely needs multi-worker orchestration, route them there.
+> plugin's territory; when a team genuinely needs multi-worker orchestration, route there.
 
-## Plan the slice
+## Set up
 
-- Read the slice, plus `CONTEXT.md` and any ADRs. Use the project's glossary vocabulary.
-- Confirm the **public interface** and the top behaviors with the user — one question at a
-  time. Identify deep modules (small interface, large behavior behind it).
+Read the feature (in `docs/features/02-development/`), its slices, `CONTEXT.md`, and the
+architecture docs. Create the feature branch `feat/F<NNN>-<slug>`.
+
+## Follow the rules
+
+- capd's engineering rules are binding: [`references/engineering-rules.md`](references/engineering-rules.md).
+- Load the project's architect directives if present: `agent-guidelines/architect.md`
+  (they layer on top of the generic rules).
 
 ## Red → green → refactor, one behavior at a time
 
-For each behavior in the slice:
+For each slice, for each behavior:
 
-1. **RED** — write **one** test against the **public interface only** (no mocking internal
-   details). The expected value comes from an **independent source** (a worked example or
-   known-good literal), never recomputed from the code. The test reads like a spec.
+1. **RED** — write **one** test against the **public interface only**. The expected value
+   comes from an **independent source** (a worked example or known-good literal), never
+   recomputed from the code. The test reads like a spec.
 2. **GREEN** — write the **minimal** code to pass it. Nothing speculative.
-3. Run the test; run type-checking. **Never refactor while red.**
+3. Run the test and type-checking. **Never refactor while red.**
 
-Once all the slice's tests are green, **refactor**: extract duplication (functions over
-~20 lines are a smell), deepen modules, run tests after each step.
+Once a slice's tests are green, **refactor**: extract duplication (functions over ~20 lines
+are a smell), deepen modules, run tests after each step. Check the slice off in the feature
+file. Commit per slice.
 
-## Quality gate
+## Quality gate (blocking)
 
-Run the full test suite once, plus the project's build/lint/format. All green.
+Before a slice counts as done: format, lint (no warnings), the full test suite, and the
+build all pass; new code meets the coverage bar (default ≥ 80% for business logic).
 
-## Optional role-lens review (light, serial)
+## Finish
 
-For an architecture, security, or UX pass, use **preamble injection**: read a review
-discipline's text, prepend it to a subagent's prompt, and pass it the slice + the code.
-One round-trip, serial — not a fan-out. Fold the findings back in. Keep this optional and
-lightweight; it is a review pass, not a pipeline.
-
-## Commit and hand off
-
-Commit the slice to the current branch. **Human in the loop** for PR/merge. Update the
-slice/feature `status`. Report what was built and which interfaces are new.
+When all slices are green and the gates pass, `git mv` the feature to
+`docs/features/03-approval/` (status → `approval`) and report what was built. **Human in
+the loop** for PR/merge and the final **approval**; on approval it moves to `04-done/`.
 
 ## Rules
 
 - **ALWAYS** test the public interface; one test → one implementation step.
 - **NEVER** write tautological tests, slice horizontally, or add speculative features.
-- **NEVER** modify existing passing tests to make new code fit.
+- **NEVER** modify existing passing tests to make new code fit — ask first.
 
 ## Attribution
 
-Synthesis by colenet of external sources (all MIT): the TDD discipline of **`tdd`** and
-**`implement`** from [`mattpocock/skills`](https://github.com/mattpocock/skills) (Matt
-Pocock), and the **preamble-injection role review** from Michael Spanier's `kvjs-app`
-`fullstack-orchestrator`. capd deliberately omits that orchestrator's engine parts
-(state machine, worker pool, parallel dispatch). See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+Synthesis by colenet (all MIT): the TDD discipline of **`tdd`** and **`implement`** from
+[`mattpocock/skills`](https://github.com/mattpocock/skills) (Matt Pocock), and the
+engineering rules + preamble-injection role review generalized from Michael Spanier's
+coding harness. capd deliberately omits its orchestration-engine parts. See
+[`ATTRIBUTION.md`](../../ATTRIBUTION.md).

@@ -109,7 +109,7 @@ SOFTWARE.
   - `to-prd` from [`mattpocock/skills`](https://github.com/mattpocock/skills) (Matt Pocock,
     MIT) — the "conversation → PRD" idea.
   - The traveling feature-file convention (`docs/features/F###-slug.md`, status in path and
-    frontmatter) from Michael Spanier's `kvjs-app` harness.
+    frontmatter) from Michael Spanier's coding harness.
 - **License:** MIT for the Pocock portion (© 2026 Matt Pocock, text above); the Spanier
   convention is adopted as a pattern.
 - **Nature:** original colenet skill synthesizing both; no verbatim copy.
@@ -119,7 +119,7 @@ SOFTWARE.
 - **Sources:**
   - `tdd` and `implement` from [`mattpocock/skills`](https://github.com/mattpocock/skills)
     (Matt Pocock, MIT) — the TDD discipline.
-  - `fullstack-orchestrator` from Michael Spanier's `kvjs-app` — the preamble-injection
+  - `fullstack-orchestrator` from Michael Spanier's coding harness — the preamble-injection
     role review (the orchestrator's engine parts are deliberately omitted).
 - **License:** MIT for the Pocock portion (© 2026 Matt Pocock, text above).
 - **Nature:** original colenet skill; lean single-flow, honoring the `build` bright line
@@ -130,3 +130,22 @@ SOFTWARE.
 - **Nature:** original colenet skill. The router pattern is inspired by `ask-matt` from
   [`mattpocock/skills`](https://github.com/mattpocock/skills) (Matt Pocock, MIT). No content
   was copied; credited for the idea.
+
+## `skills/software-architect`
+
+- **Adapted from:** the `software-architect` role of Michael Spanier's coding harness
+  (architecture review, clean-code enforcement, ADRs, arc42 usage) and the
+  mandatory-review-before-build discipline of his `requirement-engineer`.
+- **License / scope:** the source is a private customer project; only the generic role,
+  the review discipline, and the public [arc42](https://arc42.org) template are adopted —
+  no project-specific content or code.
+- **Nature:** original colenet skill; establishes/evolves arc42 and reviews the concept.
+
+## `skills/build/references/engineering-rules.md` and the feature board
+
+- **Distilled from:** the Clean-Code rules (CC/PL), frontend and security disciplines
+  (FD/SEC), blocking quality gates, and the `docs/features/` board + `_counter.txt`
+  convention of Michael Spanier's coding harness; the TDD discipline converges with Matt
+  Pocock's `tdd` (MIT).
+- **License / scope:** generalized and stack-stripped; no project-specific content or code.
+- **Nature:** capd's own opinionated, stack-agnostic engineering rules and lifecycle.

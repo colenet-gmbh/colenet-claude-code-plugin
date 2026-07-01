@@ -4,6 +4,29 @@ All notable changes to the `capd` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.6.0] - 2026-07-01
+
+### Added
+
+- `software-architect` skill — establishes/evolves the project's architecture
+  documentation (arc42 + ADRs) and reviews a feature concept before build; adapted from
+  Michael Spanier's coding harness.
+- capd **engineering rules** (`skills/build/references/engineering-rules.md`) —
+  opinionated, stack-agnostic code-quality rules enforced by `build`, checked by
+  `software-architect`.
+- Project-context conventions: a **feature board** in `docs/features/`
+  (`01-backlog → 02-development → 03-approval → 04-done`, IDs via `_counter.txt`),
+  **`agent-guidelines/`** for project-specific directives, and an arc42 reference.
+- `skills/ask-capd/references/main-flow.md` — the canonical Main Flow (board, HITL/AFK,
+  and the terms review / sign-off / approval).
+
+### Changed
+
+- Main Flow is now `brainstorm → grill-with-docs → feature → software-architect → split →
+  build`, run as one HITL stretch then one AFK stretch; `feature` and `split` became AFK.
+- GLOSSARY defines HITL, AFK, the feature board, review, sign-off, approval, and
+  acceptance criteria.
+
 ## [0.5.1] - 2026-07-01
 
 ### Added

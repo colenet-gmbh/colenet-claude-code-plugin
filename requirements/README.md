@@ -17,7 +17,7 @@ capd wird das **eine Dach**, aber **kuratiert**:
 |---|---|---|
 | [`01-fabian-we.md`](./01-fabian-we.md) | Fabian — `we` | Höhenstufen (APO) + Orchestrierung |
 | [`02-mattpocock-skills.md`](./02-mattpocock-skills.md) | Matt Pocock — `skills` | Skill-Methodik (der „Klebstoff") + Engineering-Disziplin |
-| [`03-spanier-kvjs.md`](./03-spanier-kvjs.md) | Michael Spanier — `kvjs-app` | Engineering-Substanz in echter Codebase + Guardrails |
+| [`03-spanier-harness.md`](./03-spanier-harness.md) | Michael Spanier — Coding-Harness | Engineering-Substanz in echter Codebase + Guardrails |
 
 **Legende (einheitlich):** ✅ generisch & hoher Hebel → klarer Kandidat · 🔶 wertvoll, aber bedingt (überlappt/anzupassen/schwer) · ⛔ nicht sinnvoll für capd.
 

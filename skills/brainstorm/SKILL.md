@@ -4,7 +4,8 @@ description: Refines a rough idea into a fully-formed design before any code —
 ---
 
 Turn a rough idea into a fully-formed design through collaborative dialogue. This is the
-**first step of the capd workflow** — it comes before `grill-with-docs` and `feature`.
+**first step of the Main Flow** and pure **HITL** — you and the user converge together.
+When work starts on a raw `docs/features/01-backlog/` item, move it into `02-development/`.
 
 ## Understand the idea
 

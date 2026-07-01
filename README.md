@@ -10,9 +10,12 @@ Invoked as `/capd:<skill>`.
 
 ## Status
 
-Early stage (`v0.5.0`). capd is a **guided workflow** — from an idea to a built
-slice — plus standalone **utility skills**. capd is **self-contained**: it owns its stack
-and declares no runtime plugin dependencies.
+Early stage (`v0.6.0`). capd is a **guided Main Flow** — from an idea to a built, approved
+slice — plus standalone **utility skills**. Work is tracked on a file board in
+`docs/features/` (`01-backlog → 02-development → 03-approval → 04-done`), and the flow runs
+one long **HITL** (human-in-the-loop) stretch, then one long **AFK** (away-from-keyboard)
+stretch. capd is **self-contained**: it owns its stack and declares no runtime plugin
+dependencies.
 
 ## Skills
 
@@ -21,30 +24,30 @@ capd groups skills into two classes: **workflow skills** form the guided path �
 anywhere. New to capd? Run `/capd:ask-capd` — it routes you to the right step. See
 [`GLOSSARY.md`](GLOSSARY.md) for the vocabulary.
 
-### Workflow skills — the capd workflow
+### Workflow skills — the Main Flow
 
 ```text
-brainstorm → grill-with-docs → feature → split → build
+brainstorm → grill-with-docs → feature → software-architect → split → build
 ```
 
 | Skill | Invocation | Purpose |
 |-------|-----------|---------|
-| `brainstorm` | `/capd:brainstorm` | Refine a rough idea into a fully-formed design — one question at a time, exploring alternatives, validating in sections. The first step. |
-| `grill-with-docs` | `/capd:grill-with-docs` | Relentless interview that sharpens the design and builds durable docs as it goes — a `CONTEXT.md` glossary and sparing ADRs. |
-| `feature` | `/capd:feature` | Turn the sharpened idea into a durable, versioned feature spec (`docs/features/F###-slug.md`) — capd's single source of truth. |
-| `split` | `/capd:split` | Break the feature into dependency-ordered vertical slices (tracer bullets), recorded as Markdown in the repo. |
-| `build` | `/capd:build` | Implement one slice test-first (red-green-refactor), public interfaces only, then commit. Lean, single-flow — not an orchestration engine. |
+| `brainstorm` | `/capd:brainstorm` | Refine a rough idea into a fully-formed design — one question at a time, exploring alternatives. HITL; the first step. |
+| `grill-with-docs` | `/capd:grill-with-docs` | Relentless interview that sharpens the design and builds durable docs — a `CONTEXT.md` glossary and sparing ADRs. HITL. |
+| `feature` | `/capd:feature` | Synthesize the sharpened understanding into a durable, two-part feature spec. AFK. |
+| `software-architect` | `/capd:software-architect` | Review the concept and establish/evolve the architecture docs (arc42, ADRs) before building; present the key decisions for sign-off. AFK. |
+| `split` | `/capd:split` | Break the feature into dependency-ordered vertical slices (tracer bullets), recorded as Markdown. AFK. |
+| `build` | `/capd:build` | Implement each slice test-first (red-green-refactor), following capd's engineering rules, then move to approval. AFK. |
 
 ### Utility skills
 
 | Skill | Invocation | Purpose |
 |-------|-----------|---------|
-| `grill-me` | `/capd:grill-me` | Stress-test any plan or design: Claude grills you one question at a time down the decision tree. Standalone, usable anytime. |
-| `ask-capd` | `/capd:ask-capd` | Router — finds the right capd skill for where you are and walks the workflow. |
+| `grill-me` | `/capd:grill-me` | Stress-test any plan or design: Claude grills you one question at a time down the decision tree. Off the Main Flow, usable anytime. |
+| `ask-capd` | `/capd:ask-capd` | Router — finds the right capd skill for where you are and explains the Main Flow. |
 
 > Ported and synthesized skills credit their sources in
-> [`ATTRIBUTION.md`](ATTRIBUTION.md): `grill-me`, `brainstorm`, `grill-with-docs`, `split`
-> (ports) and `feature`, `build` (syntheses).
+> [`ATTRIBUTION.md`](ATTRIBUTION.md).
 
 ## Installation
 
@@ -63,14 +66,14 @@ claude --plugin-dir /path/to/colenet-claude-code-plugin
 
 ## Usage
 
-Invoke the skill directly:
+Invoke a skill directly:
 
 ```text
-/capd:grill-me
+/capd:ask-capd
 ```
 
-…or trigger it casually — the skill's trigger phrases fire on things like
-"grill me", "grill mich", or "tear my plan apart".
+…or trigger it casually — each skill's trigger phrases fire on natural wording in German
+or English.
 
 ## Status line
 

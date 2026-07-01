@@ -1,30 +1,38 @@
 ---
 name: ask-capd
-description: Routes to the right capd skill and walks the capd workflow from idea to built slice. Use when the user is unsure which capd skill fits, wants an overview of capd, or says "ask capd", "was kann capd", "welcher Skill", "wie fange ich an", "capd help", or "guide me".
+description: Routes to the right capd skill and explains the Main Flow, its HITL/AFK rhythm, and the feature board. Use when the user is unsure which capd skill fits, wants an overview of capd, or says "ask capd", "was kann capd", "welcher Skill", "wie fange ich an", "capd help", or "guide me".
 ---
 
-Help the user find the right capd skill and move along the workflow. Read where they are,
-then recommend and offer the single next step.
+Help the user find the right capd skill and move along the Main Flow. Read where they are
+(which board column their feature is in), then recommend and offer the single next step.
 
-## The workflow — from idea to built slice
+## The Main Flow
 
-1. **`brainstorm`** — the idea is still fuzzy; open it up, explore approaches, shape a design.
-2. **`grill-with-docs`** — sharpen the design one question at a time and capture a
-   `CONTEXT.md` glossary + ADRs.
-3. **`feature`** — write the durable feature spec (`docs/features/F<NNN>-<slug>.md`), the
-   single source of truth.
-4. **`split`** — break the feature into dependency-ordered vertical slices.
-5. **`build`** — implement one slice, test-first, then commit.
+One guided path from idea to shipped slice, tracked on a file board in `docs/features/`
+(`01-backlog → 02-development → 03-approval → 04-done`). Full mechanics — board, IDs,
+HITL/AFK, and the terms — are in [`references/main-flow.md`](references/main-flow.md).
 
-## Utility skills (anytime, outside the workflow)
+The steps (all within `02-development` until build finishes):
+
+1. **`brainstorm`** (HITL) — shape the fuzzy idea.
+2. **`grill-with-docs`** (HITL) — sharpen it; build `CONTEXT.md` + ADRs. Ends the HITL stretch.
+3. **`feature`** (AFK) — synthesize the two-part feature spec.
+4. **`software-architect`** (AFK) — **review** the concept; findings + ADRs.
+5. **sign-off** (HITL) — you approve the concept before building.
+6. **`split`** (AFK) — decompose into vertical slices.
+7. **`build`** (AFK) — implement test-first, then move the feature to `03-approval`.
+8. **approval** (HITL) — you approve the built result; it moves to `04-done`.
+
+## Utility skills (anytime, off the Main Flow)
 
 - **`grill-me`** — stress-test any plan or decision; no codebase needed.
 
 ## How to route
 
-- Point the user to the step that matches their state, and **offer to start it**.
-- Keep context hygiene: sharpen up front (steps 1–3), then build slice by slice (step 5).
-- If they are mid-workflow, name the next step rather than restarting.
+- Point the user to the step that matches their feature's column, and **offer to start it**.
+- The rhythm is one long **HITL** stretch (1–2), then a long **AFK** stretch (3–8) with two
+  human gates: **sign-off** (concept) and **approval** (result).
+- If they are mid-flow, name the next step rather than restarting.
 
 ## Attribution
 

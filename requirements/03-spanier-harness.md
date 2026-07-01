@@ -1,8 +1,8 @@
-# Steckbrief: Michael Spanier — Harness in `kvjs-app`
+# Steckbrief: Michael Spanier — Coding-Harness
 
 > Teil der capd-Synthese-Analyse. Perspektive: Welche Features bietet dieses Framework, und welche davon tragen zum kombinierten Colenet-Plugin (**capd**) bei?
 
-**Quelle:** `/Users/pascal/Dev/harness/kvjs-app/` (Next.js/Payload-CMS-Produkt; nur der Harness-Anteil)
+**Quelle:** Michael Spaniers Coding-Harness (in ein reales Produkt eingebettet; nur der Harness-Anteil)
 **Schwerpunkt:** Das einzige Harness, das **produktiv in einer echten, regulierten Codebase** mitläuft. Rollen statt Allzweck-Agent, Guardrails statt Vertrauen, Spec lebt neben dem Code.
 **Beitrag zur Synthese (Kurzform):** Aus capd-Sicht die **Engineering-Substanz & Bodenhaftung**: das Muster, ein Harness in einer realen Codebase verlässlich zu betreiben. Die *Mechanik* ist Gold und generisch — der *Inhalt* ist Payload/Next.js-spezifisch und muss neu geschrieben werden.
 
@@ -14,7 +14,7 @@
 
 ## S1 — Rollen-Skills (die Engineering-Substanz) ★
 
-Sechs directory-scoped Skills (greifen nur bei Arbeit unter `kvjs-app/`), jede eine scharfe Fach-Rolle.
+Sechs directory-scoped Skills (greifen nur bei Arbeit im Projekt-Root), jede eine scharfe Fach-Rolle.
 
 | Feature | Was es tut | Einschätzung für capd |
 |---|---|---|

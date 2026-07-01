@@ -6,7 +6,7 @@
 > nichts gebaut; hier steht die Richtung, nicht die Umsetzung.
 >
 > Arbeitsmaterial (nicht plugin-shipping), Deutsch gemäß der temporären Ausnahme in
-> `CLAUDE.md`. Baut auf den Steckbriefen [`01`](./01-fabian-we.md)–[`03`](./03-spanier-kvjs.md)
+> `CLAUDE.md`. Baut auf den Steckbriefen [`01`](./01-fabian-we.md)–[`03`](./03-spanier-harness.md)
 > und der Workflow-Analyse [`04`](./04-workflows-und-philosophien.md) auf.
 
 ## Leitbild in einem Satz

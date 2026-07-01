@@ -20,7 +20,7 @@ engineering weckt. Zu groß bringt jetzt nichts.
 
 Erarbeite aus deiner Erfahrung **und** aus den drei Quell-Harnesses, die als
 Geschwister-Repos neben diesem Repo liegen (`../claude-code-plugin`, `../skills`,
-`../kvjs-app`) und in `requirements/` zusammengefasst sind, eine erste Richtung für
+Michael Spaniers Coding-Harness) und in `requirements/` zusammengefasst sind, eine erste Richtung für
 `capd`:
 
 - Was gehört in diese einfache Basis, was bewusst nicht?

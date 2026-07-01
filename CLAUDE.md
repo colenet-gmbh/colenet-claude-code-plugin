@@ -29,7 +29,7 @@ repo, in the shared parent folder (`../`):
 |---|---|---|
 | Fabian — `we` (APO altitudes + orchestration) | `../claude-code-plugin` | <https://github.com/weside-ai/claude-code-plugin> |
 | Matt Pocock — `skills` (skill-authoring method) | `../skills` | <https://github.com/mattpocock/skills> |
-| Michael Spanier — `kvjs-app` (harness embedded in a real product) | `../kvjs-app` | <https://github.com/colenet-gmbh/kvjs-app> |
+| Michael Spanier — his coding harness (embedded in a real product) | *(private sibling repo)* | — |
 
 **Chosen direction:** `capd` becomes the single, *curated* umbrella — keep capd's own
 shell & governance; take the skill-authoring method and the "glue" that holds a skill set
