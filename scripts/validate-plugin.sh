@@ -4,7 +4,10 @@
 #
 # Optional version-bump check: set CAPD_BASE_REF to a git ref (e.g. origin/main)
 # and the script additionally fails if .claude-plugin/plugin.json version was not
-# increased versus that ref. Used by the CI 'validate' job on pull requests.
+# increased versus that ref — but only when the diff touches plugin-shipping files
+# (skills/, .claude-plugin/, statusline/, settings.json). Pure working material,
+# contributor docs, CI, and scripts do not force a bump. Used by the CI 'validate'
+# job on pull requests.
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -15,7 +18,20 @@ if [[ -n "${CAPD_BASE_REF:-}" ]]; then
     BASE_MANIFEST="$(git -C "$ROOT" show "${CAPD_BASE_REF}:.claude-plugin/plugin.json" 2>/dev/null || true)"
 fi
 
-CAPD_BASE_MANIFEST="$BASE_MANIFEST" python3 - "$ROOT" <<'PY'
+# Whether the diff vs base ref touches plugin-shipping files (skills/,
+# .claude-plugin/, statusline/, settings.json). Only these force a version
+# bump; pure working material (requirements/), contributor docs, CI, and
+# scripts do not. Defaults to "changed" (require bump) when detection is
+# uncertain, so a real plugin change is never silently shipped without a bump.
+PLUGIN_CHANGED=1
+if [[ -n "${CAPD_BASE_REF:-}" ]]; then
+    DIFF="$(git -C "$ROOT" diff --name-only "${CAPD_BASE_REF}..HEAD" 2>/dev/null || true)"
+    if [[ -n "$DIFF" ]] && ! grep -E '^(skills/|\.claude-plugin/|statusline/|settings\.json$)' >/dev/null <<<"$DIFF"; then
+        PLUGIN_CHANGED=0
+    fi
+fi
+
+CAPD_BASE_MANIFEST="$BASE_MANIFEST" CAPD_PLUGIN_CHANGED="$PLUGIN_CHANGED" python3 - "$ROOT" <<'PY'
 import json, os, re, sys
 from pathlib import Path
 
@@ -99,7 +115,11 @@ for doc in docs:
 
 # --- version bump (only when a base manifest is provided) ----------------
 base_raw = os.environ.get("CAPD_BASE_MANIFEST", "").strip()
-if base_raw and data is not None:
+plugin_changed = os.environ.get("CAPD_PLUGIN_CHANGED", "1") == "1"
+if base_raw and data is not None and not plugin_changed:
+    print("  ok: no plugin-shipping files changed (skills/, .claude-plugin/, "
+          "statusline/, settings.json); version bump not required")
+elif base_raw and data is not None:
     def ver(v):
         m = SEMVER.fullmatch(v or "")
         return tuple(int(x) for x in v.split(".")) if m else None

@@ -92,14 +92,18 @@ does not fit the plugin's mission, and to advise how to evolve it instead.
 ## Change workflow
 
 - **All changes to the plugin go through a pull request.** Direct pushes to `main` are
-  blocked by branch protection; create a branch and open a PR.
+  blocked by branch protection; create a branch and open a PR. (Admins *can* push
+  directly, but the version-bump gate below runs **only on PRs** — a direct push
+  bypasses it, so reserve direct pushes for changes that should not bump.)
 - `main` requires the `validate` CI check to pass before a PR can be merged. It runs the
   full pre-commit suite (structural validation, markdownlint, JSON) and, on pull
-  requests, additionally **enforces a version bump**: `plugin.json` `version` must be
-  greater than on the base branch.
-- So bump the version on every change that should reach users (see
+  requests, additionally **enforces a version bump when the PR touches plugin-shipping
+  files** — `skills/`, `.claude-plugin/`, `statusline/`, `settings.json`: `plugin.json`
+  `version` must then be greater than on the base branch. PRs that only change working
+  material (`requirements/`), contributor docs, CI, or scripts do not require a bump.
+- So bump the version on every change that ships to users (see
   [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md)) — a PR
-  without a bump fails CI and cannot be merged.
+  that touches plugin-shipping files without a bump fails CI and cannot be merged.
 
 ## Layout
 
