@@ -10,15 +10,17 @@ Invoked as `/capd:<skill>`.
 
 ## Status
 
-Early stage (`v0.1.0`). Currently contains **one** skill. The role model
-(Scrum Master / Product Owner / Team) is not yet decided — the architecture is
-intentionally kept open for it.
+Early stage (`v0.4.0`). capd is being built as a **guided workflow spine** — from an idea
+to a built slice — plus standalone **utility skills**. Today it ships one utility skill
+(`grill-me`); the workflow spine is in progress. capd is **self-contained**: it owns its
+stack and declares no runtime plugin dependencies.
 
-## Included skills
+## Skills
 
-Grouped by category.
+capd groups skills into two classes: **workflow skills** form the guided spine and build
+on each other; **utility skills** are generic and usable anywhere.
 
-### Productivity
+### Utility skills
 
 | Skill | Invocation | Purpose |
 |-------|-----------|---------|
@@ -26,6 +28,17 @@ Grouped by category.
 
 > `grill-me` is a port from [`mattpocock/skills`](https://github.com/mattpocock/skills)
 > (MIT, © Matt Pocock) — details in [`ATTRIBUTION.md`](ATTRIBUTION.md).
+
+### Workflow skills — the capd spine (in progress)
+
+The spine guides a single developer from idea to a built slice. Planned steps, added one
+at a time and **not yet shipped**:
+
+```text
+brainstorm → grill-with-docs → feature → split → build
+```
+
+See [`requirements/`](requirements/) for the direction and its rationale.
 
 ## Installation
 
@@ -41,17 +54,6 @@ Locally for development/testing:
 ```bash
 claude --plugin-dir /path/to/colenet-claude-code-plugin
 ```
-
-### Built on two great official plugins
-
-- **[`superpowers`](https://github.com/obra/superpowers)** (Jesse Vincent, MIT) — a
-  **dependency**, declared as `superpowers@claude-plugins-official` and **installed
-  automatically** with `capd`. Every user gets its full skill library: TDD, debugging,
-  brainstorming, planning, and collaboration workflows. It resolves from the built-in
-  `claude-plugins-official` marketplace, so there's no extra setup.
-- **`plugin-dev`** (`@claude-plugins-official`) — Claude Code's own plugin-building
-  skills (`plugin-structure`, `skill-development`, …). Not required to *use* `capd`, but
-  recommended if you **extend** it (see [`CONTRIBUTING.md`](CONTRIBUTING.md)).
 
 ## Usage
 

@@ -24,6 +24,19 @@ What `capd` is **not**:
 Scrum Masters are expected to keep an eye on `capd` and steward how their teams use and
 extend it.
 
+## The `build` bright line
+
+capd's own `build` skill (planned) is a **lean, single-flow executor**, not an
+orchestration engine. It must stay on the near side of this line:
+
+- **Allowed:** implement one slice with TDD discipline, then commit; optionally a light
+  role-lens review via preamble injection; human-in-the-loop at commit/PR/merge.
+- **Forbidden — that is `we`'s territory:** a persistent orchestration engine (durable
+  state machine, resume, worker pool, multi-runtime/agent dispatch, council).
+
+When a team genuinely needs multi-worker orchestration, route them to the `we` plugin.
+Guarding this line is part of the veto below.
+
 ## Definition of Done — a change may ship only when ALL hold
 
 1. **Fits the mission** — serves agile teamwork and/or adopting AI-assisted work in an
