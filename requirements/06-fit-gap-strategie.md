@@ -77,8 +77,7 @@ werblich wird:
   und „Transformation mit colenet".
 - **Scrum Master als Steward** (schon in der DoD angelegt): sie halten capd im Team lebendig
   und sind der interne Multiplikator.
-- **Kein** Sales-Text im Plugin. Eine schlichte Zeile „von colenet, wir begleiten die
-  Einführung" reicht.
+- **Kein** Sales-Text und **kein** Beratungs-Hinweis im Plugin. Der Wert spricht für sich.
 
 ## 6. Verdikt
 
@@ -96,9 +95,8 @@ noch nicht jetzt gebaut):
 **Bewusst nicht** für das erste Gespräch: Team-Rollen, Orchestrierung, Metriken,
 Tracker-Zwang.
 
-## 7. Punkte, die deine Entscheidung brauchen [offen]
+## 7. Entschieden
 
-1. Erst intern (Dogfooding) oder direkt Pilotkunde? *Empf.: intern zuerst.*
-2. Konkreter Pilot (Allianz?) und Zeitpunkt für den Außenauftritt (→ triggert die
-   Englisch-Übersetzung).
-3. Wie sichtbar soll die Beratungs-Brücke im Plugin sein? *Empf.: minimal, eine Zeile.*
+1. **Intern zuerst** (Dogfooding), dann Kunde.
+2. Konkreter Pilot/Zeitpunkt: bewusst offen gelassen — für jetzt unkritisch.
+3. **Beratungs-Brücke: gar nicht im Plugin sichtbar** — kein Sales-, kein Beratungs-Hinweis.
