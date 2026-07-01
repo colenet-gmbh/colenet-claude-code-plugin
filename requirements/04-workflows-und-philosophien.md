@@ -25,6 +25,7 @@ noch offenen **Zielgruppen-Entscheidung** (Berater/PO → Höhe; Engineers → Z
 ## 1. Fabian (`we`) — plan-zentriert, Höhenstufen
 
 ### Philosophie
+
 - **Product Ownership, nicht Coding.** *„focuses on the strategic side … shaping products,
   not just building them"* (`we/CLAUDE.md`). Vier Planungsstufen *vor* dem Bauen.
 - **Autonomie endet, wo Konsequenz beginnt.** Deliver ist menschlich; Claude merged/schließt
@@ -35,6 +36,7 @@ noch offenen **Zielgruppen-Entscheidung** (Berater/PO → Höhe; Engineers → Z
 - Lehnt ab: Sprint-Zeremonien, Sizing nach Zeit/Story-Points, **automatisches Komplexitäts-Raten**.
 
 ### Workflow
+
 `/we:setup` → *(optional top-down)* `vision` → `saga` → `epic` → **`story`** (interaktiv,
 grill-style; schreibt Plan-MD `docs/plans/{TICKET}-story.md`, Ticket bleibt minimal) →
 **`build`** (autonom, 9 Schritte, blockierendes AC-Gate, Quality-Gates parallel,
@@ -42,6 +44,7 @@ SQLite-Checkpoints + Resume + Circuit-Breaker) → **Deliver** (Mensch, kein Ski
 `retro`. Quer: `coach` (Router/Advisor), `meet`/`council` (Deliberation).
 
 ### Einstieg & Entscheidung — inkl. Council
+
 `coach` liest den Repo-State und schlägt **genau einen** nächsten Befehl hinter `[y/n]` vor.
 Solo vs. Meet: **Solo** wenn Scope klar/Routine; **Meet (Council)** wenn strittig. Der
 Council — Fabians „bei schwierigen Fällen einberufen" — ist präziser, als es klingt: Er wird
@@ -55,6 +58,7 @@ Angebot**, nie automatisch:
 Council = lebendes Agent-Team (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`, kein Fallback).
 
 ### Stil
+
 Ausführlich (zentrale SKILL.md 350–680 Zeilen), Modus-Tabellen, abschließende
 `ALWAYS`/`⛔ NEVER`-Blöcke, das *Warum* in der Regel mitgeführt. Eher schwer.
 
@@ -63,6 +67,7 @@ Ausführlich (zentrale SKILL.md 350–680 Zeilen), Modus-Tabellen, abschließend
 ## 2. Matt Pocock (`skills`) — issue-zentriert, flach
 
 ### Philosophie
+
 - **Predictability** als Wurzeltugend — *Prozess*-, nicht Output-Determinismus.
 - **Klein, anpassbar, komponierbar, modell-agnostisch** — bewusst gegen Prozess-Frameworks:
   *„GSD, BMAD, Spec-Kit … own the process … take away your control. These skills are …
@@ -72,6 +77,7 @@ Ausführlich (zentrale SKILL.md 350–680 Zeilen), Modus-Tabellen, abschließend
 - **Tight loops** & **vertikale Slices**; **Design ab Tag 1**.
 
 ### Workflow („Idee → Ship", definiert in `ask-matt`)
+
 `setup-matt-pocock-skills` *(einmal)* → **`grill-with-docs`** (schärfen; baut `CONTEXT.md` +
 ADRs) → *(Abstecher bei Beweis-Fragen: `handoff` → `prototype` → zurück)* → **`to-prd`**
 (PRD als Issue) → **`to-issues`** (vertikale-Slice-Issues, abhängigkeitsgeordnet) → pro Issue
@@ -79,17 +85,20 @@ ADRs) → *(Abstecher bei Beweis-Fragen: `handoff` → `prototype` → zurück)*
 dann `/review`, commit).
 
 ### Einstieg & Entscheidung
+
 Router `ask-matt` („You don't remember every skill, so ask"). **user-invoked** (Mensch
 orchestriert, keine Trigger) vs. **model-invoked** (Disziplin, auto-feuerbar). Strenge
 **Kontext-Hygiene**: Grilling→PRD→Issues in *einem* Fenster (smart zone ~120k Tokens), dann
 pro Issue frisch. Merksatz: *„`/handoff` forks; `/compact` continues."*
 
 ### Stil
+
 „**Leading Words**": Verhalten auf vortrainierte Konzept-Tokens verdichten (*tight loop*,
 *red*, *tracer bullet*). Plus **Pruning-Disziplin** (Single Source of Truth, No-op-Test pro
 Satz). `writing-great-skills` ist die **explizite Theorie** des guten Skill-Schreibens.
 
 ### Eigenheit (verifiziert): issue- statt feature-getrieben
+
 Die Arbeits-Einheit ist das **Issue**, nicht das Feature. *„'backlog' is no longer used as a
 domain term"* (`CONTEXT.md`) — es gibt keine Feature-/Höhen-Schicht; der PRD *ist* nur ein
 Issue. Arbeit wird **desaggregiert** in unabhängige vertikale Slices, Kontext dazwischen
@@ -100,6 +109,7 @@ bewusst *gecleart*.
 ## 3. Michael Spanier (`kvjs-app`) — rollen-getriebene Pipeline, guardrail-erzwungen
 
 ### Philosophie
+
 - **Rollen statt Allzweck-Agent** — *„VERBOTEN: `subagent_type: 'general-purpose'` für
   Feature-Implementierung"* (`fullstack-orchestrator/SKILL.md`), weil generische Agenten die
   Projektregeln nicht kennen.
@@ -112,6 +122,7 @@ bewusst *gecleart*.
 - **Test-First als Gesetz** — *„Kein produktiver Code ohne vorherigen fehlgeschlagenen Test."*
 
 ### Workflow
+
 **`requirement-engineer`** erstellt Spec (`F<NNN>-<slug>.md` in `01-backlog/`) → **Pflicht-
 Parallel-Review** durch `security-engineer` + `software-architect` → **`fullstack-
 orchestrator`** extrahiert Datenmodell → **`payload-developer`** (Daten, TDD) → **`frontend-
@@ -121,12 +132,14 @@ warnt) → Spec **wandert** `01-backlog`→`02-entwicklung`→`03-abnahme`→`04
 Push (`pre-push` Coverage-Gate).
 
 ### Einstieg & Entscheidung
+
 Noch keine Spec → `requirement-engineer`; Spec liegt vor → `fullstack-orchestrator`; reine
 UI-Änderung → `frontend-developer` direkt. **Delegation per Präambel-Injektion**: der
 volle SKILL-Text wird als Präambel in den Subagent-Prompt eingebettet. **Directory-scoped**
 (greift nur unter `kvjs-app/`).
 
 ### Stil (das no-fluff-Vorbild — verifiziert)
+
 Ultra-knapp, aber jede Zeile trägt. Merkmale: **stabile ID-Präfixe** (`CC-01..07`,
 `PL-01..06`) machen Regeln zitierbar; **Lemma + Imperativ**; **Zahlen statt Adjektive**.
 

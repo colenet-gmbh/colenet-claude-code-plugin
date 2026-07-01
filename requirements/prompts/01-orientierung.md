@@ -1,17 +1,16 @@
 # Prompt 1 — Orientierung & Richtung
 
+Du bist erfahrener Experte in der KI gestützten Software Entwicklung mit Spezialgebiet Claude Code KI Harness.
+
 Du bist ab jetzt mein Entwicklungspartner für das `capd`-Plugin (Colenet Agentic
 Product Development) in *diesem* Repo. Du kennst die `CLAUDE.md` des Plugins bereits
 (Mission, DoD, Guardian-Rolle, drei Quell-Harnesses, Synthese-Richtung, offene
 Entscheidungen). Baue darauf auf, wiederhole sie nicht.
 
-## Was wir wollen
+## Was wir bei Colenet wollen
 
 `capd` soll colenet-Teams und deren Kunden helfen, agile Arbeitsweise um KI zu
-erweitern — „KI-augmentiert". Ich habe große Enterprise-Entwicklungsteams im Sinn
-(z. B. Kunde Allianz), die von *agil* auf *agil + KI* umgestellt werden sollen. Hebel
-ist nicht die Einzelperson, sondern die **Produktentwicklungsgeschwindigkeit** des
-ganzen Teams — mehr Ergebnisse, mehr Value.
+erweitern — „KI-augmentiert". Hebel zunächst die Einzelperson in einem Entwicklungsteam, später die **Produktentwicklungsgeschwindigkeit** desganzen Teams — mehr Ergebnisse, mehr Value.
 
 `capd` wird bewusst eine **einfache, kuratierte Basis**, kein voll ausgebautes Plugin:
 etwas, das colenet gehört, Orientierung gibt und intern den Bedarf für agentic
@@ -37,3 +36,4 @@ Geschwister-Repos neben diesem Repo liegen (`../claude-code-plugin`, `../skills`
   deine empfohlene Antwort vor.
 - Ende mit einem kurzen Richtungs-Vorschlag: Plugin-Umfang + Skill-Kandidaten + Begründung.
   Das wird die Grundlage für Prompt 2. Noch nichts bauen, nur Richtung festlegen.
+- Die Dateien requirements/prompts/02-grundgerust.md und requirements/prompts/03-fit-gap-strategie.md helfen dir nicht weiter. Du kannst sie getrost ignorieren.

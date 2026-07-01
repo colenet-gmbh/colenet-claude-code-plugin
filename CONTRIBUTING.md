@@ -26,8 +26,7 @@ attribution, and the release/versioning workflow.
 - The **`plugin-dev`** plugin (`/plugin install plugin-dev@claude-plugins-official`) —
   its skills (`plugin-structure`, `skill-development`, `agent-development`,
   `hook-development`, `mcp-integration`, `plugin-settings`) encode Claude Code's own
-  plugin conventions. `superpowers` (auto-installed with `capd`) additionally offers
-  `writing-skills`, `brainstorming`, and TDD/debugging workflows.
+  plugin conventions.
 
 ## Activate the pre-commit hook (required, once per clone)
 

@@ -4,6 +4,23 @@ All notable changes to the `capd` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2026-07-01
+
+### Changed
+
+- capd now **owns its stack**: removed the `superpowers` runtime dependency from
+  `plugin.json`. Building blocks capd needs (e.g. `brainstorm`) are ported into capd with
+  attribution rather than pulled in as a dependency.
+- README restructured around two skill classes — **workflow** (the guided spine, in
+  progress) and **utility** (`grill-me`) — and now documents the planned spine
+  (`brainstorm → grill-with-docs → feature → split → build`).
+- README and CONTRIBUTING no longer describe `superpowers` as an auto-installed dependency.
+
+### Added
+
+- `.claude/rules/dod.md`: the **`build` bright line** — capd's own `build` stays a lean,
+  single-flow executor and must not reimplement `we`'s orchestration engine.
+
 ## [0.3.0] - 2026-06-10
 
 ### Added

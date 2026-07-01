@@ -80,6 +80,7 @@
 - **Nicht sinnvoll (⛔):** Cluster **G** (weside-Account-gebunden).
 
 **Offene Knackpunkte für die Auswahl:**
+
 1. Höhenstufen (A): voll (vision→saga→epic→story) oder reduziert (z. B. nur story+epic)?
 2. Orchestrierungs-Engine (D): rein oder draußen?
 3. Council (F): nötig? Wenn ja, Business-Rollen oder nur Engineering-Rollen?

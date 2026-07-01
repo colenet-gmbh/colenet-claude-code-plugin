@@ -47,6 +47,12 @@ Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die 
 
 ## Nächster Schritt
 
+> **Stand:** Die erste, schlanke v1-Richtung ist entschieden und in
+> [`05-richtung-capd-v1.md`](./05-richtung-capd-v1.md) festgehalten (Ergebnis Prompt 1):
+> capd v1 = eine geführte Produktentwicklungs-Spine (`brainstorm` → `grill-with-docs` →
+> `feature` → `split` → `build`) + eine Utility-Klasse (`grill-me`), colenet-eigen, ohne
+> `we` zu duplizieren. Die Punkte unten bleiben als *mittelfristiger* Rahmen bestehen.
+
 1. **Zielgruppe festlegen** — wer ist capd für (Berater/PO, Engineers, beide)? Daraus folgt
    die **Rückgrat-Achse** (Höhe / Zustand / Rolle; siehe `04`, Abschnitt „Wo es aus einem
    Guss schwer wird", Entscheidung A).

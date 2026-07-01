@@ -91,6 +91,7 @@
 - **Draußen (⛔):** personengebundenes & TS-spezifisches Tooling (Teile **M6**, ganz **M7**).
 
 **Offene Knackpunkte für die Auswahl:**
+
 1. Übernimmt capd die Bucket-Struktur (`engineering`/`productivity`/`misc`/…) statt des flachen `skills/`?
 2. Bei Grilling/Diagnose/Handoff/PRD/Issues: jeweils Pocock- *oder* Fabian-Variante — welche ist die Quelle?
 3. Soll `writing-great-skills` capds verbindliche Skill-Authoring-Regel werden (ersetzt/erweitert `.claude/rules/skill-authoring.md`)?
