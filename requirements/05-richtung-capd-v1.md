@@ -20,12 +20,14 @@ ohne das `we`-Plugin zu duplizieren.
 ## Charakter — was capd v1 ist und was nicht
 
 **Ist:**
+
 - ein **geführter Workflow** (eine Spine), der aufeinander aufbauende Schritte trägt;
 - ein **Kurator**: er portiert Bewährtes **mit Quellenangabe**, statt es blind neu zu
   erfinden — und *besitzt* dann den ganzen Stack (keine Runtime-Dependency);
 - **Markdown-im-Repo als Wahrheit**, Mensch-im-Loop bei folgenreichen Aktionen.
 
 **Ist nicht:**
+
 - kein **loses Toolset** unverbundener Einzel-Skills;
 - kein **zweites Orchestrierungs-Framework** und kein `we`-Nachbau (DoD-Regel);
 - keine **generische KI-Gadget-Sammlung**;

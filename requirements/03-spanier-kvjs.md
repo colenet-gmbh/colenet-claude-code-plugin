@@ -76,6 +76,7 @@ Sechs directory-scoped Skills (greifen nur bei Arbeit unter `kvjs-app/`), jede e
 - **Draußen (⛔):** Payload/Block-spezifische Skripte & Hooks, leeres `.ai/`.
 
 **Offene Knackpunkte für die Auswahl:**
+
 1. Rollen-Modell: Übernimmt capd das Orchestrator+Rollen-Muster — und mit welchen Rollen (stack-neutral, oder konfigurierbare „Stack-Experten-Rolle")?
 2. Guardrails: Liefert capd ein generisches 3-Schicht-Guardrail-Kit (Hook-Templates + Git-Hook + CI-Snippets) als eigenes Feature?
 3. Feature-Workflow: Übernimmt capd das `docs/features/`-Wandernde-Datei-Kit (konvergiert mit Fabians durable Artefakten → eine gemeinsame Lösung)?

@@ -37,4 +37,3 @@ Geschwister-Repos neben diesem Repo liegen (`../claude-code-plugin`, `../skills`
 - Ende mit einem kurzen Richtungs-Vorschlag: Plugin-Umfang + Skill-Kandidaten + Begründung.
   Das wird die Grundlage für Prompt 2. Noch nichts bauen, nur Richtung festlegen.
 - Die Dateien requirements/prompts/02-grundgerust.md und requirements/prompts/03-fit-gap-strategie.md helfen dir nicht weiter. Du kannst sie getrost ignorieren.
-
