@@ -52,7 +52,7 @@ SOFTWARE.
 - **Source:** <https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md>
 - **License:** MIT
 - **Changes by colenet:** added German trigger phrases; removed references to
-  superpowers-internal skills; wired the hand-off into the capd spine; added an
+  superpowers-internal skills; wired the hand-off into the capd workflow; added an
   attribution footer.
 
 ### License text of the original
@@ -92,7 +92,7 @@ SOFTWARE.
 - **License:** MIT (© 2026 Matt Pocock) — full text reproduced in the `skills/grill-me`
   section above.
 - **Changes by colenet:** added German triggers; folded the grilling engine inline; wired
-  into the capd spine.
+  into the capd workflow.
 
 ## `skills/split`
 
@@ -101,7 +101,7 @@ SOFTWARE.
 - **Source:** <https://github.com/mattpocock/skills/blob/main/skills/engineering/to-issues/SKILL.md>
 - **License:** MIT (© 2026 Matt Pocock) — see the `skills/grill-me` section above.
 - **Changes by colenet:** records slices as repo Markdown instead of tracker issues; added
-  German triggers; wired into the capd spine.
+  German triggers; wired into the capd workflow.
 
 ## `skills/feature` (synthesis)
 

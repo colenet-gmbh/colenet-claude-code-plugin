@@ -29,7 +29,7 @@ capd wird das **eine Dach**, aber **kuratiert**:
 
 Kernerkenntnis: Jedes Harness organisiert Arbeit entlang einer **anderen Hauptachse** —
 Fabian nach *Höhe*, Pocock nach *Zustand* (Issue-Lifecycle), Spanier nach *Rolle*. Nur **eine**
-kann das Rückgrat von capd werden; die Wahl folgt aus der Zielgruppe.
+kann der Main Flow von capd werden; die Wahl folgt aus der Zielgruppe.
 
 ## Querschnitt: Konvergenz & Überlappung
 
@@ -49,14 +49,14 @@ Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die 
 
 > **Stand:** Die erste, schlanke v1-Richtung ist entschieden und in
 > [`05-richtung-capd-v1.md`](./05-richtung-capd-v1.md) festgehalten (Ergebnis Prompt 1):
-> capd v1 = eine geführte Produktentwicklungs-Spine (`brainstorm` → `grill-with-docs` →
+> capd v1 = ein geführter Produktentwicklungs-Workflow (`brainstorm` → `grill-with-docs` →
 > `feature` → `split` → `build`) + eine Utility-Klasse (`grill-me`), colenet-eigen, ohne
-> `we` zu duplizieren. Die Spine ist gebaut (v0.5.0); Fit/Gap & Strategie stehen in
+> `we` zu duplizieren. Der Workflow ist gebaut (v0.5.0); Fit/Gap & Strategie stehen in
 > [`06-fit-gap-strategie.md`](./06-fit-gap-strategie.md). Die Punkte unten bleiben als
 > *mittelfristiger* Rahmen bestehen.
 
 1. **Zielgruppe festlegen** — wer ist capd für (Berater/PO, Engineers, beide)? Daraus folgt
-   die **Rückgrat-Achse** (Höhe / Zustand / Rolle; siehe `04`, Abschnitt „Wo es aus einem
+   die **Main-Flow-Achse** (Höhe / Zustand / Rolle; siehe `04`, Abschnitt „Wo es aus einem
    Guss schwer wird", Entscheidung A).
 2. **Feature-Picks** aus den 🔶-Zeilen festlegen (v. a. Fabian-Cluster A/D/F + die Quelle je
    Doppelung).

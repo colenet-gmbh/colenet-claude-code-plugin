@@ -1,4 +1,4 @@
-# Prompt 2 — Grundgerüst der capd-Spine (als Loop)
+# Prompt 2 — Grundgerüst des capd-Workflows (als Loop)
 
 Die Richtung steht: `requirements/05-richtung-capd-v1.md` ist das Ergebnis von Prompt 1
 und der **verbindliche Maßstab** für diese Session. **Lies es zuerst** — dort ist die
@@ -12,10 +12,10 @@ arbeitet sich mit ein.
 
 ## Ausgangslage (aus `05` — nicht neu herleiten)
 
-capd v1 = **eine geführte Spine + eine Utility-Klasse**, colenet-eigen, klein, ohne `we`
+capd v1 = **ein geführter Workflow + eine Utility-Klasse**, colenet-eigen, klein, ohne `we`
 zu duplizieren.
 
-- **Spine (Workflow-Skills):** `brainstorm` (aus superpowers **portiert**) →
+- **Workflow-Skills:** `brainstorm` (aus superpowers **portiert**) →
   `grill-with-docs` (Pocock, portieren) → **`feature`** ★ (neu) → `split` (Pocock,
   portieren) → **`build`** ★ (neu, schlank).
 - **Utility:** `grill-me` (vorhanden).
@@ -29,7 +29,7 @@ zu duplizieren.
    `plugin.json`, README und CONTRIBUTING entsprechend zurückbauen.
 2. **Ground Truth für `split`: Markdown**-Kind-Dateien (konsistent mit der `feature`-Datei);
    ein Tracker bleibt optionaler Index.
-3. **Router/Spine-Skill:** dünner user-invoked Router (`ask-capd`-Muster), erst wenn ≥4 Skills stehen.
+3. **Router-Skill:** dünner user-invoked Router (`ask-capd`-Muster), erst wenn ≥4 Skills stehen.
 4. **Namensgebung:** `feature`-Datei nach Spaniers Muster (`docs/features/F###-slug.md`);
    Skill-/Kommando-Namen = Skill-Namen.
 

@@ -1,10 +1,10 @@
 ---
 name: brainstorm
-description: Refines a rough idea into a fully-formed design before any code — one question at a time, exploring alternatives, validating the design in sections. The first step of the capd spine. Use at the start of new work, when an idea is still fuzzy, or when the user says "brainstorm", "lass uns spinnen", "Idee durchdenken", "Konzept entwickeln", "design this", or "think this through". Skip for clear, mechanical tasks.
+description: Refines a rough idea into a fully-formed design before any code — one question at a time, exploring alternatives, validating the design in sections. The first step of the capd workflow. Use at the start of new work, when an idea is still fuzzy, or when the user says "brainstorm", "lass uns spinnen", "Idee durchdenken", "Konzept entwickeln", "design this", or "think this through". Skip for clear, mechanical tasks.
 ---
 
 Turn a rough idea into a fully-formed design through collaborative dialogue. This is the
-**first step of the capd spine** — it comes before `grill-with-docs` and `feature`.
+**first step of the capd workflow** — it comes before `grill-with-docs` and `feature`.
 
 ## Understand the idea
 
@@ -30,7 +30,7 @@ Turn a rough idea into a fully-formed design through collaborative dialogue. Thi
 
 - Capture the validated design as a short sketch — either notes to carry forward, or a
   durable `docs/plans/YYYY-MM-DD-<topic>-design.md` if the user wants one.
-- Then offer the next spine step: `grill-with-docs` to sharpen it and build the glossary
+- Then offer the next workflow step: `grill-with-docs` to sharpen it and build the glossary
   and ADRs, or `feature` to write the spec directly.
 
 ## Rules
@@ -43,5 +43,5 @@ Turn a rough idea into a fully-formed design through collaborative dialogue. Thi
 
 Port of **`brainstorming`** from [`superpowers`](https://github.com/obra/superpowers) by
 **Jesse Vincent** (MIT). Changes by colenet: added German trigger phrases; removed
-references to superpowers-internal skills and wired the hand-off into the capd spine.
+references to superpowers-internal skills and wired the hand-off into the capd workflow.
 See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).

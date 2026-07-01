@@ -11,7 +11,7 @@
 
 ## Leitbild in einem Satz
 
-capd v1 ist eine **schlanke, geführte Produktentwicklungs-Spine** — „von der Idee zum
+capd v1 ist ein **schlanker, geführter Produktentwicklungs-Workflow** — „von der Idee zum
 gebauten Slice" — colenet-eigen und kuratiert, die **zuerst die Einzelperson im
 Dev-Team** KI-augmentiert. Klein genug, um nicht zu überfordern, vollständig genug, um
 sich „komplett" anzufühlen und **intern Bedarf für agentic engineering zu wecken** — und
@@ -21,7 +21,7 @@ ohne das `we`-Plugin zu duplizieren.
 
 **Ist:**
 
-- ein **geführter Workflow** (eine Spine), der aufeinander aufbauende Schritte trägt;
+- ein **geführter Workflow**, der aufeinander aufbauende Schritte trägt;
 - ein **Kurator**: er portiert Bewährtes **mit Quellenangabe**, statt es blind neu zu
   erfinden — und *besitzt* dann den ganzen Stack (keine Runtime-Dependency);
 - **Markdown-im-Repo als Wahrheit**, Mensch-im-Loop bei folgenreichen Aktionen.
@@ -40,10 +40,10 @@ Bucket-Struktur, deckungsgleich mit seiner Invocation-Achse:
 
 | Klasse | Wesen | Invocation (Tendenz) |
 |---|---|---|
-| **Workflow-Skills** | Teil der geführten Spine; bauen aufeinander auf | Disziplin *model-invoked*, Einstiege *user-invoked* |
+| **Workflow-Skills** | Teil des geführten Workflows; bauen aufeinander auf | Disziplin *model-invoked*, Einstiege *user-invoked* |
 | **Utility-Skills** | generisch, standalone, kontextfrei überall einsetzbar | *user-invoked* |
 
-## Die Spine (Workflow-Skills)
+## Der Workflow (Workflow-Skills)
 
 ```
 brainstorm  →  grill-with-docs  →  FEATURE  →  split  →  build
@@ -58,7 +58,7 @@ brainstorm  →  grill-with-docs  →  FEATURE  →  split  →  build
 | **`feature`** ★ | Pocock `to-prd` × Spaniers wandernde `docs/features/`-Datei | **NEU** | PRD-Ebene als versionierte **Markdown-Wahrheit** |
 | `split` | Pocock `to-issues` | **portieren/adaptieren** | Feature → unabhängige vertikale Slices |
 | **`build`** ★ | Pocock `implement` × Spanier `orchestrator` | **NEU, schlank** | einen Slice per TDD umsetzen |
-| (+) Router/Spine-Skill | Pocock `ask-matt`-Muster | **NEU, dünn** | führt durch die Spine (sinnvoll ab >4 Skills) |
+| (+) Router-Skill | Pocock `ask-matt`-Muster | **NEU, dünn** | führt durch den Workflow (sinnvoll ab >4 Skills) |
 
 ★ = colenet-originärer Beitrag. **`feature`** ist der Kern: Er verheiratet Pococks
 PRD-Methode mit Spaniers *wandernder Feature-Datei* und trifft damit die Konvergenz
@@ -70,7 +70,7 @@ PRD-Methode mit Spaniers *wandernder Feature-Datei* und trifft damit die Konverg
 |---|---|---|
 | `grill-me` | capd (vorhanden) | generisches, kontextfreies Grilling: Refinement, Design-Review, Sounding-Board |
 
-Die Utility-Klasse wächst über Zeit (weitere generische Helfer), unabhängig von der Spine.
+Die Utility-Klasse wächst über Zeit (weitere generische Helfer), unabhängig vom Workflow.
 
 ## Der `build`-Skill — die Bright Line (Guardian-Guardrail)
 
@@ -113,7 +113,7 @@ das Team zu **`we`**. Diese Grenze wird in Prompt 2 explizit in die Skill-Regeln
 
 | Phase | Hebel | Primäre Quelle | capd-Konsequenz |
 |---|---|---|---|
-| **Phase 1 — jetzt** | Einzelperson im Dev-Team | **Pocock** (Disziplinen) + capd-Spine + `brainstorm` (portiert aus superpowers) | leicht, sofort nutzbar |
+| **Phase 1 — jetzt** | Einzelperson im Dev-Team | **Pocock** (Disziplinen) + capd-Workflow + `brainstorm` (portiert aus superpowers) | leicht, sofort nutzbar |
 | **Phase 2 — später** | Produktentwicklungs­geschwindigkeit des Teams | **Spanier** (Rollen, Guardrails, wandernde Spec) + **Fabian** (Höhen/Orchestrierung, ggf. via `we`) | schwerer; Orchestrierung an `we` delegieren, nicht bauen |
 
 ## Herkunft & Attribution (Pflicht bei Umsetzung)
@@ -133,7 +133,7 @@ Alle Quellen sind MIT-lizenziert. Bei der Umsetzung in Prompt 2+ verlangt
    → `plugin.json`, README und CONTRIBUTING entsprechend zurückbauen.
 2. **Ground Truth für `split`: Markdown**-Kind-Dateien, konsistent mit der `feature`-Datei;
    ein Tracker bleibt optionaler Index.
-3. **Router/Spine-Skill:** dünner user-invoked Router (`ask-capd`-Muster), aber erst wenn
+3. **Router-Skill:** dünner user-invoked Router (`ask-capd`-Muster), aber erst wenn
    ≥4 Skills stehen.
 4. **Namensgebung:** `feature`-Datei nach Spaniers Muster (`docs/features/F###-slug.md`);
    Skill-/Kommando-Namen = Skill-Namen.

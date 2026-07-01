@@ -46,13 +46,13 @@ derselben Strategie — und genau das ist der Kern dieser Skizze.
 
 ## 4. Fit/Gap — capd heute vs. was die Zielgruppe braucht
 
-**Was capd heute IST (v0.5.0):** 7 Skills (die Spine + `ask-capd` + `grill-me`),
+**Was capd heute IST (v0.5.0):** 7 Skills (der Workflow + `ask-capd` + `grill-me`),
 self-contained (keine Runtime-Dependency), Governance (CI/pre-commit, DoD-Guardian,
 Attribution, Statusline), kuratiert und klein.
 
 | Bedarf für ein erstes Kundengespräch | Status | Gap-Bewertung |
 |---|---|---|
-| Sofort nutzbarer, kohärenter Faden | **da** (Spine v0.5.0) | Fit |
+| Sofort nutzbarer, kohärenter Faden | **da** (Workflow v0.5.0) | Fit |
 | „In 5 Minuten produktiv" — Onboarding/Getting-Started | fehlt | **Gap** — schließen |
 | Ein durchgespieltes End-to-End-Beispiel (Idee→Slice) | fehlt | **Gap** — schließen |
 | Englische, aufgeräumte Doku (Repo-Regel: Englisch) | `requirements/` noch Deutsch | **Gap** — vor Außenauftritt übersetzen |
@@ -88,7 +88,7 @@ Team-Geschwindigkeit ist bewusst Phase 2 und zugleich der Beratungs-Hebel.
 noch nicht jetzt gebaut):
 
 1. Ein **Getting-Started** (README-Abschnitt oder `ask-capd`-Erweiterung): „installier,
-   dann lauf die Spine an diesem Beispiel entlang".
+   dann lauf den Workflow an diesem Beispiel entlang".
 2. Ein **durchgespieltes Beispiel-Feature** (idee→`feature`→`split`→`build`) als Referenz.
 3. **Englische Übersetzung** der stabilisierten `requirements/` vor jedem Außenauftritt.
 

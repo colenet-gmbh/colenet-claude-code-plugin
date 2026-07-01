@@ -1,11 +1,11 @@
 ---
 name: grill-with-docs
-description: A relentless one-question-at-a-time interview that sharpens a plan or design AND builds durable docs as it goes — a CONTEXT.md glossary plus sparing ADRs. The alignment step of the capd spine, after brainstorm and before feature. Use when the user wants to pin down terminology, harden a design, capture decisions, or says "grill with docs", "schärfen und dokumentieren", "Domänenmodell", "Glossar aufbauen", "ubiquitous language", "ADR", or "sharpen and document".
+description: A relentless one-question-at-a-time interview that sharpens a plan or design AND builds durable docs as it goes — a CONTEXT.md glossary plus sparing ADRs. The alignment step of the capd workflow, after brainstorm and before feature. Use when the user wants to pin down terminology, harden a design, capture decisions, or says "grill with docs", "schärfen und dokumentieren", "Domänenmodell", "Glossar aufbauen", "ubiquitous language", "ADR", or "sharpen and document".
 ---
 
 Sharpen the plan by interviewing the user relentlessly — **and** write down what gets
 resolved, so the understanding survives the session. This is the **alignment step of the
-capd spine**, after `brainstorm` and before `feature`.
+capd workflow**, after `brainstorm` and before `feature`.
 
 ## Run the interview
 
@@ -40,4 +40,4 @@ qualifying decisions have ADRs. Then offer the next step: `feature`.
 Port of **`grill-with-docs`** (and the glossary/ADR discipline from **`domain-modeling`**)
 from [`mattpocock/skills`](https://github.com/mattpocock/skills) by **Matt Pocock** (MIT).
 Changes by colenet: added German trigger phrases; folded the grilling engine inline;
-wired into the capd spine. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+wired into the capd workflow. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).

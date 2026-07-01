@@ -16,7 +16,7 @@ Jedes Harness organisiert Arbeit entlang einer **anderen Hauptachse**:
 | **Matt Pocock (`skills`)** | **Zustand** (Issue-Lifecycle) | das **Issue** | Issue im Tracker |
 | **Michael Spanier (`kvjs-app`)** | **Rolle** (Domänen-Pipeline) | wandernde **Spec-Datei** | Markdown im Repo (`docs/features/`) |
 
-Nur **eine** dieser Achsen kann das Rückgrat von capd werden. Die anderen können als
+Nur **eine** dieser Achsen kann der Main Flow von capd werden. Die anderen können als
 ergänzende Schichten andocken — oder kollidieren. Welche Achse passt, hängt direkt an der
 noch offenen **Zielgruppen-Entscheidung** (Berater/PO → Höhe; Engineers → Zustand/Rolle).
 
@@ -189,7 +189,7 @@ Mehrfach unabhängig erfundene oder übereinstimmende Haltungen. Das sind die *s
 
 Diese Punkte lassen sich **nicht** mergen; capd muss sich je entscheiden:
 
-**A. Die primäre Organisationsachse (Höhe vs. Zustand vs. Rolle).** Die Spine-Entscheidung —
+**A. Die primäre Organisationsachse (Höhe vs. Zustand vs. Rolle).** Die Main-Flow-Entscheidung —
 alles andere hängt daran. Höhe (Fabian) ist ein Abstraktions-Kontinuum; Zustand (Pocock) ist
 ein flacher Issue-Lifecycle; Rolle (Spanier) ist eine feste Domänen-Pipeline. Beispiel für
 die Unvereinbarkeit: Wo „wohnt" ein `security-engineer` in einer Höhen-Hierarchie? Er ist
@@ -215,24 +215,24 @@ Leichtigkeit von Pocock/Spanier.
 **Meta-Spannung:** Schon der Wunsch nach „einem Guss" (ein kohärentes Framework) liegt näher
 an Fabians/Spaniers Weltbild als an Pococks anti-Framework-These. Konsequenz: Von Pocock
 übernimmt capd am ehesten die **Disziplinen** (`tdd`, `diagnosing-bugs`, `codebase-design`)
-und die **Authoring-Methodik** — nicht aber seine anti-Prozess-Haltung als capd-Rückgrat.
+und die **Authoring-Methodik** — nicht aber seine anti-Prozess-Haltung als capd-Main-Flow.
 
 ---
 
 ## Implikationen für die Synthese (Kandidaten, noch nicht entschieden)
 
-Drei mögliche Rückgrate — die Wahl folgt aus der Zielgruppe:
+Drei mögliche Main Flows — die Wahl folgt aus der Zielgruppe:
 
-- **Kandidat 1 — Höhen-Spine (Fabian) als Makro-Rückgrat:** Höhen als Planungsachse, Spaniers
+- **Kandidat 1 — Höhen-Achse (Fabian) als Makro-Main-Flow:** Höhen als Planungsachse, Spaniers
   Rollen als *Wer* innerhalb Build, Pococks Disziplinen als *Wie*, Repo-Markdown als Ground
   Truth, Tracker als Index. *Risiko:* führt die von Pocock aufgelöste Kopplung wieder ein; schwer.
-- **Kandidat 2 — Issue/Slice-Spine (Pocock) als Rückgrat:** leicht & modell-agnostisch; Rollen
+- **Kandidat 2 — Issue/Slice-Achse (Pocock) als Main Flow:** leicht & modell-agnostisch; Rollen
   & Disziplinen als optionale Layer, Council nur als Opt-in. *Risiko:* verliert Fabians
   strategische Höhen-Sicht (für Berater/PO wertvoll).
-- **Kandidat 3 — Rollen-Pipeline (Spanier) als Rückgrat, generalisiert/stack-konfigurierbar:**
+- **Kandidat 3 — Rollen-Pipeline (Spanier) als Main Flow, generalisiert/stack-konfigurierbar:**
   Höhen nur als optionaler Planungs-Vorbau, Pocock-Disziplinen in den Rollen. *Risiko:*
   Spaniers Stärke ist gerade die App-Spezifität — die geht beim Generalisieren teils verloren.
 
-**Nächster Schritt:** Zielgruppe festlegen → daraus die Spine-Achse (A) ableiten → dann B–E
+**Nächster Schritt:** Zielgruppe festlegen → daraus die Main-Flow-Achse (A) ableiten → dann B–E
 entscheiden. Die Konvergenzen (Markdown-Wahrheit, Mensch-im-Loop, explizite Eskalation,
 Grilling-Einstieg, Authoring-Standard) sind unabhängig davon gesetzt.

@@ -10,17 +10,18 @@ Invoked as `/capd:<skill>`.
 
 ## Status
 
-Early stage (`v0.5.0`). capd is a **guided workflow spine** — from an idea to a built
+Early stage (`v0.5.0`). capd is a **guided workflow** — from an idea to a built
 slice — plus standalone **utility skills**. capd is **self-contained**: it owns its stack
 and declares no runtime plugin dependencies.
 
 ## Skills
 
-capd groups skills into two classes: **workflow skills** form the guided spine and build
-on each other; **utility skills** are generic and usable anywhere. New to capd? Run
-`/capd:ask-capd` — it routes you to the right step.
+capd groups skills into two classes: **workflow skills** form the guided path — the
+**Main Flow** — and build on each other; **utility skills** are generic and usable
+anywhere. New to capd? Run `/capd:ask-capd` — it routes you to the right step. See
+[`GLOSSARY.md`](GLOSSARY.md) for the vocabulary.
 
-### Workflow skills — the capd spine
+### Workflow skills — the capd workflow
 
 ```text
 brainstorm → grill-with-docs → feature → split → build
@@ -38,8 +39,8 @@ brainstorm → grill-with-docs → feature → split → build
 
 | Skill | Invocation | Purpose |
 |-------|-----------|---------|
-| `grill-me` | `/capd:grill-me` | Stress-test any plan or design: Claude grills you one question at a time down the decision tree. Off the spine, usable anytime. |
-| `ask-capd` | `/capd:ask-capd` | Router — finds the right capd skill for where you are and walks the spine. |
+| `grill-me` | `/capd:grill-me` | Stress-test any plan or design: Claude grills you one question at a time down the decision tree. Standalone, usable anytime. |
+| `ask-capd` | `/capd:ask-capd` | Router — finds the right capd skill for where you are and walks the workflow. |
 
 > Ported and synthesized skills credit their sources in
 > [`ATTRIBUTION.md`](ATTRIBUTION.md): `grill-me`, `brainstorm`, `grill-with-docs`, `split`

@@ -4,11 +4,23 @@ All notable changes to the `capd` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.1] - 2026-07-01
+
+### Added
+
+- `GLOSSARY.md` — defines the **Main Flow** (the guided path `brainstorm → grill-with-docs
+  → feature → split → build`; "workflow" used as a synonym).
+
+### Changed
+
+- Standardized the term for the guided path (the **Main Flow** / workflow) across the
+  plugin and docs, replacing the previous jargon term.
+
 ## [0.5.0] - 2026-07-01
 
 ### Added
 
-- The **capd workflow spine** (Phase 2): five workflow skills forming a guided path from
+- The **capd workflow** (Phase 2): five workflow skills forming a guided path from
   idea to built slice.
   - `brainstorm` — port of `brainstorming` from `superpowers` (MIT, © Jesse Vincent).
   - `grill-with-docs` — port of `grill-with-docs` / `domain-modeling` from
@@ -19,11 +31,11 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
     Markdown instead of tracker issues.
   - `build` — synthesis: Pocock `tdd` / `implement` × Spanier `fullstack-orchestrator`;
     lean and single-flow, honoring the `build` bright line (not an orchestration engine).
-- `ask-capd` — a router skill that walks the spine (pattern inspired by Pocock `ask-matt`).
+- `ask-capd` — a router skill that walks the workflow (pattern inspired by Pocock `ask-matt`).
 
 ### Changed
 
-- README skill tables now document the shipped workflow spine and the utility skills.
+- README skill tables now document the shipped workflow and the utility skills.
 
 ## [0.4.0] - 2026-07-01
 
@@ -32,8 +44,8 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - capd now **owns its stack**: removed the `superpowers` runtime dependency from
   `plugin.json`. Building blocks capd needs (e.g. `brainstorm`) are ported into capd with
   attribution rather than pulled in as a dependency.
-- README restructured around two skill classes — **workflow** (the guided spine, in
-  progress) and **utility** (`grill-me`) — and now documents the planned spine
+- README restructured around two skill classes — **workflow** (guided, in
+  progress) and **utility** (`grill-me`) — and now documents the planned workflow
   (`brainstorm → grill-with-docs → feature → split → build`).
 - README and CONTRIBUTING no longer describe `superpowers` as an auto-installed dependency.
 

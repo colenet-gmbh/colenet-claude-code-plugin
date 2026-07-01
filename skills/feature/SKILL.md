@@ -5,10 +5,10 @@ description: Turns a sharpened idea into a durable, versioned feature spec — c
 
 Turn the current, already-sharpened idea into a **feature spec**: one durable Markdown
 file that is the single source of truth for this piece of work. The file lives in the
-repo, is versioned with git, and **travels** through the rest of the spine (`split` →
+repo, is versioned with git, and **travels** through the rest of the workflow (`split` →
 `build`) — so keep it readable and keep it current.
 
-This is the PRD-level step of the capd spine. It comes **after** alignment
+This is the PRD-level step of the capd workflow. It comes **after** alignment
 (`brainstorm`, `grill-with-docs`) and **before** `split`.
 
 ## Where the spec lives

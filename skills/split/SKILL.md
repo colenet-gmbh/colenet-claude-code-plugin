@@ -1,10 +1,10 @@
 ---
 name: split
-description: Breaks a feature spec into independently buildable, dependency-ordered vertical slices (tracer bullets) — recorded as Markdown in the repo, not in a tracker. The decomposition step of the capd spine, after feature and before build. Use when the user wants to slice a feature into tasks, plan the build order, or says "split", "in Slices zerlegen", "Feature aufteilen", "Tasks schneiden", "vertical slices", or "break this down".
+description: Breaks a feature spec into independently buildable, dependency-ordered vertical slices (tracer bullets) — recorded as Markdown in the repo, not in a tracker. The decomposition step of the capd workflow, after feature and before build. Use when the user wants to slice a feature into tasks, plan the build order, or says "split", "in Slices zerlegen", "Feature aufteilen", "Tasks schneiden", "vertical slices", or "break this down".
 ---
 
 Break a feature spec into small, independently buildable pieces. This is the
-**decomposition step of the capd spine**, after `feature` and before `build`.
+**decomposition step of the capd workflow**, after `feature` and before `build`.
 
 ## Read the source
 
@@ -51,4 +51,4 @@ Done when ordered, approved slices are recorded and the feature `status` is `rea
 Port of **`to-issues`** from [`mattpocock/skills`](https://github.com/mattpocock/skills)
 by **Matt Pocock** (MIT). Changes by colenet: records slices as **Markdown in the repo**
 (capd's ground truth) instead of publishing to an issue tracker; added German triggers;
-wired into the capd spine. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+wired into the capd workflow. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).

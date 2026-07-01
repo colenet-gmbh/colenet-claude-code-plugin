@@ -1,10 +1,10 @@
 ---
 name: build
-description: Implements one vertical slice test-first (red-green-refactor) using only public interfaces, then optionally runs a light role-lens review before committing. The build step of the capd spine, after split. Lean and single-flow by design — NOT an orchestration engine. Use when the user wants to implement a slice, build test-first, or says "build", "umsetzen", "implementieren", "bauen", "implement this slice", or "TDD".
+description: Implements one vertical slice test-first (red-green-refactor) using only public interfaces, then optionally runs a light role-lens review before committing. The build step of the capd workflow, after split. Lean and single-flow by design — NOT an orchestration engine. Use when the user wants to implement a slice, build test-first, or says "build", "umsetzen", "implementieren", "bauen", "implement this slice", or "TDD".
 ---
 
 Implement **one slice** from the feature's `split`, test-first, in a single session on the
-current branch. This is the **build step of the capd spine**.
+current branch. This is the **build step of the capd workflow**.
 
 > **The bright line (see [`dod.md`](../../.claude/rules/dod.md)).** `build` stays a **lean,
 > single-flow executor**. It **NEVER** becomes an orchestration engine — no persistent
