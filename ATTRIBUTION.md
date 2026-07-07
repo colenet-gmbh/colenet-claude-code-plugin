@@ -52,7 +52,7 @@ SOFTWARE.
 - **Source:** <https://github.com/obra/superpowers/blob/main/skills/brainstorming/SKILL.md>
 - **License:** MIT
 - **Changes by colenet:** added German trigger phrases; removed references to
-  superpowers-internal skills; wired the hand-off into the capd workflow; added an
+  superpowers-internal skills; wired the hand-off into the cape workflow; added an
   attribution footer.
 
 ### License text of the original
@@ -92,7 +92,7 @@ SOFTWARE.
 - **License:** MIT (© 2026 Matt Pocock) — full text reproduced in the `skills/grill-me`
   section above.
 - **Changes by colenet:** added German triggers; folded the grilling engine inline; wired
-  into the capd workflow.
+  into the cape workflow.
 
 ## `skills/split`
 
@@ -101,7 +101,7 @@ SOFTWARE.
 - **Source:** <https://github.com/mattpocock/skills/blob/main/skills/engineering/to-issues/SKILL.md>
 - **License:** MIT (© 2026 Matt Pocock) — see the `skills/grill-me` section above.
 - **Changes by colenet:** records slices as repo Markdown instead of tracker issues; added
-  German triggers; wired into the capd workflow.
+  German triggers; wired into the cape workflow.
 
 ## `skills/feature` (synthesis)
 
@@ -125,7 +125,7 @@ SOFTWARE.
 - **Nature:** original colenet skill; lean single-flow, honoring the `build` bright line
   in `.claude/rules/dod.md`.
 
-## `skills/ask-capd`
+## `skills/ask-cape`
 
 - **Nature:** original colenet skill. The router pattern is inspired by `ask-matt` from
   [`mattpocock/skills`](https://github.com/mattpocock/skills) (Matt Pocock, MIT). No content
@@ -148,4 +148,4 @@ SOFTWARE.
   convention of Michael Spanier's coding harness; the TDD discipline converges with Matt
   Pocock's `tdd` (MIT).
 - **License / scope:** generalized and stack-stripped; no project-specific content or code.
-- **Nature:** capd's own opinionated, stack-agnostic engineering rules and lifecycle.
+- **Nature:** cape's own opinionated, stack-agnostic engineering rules and lifecycle.

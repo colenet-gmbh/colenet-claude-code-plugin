@@ -1,4 +1,4 @@
-# Contributing to capd
+# Contributing to cape
 
 Thanks for extending colenet's plugin. This page covers the quality gate. For *what*
 to write, see the rules in [`.claude/rules/`](.claude/rules/): skill authoring,

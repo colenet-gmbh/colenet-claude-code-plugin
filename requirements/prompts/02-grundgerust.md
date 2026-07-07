@@ -1,6 +1,6 @@
-# Prompt 2 — Grundgerüst des capd-Workflows (als Loop)
+# Prompt 2 — Grundgerüst des cape-Workflows (als Loop)
 
-Die Richtung steht: `requirements/05-richtung-capd-v1.md` ist das Ergebnis von Prompt 1
+Die Richtung steht: `requirements/05-richtung-cape-v1.md` ist das Ergebnis von Prompt 1
 und der **verbindliche Maßstab** für diese Session. **Lies es zuerst** — dort ist die
 Skill-Auswahl bereits entschieden und begründet. Hier wird **gebaut, nicht neu gewählt**.
 Wenn dich die Umsetzung etwas revidieren lässt, sag es und begründe es — aber lauf nicht
@@ -12,7 +12,7 @@ arbeitet sich mit ein.
 
 ## Ausgangslage (aus `05` — nicht neu herleiten)
 
-capd v1 = **ein geführter Workflow + eine Utility-Klasse**, colenet-eigen, klein, ohne `we`
+cape v1 = **ein geführter Workflow + eine Utility-Klasse**, colenet-eigen, klein, ohne `we`
 zu duplizieren.
 
 - **Workflow-Skills:** `brainstorm` (aus superpowers **portiert**) →
@@ -25,11 +25,11 @@ zu duplizieren.
 ## Phase 0 — entschieden (siehe `05`); nur bestätigen, dann bauen
 
 1. **Keine superpowers-Dependency.** `brainstorm` wird aus superpowers **portiert**
-   (kopiert + Quelle genannt, MIT). capd besitzt den ganzen Stack, keine Runtime-Dependency —
+   (kopiert + Quelle genannt, MIT). cape besitzt den ganzen Stack, keine Runtime-Dependency —
    `plugin.json`, README und CONTRIBUTING entsprechend zurückbauen.
 2. **Ground Truth für `split`: Markdown**-Kind-Dateien (konsistent mit der `feature`-Datei);
    ein Tracker bleibt optionaler Index.
-3. **Router-Skill:** dünner user-invoked Router (`ask-capd`-Muster), erst wenn ≥4 Skills stehen.
+3. **Router-Skill:** dünner user-invoked Router (`ask-cape`-Muster), erst wenn ≥4 Skills stehen.
 4. **Namensgebung:** `feature`-Datei nach Spaniers Muster (`docs/features/F###-slug.md`);
    Skill-/Kommando-Namen = Skill-Namen.
 
@@ -65,7 +65,7 @@ Wiederhole pro Skill:
 
 Nutze vorhandene Skills, wo sie beim *Entwickeln* helfen — `superpowers:brainstorming` als
 **Vorlage** für den zu portierenden `brainstorm`-Skill, dazu `superpowers:writing-plans`,
-`superpowers:test-driven-development` und die `plugin-dev`-Skills. (capd selbst hängt nach
+`superpowers:test-driven-development` und die `plugin-dev`-Skills. (cape selbst hängt nach
 Phase 0 **nicht mehr** von superpowers ab.)
 
 ## Qualitätsvorgaben (jeder Skill)

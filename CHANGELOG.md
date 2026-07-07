@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the `capd` plugin are documented here.
+All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
@@ -11,13 +11,13 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `software-architect` skill — establishes/evolves the project's architecture
   documentation (arc42 + ADRs) and reviews a feature concept before build; adapted from
   Michael Spanier's coding harness.
-- capd **engineering rules** (`skills/build/references/engineering-rules.md`) —
+- cape **engineering rules** (`skills/build/references/engineering-rules.md`) —
   opinionated, stack-agnostic code-quality rules enforced by `build`, checked by
   `software-architect`.
 - Project-context conventions: a **feature board** in `docs/features/`
   (`01-backlog → 02-development → 03-approval → 04-done`, IDs via `_counter.txt`),
   **`agent-guidelines/`** for project-specific directives, and an arc42 reference.
-- `skills/ask-capd/references/main-flow.md` — the canonical Main Flow (board, HITL/AFK,
+- `skills/ask-cape/references/main-flow.md` — the canonical Main Flow (board, HITL/AFK,
   and the terms review / sign-off / approval).
 
 ### Changed
@@ -43,7 +43,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- The **capd workflow** (Phase 2): five workflow skills forming a guided path from
+- The **cape workflow** (Phase 2): five workflow skills forming a guided path from
   idea to built slice.
   - `brainstorm` — port of `brainstorming` from `superpowers` (MIT, © Jesse Vincent).
   - `grill-with-docs` — port of `grill-with-docs` / `domain-modeling` from
@@ -54,7 +54,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
     Markdown instead of tracker issues.
   - `build` — synthesis: Pocock `tdd` / `implement` × Spanier `fullstack-orchestrator`;
     lean and single-flow, honoring the `build` bright line (not an orchestration engine).
-- `ask-capd` — a router skill that walks the workflow (pattern inspired by Pocock `ask-matt`).
+- `ask-cape` — a router skill that walks the workflow (pattern inspired by Pocock `ask-matt`).
 
 ### Changed
 
@@ -64,8 +64,8 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- capd now **owns its stack**: removed the `superpowers` runtime dependency from
-  `plugin.json`. Building blocks capd needs (e.g. `brainstorm`) are ported into capd with
+- cape now **owns its stack**: removed the `superpowers` runtime dependency from
+  `plugin.json`. Building blocks cape needs (e.g. `brainstorm`) are ported into cape with
   attribution rather than pulled in as a dependency.
 - README restructured around two skill classes — **workflow** (guided, in
   progress) and **utility** (`grill-me`) — and now documents the planned workflow
@@ -74,7 +74,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- `.claude/rules/dod.md`: the **`build` bright line** — capd's own `build` stays a lean,
+- `.claude/rules/dod.md`: the **`build` bright line** — cape's own `build` stays a lean,
   single-flow executor and must not reimplement `we`'s orchestration engine.
 
 ## [0.3.0] - 2026-06-10
@@ -89,7 +89,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Changed
 
 - CONTRIBUTING prerequisites now include the `plugin-dev` plugin; README documents the
-  two official plugins `capd` builds on (`superpowers`, `plugin-dev`) and shows a sample
+  two official plugins `cape` builds on (`superpowers`, `plugin-dev`) and shows a sample
   status line.
 
 ## [0.2.2] - 2026-06-10
@@ -124,7 +124,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- Initial release of `capd` (Colenet Agentic Product Development).
+- Initial release of `cape` (Colenet Agentic Product Engineering).
 - `grill-me` skill — ported from [`mattpocock/skills`](https://github.com/mattpocock/skills)
   (MIT, © Matt Pocock); see [`ATTRIBUTION.md`](ATTRIBUTION.md).
 - `superpowers` declared as an auto-installed dependency in `plugin.json`.

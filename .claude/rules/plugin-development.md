@@ -1,6 +1,6 @@
 # Rule: Plugin development & releases
 
-Plugin-level lifecycle for `capd`: versioning, releasing, and how updates reach users.
+Plugin-level lifecycle for `cape`: versioning, releasing, and how updates reach users.
 For skill content see [`skill-authoring.md`](skill-authoring.md); for external sources
 see [`attribution.md`](attribution.md).
 

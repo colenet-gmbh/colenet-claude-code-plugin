@@ -1,7 +1,7 @@
-# capd v1 — Richtungsentscheidung (Ergebnis Prompt 1)
+# cape v1 — Richtungsentscheidung (Ergebnis Prompt 1)
 
 > Ergebnis von **Prompt 1 (Orientierung & Richtung)**. Dieses Dokument legt fest,
-> *was capd v1 werden soll* — Charakter, Umfang, Skill-Kandidaten und bewusste
+> *was cape v1 werden soll* — Charakter, Umfang, Skill-Kandidaten und bewusste
 > Nicht-Ziele. Es ist die **Grundlage für Prompt 2 (Grundgerüst)**. Es wurde noch
 > nichts gebaut; hier steht die Richtung, nicht die Umsetzung.
 >
@@ -11,13 +11,13 @@
 
 ## Leitbild in einem Satz
 
-capd v1 ist ein **schlanker, geführter Produktentwicklungs-Workflow** — „von der Idee zum
+cape v1 ist ein **schlanker, geführter Produktentwicklungs-Workflow** — „von der Idee zum
 gebauten Slice" — colenet-eigen und kuratiert, die **zuerst die Einzelperson im
 Dev-Team** KI-augmentiert. Klein genug, um nicht zu überfordern, vollständig genug, um
 sich „komplett" anzufühlen und **intern Bedarf für agentic engineering zu wecken** — und
 ohne das `we`-Plugin zu duplizieren.
 
-## Charakter — was capd v1 ist und was nicht
+## Charakter — was cape v1 ist und was nicht
 
 **Ist:**
 
@@ -35,7 +35,7 @@ ohne das `we`-Plugin zu duplizieren.
 
 ## Zwei Skill-Klassen
 
-capd ordnet Skills in **zwei Klassen** — capds schlanke Variante von Pococks
+cape ordnet Skills in **zwei Klassen** — capes schlanke Variante von Pococks
 Bucket-Struktur, deckungsgleich mit seiner Invocation-Achse:
 
 | Klasse | Wesen | Invocation (Tendenz) |
@@ -51,7 +51,7 @@ brainstorm  →  grill-with-docs  →  FEATURE  →  split  →  build
 (superpowers)  (Pocock)           (Synthese)  (Pocock)   (Synthese)
 ```
 
-| Skill | Herkunft | capd-Aktion | Rolle im Faden |
+| Skill | Herkunft | cape-Aktion | Rolle im Faden |
 |---|---|---|---|
 | `brainstorm` | **superpowers** (Jesse Vincent / obra, MIT) | **portieren** (kopieren + Quelle nennen) | Ideenraum öffnen |
 | `grill-with-docs` | Pocock | **portieren** | schärfen **+ `CONTEXT.md`/ADRs** anlegen |
@@ -68,14 +68,14 @@ PRD-Methode mit Spaniers *wandernder Feature-Datei* und trifft damit die Konverg
 
 | Skill | Herkunft | Zweck |
 |---|---|---|
-| `grill-me` | capd (vorhanden) | generisches, kontextfreies Grilling: Refinement, Design-Review, Sounding-Board |
+| `grill-me` | cape (vorhanden) | generisches, kontextfreies Grilling: Refinement, Design-Review, Sounding-Board |
 
 Die Utility-Klasse wächst über Zeit (weitere generische Helfer), unabhängig vom Workflow.
 
 ## Der `build`-Skill — die Bright Line (Guardian-Guardrail)
 
 `build` ist der riskanteste Punkt für Scope-Creep und grenzt an `we`s Kernland. „Schlank"
-ist deshalb eine **feste Grenze**, keine Stimmung. capds `build`:
+ist deshalb eine **feste Grenze**, keine Stimmung. capes `build`:
 
 - läuft **Single-Flow in einer Session** — *kein* SQLite-State-Machine, *kein* Resume,
   *kein* Worker-Pool, *kein* Multi-Runtime-Dispatch (das ist und bleibt `we`s Kernland);
@@ -111,9 +111,9 @@ das Team zu **`we`**. Diese Grenze wird in Prompt 2 explizit in die Skill-Regeln
 
 ## Phasen-Rahmen — die drei Quellen mappen auf deine Phasen
 
-| Phase | Hebel | Primäre Quelle | capd-Konsequenz |
+| Phase | Hebel | Primäre Quelle | cape-Konsequenz |
 |---|---|---|---|
-| **Phase 1 — jetzt** | Einzelperson im Dev-Team | **Pocock** (Disziplinen) + capd-Workflow + `brainstorm` (portiert aus superpowers) | leicht, sofort nutzbar |
+| **Phase 1 — jetzt** | Einzelperson im Dev-Team | **Pocock** (Disziplinen) + cape-Workflow + `brainstorm` (portiert aus superpowers) | leicht, sofort nutzbar |
 | **Phase 2 — später** | Produktentwicklungs­geschwindigkeit des Teams | **Spanier** (Rollen, Guardrails, wandernde Spec) + **Fabian** (Höhen/Orchestrierung, ggf. via `we`) | schwerer; Orchestrierung an `we` delegieren, nicht bauen |
 
 ## Herkunft & Attribution (Pflicht bei Umsetzung)
@@ -129,11 +129,11 @@ Alle Quellen sind MIT-lizenziert. Bei der Umsetzung in Prompt 2+ verlangt
 ## Phase-0-Entscheidungen (getroffen — Input für Prompt 2)
 
 1. **Keine superpowers-Dependency.** `brainstorm` wird aus superpowers **portiert**
-   (kopiert + Quelle genannt, MIT); capd besitzt den ganzen Stack, keine Runtime-Dependency.
+   (kopiert + Quelle genannt, MIT); cape besitzt den ganzen Stack, keine Runtime-Dependency.
    → `plugin.json`, README und CONTRIBUTING entsprechend zurückbauen.
 2. **Ground Truth für `split`: Markdown**-Kind-Dateien, konsistent mit der `feature`-Datei;
    ein Tracker bleibt optionaler Index.
-3. **Router-Skill:** dünner user-invoked Router (`ask-capd`-Muster), aber erst wenn
+3. **Router-Skill:** dünner user-invoked Router (`ask-cape`-Muster), aber erst wenn
    ≥4 Skills stehen.
 4. **Namensgebung:** `feature`-Datei nach Spaniers Muster (`docs/features/F###-slug.md`);
    Skill-/Kommando-Namen = Skill-Namen.
@@ -143,9 +143,9 @@ Welche Rollen-Lens(en) zuerst?
 
 ## Entscheidungs-Historie (wie wir hierher kamen)
 
-- **superpowers**: capd hing zunächst davon ab; es liefert TDD/Debugging/Brainstorm/
+- **superpowers**: cape hing zunächst davon ab; es liefert TDD/Debugging/Brainstorm/
   Planning/Code-Review + `writing-skills`. **Final entschieden: keine superpowers-Dependency** —
-  capd **portiert** die benötigten Bausteine (u. a. `brainstorm`) mit Quellenangabe und
+  cape **portiert** die benötigten Bausteine (u. a. `brainstorm`) mit Quellenangabe und
   **besitzt den ganzen Stack**.
 - **Kein loses Toolset** → ein **geführter Workflow** ist gewünscht.
 - **`orchestrate`/`build`**: **nicht** `we` übernehmen, sondern eine **eigene schlanke

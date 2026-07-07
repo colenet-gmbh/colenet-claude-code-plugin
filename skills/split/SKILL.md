@@ -1,48 +1,56 @@
 ---
 name: split
-description: Breaks a signed-off feature into independently buildable, dependency-ordered vertical slices (tracer bullets) — recorded as Markdown in the feature file, not a tracker. Runs after the software-architect sign-off, before build; AFK (decomposes autonomously). Use when a feature is approved and needs slicing into build steps, or the user says "split", "in Slices zerlegen", "Feature aufteilen", "Tasks schneiden", "vertical slices", or "break this down".
+description: Break a reviewed feature spec into independently-grabbable, vertically-sliced issues — each a tracer bullet with its own test seam and system under test, written out for /implement or /build to pick up.
+disable-model-invocation: true
 ---
 
-Break the **signed-off** feature into small, independently buildable pieces. This runs
-after the `software-architect` sign-off and before `build`. It is **AFK**: decompose
-autonomously from the approved spec; only escalate if something is genuinely ambiguous.
+# Split
 
-## Read the source
+Break a reviewed feature spec (`/feature`'s output, the file `work/02-development/F<id>_<slug>.md`) into **independently-grabbable issues**, each a **tracer-bullet vertical slice**.
 
-Read the feature spec (`docs/features/F<NNN>-<slug>.md`), plus `CONTEXT.md`, the
-architecture docs, and any ADRs. Use the project's glossary vocabulary.
+Use the domain glossary for titles and descriptions, and respect the ADRs in the area you're touching (locate both via the `CONTEXT.md` map).
 
-## Draft vertical slices (tracer bullets)
+## 1. Read the spec
 
-- Each slice is a **thin vertical slice** cutting end-to-end through **all** layers (data,
-  logic, interface, tests) — **not** a horizontal layer.
-- Each completed slice is **demoable / verifiable on its own**.
-- Do prefactoring first: *make the change easy, then make the easy change.*
+Read the two-part spec — work from it and the conversation. If the user passes a spec path, use that.
 
-## Record the slices as Markdown
+## 2. Look for prefactoring
 
-Ground truth is the repo. Record the slices in **dependency order** in the feature file's
-`## Slices` section. Per slice:
+Explore the codebase for prefactoring that makes the slices easier: **"make the change easy, then make the easy change."** Any prefactoring goes first, as its own slice(s).
 
-- **What to build** — the end-to-end behavior (no file paths or code; they go stale).
-- **Acceptance criteria** — a checklist / Gherkin.
-- **Blocked by** — the slices it depends on, or "none — can start immediately".
+## 3. Draft vertical slices
 
-A tracker, if the team uses one, is an **optional index** pointing back to these slices.
+Break the spec into **tracer-bullet** issues. Each slice:
 
-## Completion
+- cuts through **all** layers end-to-end (schema, API, UI, tests) — a thin but COMPLETE path, never a horizontal slice of one layer;
+- is demoable or verifiable on its own;
+- names its **test seam and system under test (SUT)** — the boundary it is tested *through*, and what is **inside** the SUT versus **outside** it. A seam without its SUT doesn't define a test.
 
-Done when the ordered slices are recorded in the feature file (it stays in `02-development`). Then the
-flow continues (still AFK) with `build`, one slice at a time.
+## 4. Quiz the user
 
-## Rules
+Present the breakdown as a numbered list. Per slice show **Title**, **Blocked by**, and **User stories covered**. Ask: is the granularity right (too coarse / too fine)? Are the dependencies correct? Should any slices be merged or split further? Iterate until the user approves.
 
-- **NEVER** slice horizontally (all of one layer as a "slice").
-- **NEVER** invent file paths or code in the slice text.
+## 5. Write the issues out
 
-## Attribution
+Write each approved slice out as its own issue file `work/02-development/I<id>_<slug>.md`, using the template below, in **dependency order** (blockers first) so "Blocked by" can reference real ids. Each issue carries `parent: F<id>` (the feature it came from) and `blocked-by: [I<id>, …]`. A written-out issue plus its parent feature spec is exactly `/implement`'s contract — so this is the input `/implement` (or `/build`) picks up.
 
-Port of **`to-issues`** from [`mattpocock/skills`](https://github.com/mattpocock/skills)
-by **Matt Pocock** (MIT). Changes by colenet: records slices as **Markdown in the repo**
-instead of tracker issues; runs **AFK** (no granularity quiz); wired into the capd Main
-Flow. See [`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+Publishing to an external issue tracker is deferred (roadmap A). For now the queue lives in the filesystem: issues wander through `work/01-backlog → 02-development → 03-approval → 04-done`.
+
+```markdown
+---
+parent: F<id>
+blocked-by: [I<id>, …]   # sibling issue ids, or [] if none
+---
+
+## What to build
+The end-to-end behaviour of this vertical slice — not layer-by-layer implementation. No file paths or code snippets (they go stale). Exception: a prototype snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape) — inline the decision-rich part and note it came from a prototype.
+
+## Test seam & SUT
+The seam this slice is tested through, and what is inside versus outside its system under test.
+
+## Acceptance criteria
+- [ ] Criterion 1
+- [ ] Criterion 2
+```
+
+Do NOT modify the parent feature file when writing issues.

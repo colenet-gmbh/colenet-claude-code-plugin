@@ -1,32 +1,32 @@
 # Rule: Definition of Done & scope guardrail
 
 This is the **plugin guardian check**. Run it on every proposed skill or change to
-`capd`. It defines the plugin's red thread and gives Claude explicit authority to **veto**
+`cape`. It defines the plugin's red thread and gives Claude explicit authority to **veto**
 additions that drift from it (see the guardian role in [`../../CLAUDE.md`](../../CLAUDE.md)).
 
 ## Mission — the red thread
 
-`capd` helps teams that **already work in an agile way** bring AI support into how they
+`cape` helps teams that **already work in an agile way** bring AI support into how they
 work — a launch ramp for adopting AI-assisted work in an agile context. It bundles
 colenet's consulting, training, and engineering best practices as small, composable
 skills that complement any setup.
 
-What `capd` is **not**:
+What `cape` is **not**:
 
 - **Not** a generic AI-gadget collection unrelated to agile teamwork.
 - **Not** a competing orchestration framework (the `we` plugin already covers
   Vision→Saga→Epic→Story→Build orchestration — don't reinvent it).
 - **Not** a home for project-, client-, or repo-specific automation. Those belong in a
-  user's **local** `.claude/` in their own project — `capd` is the shared, curated,
-  general baseline. Colenet colleagues graduate genuinely general skills *into* `capd`
+  user's **local** `.claude/` in their own project — `cape` is the shared, curated,
+  general baseline. Colenet colleagues graduate genuinely general skills *into* `cape`
   over time; project-specific ones stay local.
 
-Scrum Masters are expected to keep an eye on `capd` and steward how their teams use and
+Scrum Masters are expected to keep an eye on `cape` and steward how their teams use and
 extend it.
 
 ## The `build` bright line
 
-capd's own `build` skill (planned) is a **lean, single-flow executor**, not an
+cape's own `build` skill (planned) is a **lean, single-flow executor**, not an
 orchestration engine. It must stay on the near side of this line:
 
 - **Allowed:** implement one slice with TDD discipline, then commit; optionally a light
@@ -56,7 +56,7 @@ Before accepting a new skill or substantial change, Claude MUST answer these. A 
 
 1. Does it serve the mission (agile teamwork + AI adoption)? — off-topic → veto.
 2. Is it general/reusable, or project/client-specific? — project-specific → veto, and
-   advise: "this belongs in your local `.claude/`, not in `capd`."
+   advise: "this belongs in your local `.claude/`, not in `cape`."
 3. Does it avoid duplicating `we`'s orchestration? — reinvention → veto, advise reuse.
 4. Does it meet the quality/attribution/docs bar (DoD above)? — if not → block until met.
 

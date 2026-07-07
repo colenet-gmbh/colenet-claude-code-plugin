@@ -1,55 +1,82 @@
 ---
 name: feature
-description: Synthesizes the already-sharpened understanding into a durable, versioned feature spec — capd's single source of truth for one piece of work. Runs after grill-with-docs, AFK (synthesis, no interview). Use when the user wants to write up a feature, capture requirements and acceptance criteria, draft a PRD or spec, or says "neues Feature", "Feature-Spec", "Anforderungen festhalten", "PRD", "schreib die Spec", "write the spec", or "turn this into a feature".
+description: Turn the grilled conversation into a reviewed, two-part feature spec — synthesis only, no fresh interview, reviewed until clean, then handed to /split.
+disable-model-invocation: true
 ---
 
-Turn the **already-sharpened** understanding into a **feature spec**: one durable Markdown
-file that is the single source of truth for this piece of work. This is the PRD-level step
-of the capd Main Flow — it runs **after** `brainstorm`/`grill-with-docs` and **before** the
-`software-architect` review.
+# Feature
 
-**AFK — synthesis, not interview.** Do not re-interview the user. Synthesize what was
-already resolved in `grill-with-docs` (plus `CONTEXT.md`, ADRs, existing docs) into the
-spec. Only if writing it down reveals a genuine gap, escalate that one question back.
+Turn what you've already worked out — the grilled conversation and your codebase understanding — into a **reviewed feature spec**. Do NOT re-interview; the interview already happened in `/grill-with-docs`. Synthesise what you know.
 
-## Where it lives
+Use the project's domain glossary throughout, and respect the ADRs in the area you're touching (locate both via the `CONTEXT.md` map).
 
-The feature lives at `docs/features/02-development/F<NNN>-<slug>.md` (it moved there from
-`01-backlog/` when work started). IDs come from `_counter.txt`; the **folder is the state**
-and `status` mirrors it (`backlog | development | approval | done`). See the board mechanics
-in `${CLAUDE_PLUGIN_ROOT}/skills/ask-capd/references/main-flow.md`. If this idea has no file
-yet, create one with the next `_counter.txt` number.
+## 1. Sketch the test seams
 
-## What to write
+Sketch the seams at which the feature will be tested. Prefer existing seams to new ones, and the highest seam possible; the fewer across the codebase, the better — ideally one. If new seams are needed, propose them at the highest point. Check with the user that the seams match their expectations.
 
-Fill the spec using the canonical structure in
-[`references/feature-template.md`](references/feature-template.md). It is deliberately
-**two-part**:
+## 2. Write the spec
 
-- **Part 1 — Concept:** purpose, actors, requirements (US-NN), business rules (GR-NN),
-  UI/UX, Gherkin acceptance criteria, **key decisions**, out of scope, non-functional
-  requirements. This is the human review surface.
-- **Part 2 — Implementation guidance:** data model, API/interfaces, testing decisions &
-  seams, and (filled later by `split`) slices. This is the agents' build surface.
+Write the spec in **two parts**, using the template below, into the feature's file `work/02-development/F<id>_<slug>.md` — the two-part spec *is* that file. `/split` reads it from there.
 
-When designing Part 2 (data model, interfaces), load the project's architectural directives
-if present: `agent-guidelines/architect.md`.
+- **Top — what & decisions, for human sign-off.** The requirements and the decisions a human should consciously approve before anything is built.
+- **Bottom — how, the internal design for implementation.** Everything an agent needs to build it.
 
-## Rules
+Do NOT include file paths or code snippets — they go stale fast. Exception: if a `/prototype` produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline the decision-rich part and note it came from a prototype.
 
-- **Markdown in the repo is the truth.** A tracker, if used, is an optional index.
-- **No file paths or code in prose** — they go stale. Exception: a small snippet that
-  encodes a decision precisely (schema, type shape, state machine), trimmed.
-- **Never change existing acceptance criteria** without asking the user.
+```markdown
+# TOP — What & Decisions (sign-off)
 
-## Completion
+## Problem Statement
+The problem the user faces, from the user's perspective.
 
-Ready when Part 1 is complete and Part 2 has the data/interface/testing decisions, and open
-questions are resolved or listed. Then offer the next step: the `software-architect` review.
+## Solution
+The solution, from the user's perspective.
 
-## Attribution
+## User Stories
+A long, numbered list, extensive enough to cover every aspect of the feature:
+1. As an <actor>, I want <feature>, so that <benefit>
 
-Synthesis by colenet: the feature aspects and the mandatory-review discipline are adapted
-from Michael Spanier's coding harness `requirement-engineer`; the "conversation → PRD, no
-interview" and no-paths-in-prose rules from Matt Pocock's `to-prd` (MIT). See
-[`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+## Business Rules
+What the system must enforce or validate.
+
+## Acceptance Criteria
+Gherkin, Given/When/Then, per behaviour.
+
+## Out of Scope
+What this spec deliberately does not cover.
+
+## Key Decisions
+The architectural / implementation decisions a human should approve: modules built or modified, the interfaces that change, schema changes, API contracts, technical clarifications.
+
+# BOTTOM — Internal Design (implementation)
+
+## Domain & Data Model
+Entities, relationships, schema — in the project's glossary vocabulary.
+
+## Interfaces & API Contracts
+The module interfaces and contracts the implementation will expose or consume.
+
+## UI/UX
+Screens, fields, validations, how the UI guides the user. (Omit if there's no UI.)
+
+## Test Seams & System under Test
+For each seam from step 1: the seam is the boundary you test *through*; the **system under test (SUT)** is what sits behind it — state explicitly what is **inside** the SUT (exercised by the test) and what is **outside** it (dependencies, collaborators, anything stubbed or left alone). A seam without its SUT doesn't define a test.
+
+## Testing Decisions
+What makes a good test here (behaviour, not implementation), which modules are tested, prior art in the codebase.
+
+## Further Notes
+Anything else worth recording.
+```
+
+## 3. Review until clean
+
+Run `/review-feature` on the spec. It reviews across parallel axes (Architecture first, then Security, more as they're added), each in its own sub-agent.
+
+**Loop until clean:** integrate every finding into the spec (HIGH/CRITICAL directly), then re-review — repeat until a review comes back clean. A finding is settled when it is fixed or consciously dismissed.
+
+**Never change an existing acceptance criterion without asking the user.**
+
+## 4. Sign-off
+
+Present the finished spec, top part first, and get the user's sign-off on the key decisions before it goes to `/split`.

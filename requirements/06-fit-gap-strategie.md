@@ -1,9 +1,9 @@
-# capd — Fit/Gap & Strategie-Skizze (Ergebnis Prompt 3)
+# cape — Fit/Gap & Strategie-Skizze (Ergebnis Prompt 3)
 
 > Ergebnis von **Prompt 3 (Fit/Gap, Zielgruppe & Strategie)**. Prompt 3 war als
 > Grilling-Session gedacht; hier ist sie **im Alleingang synthetisiert** — ich stelle die
 > Leitfragen und setze je eine begründete Empfehlung. Punkte, die wirklich deine/colenets
-> Entscheidung brauchen, sind als **[offen]** markiert. Baut auf `05-richtung-capd-v1.md`
+> Entscheidung brauchen, sind als **[offen]** markiert. Baut auf `05-richtung-cape-v1.md`
 > und dem tatsächlich gebauten Stand (v0.5.0) auf. Arbeitsmaterial, Deutsch.
 
 ## Ausgangs-Widerspruch, den wir auflösen müssen
@@ -13,9 +13,9 @@ Der ursprüngliche Prompt-3-Hypothese sagte: **Zielgruppe = große Enterprise-Te
 auf **Einzelperson zuerst** gelandet. Das ist **kein** Widerspruch, sondern zwei Höhen
 derselben Strategie — und genau das ist der Kern dieser Skizze.
 
-## 1. Zielgruppe — wer ist capd v1 für?
+## 1. Zielgruppe — wer ist cape v1 für?
 
-- **Nutzer (wer tippt `/capd:…`):** die **Einzelperson im Dev-Team** — Entwickler:innen
+- **Nutzer (wer tippt `/cape:…`):** die **Einzelperson im Dev-Team** — Entwickler:innen
   und technische Consultants bei colenet und beim Kunden, die KI-augmentiert arbeiten wollen.
 - **Käufer/Nutznießer (wessen Problem es löst):** **agile Enterprise-Teams**, die von
   *agil* auf *agil + KI* wollen — und colenet als Beratungshaus, das diesen Übergang begleitet.
@@ -23,7 +23,7 @@ derselben Strategie — und genau das ist der Kern dieser Skizze.
   (Phase 2). Empfehlung: **so lassen.** Die Einzelperson ist der glaubwürdigste, kleinste
   Einstieg; „Team-Geschwindigkeit" ist das Versprechen, nicht der v1-Scope.
 - **[offen]** Ist der *erste konkrete* Nutzerkreis (a) colenet-intern (Dogfooding, weckt
-  Bedarf) oder (b) direkt ein Kundenteam? *Empfehlung: (a) zuerst intern* — capd soll
+  Bedarf) oder (b) direkt ein Kundenteam? *Empfehlung: (a) zuerst intern* — cape soll
   intern Bedarf wecken, bevor es beim Kunden steht.
 
 ## 2. Wertversprechen
@@ -37,16 +37,16 @@ derselben Strategie — und genau das ist der Kern dieser Skizze.
 - **Für den Kunden:** eine **Launch-Ramp** — niedrigschwelliger, sofort nutzbarer Einstieg
   in KI-augmentierte agile Arbeit.
 
-## 3. Abgrenzung (was capd bewusst NICHT ist)
+## 3. Abgrenzung (was cape bewusst NICHT ist)
 
 - **Kein** zweites Orchestrierungs-Framework (→ `we`), **keine** Gadget-Sammlung, **nichts**
   Projekt-/Kundenspezifisches (→ lokales `.claude/`). (DoD-Regeln, gelten weiter.)
-- **Kein Produkt zum Verkaufen.** capd ist ein **Türöffner**, kein Umsatzträger. Es darf
+- **Kein Produkt zum Verkaufen.** cape ist ein **Türöffner**, kein Umsatzträger. Es darf
   deshalb **nicht** werblich oder komplex werden — der Wert ist die gelebte Qualität.
 
-## 4. Fit/Gap — capd heute vs. was die Zielgruppe braucht
+## 4. Fit/Gap — cape heute vs. was die Zielgruppe braucht
 
-**Was capd heute IST (v0.5.0):** 7 Skills (der Workflow + `ask-capd` + `grill-me`),
+**Was cape heute IST (v0.5.0):** 7 Skills (der Workflow + `ask-cape` + `grill-me`),
 self-contained (keine Runtime-Dependency), Governance (CI/pre-commit, DoD-Guardian,
 Attribution, Statusline), kuratiert und klein.
 
@@ -64,18 +64,18 @@ Rollen-Pipeline, Enterprise-Integrationen (Jira/Tracker als Pflicht), Metriken-D
 
 ## 5. Strategie — die kommerzielle Brücke
 
-capd ist ein **Open-Source-Plugin**, das Kunden sofort ausprobieren können und das colenets
+cape ist ein **Open-Source-Plugin**, das Kunden sofort ausprobieren können und das colenets
 Erfahrung mit agentic engineering **demonstriert**. Wer es ernsthaft einführen will, braucht
 danach **colenet-Beratung und Agile-Coaches**, um seine Teams auf dieses Level zu heben —
 das ist der Geschäftshebel. Damit die Brücke trägt, **ohne** dass das Plugin komplex oder
 werblich wird:
 
-- capd bleibt **klein und ehrlich nützlich** — der beste Vertrieb ist ein Tool, das man
+- cape bleibt **klein und ehrlich nützlich** — der beste Vertrieb ist ein Tool, das man
   gern benutzt.
 - Die **Team-/Skalierungs-Schicht** (Phase 2: Rollen, Guardrails, Höhen) ist genau der
   Punkt, an dem Beratung ansetzt — das ist die natürliche Grenze zwischen „Plugin gratis"
   und „Transformation mit colenet".
-- **Scrum Master als Steward** (schon in der DoD angelegt): sie halten capd im Team lebendig
+- **Scrum Master als Steward** (schon in der DoD angelegt): sie halten cape im Team lebendig
   und sind der interne Multiplikator.
 - **Kein** Sales-Text und **kein** Beratungs-Hinweis im Plugin. Der Wert spricht für sich.
 
@@ -87,7 +87,7 @@ Team-Geschwindigkeit ist bewusst Phase 2 und zugleich der Beratungs-Hebel.
 **Minimal fehlend für ein erstes Kundengespräch** (empfohlene nächste kleine Schritte,
 noch nicht jetzt gebaut):
 
-1. Ein **Getting-Started** (README-Abschnitt oder `ask-capd`-Erweiterung): „installier,
+1. Ein **Getting-Started** (README-Abschnitt oder `ask-cape`-Erweiterung): „installier,
    dann lauf den Workflow an diesem Beispiel entlang".
 2. Ein **durchgespieltes Beispiel-Feature** (idee→`feature`→`split`→`build`) als Referenz.
 3. **Englische Übersetzung** der stabilisierten `requirements/` vor jedem Außenauftritt.

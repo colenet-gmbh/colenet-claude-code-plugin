@@ -1,19 +1,19 @@
 # Glossary
 
-Shared vocabulary for the capd plugin. Keep these terms consistent across skills, the
+Shared vocabulary for the cape plugin. Keep these terms consistent across skills, the
 README, and the docs.
 
 ## Main Flow
 
-The one guided capd path from an idea to a built, approved slice:
+The one guided cape path from an idea to a built, approved slice:
 
 ```text
 brainstorm → grill-with-docs → feature → software-architect → split → build
 ```
 
 "Workflow" is used as a synonym. The skills that make it up are the **workflow skills**;
-standalone skills off it (e.g. `grill-me`, `ask-capd`) are **utility skills**. Full
-mechanics are in `skills/ask-capd/references/main-flow.md`. (Never call it a "spine" — jargon.)
+standalone skills off it (e.g. `grill-me`, `ask-cape`) are **utility skills**. Full
+mechanics are in `skills/ask-cape/references/main-flow.md`. (Never call it a "spine" — jargon.)
 
 ## HITL — human-in-the-loop
 
@@ -62,7 +62,7 @@ build the right thing".
 
 Project-specific **directives for the agent** (not documentation), in `agent-guidelines/`,
 one file per review lens (e.g. `architect.md`; later `security.md`). Generic skills read
-them when present and fall back to capd's engineering rules otherwise.
+them when present and fall back to cape's engineering rules otherwise.
 
 ## architecture documentation (arc42)
 

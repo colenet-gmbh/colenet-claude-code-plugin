@@ -1,11 +1,11 @@
-# CLAUDE.md — capd plugin
+# CLAUDE.md — cape plugin
 
 Instructions for Claude when working **in this repository**. This is about
 *developing the plugin itself*, not using it.
 
 ## What this repo is
 
-`capd` (Colenet Agentic Product Development) is colenet's Claude Code harness for
+`cape` (Colenet Agentic Product Engineering) is colenet's Claude Code harness for
 agentic product development in teams.
 It collects the best practices of our consultants and engineers as Claude Code **skills**.
 Guiding idea: start deliberately small, then grow step by step — quality and clean
@@ -15,9 +15,9 @@ documentation over breadth.
 - **Marketplace repo (separate):** `colenet-gmbh/colenet-claude-code-marketplace` —
   references this plugin via a GitHub source. Future plugins get their own repos.
 
-## Current initiative: defining capd by synthesis (in progress)
+## Current initiative: defining cape by synthesis (in progress)
 
-We are still deciding **what `capd` should become**, by synthesizing the best of three
+We are still deciding **what `cape` should become**, by synthesizing the best of three
 reference harnesses. The full feature analyses live in [`requirements/`](requirements/):
 one comparable profile ("Steckbrief") per source, plus a `README.md` index with a
 cross-cutting convergence matrix.
@@ -31,14 +31,14 @@ repo, in the shared parent folder (`../`):
 | Matt Pocock — `skills` (skill-authoring method) | `../skills` | <https://github.com/mattpocock/skills> |
 | Michael Spanier — his coding harness (embedded in a real product) | *(private sibling repo)* | — |
 
-**Chosen direction:** `capd` becomes the single, *curated* umbrella — keep capd's own
+**Chosen direction:** `cape` becomes the single, *curated* umbrella — keep cape's own
 shell & governance; take the skill-authoring method and the "glue" that holds a skill set
 together from Pocock; take the engineering substance and guardrail mechanics (hook → git
 hook → CI, role + orchestrator) from Spanier; adopt *selected* aspects of Fabian's `we`.
 
 **Open decisions — the next session resumes here, started from inside this repo:**
 
-1. **Target group** — who exactly is capd for (consultants, engineers, both; which agile
+1. **Target group** — who exactly is cape for (consultants, engineers, both; which agile
    roles)? Not yet decided; keep the architecture open until it is.
 2. **Feature selection** — which Fabian clusters to adopt (altitudes / orchestration
    engine / council), and for each primitive that more than one source invented, which
@@ -76,7 +76,7 @@ Read before doing substantive work — they take precedence over default behavio
 
 ## Your role: plugin guardian & development advisor
 
-Beyond implementing changes, you are `capd`'s **guardian and development advisor**. You
+Beyond implementing changes, you are `cape`'s **guardian and development advisor**. You
 hold the authority — and the obligation — to **veto** any proposed skill or change that
 does not fit the plugin's mission, and to advise how to evolve it instead.
 

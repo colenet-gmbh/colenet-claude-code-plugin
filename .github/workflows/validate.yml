@@ -28,4 +28,4 @@ jobs:
           BASE_REF: ${{ github.base_ref }}
         run: |
           git fetch --no-tags origin "$BASE_REF"
-          CAPD_BASE_REF="origin/$BASE_REF" bash scripts/validate-plugin.sh
+          CAPE_BASE_REF="origin/$BASE_REF" bash scripts/validate-plugin.sh
