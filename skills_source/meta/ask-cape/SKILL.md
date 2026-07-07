@@ -65,4 +65,4 @@ Off the main flow entirely.
 
 ## Precondition
 
-- **`/setup`** — run before your first engineering flow to configure the issue tracker, triage labels, and doc layout the other skills assume. Custom issue trackers also work.
+- **`/cape:setup`** — run once per repo before your first engineering flow: it vendors the skills (so they're callable flat as `/skill-name`) and scaffolds the docs they assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the arc42 glossary.

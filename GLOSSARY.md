@@ -10,7 +10,7 @@ synonym. The skills that make it up are the **workflow skills** (`grill-with-doc
 `feature`, `split`, `implement`/`build`); standalone skills off it (e.g. `grill-me`,
 `prototype`, `handoff`) are **utility skills**. The canonical, always-current description
 of the flow — order, branches, and how the skills hand off — lives in the
-[`ask-cape`](skills/ask-cape/SKILL.md) router; don't restate the chain elsewhere, point to
+[`ask-cape`](skills_source/meta/ask-cape/SKILL.md) router; don't restate the chain elsewhere, point to
 it. (Never call it a "spine" — jargon.)
 
 ## HITL — human-in-the-loop

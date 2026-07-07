@@ -6,7 +6,11 @@ attribution, and the release/versioning workflow.
 
 ## Add a new skill
 
-1. Create a directory: `skills/<skill-name>/SKILL.md` (kebab-case).
+1. Create a directory: `skills_source/<bucket>/<skill-name>/SKILL.md` (kebab-case; pick an
+   existing bucket subfolder — the README lists them). Skills live under `skills_source/`,
+   not `skills/`, so the plugin doesn't load them as active namespaced skills — `/cape:setup`
+   flattens the bucket away and vendors them into a repo's `.claude/skills/`. Keep the flat
+   skill name unique across buckets.
 2. Follow [`.claude/rules/skill-authoring.md`](.claude/rules/skill-authoring.md): lean
    body, third-person description with clear trigger phrases (German **and** English),
    progressive disclosure for details.
@@ -92,9 +96,11 @@ gate), problems are caught at both ends.
 colenet-claude-code-plugin/
 ├── .claude-plugin/
 │   └── plugin.json          # Plugin manifest
-├── skills/
-│   └── grill-me/
-│       └── SKILL.md         # First skill (ported, attributed)
+├── skills_source/          # The skills — NOT loaded as active plugin skills
+│   └── <bucket>/            #   grouped into bucket subfolders; flattened away and
+│       └── <name>/SKILL.md   #   vendored into a repo's .claude/skills/ by /cape:setup
+├── commands/
+│   └── setup.md            # The one active plugin command: /cape:setup
 ├── .claude/
 │   └── rules/               # Conventions for plugin development
 │       ├── skill-authoring.md
@@ -105,6 +111,7 @@ colenet-claude-code-plugin/
 │   └── statusline.js        # Bundled status line (subagentStatusLine)
 ├── settings.json            # Plugin default settings (wires the status line)
 ├── scripts/
+│   ├── sync-harness.sh      # Self-locating vendoring script (/cape:setup, /update-cape)
 │   └── validate-plugin.sh   # Structural validation (used in CI)
 ├── .github/workflows/
 │   └── validate.yml         # Runs pre-commit checks on push & PR

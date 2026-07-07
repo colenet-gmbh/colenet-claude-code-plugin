@@ -47,11 +47,12 @@ The marketplace repo only needs a push when its **listing** changes (description
 keywords) — not for a version bump.
 
 CI enforces the bump on pull requests that touch **plugin-shipping files**
-(`skills/`, `.claude-plugin/`, `statusline/`, `settings.json`): the `validate` check
-fails if `plugin.json` `version` is not greater than on the base branch. PRs that only
-change working material (`requirements/`), contributor docs, CI, or scripts do not
-require a bump. Direct pushes to `main` bypass this gate (admins only) — use them only
-for changes that should not bump.
+(`skills_source/`, `commands/`, `scripts/`, `.claude-plugin/`, `statusline/`,
+`settings.json`): the `validate` check fails if `plugin.json` `version` is not greater
+than on the base branch. PRs that only change working material (`requirements/`),
+contributor docs, or CI do not require a bump. (`scripts/` ships now because the vendoring
+logic lives in `scripts/sync-harness.sh`.) Direct pushes to `main` bypass this gate
+(admins only) — use them only for changes that should not bump.
 
 ## Do not
 

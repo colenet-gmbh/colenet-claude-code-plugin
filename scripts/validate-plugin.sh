@@ -5,9 +5,9 @@
 # Optional version-bump check: set CAPE_BASE_REF to a git ref (e.g. origin/main)
 # and the script additionally fails if .claude-plugin/plugin.json version was not
 # increased versus that ref — but only when the diff touches plugin-shipping files
-# (skills/, .claude-plugin/, statusline/, settings.json). Pure working material,
-# contributor docs, CI, and scripts do not force a bump. Used by the CI 'validate'
-# job on pull requests.
+# (skills_source/, commands/, scripts/, .claude-plugin/, statusline/, settings.json).
+# Pure working material (requirements/), contributor docs, and CI do not force a bump.
+# Used by the CI 'validate' job on pull requests.
 set -uo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -18,15 +18,15 @@ if [[ -n "${CAPE_BASE_REF:-}" ]]; then
     BASE_MANIFEST="$(git -C "$ROOT" show "${CAPE_BASE_REF}:.claude-plugin/plugin.json" 2>/dev/null || true)"
 fi
 
-# Whether the diff vs base ref touches plugin-shipping files (skills/,
-# .claude-plugin/, statusline/, settings.json). Only these force a version
-# bump; pure working material (requirements/), contributor docs, CI, and
-# scripts do not. Defaults to "changed" (require bump) when detection is
-# uncertain, so a real plugin change is never silently shipped without a bump.
+# Whether the diff vs base ref touches plugin-shipping files (skills_source/,
+# commands/, scripts/, .claude-plugin/, statusline/, settings.json). Only these
+# force a version bump; pure working material (requirements/), contributor docs,
+# and CI do not. Defaults to "changed" (require bump) when detection is uncertain,
+# so a real plugin change is never silently shipped without a bump.
 PLUGIN_CHANGED=1
 if [[ -n "${CAPE_BASE_REF:-}" ]]; then
     DIFF="$(git -C "$ROOT" diff --name-only "${CAPE_BASE_REF}..HEAD" 2>/dev/null || true)"
-    if [[ -n "$DIFF" ]] && ! grep -E '^(skills/|\.claude-plugin/|statusline/|settings\.json$)' >/dev/null <<<"$DIFF"; then
+    if [[ -n "$DIFF" ]] && ! grep -E '^(skills_source/|commands/|scripts/|\.claude-plugin/|statusline/|settings\.json$)' >/dev/null <<<"$DIFF"; then
         PLUGIN_CHANGED=0
     fi
 fi
@@ -75,18 +75,30 @@ def parse_frontmatter(text):
             fm[k.strip()] = v.strip()
     return None  # no closing delimiter
 
-skills_dir = root / "skills"
+# Skills ship under skills_source/ (NOT skills/) so the plugin loader never
+# registers them as active plugin skills; /cape:setup vendors them into a repo's
+# .claude/skills/ as flat project skills. See CLAUDE.md. Skills are grouped into
+# buckets, but the bucket names aren't fixed here: a skill is any dir with a SKILL.md
+# at any depth, and /cape:setup flattens it to .claude/skills/<name>/. The flat <name>
+# must therefore be unique across buckets.
+skills_dir = root / "skills_source"
 skill_files = list(skills_dir.rglob("SKILL.md")) if skills_dir.exists() else []
 if not skill_files:
-    err("no skills found under skills/")
+    err("no skills found under skills_source/")
 
+seen_names = {}
 for sf in skill_files:
     rel = sf.relative_to(skills_dir)
-    if len(rel.parts) != 2:
-        err(f"{sf.relative_to(root)}: skills must be one level deep "
-            f"(skills/<name>/SKILL.md); nested skills are not discovered")
+    if len(rel.parts) < 2:
+        err(f"{sf.relative_to(root)}: a skill needs its own directory "
+            f"(skills_source/.../<name>/SKILL.md)")
         continue
-    dir_name = rel.parts[0]
+    dir_name = rel.parts[-2]          # the skill dir, whatever bucket depth it sits at
+    bucket = "/".join(rel.parts[:-2]) or "(root)"
+    if dir_name in seen_names:
+        err(f"{sf.relative_to(root)}: duplicate skill name '{dir_name}' (also under "
+            f"'{seen_names[dir_name]}') — flat vendoring needs unique names")
+    seen_names[dir_name] = bucket
     fm = parse_frontmatter(sf.read_text(encoding="utf-8"))
     if fm is None:
         err(f"{sf.relative_to(root)}: missing or malformed YAML frontmatter")

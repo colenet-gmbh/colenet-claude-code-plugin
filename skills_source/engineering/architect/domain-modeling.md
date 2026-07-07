@@ -38,7 +38,7 @@ Create files lazily — only when you have something to write. If no `CONTEXT.md
 
 ### Challenge against the glossary
 
-When the user uses a term that conflicts with the existing language in `CONTEXT.md`, call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
+When the user uses a term that conflicts with the existing language in the glossary (arc42 §12, `docs/arc42/12_glossary.md`, located via `CONTEXT.md`), call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
 
 ### Sharpen fuzzy language
 
@@ -52,11 +52,11 @@ When domain relationships are being discussed, stress-test them with specific sc
 
 When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"
 
-### Update CONTEXT.md inline
+### Update the glossary inline
 
-When a term is resolved, update `CONTEXT.md` right there. Don't batch these up — capture them as they happen. Use the format in [context-format.md](./context-format.md).
+When a term is resolved, add it to the glossary (arc42 §12, `docs/arc42/12_glossary.md`, located via `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in [context-format.md](./context-format.md).
 
-`CONTEXT.md` should be totally devoid of implementation details. Do not treat `CONTEXT.md` as a spec, a scratch pad, or a repository for implementation decisions. It is a glossary and nothing else.
+The glossary holds domain language and nothing else — no implementation details, no spec, no scratch pad, no decisions. `CONTEXT.md` itself stays a pointer map: it points at the glossary, it doesn't contain it.
 
 ### Offer ADRs sparingly
 
