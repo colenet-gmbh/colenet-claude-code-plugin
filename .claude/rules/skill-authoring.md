@@ -1,10 +1,15 @@
 # Rule: Authoring skills
 
-Applies to every `skills/<name>/SKILL.md` in this plugin.
+Applies to every `skills_source/<name>/SKILL.md` in this plugin. Skills ship under
+`skills_source/` (never `skills/`) so the plugin loader doesn't register them as active
+plugin skills; `/cape:setup` vendors them into a repo's `.claude/skills/` as flat project
+skills. See [`../../CLAUDE.md`](../../CLAUDE.md).
 
 ## Structure
 
-- One directory per skill, kebab-case: `skills/<skill-name>/SKILL.md`.
+- One directory per skill, kebab-case, inside a bucket subfolder:
+  `skills_source/<bucket>/<skill-name>/SKILL.md`. The flat `<skill-name>` must be **unique
+  across buckets** — `/cape:setup` flattens the bucket away when vendoring.
 - Frontmatter with exactly `name` and `description`. `name` = directory name.
 - Keep the body lean (guideline: < ~2,000 words). Push extensive details, examples, or
   scripts into `references/`, `examples/`, or `scripts/` via progressive disclosure and
@@ -12,11 +17,14 @@ Applies to every `skills/<name>/SKILL.md` in this plugin.
 
 ## Categories
 
-- Do **not** nest skills in category folders (`skills/<category>/<name>/SKILL.md`).
-  Claude Code only discovers plugin skills exactly one level deep — nested skills are
-  not loaded. There is no `category` frontmatter field either.
-- Express categories in the **README**: group the skill table under category headings
-  (e.g. `### Productivity`). The category is documentation, not structure.
+- Skills **are** grouped into bucket subfolders in the source — a bucket, then the skill
+  dir, then `SKILL.md`. This works only because `/cape:setup` flattens the bucket away on
+  vendor; the vendored `.claude/skills/` stays one level deep, the only layout Claude Code
+  discovers. Never nest a skill *below* its own dir. There is no `category` frontmatter
+  field.
+- Mirror the buckets in the **README**: group the skill table under one heading per bucket.
+  Name the buckets only where it helps a reader — the README grouping, and `ask-cape` where
+  it aids explanation. Don't bake the list into scripts, validation, or these rules.
 
 ## description (decides triggering)
 
