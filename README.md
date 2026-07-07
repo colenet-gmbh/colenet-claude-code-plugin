@@ -10,41 +10,34 @@ Invoked as `/cape:<skill>`.
 
 ## Status
 
-Early stage (`v0.6.0`). cape is a **guided Main Flow** — from an idea to a built, approved
-slice — plus standalone **utility skills**. Work is tracked on a file board in
-`docs/features/` (`01-backlog → 02-development → 03-approval → 04-done`), and the flow runs
-one long **HITL** (human-in-the-loop) stretch, then one long **AFK** (away-from-keyboard)
-stretch. cape is **self-contained**: it owns its stack and declares no runtime plugin
-dependencies.
+Early stage (`v0.7.0`). cape is a **guided flow** from an idea to a built, approved slice,
+plus standalone **utility skills** usable anywhere. It is **self-contained**: it owns its
+stack and declares no runtime plugin dependencies.
 
 ## Skills
 
-cape groups skills into two classes: **workflow skills** form the guided path — the
-**Main Flow** — and build on each other; **utility skills** are generic and usable
-anywhere. New to cape? Run `/cape:ask-cape` — it routes you to the right step. See
-[`GLOSSARY.md`](GLOSSARY.md) for the vocabulary.
+New to cape? Run [`/cape:ask-cape`](skills/ask-cape/SKILL.md) — it explains how the flow
+fits together and routes you to the right skill for where you are. See
+[`GLOSSARY.md`](GLOSSARY.md) for the shared vocabulary. The full catalogue (invoke each as
+`/cape:<skill>`):
 
-### Workflow skills — the Main Flow
-
-```text
-brainstorm → grill-with-docs → feature → software-architect → split → build
-```
-
-| Skill | Invocation | Purpose |
-|-------|-----------|---------|
-| `brainstorm` | `/cape:brainstorm` | Refine a rough idea into a fully-formed design — one question at a time, exploring alternatives. HITL; the first step. |
-| `grill-with-docs` | `/cape:grill-with-docs` | Relentless interview that sharpens the design and builds durable docs — a `CONTEXT.md` glossary and sparing ADRs. HITL. |
-| `feature` | `/cape:feature` | Synthesize the sharpened understanding into a durable, two-part feature spec. AFK. |
-| `software-architect` | `/cape:software-architect` | Review the concept and establish/evolve the architecture docs (arc42, ADRs) before building; present the key decisions for sign-off. AFK. |
-| `split` | `/cape:split` | Break the feature into dependency-ordered vertical slices (tracer bullets), recorded as Markdown. AFK. |
-| `build` | `/cape:build` | Implement each slice test-first (red-green-refactor), following cape's engineering rules, then move to approval. AFK. |
-
-### Utility skills
-
-| Skill | Invocation | Purpose |
-|-------|-----------|---------|
-| `grill-me` | `/cape:grill-me` | Stress-test any plan or design: Claude grills you one question at a time down the decision tree. Off the Main Flow, usable anytime. |
-| `ask-cape` | `/cape:ask-cape` | Router — finds the right cape skill for where you are and explains the Main Flow. |
+| Skill | Purpose |
+|-------|---------|
+| `ask-cape` | Router — finds the right cape skill for your situation and explains the flow. |
+| `grill-with-docs` | Relentless interview that sharpens a plan or design and builds durable docs (glossary, ADRs) as it goes. |
+| `grill-me` | The same relentless interview, stateless — for a plan or design that doesn't live in a repo. |
+| `grilling` | The shared interview engine the grill skills build on. |
+| `feature` | Synthesize a grilled conversation into a reviewed, two-part feature spec. |
+| `review-feature` | Review a feature spec along parallel axes (Architecture, Security) before it's split. |
+| `split` | Break a reviewed spec into independently-grabbable, vertically-sliced issues. |
+| `implement` | Build one written-out issue in a fresh context — TDD at the seams, then review. |
+| `build` | Orchestrate a whole feature — drive its issues to done, one `implement` each, then review the integrated result. |
+| `review-implementation` | Review an implementation's changes since a fixed point (Standards, Spec). |
+| `tdd` | Test-driven development — red-green-refactor, tests at the seams. |
+| `architect` | Shape and keep structure clean — software/codebase design, domain modelling, arc42 docs. Also fires inside other skills as they need it. |
+| `prototype` | Build a throwaway prototype to answer a design question. |
+| `handoff` | Compact the current conversation into a handoff document to continue in a fresh session. |
+| `writing-great-skills` | Reference for writing and editing skills well — the authoring standard for cape skills. |
 
 > Ported and synthesized skills credit their sources in
 > [`ATTRIBUTION.md`](ATTRIBUTION.md).

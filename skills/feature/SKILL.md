@@ -16,7 +16,7 @@ Sketch the seams at which the feature will be tested. Prefer existing seams to n
 
 ## 2. Write the spec
 
-Write the spec in **two parts**, using the template below, into the feature's file `work/02-development/F<id>_<slug>.md` — the two-part spec *is* that file. `/split` reads it from there.
+Write the spec in **two parts**, using the template below, into the feature's file `docs/work/02-development/F<id>_<slug>.md` — the two-part spec *is* that file. `/split` reads it from there.
 
 - **Top — what & decisions, for human sign-off.** The requirements and the decisions a human should consciously approve before anything is built.
 - **Bottom — how, the internal design for implementation.** Everything an agent needs to build it.
