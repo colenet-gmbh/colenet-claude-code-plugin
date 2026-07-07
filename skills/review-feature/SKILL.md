@@ -21,7 +21,7 @@ OWASP findings, access control, data protection / privacy, data minimisation.
 
 ### 1. Locate the spec
 
-Use the spec path the caller passed, or the feature file in `work/02-development/` (`F<id>_<slug>.md`). Confirm it resolves and is non-empty before spawning sub-agents.
+Use the spec path the caller passed, or the feature file in `docs/work/02-development/` (`F<id>_<slug>.md`). Confirm it resolves and is non-empty before spawning sub-agents.
 
 ### 2. Spawn one sub-agent per active axis, in parallel
 
