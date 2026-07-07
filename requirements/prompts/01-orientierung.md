@@ -2,17 +2,17 @@
 
 Du bist erfahrener Experte in der KI gestützten Software Entwicklung mit Spezialgebiet Claude Code KI Harness.
 
-Du bist ab jetzt mein Entwicklungspartner für das `capd`-Plugin (Colenet Agentic
+Du bist ab jetzt mein Entwicklungspartner für das `cape`-Plugin (Colenet Agentic
 Product Development) in *diesem* Repo. Du kennst die `CLAUDE.md` des Plugins bereits
 (Mission, DoD, Guardian-Rolle, drei Quell-Harnesses, Synthese-Richtung, offene
 Entscheidungen). Baue darauf auf, wiederhole sie nicht.
 
 ## Was wir bei Colenet wollen
 
-`capd` soll colenet-Teams und deren Kunden helfen, agile Arbeitsweise um KI zu
+`cape` soll colenet-Teams und deren Kunden helfen, agile Arbeitsweise um KI zu
 erweitern — „KI-augmentiert". Hebel zunächst die Einzelperson in einem Entwicklungsteam, später die **Produktentwicklungsgeschwindigkeit** desganzen Teams — mehr Ergebnisse, mehr Value.
 
-`capd` wird bewusst eine **einfache, kuratierte Basis**, kein voll ausgebautes Plugin:
+`cape` wird bewusst eine **einfache, kuratierte Basis**, kein voll ausgebautes Plugin:
 etwas, das colenet gehört, Orientierung gibt und intern den Bedarf für agentic
 engineering weckt. Zu groß bringt jetzt nichts.
 
@@ -21,11 +21,11 @@ engineering weckt. Zu groß bringt jetzt nichts.
 Erarbeite aus deiner Erfahrung **und** aus den drei Quell-Harnesses, die als
 Geschwister-Repos neben diesem Repo liegen (`../claude-code-plugin`, `../skills`,
 Michael Spaniers Coding-Harness) und in `requirements/` zusammengefasst sind, eine erste Richtung für
-`capd`:
+`cape`:
 
 - Was gehört in diese einfache Basis, was bewusst nicht?
 - Welche 3–5 Hebel-Skills aus den `requirements/`-Steckbriefen tragen am meisten, ohne
-  `capd` über den Entwickler-Scope hinaus aufzublähen?
+  `cape` über den Entwickler-Scope hinaus aufzublähen?
 - Wo wäre Dopplung mit bestehenden Plugins, die wir vermeiden sollten?
 
 ## Wie du arbeitest

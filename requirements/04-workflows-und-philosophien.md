@@ -1,6 +1,6 @@
 # Workflows & Philosophien — die zweite Vergleichsachse
 
-> Teil der capd-Synthese-Analyse. Die Feature-Steckbriefe (01–03) sagen, *was* es in
+> Teil der cape-Synthese-Analyse. Die Feature-Steckbriefe (01–03) sagen, *was* es in
 > jedem Harness gibt. Dieses Dokument sagt, *wie* man damit arbeitet und *warum* — die
 > Achse, an der sich „aus einem Guss" entscheidet. Features lassen sich mergen;
 > fundamental verschiedene Arbeitsweisen und Philosophien nicht. Die muss man bewusst
@@ -16,7 +16,7 @@ Jedes Harness organisiert Arbeit entlang einer **anderen Hauptachse**:
 | **Matt Pocock (`skills`)** | **Zustand** (Issue-Lifecycle) | das **Issue** | Issue im Tracker |
 | **Michael Spanier (Coding-Harness)** | **Rolle** (Domänen-Pipeline) | wandernde **Spec-Datei** | Markdown im Repo (`docs/features/`) |
 
-Nur **eine** dieser Achsen kann der Main Flow von capd werden. Die anderen können als
+Nur **eine** dieser Achsen kann der Main Flow von cape werden. Die anderen können als
 ergänzende Schichten andocken — oder kollidieren. Welche Achse passt, hängt direkt an der
 noch offenen **Zielgruppen-Entscheidung** (Berater/PO → Höhe; Engineers → Zustand/Rolle).
 
@@ -171,23 +171,23 @@ Ultra-knapp, aber jede Zeile trägt. Merkmale: **stabile ID-Präfixe** (`CC-01..
 Mehrfach unabhängig erfundene oder übereinstimmende Haltungen. Das sind die *sicheren* Bausteine:
 
 1. **Markdown-im-Repo-ist-Wahrheit** — Fabian **und** Spanier (2:1 gegen Pococks Tracker).
-   → capd kann Repo-Markdown als Ground Truth setzen, ein Tracker bleibt optionaler Index.
+   → cape kann Repo-Markdown als Ground Truth setzen, ein Tracker bleibt optionaler Index.
 2. **Mensch-im-Loop bei folgenreichen Aktionen** — alle drei (Deliver / Commit / Merge). Unstrittig.
 3. **Kein Auto-Komplexitäts-Routing** — alle drei vermeiden „Magie": Fabian per explizitem
    Angebot, Pocock per menschlichem Router, Spanier per *fixem* Pflicht-Review. → Prinzip:
    Eskalation ist explizit, nicht geraten.
 4. **Grilling/Interview als Einstieg** — Fabian (`story` grill-style), Pocock (`grilling`),
    Spanier (`requirement-engineer`-Spec). Gemeinsamer Einstiegs-Primitiv.
-5. **Leichtgewicht & Portabilität** — Pocock + Spanier (gegen Fabians Schwere). capd-Wert.
+5. **Leichtgewicht & Portabilität** — Pocock + Spanier (gegen Fabians Schwere). cape-Wert.
 6. **Stil** — Pococks **Theorie** (`writing-great-skills`) + Spaniers gelebte **Praxis**
-   (ID-Regeln, Zahlen statt Adjektive) = *ein* verbindlicher Authoring-Standard für capd.
+   (ID-Regeln, Zahlen statt Adjektive) = *ein* verbindlicher Authoring-Standard für cape.
    Fabians Ausführlichkeit ist hier das Gegenbeispiel. **Die eleganteste Synthese im ganzen Feld.**
 
 ---
 
 ## Wo es „aus einem Guss" schwer wird — die echten Entscheidungen
 
-Diese Punkte lassen sich **nicht** mergen; capd muss sich je entscheiden:
+Diese Punkte lassen sich **nicht** mergen; cape muss sich je entscheiden:
 
 **A. Die primäre Organisationsachse (Höhe vs. Zustand vs. Rolle).** Die Main-Flow-Entscheidung —
 alles andere hängt daran. Höhe (Fabian) ist ein Abstraktions-Kontinuum; Zustand (Pocock) ist
@@ -214,8 +214,8 @@ Leichtigkeit von Pocock/Spanier.
 
 **Meta-Spannung:** Schon der Wunsch nach „einem Guss" (ein kohärentes Framework) liegt näher
 an Fabians/Spaniers Weltbild als an Pococks anti-Framework-These. Konsequenz: Von Pocock
-übernimmt capd am ehesten die **Disziplinen** (`tdd`, `diagnosing-bugs`, `codebase-design`)
-und die **Authoring-Methodik** — nicht aber seine anti-Prozess-Haltung als capd-Main-Flow.
+übernimmt cape am ehesten die **Disziplinen** (`tdd`, `diagnosing-bugs`, `codebase-design`)
+und die **Authoring-Methodik** — nicht aber seine anti-Prozess-Haltung als cape-Main-Flow.
 
 ---
 

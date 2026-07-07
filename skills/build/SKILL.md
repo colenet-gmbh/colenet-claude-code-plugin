@@ -1,63 +1,32 @@
 ---
 name: build
-description: Implements a signed-off feature's slices test-first (red-green-refactor), following capd's engineering rules and the project's architect guidelines, then moves the feature to approval. The build step of the Main Flow, after split; AFK. Lean and single-flow by design — NOT an orchestration engine. Use when a feature is sliced and ready to implement, or the user says "build", "umsetzen", "implementieren", "bauen", "implement this slice", or "TDD".
+description: Orchestrate building a whole feature — drive its issues to done, one /implement per issue in its own fresh context, spinning off new issues as they surface, then review the integrated result.
+disable-model-invocation: true
 ---
 
-Implement the feature's slices, one at a time, test-first. This is the **build step** of
-the Main Flow (after `split`), and it is **AFK**: work autonomously through the slices; the
-human returns only at PR/merge.
+# Build
 
-> **The bright line (see [`dod.md`](../../.claude/rules/dod.md)).** `build` stays a **lean,
-> single-flow executor**. It **NEVER** becomes an orchestration engine — no persistent
-> state machine, no resume, no worker pool, no multi-agent dispatch. That is the `we`
-> plugin's territory; when a team genuinely needs multi-worker orchestration, route there.
+Orchestrate the build of a **whole feature**: its reviewed spec (`work/02-development/F<id>_<slug>.md`) plus the written-out issues `/split` produced (`work/02-development/I<id>_<slug>.md`, `parent: F<id>`). You are the **orchestrator** — you drive the issues to done; you do **not** implement them yourself.
 
-## Set up
+Run `/build` in a **fresh context** (a new session, not the planning thread that produced the spec). Read the spec and the issue set first. Use the domain glossary and respect the ADRs in the area (via the `CONTEXT.md` map).
 
-Read the feature (in `docs/features/02-development/`), its slices, `CONTEXT.md`, and the
-architecture docs. Create the feature branch `feat/F<NNN>-<slug>`.
+## Drive the issues to done
 
-## Follow the rules
+Work the issues in **dependency order** — an issue's "Blocked by" must be done first. For each issue:
 
-- capd's engineering rules are binding: [`references/engineering-rules.md`](references/engineering-rules.md).
-- Load the project's architect directives if present: `agent-guidelines/architect.md`
-  (they layer on top of the generic rules).
+- Dispatch it to **`/implement` in its own fresh context** (a sub-agent), handing it the one written-out issue plus the parent feature spec — never your live orchestration thread. `/implement` runs `/tdd` and loops `/review-implementation` until clean, then commits. When it's clean, move the issue file to `work/04-done/`.
+- When a completed issue **surfaces work that wasn't planned**, split it off **dynamically**: write the new issue out (same shape as `/split`'s), slot it into the dependency order, and drive it too. This dynamic spin-off is what makes the orchestrator more than a fixed batch.
 
-## Red → green → refactor, one behavior at a time
+Independent, unblocked issues may run concurrently — but only where they don't touch the same code; otherwise drive them one at a time.
 
-For each slice, for each behavior:
+**Never change an existing acceptance criterion or test without asking the user.** This binds every dispatched sub-agent too.
 
-1. **RED** — write **one** test against the **public interface only**. The expected value
-   comes from an **independent source** (a worked example or known-good literal), never
-   recomputed from the code. The test reads like a spec.
-2. **GREEN** — write the **minimal** code to pass it. Nothing speculative.
-3. Run the test and type-checking. **Never refactor while red.**
+## Review the integrated result
 
-Once a slice's tests are green, **refactor**: extract duplication (functions over ~20 lines
-are a smell), deepen modules, run tests after each step. Check the slice off in the feature
-file. Commit per slice.
+Per-issue review already happened inside each `/implement`. Once all issues are done, review the **integrated feature** as a whole: run `/review-implementation` over the full feature diff — it covers Standards and Spec (does the integrated result match the feature spec?). **Loop until clean**, dispatching any fixes as issues.
 
-## Quality gate (blocking)
+(Open: whether the feature-level review should become its own thing, distinct from the per-issue review. For now it is the same skill at feature scope.)
 
-Before a slice counts as done: format, lint (no warnings), the full test suite, and the
-build all pass; new code meets the coverage bar (default ≥ 80% for business logic).
+## Close out
 
-## Finish
-
-When all slices are green and the gates pass, `git mv` the feature to
-`docs/features/03-approval/` (status → `approval`) and report what was built. **Human in
-the loop** for PR/merge and the final **approval**; on approval it moves to `04-done/`.
-
-## Rules
-
-- **ALWAYS** test the public interface; one test → one implementation step.
-- **NEVER** write tautological tests, slice horizontally, or add speculative features.
-- **NEVER** modify existing passing tests to make new code fit — ask first.
-
-## Attribution
-
-Synthesis by colenet (all MIT): the TDD discipline of **`tdd`** and **`implement`** from
-[`mattpocock/skills`](https://github.com/mattpocock/skills) (Matt Pocock), and the
-engineering rules + preamble-injection role review generalized from Michael Spanier's
-coding harness. capd deliberately omits its orchestration-engine parts. See
-[`ATTRIBUTION.md`](../../ATTRIBUTION.md).
+Run the project's quality gate — build, lint, full test suite (the exact commands live in the project's `CLAUDE.md`). When the gate is green **and** the integrated review is clean, move the feature file to **`work/03-approval/`** and present it to the user for sign-off — summarise what was built, the issues completed, and anything new that surfaced. The human moving it to **`work/04-done/`** (or approving) is what makes the feature truly done; you stop at `03-approval`.

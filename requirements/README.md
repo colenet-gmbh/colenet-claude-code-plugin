@@ -1,12 +1,12 @@
-# capd-Synthese — Feature-Steckbriefe der Quell-Harnesses
+# cape-Synthese — Feature-Steckbriefe der Quell-Harnesses
 
-Brainstorming-Material für das **Colenet Claude Code Plugin (capd)**. Ziel: das eine Dach-Plugin als kuratierte Kombination der besten Praktiken aus drei Quell-Harnesses — und aus capds eigener, schon reifer Hülle.
+Brainstorming-Material für das **Colenet Claude Code Plugin (cape)**. Ziel: das eine Dach-Plugin als kuratierte Kombination der besten Praktiken aus drei Quell-Harnesses — und aus capes eigener, schon reifer Hülle.
 
 ## Gewählte Richtung
 
-capd wird das **eine Dach**, aber **kuratiert**:
+cape wird das **eine Dach**, aber **kuratiert**:
 
-- **Fundament (bleibt capd):** Plugin-Hülle, CI/Version-Zwang, Attribution, DoD-Guardian, Statusline.
+- **Fundament (bleibt cape):** Plugin-Hülle, CI/Version-Zwang, Attribution, DoD-Guardian, Statusline.
 - **Von Matt Pocock (der „Klebstoff"):** Skill-Authoring-Methodik (`writing-great-skills` + `GLOSSARY`), Invocation-Achse, Bucket-Struktur, `.out-of-scope/`-Governance + generische Engineering-Disziplin-Skills.
 - **Von Michael Spanier (die Engineering-Substanz):** 3-Schicht-Guardrails (Hook→Git→CI), Orchestrator-mit-Präambel + Rollen-Muster, Spec-als-wandernde-Datei, Memory→deterministisches Tooling.
 - **Von Fabian (gezielt, Auswahl offen):** Höhenstufen-Prozess-Rahmen + durable Gedächtnis-Schicht als klare Kandidaten; Orchestrierungs-Engine & Council als bewusste Ja/Nein-Entscheidungen.
@@ -19,7 +19,7 @@ capd wird das **eine Dach**, aber **kuratiert**:
 | [`02-mattpocock-skills.md`](./02-mattpocock-skills.md) | Matt Pocock — `skills` | Skill-Methodik (der „Klebstoff") + Engineering-Disziplin |
 | [`03-spanier-harness.md`](./03-spanier-harness.md) | Michael Spanier — Coding-Harness | Engineering-Substanz in echter Codebase + Guardrails |
 
-**Legende (einheitlich):** ✅ generisch & hoher Hebel → klarer Kandidat · 🔶 wertvoll, aber bedingt (überlappt/anzupassen/schwer) · ⛔ nicht sinnvoll für capd.
+**Legende (einheitlich):** ✅ generisch & hoher Hebel → klarer Kandidat · 🔶 wertvoll, aber bedingt (überlappt/anzupassen/schwer) · ⛔ nicht sinnvoll für cape.
 
 ## Achse 2 — Workflows & Philosophien (*wie* man arbeitet und *warum*)
 
@@ -29,11 +29,11 @@ capd wird das **eine Dach**, aber **kuratiert**:
 
 Kernerkenntnis: Jedes Harness organisiert Arbeit entlang einer **anderen Hauptachse** —
 Fabian nach *Höhe*, Pocock nach *Zustand* (Issue-Lifecycle), Spanier nach *Rolle*. Nur **eine**
-kann der Main Flow von capd werden; die Wahl folgt aus der Zielgruppe.
+kann der Main Flow von cape werden; die Wahl folgt aus der Zielgruppe.
 
 ## Querschnitt: Konvergenz & Überlappung
 
-Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die robusten Bausteine, und zugleich die Stellen, wo capd *eine* Quelle wählen muss statt zu doppeln:
+Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die robusten Bausteine, und zugleich die Stellen, wo cape *eine* Quelle wählen muss statt zu doppeln:
 
 | Primitiv | Fabian | Pocock | Spanier |
 |---|---|---|---|
@@ -48,18 +48,18 @@ Mehrere Primitive wurden **unabhängig mehrfach erfunden** — das markiert die 
 ## Nächster Schritt
 
 > **Stand:** Die erste, schlanke v1-Richtung ist entschieden und in
-> [`05-richtung-capd-v1.md`](./05-richtung-capd-v1.md) festgehalten (Ergebnis Prompt 1):
-> capd v1 = ein geführter Produktentwicklungs-Workflow (`brainstorm` → `grill-with-docs` →
+> [`05-richtung-cape-v1.md`](./05-richtung-cape-v1.md) festgehalten (Ergebnis Prompt 1):
+> cape v1 = ein geführter Produktentwicklungs-Workflow (`brainstorm` → `grill-with-docs` →
 > `feature` → `split` → `build`) + eine Utility-Klasse (`grill-me`), colenet-eigen, ohne
 > `we` zu duplizieren. Der Workflow ist gebaut (v0.5.0); Fit/Gap & Strategie stehen in
 > [`06-fit-gap-strategie.md`](./06-fit-gap-strategie.md). Die Punkte unten bleiben als
 > *mittelfristiger* Rahmen bestehen.
 
-1. **Zielgruppe festlegen** — wer ist capd für (Berater/PO, Engineers, beide)? Daraus folgt
+1. **Zielgruppe festlegen** — wer ist cape für (Berater/PO, Engineers, beide)? Daraus folgt
    die **Main-Flow-Achse** (Höhe / Zustand / Rolle; siehe `04`, Abschnitt „Wo es aus einem
    Guss schwer wird", Entscheidung A).
 2. **Feature-Picks** aus den 🔶-Zeilen festlegen (v. a. Fabian-Cluster A/D/F + die Quelle je
    Doppelung).
-3. Daraus eine konkrete capd-Struktur ableiten (Ordnerbaum + Skill-Liste + Konventionen),
+3. Daraus eine konkrete cape-Struktur ableiten (Ordnerbaum + Skill-Liste + Konventionen),
    inkl. der gesetzten Konvergenzen (Markdown-Wahrheit, Mensch-im-Loop, explizite Eskalation,
    Grilling-Einstieg, Authoring-Standard aus Pocock-Theorie + Spanier-Praxis).
