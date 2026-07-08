@@ -95,7 +95,5 @@ at where the durable facts live. The domain vocabulary lives in the arc42 glossa
 
 ## 4. Done
 
-Summarise: board created, issue tracker recorded, `CONTEXT.md` + glossary in place —
-noting which were already present and left untouched. Then remind the user to **review the
-git diff and commit it**, so the scaffolding is pinned in the repo. The skills load from
-the installed plugin as `cape:<name>` — no vendoring step.
+Summarize what you actually did: e.g. board created, issue tracker recorded, `CONTEXT.md` + glossary in place —
+noting which were already present and left untouched. Then offer to commit the changes.
