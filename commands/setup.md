@@ -1,13 +1,12 @@
 ---
-description: Set up cape in this repository — scaffold the docs the skills expect (work board, issue tracker, CONTEXT.md, arc42 glossary). Run once per repo. The skills themselves load from the installed plugin as cape:<name>; no vendoring.
+description: Set up cape in this repository — scaffold the docs the skills expect. Run once per repo.
 allowed-tools: Bash, Read, Write, Edit, Glob
 ---
 
-Set this repository up for cape. The skills load directly from the installed plugin (as
-`cape:<name>`) — nothing to vendor. This command **scaffolds** the durable docs the
-workflow skills read and write. Every step is **find-or-create** — never overwrite what
-already exists, so this is safe to re-run and safe in a repo that already has some of these
-docs.
+Set this repository up for cape. The skills load directly from the installed plugin as
+`cape:<name>`. This command **scaffolds** the durable docs the workflow skills read and
+write. Every step is **find-or-create** — never overwrite what already exists, so this is
+safe to re-run and safe in a repo that already has some of these docs.
 
 ## 1. Scaffold the work board
 

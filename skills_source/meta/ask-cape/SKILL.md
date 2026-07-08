@@ -67,7 +67,7 @@ Off the main flow entirely.
 
 ## Precondition
 
-- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the arc42 glossary. The skills themselves load from the installed cape plugin; nothing is vendored.
+- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the arc42 glossary.
 
 ---
 

@@ -34,9 +34,8 @@ attribution, and the release/versioning workflow.
 
 ## Dogfooding cape while you develop it
 
-The skills load from the plugin as `cape:<name>` — this repo does **not** vendor a copy of
-them. To use cape's own skills while working in this checkout, launch Claude Code with the
-local plugin dir:
+The skills load from the plugin as `cape:<name>`. To use cape's own skills while working in
+this checkout, launch Claude Code with the local plugin dir:
 
 ```bash
 claude --plugin-dir /path/to/colenet-claude-code-plugin

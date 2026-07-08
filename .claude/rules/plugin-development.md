@@ -63,9 +63,7 @@ CI enforces the bump on pull requests that touch **plugin-shipping files**
 (`skills_source/`, `commands/`, `scripts/`, `.claude-plugin/`, `statusline/`,
 `settings.json`): the `validate` check fails if `plugin.json` `version` is not greater
 than on the base branch. PRs that only change working material (`requirements/`),
-contributor docs, or CI do not require a bump. (`scripts/` is in the list from when it held
-the vendoring script; it now holds only `validate-plugin.sh`, which is CI-only — keeping it
-gated is harmless.) Direct pushes to `main` bypass this gate
+contributor docs, or CI do not require a bump. Direct pushes to `main` bypass this gate
 (admins only) — use them only for changes that should not bump.
 
 ## Do not

@@ -23,8 +23,8 @@ ATTRIBUTION.md                           # third-party sources & licenses
 
 Skills load **directly from the installed plugin**, namespaced as `cape:<name>`. The
 manifest's `skills` array declares the bucket paths (`./skills_source/engineering/`, etc.);
-Claude Code scans each **one level deep** for `<name>/SKILL.md`. There is no vendoring:
-`/cape:setup` only scaffolds docs, and updates reach users via `/plugin update`.
+Claude Code scans each **one level deep** for `<name>/SKILL.md`. `/cape:setup` only
+scaffolds docs, and updates reach users via `/plugin update`.
 
 The directory is `skills_source/`, not `skills/`, because the skills sit **two** levels
 below it (`<bucket>/<name>/`) and Claude Code's default `skills/` scan only goes one level
