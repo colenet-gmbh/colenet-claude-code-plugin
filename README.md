@@ -47,7 +47,7 @@ shared vocabulary. The full catalogue (each callable as `/<skill>` once vendored
 | `grilling` | The shared interview engine the grill skills build on. |
 | `prototype` | Build a throwaway prototype to answer a design question. |
 | `handoff` | Compact the current conversation into a handoff document to continue in a fresh session. |
-| `triage` | Sort raw incoming bug reports and requests into agent-ready briefs on the backlog. |
+| `triage` | Sort raw incoming bug reports and requests into agent-ready briefs, moved along the work board as they're worked up. |
 
 ### Meta — about cape itself
 

@@ -12,6 +12,10 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   a single slice joins at `/implement`, a feature-sized item via grilling → `/feature` →
   `/split` → `/build`. Removes the imprecise wording that implied a triaged item could go
   straight to `/build`.
+- `triage` now moves a worked-up item along the board: when it produces a result — a
+  `ready-for-agent` or `ready-for-human` brief — the file moves `01-backlog` →
+  `02-development`, matching the board-as-energy model. Items still under consideration
+  (`needs-triage`, `needs-info`) stay in the backlog; `wontfix` is unchanged.
 
 ## [0.7.2] - 2026-07-07
 

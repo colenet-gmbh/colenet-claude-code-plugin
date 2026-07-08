@@ -11,8 +11,9 @@ through a small state machine until each is either an **agent-ready brief** or c
 Triage is only for items **you didn't create**; issues that `/split` produced are already
 agent-ready, so don't triage them.
 
-Items live as files in `docs/work/01-backlog/`. State is a **frontmatter line** on the
-file — no external tracker, no labels:
+Raw incoming items arrive as files in `docs/work/01-backlog/`; once triage works one up
+into a result, that file moves on (see "Apply the outcome"). State is a **frontmatter line**
+on the file — no external tracker, no labels:
 
 ```md
 ---
@@ -54,6 +55,9 @@ Scan `docs/work/01-backlog/`, present oldest first, with a one-line summary each
 
 Show counts; let the user pick.
 
+For "what's ready for agents to pick up?", scan `docs/work/02-development/` instead —
+that's where worked-up `ready-for-agent` / `ready-for-human` briefs now live.
+
 ## Triage one item
 
 1. **Gather context.** Read the whole file and any prior triage notes (don't re-ask
@@ -70,11 +74,16 @@ Show counts; let the user pick.
 4. **Grill if needed.** If the request needs fleshing out, run `/grilling` together with
    `/architect` domain modelling — sharpen it one question at a time, updating the glossary
    and ADRs inline as decisions land.
-5. **Apply the outcome**, updating the file's frontmatter `status`:
-   - `ready-for-agent` — write an agent brief into the file ([agent-brief.md](agent-brief.md)).
+5. **Apply the outcome**, updating the file's frontmatter `status` and moving the file to
+   the column that matches how much energy it now carries (see `docs/work/CLAUDE.md`):
+   - `ready-for-agent` — write an agent brief into the file ([agent-brief.md](agent-brief.md)),
+     then **move it to `docs/work/02-development/`**: a worked-up brief is a result, not a
+     backlog item still under consideration.
    - `ready-for-human` — same brief, plus why it can't be delegated (judgment calls,
-     external access, design decisions, manual testing).
-   - `needs-info` — record triage notes in the file (template below).
+     external access, design decisions, manual testing); it is equally a worked-up result,
+     so **move it to `docs/work/02-development/`** too.
+   - `needs-triage`, `needs-info` — leave the file in `docs/work/01-backlog/`; nothing is
+     carried forward yet. For `needs-info`, record triage notes in the file (template below).
    - `wontfix` — move the file to `docs/work/04-done/`. If **already implemented**, point
      to where it lives (do **not** write to out-of-scope). If a **rejected enhancement**,
      record it in `docs/work/out-of-scope/` ([out-of-scope.md](out-of-scope.md)); a
@@ -84,7 +93,8 @@ Show counts; let the user pick.
 
 If the user says "move it to ready-for-agent", trust them: confirm what you'll do, set the
 `status`, skip grilling. If moving to `ready-for-agent` without a grilling session, ask
-whether they want an agent brief written.
+whether they want an agent brief written. Either way, apply the outcome as in step 5 —
+including moving the file to `docs/work/02-development/`.
 
 ## Needs-info notes template
 
