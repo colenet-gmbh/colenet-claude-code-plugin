@@ -45,7 +45,7 @@ A starting situation that generates work, then merges onto the main flow.
   - a **single issue** is already a written-out brief → it joins at **`/implement`**;
   - a **feature-sized** item joins earlier: the grilling session `/triage` already runs to sharpen it *is* the main flow starting, so it continues through **`/feature`** → **`/split`** → **`/build`**.
 
-  Triage is only for issues **you didn't create** — bug reports, incoming feature requests, anything that arrives raw. Issues that `/split` produced are already agent-ready, so **don't triage them**.
+  Triage is **backlog management** for anything **not yet worked up** — bug reports, incoming feature requests, your own captured ideas, whatever their origin. Only what's already agent-ready is out: issues `/split` produced need no triage, so **don't re-triage them**.
 
 ## Codebase health
 

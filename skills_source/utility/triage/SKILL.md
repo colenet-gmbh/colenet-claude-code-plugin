@@ -1,18 +1,20 @@
 ---
 name: triage
-description: Move raw incoming items through triage roles into agent-ready briefs. Use when the user wants to sort bug reports or feature requests they didn't create, mentions "triage", "triagieren", "Backlog sichten", "sort the backlog", or points at an untriaged item in docs/work/01-backlog.
+description: Backlog management — move not-yet-worked-up items through triage roles into agent-ready briefs, whatever their origin. Use when the user wants to sort or work up a backlog of bug reports, feature requests, or ideas, mentions "triage", "triagieren", "Backlog sichten", "Backlog pflegen", "sort the backlog", "manage the backlog", or points at an untriaged item in docs/work/01-backlog.
 disable-model-invocation: true
 ---
 
 # Triage
 
-Move raw incoming items — bug reports, feature requests, anything that arrived unsorted —
-through a small state machine until each is either an **agent-ready brief** or closed.
-Triage is only for items **you didn't create**; issues that `/split` produced are already
-agent-ready, so don't triage them.
+Triage is **backlog management**: move items that aren't worked up yet — bug reports,
+feature requests, ideas, anything sitting raw in the backlog — through a small state
+machine until each is either an **agent-ready brief** or closed. Where an item came from
+doesn't matter; only that it hasn't been sorted yet. The one thing to skip is what is
+**already agent-ready** — e.g. issues `/split` produced — since there's nothing left to
+triage.
 
-Raw incoming items arrive as files in `docs/work/01-backlog/`; once triage works one up
-into a result, that file moves on (see "Apply the outcome"). State is a **frontmatter line**
+New items arrive as files in `docs/work/01-backlog/`; once triage works one up into a
+result, that file moves on (see "Apply the outcome"). State is a **frontmatter line**
 on the file — no external tracker, no labels:
 
 ```md
