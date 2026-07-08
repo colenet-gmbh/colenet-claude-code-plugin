@@ -34,14 +34,27 @@ see [`attribution.md`](attribution.md).
 - **MAJOR** — breaking change (renamed/removed skill, changed invocation, new required
   dependency).
 
+## One bump per release, not per PR
+
+The `version` marks a **release** — a set of changes shipped to users together — not an
+individual PR or commit. Bump it **once** when a release cycle opens; every PR that lands
+in that cycle shares the same version. Don't count up again per PR.
+
+Mechanically this already holds: the CI `validate` gate only requires `plugin.json`
+`version` to be **greater than on `main`**, not freshly incremented on each PR. So once a
+release cycle has bumped ahead of `main`, further PRs in the same cycle pass the gate
+without touching `version`. Increment again only when you cut the **next** release. Keep
+`CHANGELOG.md` grouped the same way — one heading per release, all its changes beneath it.
+
 ## Release checklist
 
-Run this for every change that should reach users:
+Run this once per release that should reach users:
 
-1. Bump `version` in `.claude-plugin/plugin.json` (SemVer). **This is the only place.**
+1. Bump `version` in `.claude-plugin/plugin.json` (SemVer) — once for the release, not per
+   PR. **This is the only place.**
 2. Open a PR and merge it (`main` is protected). Users with auto-update enabled receive
    the new version at their next startup; others via `/plugin update`.
-3. (Optional) Record the change in `CHANGELOG.md`.
+3. (Optional) Record the change in `CHANGELOG.md`, under the release's heading.
 
 The marketplace repo only needs a push when its **listing** changes (description,
 keywords) — not for a version bump.
