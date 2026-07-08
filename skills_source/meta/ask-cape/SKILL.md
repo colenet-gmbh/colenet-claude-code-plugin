@@ -41,15 +41,17 @@ The limit on the planning window is the **[smart zone](https://www.aihero.dev/ai
 
 A starting situation that generates work, then merges onto the main flow.
 
-- **Bugs and requests piling up** → **`/triage`**. It moves issues through triage roles and produces agent-ready issues, which `/implement` (or `/build`) later picks up.
+- **Bugs and requests piling up** → **`/triage`**. It moves each raw item through triage roles into an agent-ready brief. Where that brief rejoins the main flow depends on its size:
+  - a **single issue** is already a written-out brief → it joins at **`/implement`**;
+  - a **feature-sized** item joins earlier: the grilling session `/triage` already runs to sharpen it *is* the main flow starting, so it continues through **`/feature`** → **`/split`** → **`/build`**.
 
-  Triage is only for issues **you didn't create** — bug reports, incoming feature requests, anything that arrives raw. Issues that `/split` produced are already agent-ready, so **don't triage them**.
+  Triage is **backlog management** for anything **not yet worked up** — bug reports, incoming feature requests, your own captured ideas, whatever their origin. Only what's already agent-ready is out: issues `/split` produced need no triage, so **don't re-triage them**.
 
 ## Codebase health
 
 Not feature work — upkeep.
 
-- **`/architect`** — a deep skill for shaping structure, activated in context (and by hand). Its **deepening** aspect you run in a spare moment to keep the codebase good for agents to operate in: it surfaces opportunities, and picking one _generates an idea_ you take into the main flow at `/grill-with-docs`. Its other aspects — codebase/software design, domain modelling, arc42 docs — fire _inside_ other skills as the work needs them (e.g. `/tdd` reaching for design vocabulary, domain modelling during `/grill-with-docs`), several at once.
+- **`/architect`** — a deep skill for shaping structure, activated in context (and by hand). Its **deepening** aspect you run in a spare moment to keep the codebase good for agents to operate in: it surfaces opportunities, and picking one *generates an idea* you take into the main flow at `/grill-with-docs`. Its other aspects — codebase/software design, domain modelling, arc42 docs — fire *inside* other skills as the work needs them (e.g. `/tdd` reaching for design vocabulary, domain modelling during `/grill-with-docs`), several at once.
 
 ## Crossing sessions
 
