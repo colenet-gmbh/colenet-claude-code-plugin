@@ -21,6 +21,10 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Docs and rules (`CLAUDE.md`, `skill-authoring.md`, `plugin-development.md`, README,
   `CONTRIBUTING.md`, glossary) rewritten to describe native plugin loading instead of
   vendoring.
+- Board item IDs now use one shared counter across `F` and `I` (prefix marks type only),
+  with the next free number kept in `docs/work/.next-id`. `/cape:setup` creates that file
+  when scaffolding the work board. Documented in `docs/work/CLAUDE.md` and the issue-tracker
+  doc.
 
 ### Removed
 

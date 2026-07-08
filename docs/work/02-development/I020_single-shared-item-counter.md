@@ -37,17 +37,17 @@ handed out in capture order, a higher number always means "captured later".
 
 - [x] Renumber every board item into one sequence by birth timestamp (F015 kept its number;
   everything else shifted). `id:` frontmatter updated to match each new filename.
-- [ ] Create `docs/work/.next-id` in this repo, seeded to the next free number.
-- [ ] State the rule in `docs/work/CLAUDE.md` (Numbering section) and
+- [x] Create `docs/work/.next-id` in this repo, seeded to the next free number (21).
+- [x] State the rule in `docs/work/CLAUDE.md` (Numbering section) and
   `docs/agents/issue-tracker.md`: prefix = type; number = the shared counter read from
   `docs/work/.next-id`, which is incremented on every new item.
-- [ ] Update `/cape:setup` (`commands/setup.md` / `scripts/sync-harness.sh`) to create
-  `docs/work/.next-id` seeded to `1` when it scaffolds the work board. This touches
-  plugin-shipping files → bump `plugin.json` version per the release rules.
+- [x] Update `/cape:setup` (`commands/setup.md`) to create `docs/work/.next-id` seeded to
+  `1` when it scaffolds the work board, and to document the numbering rule in the embedded
+  issue-tracker doc. (Vendoring / `scripts/sync-harness.sh` was retired by I019, so setup
+  now lives entirely in `commands/setup.md`.) No version bump needed: the release cycle is
+  already at `0.7.5` (> `main`'s `0.7.2`).
 
 ## Notes
 
-- The `docs/work/CLAUDE.md:42` numbering example (`F006`/`F007`) still reads correctly: under
-  chronological numbering "captured after" is now guaranteed by the number order.
 - Trade-off accepted: a file is a second thing to keep in sync, and a stale `.next-id` could
   reintroduce collisions. Mitigate by always reading-then-incrementing the file on capture.

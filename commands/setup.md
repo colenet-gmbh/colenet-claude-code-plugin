@@ -19,9 +19,11 @@ cd "${CLAUDE_PROJECT_DIR:-$PWD}"
 for c in 01-backlog 02-development 03-approval 04-done out-of-scope; do
   mkdir -p "docs/work/$c" && [ -e "docs/work/$c/.gitkeep" ] || touch "docs/work/$c/.gitkeep"
 done
+[ -e docs/work/.next-id ] || printf '1\n' > docs/work/.next-id
 ```
 
-(`out-of-scope/` holds `/triage`'s records of rejected enhancement requests.)
+(`out-of-scope/` holds `/triage`'s records of rejected enhancement requests. `.next-id`
+holds the single shared item counter — see step 2.)
 
 ## 2. Record the issue tracker
 
@@ -41,6 +43,13 @@ Columns are folders; the folder a file sits in **is** its state:
 
 - Features: `docs/work/<column>/F<NNN>_<slug>.md`
 - Issues: `docs/work/<column>/I<NNN>_<slug>.md`, carrying `parent: F<NNN>` and `blocked-by`.
+
+## Numbering
+
+`F`/`I` is a **type marker only**; the number is a **single shared counter** across both,
+so no two items ever share a number. The next free number lives in `docs/work/.next-id`.
+To create an item: read that file, use the number, write back the incremented value. The
+number is capture order, not priority.
 
 ## "Publish to the issue tracker"
 

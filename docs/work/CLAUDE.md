@@ -31,5 +31,8 @@ work it is:
 
 ## Numbering and priority
 
+- The number is a **single shared counter** across `F` and `I` — the prefix marks type
+  only, so no two items ever share a number. The next free number lives in
+  `docs/work/.next-id`: read it, use it, write back the incremented value on each new item.
 - The number is capture order, not priority.
 - We may use the priority field in frontmatter to assign some rough priority like (now, next, later or a release in the roadmap).

@@ -11,6 +11,13 @@ Columns are folders; the folder a file sits in **is** its state:
 - Features: `docs/work/<column>/F<NNN>_<slug>.md`
 - Issues: `docs/work/<column>/I<NNN>_<slug>.md`, carrying `parent: F<NNN>` and `blocked-by`.
 
+## Numbering
+
+`F`/`I` is a **type marker only**; the number is a **single shared counter** across both,
+so no two items ever share a number. The next free number lives in `docs/work/.next-id`.
+To create an item: read that file, use the number, write back the incremented value. The
+number is capture order, not priority.
+
 ## "Publish to the issue tracker"
 
 Write a new `F…`/`I…` file into the right column. Create nothing external.
