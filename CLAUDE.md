@@ -56,10 +56,17 @@ path forward. The user can override, but you must raise the flag.
 
 ## Language
 
-All repository files are in **English** — code, docs, skills, commit messages. Chat with
-the user in **German**. Skill `description`s may carry German trigger phrases alongside the
-English ones; those are triggers, not prose. (`requirements/` is currently German by
-deliberate exception, pending translation.)
+Everything **shipped in the plugin** is in **English** — skills, commands, scripts, the
+manifest, and any docs that go out with it — plus code and commit messages. Chat with the
+user in **German**. Skill `description`s may carry German trigger phrases alongside the
+English ones; those are triggers, not prose.
+
+**Internal working material may be German.** It is not shipped and every framework
+developer speaks German, so forcing English there only adds a needless language barrier
+and slows us down. This covers the `docs/work/` board (features, issues, triage notes) and
+`requirements/`. The rule stays English the moment content graduates into something shipped
+(a skill, a shipped doc) or into the durable architecture record (`docs/arc42/`, ADRs, the
+glossary), so those stay consistent and readable for everyone.
 
 ## Change workflow
 
