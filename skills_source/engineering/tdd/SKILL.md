@@ -52,7 +52,7 @@ Before writing any code:
 
 - [ ] Confirm with user what interface changes are needed
 - [ ] Confirm with user which behaviors to test (prioritize)
-- [ ] Identify opportunities for deep modules (small interface, deep implementation) — activate `/architect` (its codebase-design aspect) for the vocabulary and the testability checks
+- [ ] Identify opportunities for deep modules (small interface, deep implementation) — activate `cape:architect` (its codebase-design aspect) for the vocabulary and the testability checks
 - [ ] List the behaviors to test (not implementation steps)
 - [ ] Get user approval on the plan
 

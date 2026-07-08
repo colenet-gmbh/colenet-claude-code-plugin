@@ -10,6 +10,8 @@ Turn what you've already worked out — the grilled conversation and your codeba
 
 Use the project's domain glossary throughout, and respect the ADRs in the area you're touching (locate both via the `CONTEXT.md` map).
 
+The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run `/cape:setup` if they're missing.
+
 ## 1. Sketch the test seams
 
 Sketch the seams at which the feature will be tested. Prefer existing seams to new ones, and the highest seam possible; the fewer across the codebase, the better — ideally one. If new seams are needed, propose them at the highest point. Check with the user that the seams match their expectations.
@@ -71,7 +73,7 @@ Anything else worth recording.
 
 ## 3. Review until clean
 
-Run `/review-feature` on the spec. It reviews across parallel axes (Architecture first, then Security, more as they're added), each in its own sub-agent.
+Run `cape:review-feature` on the spec. It reviews across parallel axes (Architecture first, then Security, more as they're added), each in its own sub-agent.
 
 **Loop until clean:** integrate every finding into the spec (HIGH/CRITICAL directly), then re-review — repeat until a review comes back clean. A finding is settled when it is fixed or consciously dismissed.
 
@@ -79,4 +81,4 @@ Run `/review-feature` on the spec. It reviews across parallel axes (Architecture
 
 ## 4. Sign-off
 
-Present the finished spec, top part first, and get the user's sign-off on the key decisions before it goes to `/split`.
+Present the finished spec, top part first, and get the user's sign-off on the key decisions before it goes to `cape:split`.

@@ -1,15 +1,15 @@
 # Rule: Authoring skills
 
-Applies to every `skills_source/<name>/SKILL.md` in this plugin. Skills ship under
-`skills_source/` (never `skills/`) so the plugin loader doesn't register them as active
-plugin skills; `/cape:setup` vendors them into a repo's `.claude/skills/` as flat project
-skills. See [`../../CLAUDE.md`](../../CLAUDE.md).
+Applies to every `skills_source/<bucket>/<name>/SKILL.md` in this plugin. Skills load
+directly from the installed plugin, namespaced as `cape:<name>`; the manifest's `skills`
+array declares the bucket paths and Claude Code scans each one level deep. See
+[`../../CLAUDE.md`](../../CLAUDE.md).
 
 ## Structure
 
 - One directory per skill, kebab-case, inside a bucket subfolder:
-  `skills_source/<bucket>/<skill-name>/SKILL.md`. The flat `<skill-name>` must be **unique
-  across buckets** — `/cape:setup` flattens the bucket away when vendoring.
+  `skills_source/<bucket>/<skill-name>/SKILL.md`. It loads as `cape:<skill-name>`, so the
+  `<skill-name>` must be **unique across buckets** — the bucket is not part of the name.
 - Frontmatter with exactly `name` and `description`. `name` = directory name.
 - Keep the body lean (guideline: < ~2,000 words). Push extensive details, examples, or
   scripts into `references/`, `examples/`, or `scripts/` via progressive disclosure and
@@ -18,10 +18,10 @@ skills. See [`../../CLAUDE.md`](../../CLAUDE.md).
 ## Categories
 
 - Skills **are** grouped into bucket subfolders in the source — a bucket, then the skill
-  dir, then `SKILL.md`. This works only because `/cape:setup` flattens the bucket away on
-  vendor; the vendored `.claude/skills/` stays one level deep, the only layout Claude Code
-  discovers. Never nest a skill *below* its own dir. There is no `category` frontmatter
-  field.
+  dir, then `SKILL.md`. Each bucket is a path in the manifest's `skills` array, which Claude
+  Code scans one level deep for `<name>/SKILL.md`. **A new bucket must be added to the
+  `skills` array in `plugin.json` or its skills won't load.** Never nest a skill *below* its
+  own dir (the scan is only one level deep). There is no `category` frontmatter field.
 - Mirror the buckets in the **README**: group the skill table under one heading per bucket.
   Name the buckets only where it helps a reader — the README grouping, and `ask-cape` where
   it aids explanation. Don't bake the list into scripts, validation, or these rules.

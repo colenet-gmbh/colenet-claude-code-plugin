@@ -2,9 +2,9 @@
 .claude/*.local.md
 .claude/settings.local.json
 
-# Vendored cape harness skills — this repo IS the source (skills_source/), so the
-# /cape:setup snapshot in .claude/skills/ would only duplicate it. Ignored for now;
-# whether to pin it is still open (see CONTEXT.md / team decision).
+# cape no longer vendors skills — they load from the plugin as cape:<name>. This repo IS
+# the source (skills_source/), so a stray .claude/skills/ snapshot from an old cape would
+# only duplicate it. Ignored so such a snapshot never gets committed here.
 .claude/skills/
 
 # OS / editor noise

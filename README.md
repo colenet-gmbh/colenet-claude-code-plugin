@@ -6,9 +6,9 @@ This plugin bundles the best practices of the consultants and engineers at
 [colenet](https://www.colenet.de) — a specialist in agile consulting, software
 development, and agile training — as reusable Claude Code skills.
 
-Install it, then run **`/cape:setup`** once per repo — that vendors the skills into the
-repo so they're callable with flat, un-prefixed names (`/ask-cape`, `/feature`, …). See
-[Installation](#installation).
+Install it, then run **`/cape:setup`** once per repo — that scaffolds the docs the skills
+expect. The skills load straight from the installed plugin as `cape:<name>`
+(`/cape:ask-cape`, `/cape:feature`, …). See [Installation](#installation).
 
 ## Status
 
@@ -18,11 +18,12 @@ stack and declares no runtime plugin dependencies.
 
 ## Skills
 
-The plugin exposes exactly one command directly, **`/cape:setup`**; it vendors the skills
-below into the repo's `.claude/skills/` as flat project skills (see [Installation](#installation)).
-After setup, run [`/ask-cape`](skills_source/meta/ask-cape/SKILL.md) — it explains how the flow
-fits together and routes you to the right skill. See [`GLOSSARY.md`](GLOSSARY.md) for the
-shared vocabulary. The full catalogue (each callable as `/<skill>` once vendored):
+The plugin exposes one command directly, **`/cape:setup`** (it scaffolds the docs the
+skills expect — see [Installation](#installation)); every skill below loads from the plugin
+as `cape:<name>`. After setup, run [`/cape:ask-cape`](skills_source/meta/ask-cape/SKILL.md) —
+it explains how the flow fits together and routes you to the right skill. See
+[`GLOSSARY.md`](GLOSSARY.md) for the shared vocabulary. The full catalogue (each callable as
+`/cape:<skill>`):
 
 ### Engineering — the guided flow and its disciplines
 
@@ -54,7 +55,6 @@ shared vocabulary. The full catalogue (each callable as `/<skill>` once vendored
 | Skill | Purpose |
 |-------|---------|
 | `ask-cape` | Router — finds the right cape skill for your situation and explains the flow. |
-| `update-cape` | Re-sync the vendored skills to the newest installed plugin version, as a reviewable git diff. |
 | `writing-great-skills` | Reference for writing and editing skills well — the authoring standard for cape skills. |
 
 > Ported and synthesized skills credit their sources in
@@ -69,17 +69,16 @@ Via the colenet marketplace (recommended):
 /plugin install cape@colenet
 ```
 
-Then, in each repo where you want to use cape, vendor the skills in:
+Then, in each repo where you want to use cape, scaffold the docs the skills expect:
 
 ```text
 /cape:setup
 ```
 
-This copies the harness skills into the repo's `.claude/skills/` and commits them there,
-so they resolve as flat project skills — the repo pins exactly which harness is active,
-independent of what you have installed globally. Skills are deliberately **not** loaded as
-active plugin skills (they ship under `skills_source/`), so there is never a namespaced
-duplicate in the menu or the model's context.
+This creates the `docs/work/` board, the issue tracker record, and `CONTEXT.md` with the
+arc42 glossary — commit them so the scaffolding is pinned in the repo. The skills
+themselves load straight from the installed plugin as `cape:<name>`; nothing is copied into
+the repo.
 
 Locally for development/testing:
 
@@ -89,14 +88,14 @@ claude --plugin-dir /path/to/colenet-claude-code-plugin
 
 ## Usage
 
-After `/cape:setup`, invoke a skill by its flat name:
+Invoke a skill by its namespaced name:
 
 ```text
-/ask-cape
+/cape:ask-cape
 ```
 
 …or trigger it casually — each skill's trigger phrases fire on natural wording in German
-or English. Pull a newer plugin version into the repo later with `/update-cape`.
+or English. Pull a newer version with `/plugin update`.
 
 ## Status line
 

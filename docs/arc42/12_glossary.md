@@ -22,9 +22,10 @@ Everything that shapes how the agent works. It falls into three layers, and any
 improvement belongs in the layer that owns it:
 
 1. **Claude Code** itself — not ours to change.
-2. **cape** — colenet's shared, curated baseline of skills, vendored into a repo. A
-   vendored cape skill must **not** be quietly rebuilt locally (that forks it and loses
-   updates); a genuinely general improvement is **graduated back into cape** instead.
+2. **cape** — colenet's shared, curated baseline of skills, loaded from the installed
+   plugin as `cape:<name>`. A cape skill must **not** be quietly rebuilt locally (that forks
+   it and loses updates); a genuinely general improvement is **graduated back into cape**
+   instead.
 3. **Project-specific working instructions** — the local layer: per-repo `CLAUDE.md`, the
    `docs/work/` board conventions, project directives. Where an improvement is
    project-specific, it belongs here.

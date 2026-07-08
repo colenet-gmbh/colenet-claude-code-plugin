@@ -21,7 +21,7 @@ OWASP findings, access control, data protection / privacy, data minimisation.
 
 ### 1. Locate the spec
 
-Use the spec path the caller passed, or the feature file in `docs/work/02-development/` (`F<id>_<slug>.md`). Confirm it resolves and is non-empty before spawning sub-agents.
+Use the spec path the caller passed, or the feature file in `docs/work/02-development/` (`F<id>_<slug>.md`). Confirm it resolves and is non-empty before spawning sub-agents. The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run `/cape:setup` if they're missing.
 
 ### 2. Spawn one sub-agent per active axis, in parallel
 

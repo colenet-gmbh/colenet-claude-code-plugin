@@ -10,6 +10,8 @@ Break a reviewed feature spec (`/feature`'s output, the file `docs/work/02-devel
 
 Use the domain glossary for titles and descriptions, and respect the ADRs in the area you're touching (locate both via the `CONTEXT.md` map).
 
+The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run `/cape:setup` if they're missing.
+
 ## 1. Read the spec
 
 Read the two-part spec — work from it and the conversation. If the user passes a spec path, use that.
