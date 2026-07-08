@@ -9,6 +9,8 @@ description: Shape structure well and keep it clean — software/codebase design
 
 Activate an aspect by reading its file when the work calls for it.
 
+The `CONTEXT.md` map (glossary, ADRs, arc42 pointers) should have been provided to you — run `/cape:setup` if it's missing.
+
 ## Aspects
 
 - **Codebase design** — [codebase-design.md](codebase-design.md). The software design vocabulary and principles (deep modules at its core, room for more). Reach for it whenever you design or judge a module's interface, decide where a seam goes, or make code more testable. Techniques: deepening a cluster ([deep-modules-deepening.md](deep-modules-deepening.md)); exploring alternative interfaces ([design-it-twice.md](design-it-twice.md)).

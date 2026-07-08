@@ -75,12 +75,12 @@ def parse_frontmatter(text):
             fm[k.strip()] = v.strip()
     return None  # no closing delimiter
 
-# Skills ship under skills_source/ (NOT skills/) so the plugin loader never
-# registers them as active plugin skills; /cape:setup vendors them into a repo's
-# .claude/skills/ as flat project skills. See CLAUDE.md. Skills are grouped into
-# buckets, but the bucket names aren't fixed here: a skill is any dir with a SKILL.md
-# at any depth, and /cape:setup flattens it to .claude/skills/<name>/. The flat <name>
-# must therefore be unique across buckets.
+# Skills live under skills_source/, grouped into bucket subfolders. Each bucket is a
+# path in the manifest's skills[] array, which Claude Code scans one level deep for
+# <name>/SKILL.md; the skill loads as cape:<name>. See CLAUDE.md. The bucket names
+# aren't fixed here: a skill is any dir with a SKILL.md, and the name is that dir's
+# basename. That basename must be unique across buckets (the bucket is not part of the
+# name).
 skills_dir = root / "skills_source"
 skill_files = list(skills_dir.rglob("SKILL.md")) if skills_dir.exists() else []
 if not skill_files:
@@ -97,7 +97,7 @@ for sf in skill_files:
     bucket = "/".join(rel.parts[:-2]) or "(root)"
     if dir_name in seen_names:
         err(f"{sf.relative_to(root)}: duplicate skill name '{dir_name}' (also under "
-            f"'{seen_names[dir_name]}') — flat vendoring needs unique names")
+            f"'{seen_names[dir_name]}') — skill names must be unique across buckets")
     seen_names[dir_name] = bucket
     fm = parse_frontmatter(sf.read_text(encoding="utf-8"))
     if fm is None:

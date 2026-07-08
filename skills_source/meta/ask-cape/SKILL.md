@@ -67,4 +67,8 @@ Off the main flow entirely.
 
 ## Precondition
 
-- **`/cape:setup`** — run once per repo before your first engineering flow: it vendors the skills (so they're callable flat as `/skill-name`) and scaffolds the docs they assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the arc42 glossary.
+- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the arc42 glossary.
+
+---
+
+The skill names above are shown in short form for reading. In the plugin they are namespaced as `cape:<name>` (e.g. `cape:feature`, `cape:implement`) — that is how one skill invokes another and how you call them by hand. Pull a newer cape into a repo with `/plugin update`.

@@ -1,7 +1,7 @@
 ---
-id: F003
+id: F002
 type: feature
-priority: v1
+priority: next
 ---
 
 # cape contains the value-adding parts of the dropped superpowers/brainstorming skill

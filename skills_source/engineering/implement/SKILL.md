@@ -5,11 +5,13 @@ description: Build a single, written-out issue in a fresh context — TDD at the
 
 Implement the one issue you've been handed — the file `docs/work/02-development/I<id>_<slug>.md`. Your input is that **written-out issue plus its spec** (the parent feature `F<id>` if it has one; otherwise the issue is its own spec) — never a live planning thread. You always start in a **fresh context**.
 
-Use `/tdd` where possible, at pre-agreed seams.
+The `docs/work/` board should have been provided to you — run `/cape:setup` if it's missing.
+
+Use `cape:tdd` where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite before you review.
 
-Once done, review the work with `/review-implementation`. It reports feedback across parallel axes (Standards, Spec, and more as they're added).
+Once done, review the work with `cape:review-implementation`. It reports feedback across parallel axes (Standards, Spec, and more as they're added).
 
 **Loop until clean:** address every finding, then re-review — repeat until a review comes back clean. A finding is settled when it is either fixed or consciously dismissed (a judgement call you've decided against); only hard violations and accepted findings gate the loop. The issue is done only when the review returns nothing left to act on.
 

@@ -7,10 +7,10 @@ attribution, and the release/versioning workflow.
 ## Add a new skill
 
 1. Create a directory: `skills_source/<bucket>/<skill-name>/SKILL.md` (kebab-case; pick an
-   existing bucket subfolder — the README lists them). Skills live under `skills_source/`,
-   not `skills/`, so the plugin doesn't load them as active namespaced skills — `/cape:setup`
-   flattens the bucket away and vendors them into a repo's `.claude/skills/`. Keep the flat
-   skill name unique across buckets.
+   existing bucket subfolder — the README lists them). Each bucket is a path in the
+   manifest's `skills` array, scanned one level deep; the skill loads as `cape:<skill-name>`.
+   Keep the skill name unique across buckets. **Adding a new bucket?** List it in the
+   `skills` array in `plugin.json` or its skills won't load.
 2. Follow [`.claude/rules/skill-authoring.md`](.claude/rules/skill-authoring.md): lean
    body, third-person description with clear trigger phrases (German **and** English),
    progressive disclosure for details.
@@ -31,6 +31,18 @@ attribution, and the release/versioning workflow.
   its skills (`plugin-structure`, `skill-development`, `agent-development`,
   `hook-development`, `mcp-integration`, `plugin-settings`) encode Claude Code's own
   plugin conventions.
+
+## Dogfooding cape while you develop it
+
+The skills load from the plugin as `cape:<name>`. To use cape's own skills while working in
+this checkout, launch Claude Code with the local plugin dir:
+
+```bash
+claude --plugin-dir /path/to/colenet-claude-code-plugin
+```
+
+Editing a `skills_source/<bucket>/<name>/SKILL.md` and restarting with that flag is the full
+loop — no sync step.
 
 ## Activate the pre-commit hook (required, once per clone)
 
@@ -96,9 +108,9 @@ gate), problems are caught at both ends.
 colenet-claude-code-plugin/
 ├── .claude-plugin/
 │   └── plugin.json          # Plugin manifest
-├── skills_source/          # The skills — NOT loaded as active plugin skills
-│   └── <bucket>/            #   grouped into bucket subfolders; flattened away and
-│       └── <name>/SKILL.md   #   vendored into a repo's .claude/skills/ by /cape:setup
+├── skills_source/          # The skills — loaded from the plugin via manifest skills[]
+│   └── <bucket>/            #   grouped into bucket subfolders; each bucket is a
+│       └── <name>/SKILL.md   #   skills[] path scanned one level deep → cape:<name>
 ├── commands/
 │   └── setup.md            # The one active plugin command: /cape:setup
 ├── .claude/
@@ -111,7 +123,6 @@ colenet-claude-code-plugin/
 │   └── statusline.js        # Bundled status line (subagentStatusLine)
 ├── settings.json            # Plugin default settings (wires the status line)
 ├── scripts/
-│   ├── sync-harness.sh      # Self-locating vendoring script (/cape:setup, /update-cape)
 │   └── validate-plugin.sh   # Structural validation (used in CI)
 ├── .github/workflows/
 │   └── validate.yml         # Runs pre-commit checks on push & PR

@@ -10,11 +10,13 @@ Orchestrate the build of a **whole feature**: its reviewed spec (`docs/work/02-d
 
 Run `/build` in a **fresh context** (a new session, not the planning thread that produced the spec). Read the spec and the issue set first. Use the domain glossary and respect the ADRs in the area (via the `CONTEXT.md` map).
 
+The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run `/cape:setup` if they're missing.
+
 ## Drive the issues to done
 
 Work the issues in **dependency order** — an issue's "Blocked by" must be done first. For each issue:
 
-- Dispatch it to **`/implement` in its own fresh context** (a sub-agent), handing it the one written-out issue plus the parent feature spec — never your live orchestration thread. `/implement` runs `/tdd` and loops `/review-implementation` until clean, then commits. When it's clean, move the issue file to `docs/work/04-done/`.
+- Dispatch it to **`cape:implement` in its own fresh context** (a sub-agent), handing it the one written-out issue plus the parent feature spec — never your live orchestration thread. `/implement` runs `/tdd` and loops `/review-implementation` until clean, then commits. When it's clean, move the issue file to `docs/work/04-done/`.
 - When a completed issue **surfaces work that wasn't planned**, split it off **dynamically**: write the new issue out (same shape as `/split`'s), slot it into the dependency order, and drive it too. This dynamic spin-off is what makes the orchestrator more than a fixed batch.
 
 Independent, unblocked issues may run concurrently — but only where they don't touch the same code; otherwise drive them one at a time.
@@ -23,7 +25,7 @@ Independent, unblocked issues may run concurrently — but only where they don't
 
 ## Review the integrated result
 
-Per-issue review already happened inside each `/implement`. Once all issues are done, review the **integrated feature** as a whole: run `/review-implementation` over the full feature diff — it covers Standards and Spec (does the integrated result match the feature spec?). **Loop until clean**, dispatching any fixes as issues.
+Per-issue review already happened inside each `/implement`. Once all issues are done, review the **integrated feature** as a whole: run `cape:review-implementation` over the full feature diff — it covers Standards and Spec (does the integrated result match the feature spec?). **Loop until clean**, dispatching any fixes as issues.
 
 (Open: whether the feature-level review should become its own thing, distinct from the per-issue review. For now it is the same skill at feature scope.)
 

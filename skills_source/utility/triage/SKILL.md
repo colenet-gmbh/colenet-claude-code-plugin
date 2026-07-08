@@ -13,6 +13,9 @@ doesn't matter; only that it hasn't been sorted yet. The one thing to skip is wh
 **already agent-ready** — e.g. issues `/split` produced — since there's nothing left to
 triage.
 
+The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run
+`/cape:setup` if they're missing.
+
 New items arrive as files in `docs/work/01-backlog/`; once triage works one up into a
 result, that file moves on (see "Apply the outcome"). State is a **frontmatter line**
 on the file — no external tracker, no labels:
@@ -73,8 +76,8 @@ that's where worked-up `ready-for-agent` / `ready-for-human` briefs now live.
 3. **Verify the claim.** Before grilling, check the claim holds: reproduce a bug from the
    reporter's steps. Report confirmed (with the code path), failed, or insufficient detail
    (a strong `needs-info` signal). A confirmed verification makes a far stronger brief.
-4. **Grill if needed.** If the request needs fleshing out, run `/grilling` together with
-   `/architect` domain modelling — sharpen it one question at a time, updating the glossary
+4. **Grill if needed.** If the request needs fleshing out, run `cape:grilling` together with
+   `cape:architect` domain modelling — sharpen it one question at a time, updating the glossary
    and ADRs inline as decisions land.
 5. **Apply the outcome**, updating the file's frontmatter `status` and moving the file to
    the column that matches how much energy it now carries (see `docs/work/CLAUDE.md`):

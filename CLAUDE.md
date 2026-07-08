@@ -11,29 +11,27 @@ grown deliberately — quality over breadth. Distributed via the separate
 ## Layout
 
 ```text
-.claude-plugin/plugin.json              # manifest — name, version (the single source of truth)
-skills_source/<bucket>/<name>/SKILL.md   # the skills, grouped into buckets; deliberately NOT skills/
+.claude-plugin/plugin.json              # manifest — name, version, the skills[] bucket paths
+skills_source/<bucket>/<name>/SKILL.md   # the skills, grouped into buckets; loaded via skills[]
 commands/setup.md                        # the only active plugin command: /cape:setup
-scripts/sync-harness.sh                  # self-locating vendoring script setup/update-cape run
+scripts/validate-plugin.sh               # structural validation (pre-commit + CI)
 statusline/ , settings.json              # the bundled subagent status line
 .claude/rules/                           # the binding rules below
 requirements/                            # working/planning material — NOT shipped to users
 ATTRIBUTION.md                           # third-party sources & licenses
 ```
 
-Skills live under `skills_source/`, **not** `skills/`, on purpose: the plugin loader only
-registers `skills/` (default) or manifest-declared paths, so an unreferenced
-`skills_source/` ships without being loaded as active, namespaced plugin skills. They come
-alive only when `/cape:setup` vendors them into a repo's `.claude/skills/` as flat
-`/skill-name` project skills — no namespaced duplicate in the menu or the model's context.
-Don't add a `skills` field to the manifest and don't create a `skills/` dir, or the skills
-load twice.
+Skills load **directly from the installed plugin**, namespaced as `cape:<name>`. The
+manifest's `skills` array declares the bucket paths (`./skills_source/engineering/`, etc.);
+Claude Code scans each **one level deep** for `<name>/SKILL.md`. `/cape:setup` only
+scaffolds docs, and updates reach users via `/plugin update`.
 
-Inside `skills_source/`, skills are grouped into **buckets** (subfolders — see the README
-grouping for the current set). The bucket is organisational only; `/cape:setup`
-**flattens** it away on vendor (`skills_source/<bucket>/<name>/` → `.claude/skills/<name>/`),
-because Claude Code discovers skills exactly one level deep. So flat skill names must be
-**unique across buckets**.
+The directory is `skills_source/`, not `skills/`, because the skills sit **two** levels
+below it (`<bucket>/<name>/`) and Claude Code's default `skills/` scan only goes one level
+deep — it would never find bucketed skills. Declaring each bucket in `skills` is what makes
+the one-level-deep scan land on the skills. Consequence: **a new bucket must be added to
+the `skills` array or its skills won't load.** Skill names must still be **unique across
+buckets** — a skill is `cape:<name>` regardless of which bucket it lives in.
 
 ## Binding rules
 
@@ -58,10 +56,17 @@ path forward. The user can override, but you must raise the flag.
 
 ## Language
 
-All repository files are in **English** — code, docs, skills, commit messages. Chat with
-the user in **German**. Skill `description`s may carry German trigger phrases alongside the
-English ones; those are triggers, not prose. (`requirements/` is currently German by
-deliberate exception, pending translation.)
+Everything **shipped in the plugin** is in **English** — skills, commands, scripts, the
+manifest, and any docs that go out with it — plus code and commit messages. Chat with the
+user in **German**. Skill `description`s may carry German trigger phrases alongside the
+English ones; those are triggers, not prose.
+
+**Internal working material may be German.** It is not shipped and every framework
+developer speaks German, so forcing English there only adds a needless language barrier
+and slows us down. This covers the `docs/work/` board (features, issues, triage notes) and
+`requirements/`. The rule stays English the moment content graduates into something shipped
+(a skill, a shipped doc) or into the durable architecture record (`docs/arc42/`, ADRs, the
+glossary), so those stay consistent and readable for everyone.
 
 ## Change workflow
 

@@ -4,6 +4,33 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.5] - 2026-07-08
+
+### Changed
+
+- **Skills now load natively from the installed plugin** as `cape:<name>`, retiring the
+  per-repo vendoring. The manifest declares each bucket in a `skills` array; Claude Code
+  scans it one level deep. `/cape:setup` keeps only its doc-scaffolding role, and updates
+  reach users via `/plugin update`.
+- Inter-skill dispatches now use the explicit `cape:<name>` form (e.g. `implement` →
+  `cape:tdd` / `cape:review-implementation`, `build` → `cape:implement`, `feature` →
+  `cape:review-feature` / `cape:split`) so a skill resolves the skill it calls; plain
+  explanatory mentions keep the short form.
+- Workflow skills that depend on the scaffolding now carry a dry `run /cape:setup` hint for
+  when `CONTEXT.md` or the `docs/work/` board is missing.
+- Docs and rules (`CLAUDE.md`, `skill-authoring.md`, `plugin-development.md`, README,
+  `CONTRIBUTING.md`, glossary) rewritten to describe native plugin loading instead of
+  vendoring.
+- Board item IDs now use one shared counter across `F` and `I` (prefix marks type only),
+  with the next free number kept in `docs/work/.next-id`. `/cape:setup` creates that file
+  when scaffolding the work board. Documented in `docs/work/CLAUDE.md` and the issue-tracker
+  doc.
+
+### Removed
+
+- `scripts/sync-harness.sh` and the `update-cape` skill — both belonged to the vendoring
+  mechanism, which no longer exists.
+
 ## [0.7.4] - 2026-07-08
 
 ### Changed
