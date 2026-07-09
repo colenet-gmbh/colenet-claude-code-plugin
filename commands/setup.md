@@ -27,7 +27,9 @@ holds the single shared item counter — see step 2.)
 ## 2. Record the issue tracker
 
 The tracker choice will be configurable later; for now cape assumes **local files** on the
-board above. If `docs/agents/issue-tracker.md` does **not** exist, create it with:
+board above. `docs/agent-conventions/` holds project-specific directives that cape skills
+look up — this is the first file in it. If `docs/agent-conventions/tracker.md` does **not**
+exist, create it with:
 
 ```md
 # Issue tracker: local files

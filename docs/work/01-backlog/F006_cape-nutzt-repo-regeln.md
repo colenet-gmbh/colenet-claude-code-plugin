@@ -13,3 +13,17 @@ in diesem Feature geht es darum, die zweite und die dritte Ebene zusammenzubring
 ## Outcome
 
 Skills wie /implement, /architect/, /tdd, /grill-with-docs nutzen und entwickeln (direkt oder indirekt) aktiv spezifische Regeln, Guidelines, Ways-of-Working und Konventionen weiter, die spezifisch für das aktuelle Projekt sind.
+
+## Mechanismus (entschieden)
+
+Der Ort dafür ist `docs/agent-conventions/`: ein fester, von `/cape:setup` angelegter
+Ordner mit benannten Dateien (z. B. `tracker.md`), auf die Level-2-Skills verweisen, um eine
+projektspezifische Festlegung abzurufen. Ablauf-Konventionen (z. B. wie ein Build-Review
+abläuft) und inhaltliche Standards (z. B. Commit-Message-Stil) landen im selben Ordner —
+derselbe Abrufmechanismus, kein separates Verzeichnis pro Art.
+
+## Open points
+
+- **File-Tracker-Templates.** `/cape:setup` muss den File-Tracker mit vollständigen
+  Templates ausstatten — nicht nur `tracker.md`, sondern auch Vorlagen für Issue, Feature
+  und Agent-Brief. Vorbedingung für F014 (GitHub-Issues-Backend).
