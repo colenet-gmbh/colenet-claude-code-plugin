@@ -4,7 +4,7 @@ type: feature
 priority: v1
 ---
 
-# cape integrates repository-specific rules, technology choices, etc
+# cape integriert projektspezifische Regeln, Technologie-Entscheidungen usw
 
 ein Harness besteht aus drei Schichten oberhalb des LLMs. Die unterste Schicht ist der Vendor Specific Harness, das ist zum Beispiel sowas wie Claude Code Darauf aufsetzend gibt es einen projektübergreifenden Harness, eine Kombination von Skills, Hooks, Guidelines etc. die einen generischen Rahmen definieren, wie man als Engineer mit Codebasis arbeitet das ist so was wie cape und dann gibt es eine dritte darauf aufsetzende spezifische ebene in, der festgelegt wird, wie in diesem Projekt gearbeitet wird, wie werden Commit-Messages geschrieben, welche Technologie wird verwendet, welcher Bug-Tracker wird wie gemacht, wann wird released, etc.
 
@@ -12,4 +12,4 @@ in diesem Feature geht es darum, die zweite und die dritte Ebene zusammenzubring
 
 ## Outcome
 
-Skills like /implement, /architect/, /tdd, /grill-with-docs actively use and evolve (directly or indirectly) specific rules, guidelines, ways-of-working, conventions that are specific to the current project.
+Skills wie /implement, /architect/, /tdd, /grill-with-docs nutzen und entwickeln (direkt oder indirekt) aktiv spezifische Regeln, Guidelines, Ways-of-Working und Konventionen weiter, die spezifisch für das aktuelle Projekt sind.
