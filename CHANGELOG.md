@@ -4,7 +4,28 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.6] - 2026-07-09
+
+### Changed
+
+- **The bundled status line is withdrawn entirely, pending a future (V2) feature that ships
+  it with proper testing.** `/cape:setup` no longer offers to install it as the main (bottom)
+  status bar, and the automatic **subagent** status line (previously wired via a plugin
+  `settings.json`) is gone too — `settings.json` is removed. The `statusline/statusline.js`
+  script stays in the repo but is now dormant; both return once the V2 feature tests them.
+
+- **README rewritten** around a problem-first opener (the failure modes of handing work to
+  an agent), a named vision (align up front, then hand off), and the main flow as the
+  recognizable route. A "How cape works" section replaces the three-layer harness taxonomy,
+  and the status-line section is dropped along with the withdrawn feature.
+
 ## [0.7.5] - 2026-07-08
+
+### Added
+
+- **`/cape:setup` offers to install the bundled status line** as the user's main status
+  line — it copies the script into `~/.claude/` and merges the `statusLine` setting into
+  `~/.claude/settings.json`, asking first and preserving other settings.
 
 ### Changed
 

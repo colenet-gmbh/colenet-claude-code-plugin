@@ -15,7 +15,7 @@ grown deliberately — quality over breadth. Distributed via the separate
 skills_source/<bucket>/<name>/SKILL.md   # the skills, grouped into buckets; loaded via skills[]
 commands/setup.md                        # the only active plugin command: /cape:setup
 scripts/validate-plugin.sh               # structural validation (pre-commit + CI)
-statusline/ , settings.json              # the bundled subagent status line
+statusline/                              # bundled status line script — dormant, not wired (see F021)
 .claude/rules/                           # the binding rules below
 requirements/                            # working/planning material — NOT shipped to users
 ATTRIBUTION.md                           # third-party sources & licenses
