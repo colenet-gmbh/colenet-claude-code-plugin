@@ -48,6 +48,10 @@ Guarding this line is part of the veto below.
 5. **Documented & released** — README skill table + `CHANGELOG.md` updated, version
    bumped per [`plugin-development.md`](plugin-development.md).
 6. **Green** — `pre-commit run --all-files` / the `validate` CI check passes.
+7. **End-to-end installable** — cape still installs from the marketplace and is usable
+   through the real path: skills load as `cape:<name>` and `/cape:setup` scaffolds a fresh
+   repo correctly. A change must not break this. (Graduated from F003; automated smoke test
+   tracked in I027.)
 
 ## Guardrail — the veto questions
 
