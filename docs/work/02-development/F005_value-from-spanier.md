@@ -1,7 +1,7 @@
 ---
 id: F005
 type: feature
-priority: v1
+priority: v2
 ---
 
 # cape contains the value-adding ideas from Michael Spanier's coding harness
