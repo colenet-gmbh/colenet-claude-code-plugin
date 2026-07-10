@@ -34,5 +34,5 @@ Important arc42 chapters may split their content into sub-files named `NN-x_topi
 
 - Create a chapter file only when you have something to write for it — don't scaffold empty chapters.
 - Keep entries terse. arc42 is a reference, not a narrative.
-- Seed the cheap early chapters during the interview (`/grill-with-docs`): §1 Goals, §2 Constraints, §12 Glossary.
+- Seed the cheap early chapters during the interview: §1 Goals, §2 Constraints, §12 Glossary.
 - When a decision is hard to reverse, surprising without context, and the result of a real trade-off, record it as an ADR under `docs/adr/` (see [adr-format.md](adr-format.md)); chapter 9 references the directory.

@@ -1,12 +1,12 @@
 ---
 name: split
-description: Break a reviewed feature spec into independently-grabbable, vertically-sliced issues — each a tracer bullet with its own test seam and system under test, written out for /implement or /build to pick up.
+description: Break a reviewed feature spec into independently-grabbable, vertically-sliced issues — each a tracer bullet with its own test seam and system under test, written out for /implement to pick up.
 disable-model-invocation: true
 ---
 
 # Split
 
-Break a reviewed feature spec (`/feature`'s output, the file `docs/work/02-development/F<id>_<slug>.md`) into **independently-grabbable issues**, each a **tracer-bullet vertical slice**.
+Break a reviewed feature spec (the file `docs/work/02-development/F<id>_<slug>.md`) into **independently-grabbable issues**, each a **tracer-bullet vertical slice**.
 
 Use the domain glossary for titles and descriptions, and respect the ADRs in the area you're touching (locate both via the `CONTEXT.md` map).
 
@@ -34,7 +34,7 @@ Present the breakdown as a numbered list. Per slice show **Title**, **Blocked by
 
 ## 5. Write the issues out
 
-Write each approved slice out as its own issue file `docs/work/02-development/I<id>_<slug>.md`, using the template below, in **dependency order** (blockers first) so "Blocked by" can reference real ids. Each issue carries `parent: F<id>` (the feature it came from) and `blocked-by: [I<id>, …]`. A written-out issue plus its parent feature spec is exactly `/implement`'s contract — so this is the input `/implement` (or `/build`) picks up.
+Write each approved slice out as its own issue file `docs/work/02-development/I<id>_<slug>.md`, using the template below, in **dependency order** (blockers first) so "Blocked by" can reference real ids. Each issue carries `parent: F<id>` (the feature it came from) and `blocked-by: [I<id>, …]`. A written-out issue plus its parent feature spec is exactly `/implement`'s contract — so this is the input `/implement` picks up.
 
 Publishing to an external issue tracker is deferred (roadmap A). For now the queue lives in the filesystem: issues wander through `docs/work/01-backlog → 02-development → 03-approval → 04-done`.
 

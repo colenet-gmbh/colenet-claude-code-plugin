@@ -17,4 +17,4 @@ Once done, review the work with `cape:review-implementation`. It reports feedbac
 
 Commit your work to the current branch.
 
-Then place the issue file: if `/build` dispatched you, leave placement to it; if you're building a **standalone** issue directly, move it to `docs/work/03-approval/` for the user's sign-off (they move it to `docs/work/04-done/`).
+Then place the issue file: if an orchestrator dispatched you (building a whole feature), leave placement to it; if you're building a **standalone** issue directly, move it to `docs/work/03-approval/` for the user's sign-off (they move it to `docs/work/04-done/`).

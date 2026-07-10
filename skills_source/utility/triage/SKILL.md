@@ -10,7 +10,7 @@ Triage is **backlog management**: move items that aren't worked up yet — bug r
 feature requests, ideas, anything sitting raw in the backlog — through a small state
 machine until each is either an **agent-ready brief** or closed. Where an item came from
 doesn't matter; only that it hasn't been sorted yet. The one thing to skip is what is
-**already agent-ready** — e.g. issues `/split` produced — since there's nothing left to
+**already agent-ready** — e.g. issues already written out as vertical slices — since there's nothing left to
 triage.
 
 The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run
