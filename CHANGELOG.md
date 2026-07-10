@@ -4,6 +4,17 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.7.8] - 2026-07-10
+
+### Added
+
+- **`teach` skill** — turns the current directory into a stateful, multi-session teaching
+  workspace: a mission that grounds every lesson, curated trusted resources, learning
+  records (ADR-style), and beautiful self-contained HTML lessons built from reusable
+  components. Ported from Matt Pocock's `teach` (v1.1.0), with the frontmatter adapted to
+  cape conventions. Rationale: fast, continuous learning is a core challenge for teams
+  adopting AI-assisted work, so enablement belongs in cape (see `I029`).
+
 ## [0.7.6] - 2026-07-09
 
 ### Changed

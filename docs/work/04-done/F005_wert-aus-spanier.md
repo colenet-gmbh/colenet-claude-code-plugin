@@ -35,16 +35,9 @@ durchgegangen und entschieden. Ergebnisse:
   (Präambel-Injektion, Kanbanize-Wrapper, Directory-scoped Skills, `.ai/mcp.json`-Leerstelle,
   fehlende `.claude/commands`/`.claude/agents` als Designfrage ohne Lehrwert).
 
-Einziger noch offener Punkt: das Vertical-vs-Horizontal-Slicing unten — das war bewusst
-zurückgestellt, nicht vergessen.
-
-## Open points
-
-- **Vertikales vs. horizontales Slicing.** cape slict heute vertikal (`/split` +
-  `/implement` pro Tracer-Bullet-Issue); Spanier slict horizontal / nach Rolle zur Build-Zeit
-  (Datenmodell zuerst, dann Frontend) mit starken Ergebnissen. Sein `fullstack-orchestrator`
-  genau zu lesen speist die Entscheidung: eines wählen, beides über eine
-  Projekt-Config-Präferenz unterstützen oder Kriterien finden, wann welches gewinnt.
+Der letzte offene Punkt — Vertical-vs-Horizontal-Slicing — ist als eigenes Feature
+**F026** (Slicing-Strategien) abgespalten; das bereichsspezifische Level-3-Wissen dahinter
+als offener Punkt in **F006**. Damit bleibt aus F005 nichts mehr zu tun.
 
 ## Notes
 

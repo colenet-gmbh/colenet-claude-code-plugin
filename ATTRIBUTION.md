@@ -17,6 +17,8 @@ Skills ported from or inspired by Matt Pocock's repo (© 2026 Matt Pocock). MIT 
 - `architect` — codebase and domain design plus deepening, from `codebase-design`,
   `domain-modeling`, `improve-codebase-architecture`.
 - `prototype` — from `prototype`.
+- `teach` — from `teach` (v1.1.0); frontmatter adapted to cape conventions (German +
+  English trigger phrases), otherwise adopted as-is.
 - `handoff` — from Matt Pocock's `handoff` skill.
 - `writing-great-skills`
 - `ask-cape` — router pattern inspired by `ask-matt`.

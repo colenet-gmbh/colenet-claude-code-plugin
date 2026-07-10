@@ -27,3 +27,10 @@ derselbe Abrufmechanismus, kein separates Verzeichnis pro Art.
 - **File-Tracker-Templates.** `/cape:setup` muss den File-Tracker mit vollständigen
   Templates ausstatten — nicht nur `tracker.md`, sondern auch Vorlagen für Issue, Feature
   und Agent-Brief. Vorbedingung für F014 (GitHub-Issues-Backend).
+- **Bereichsgebundene Konventionen.** Level-3-Vorgaben gelten nicht immer projektweit,
+  sondern oft nur für einen Bereich: Frontend hat eigene Frameworks und Arbeitsweisen,
+  Backend andere. Genau dieses schichtspezifische Know-how ist der eigentliche Kern hinter
+  Spaniers Rollen-Agents (Frontend-/Backend-Dev). Klären, wie `docs/agent-conventions/`
+  bereichsgebundene Festlegungen fasst und wie ein Level-2-Skill die *richtigen* aufgreift,
+  je nachdem, welche Schicht er gerade anfasst. Verwandt mit F026 (Slicing) — dort geht es
+  um den Schnitt, hier um das bereichsspezifische Wissen.
