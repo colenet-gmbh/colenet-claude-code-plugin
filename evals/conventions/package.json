@@ -1,0 +1,11 @@
+{
+  "name": "cape-eval-conventions",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "F006 convention-consultation eval harness: drives cape:implement headless over a throwaway fixture and scores written files for canaries. Internal working material, not shipped with the plugin.",
+  "scripts": {
+    "test": "node --test",
+    "baseline": "node bin/run-baseline.js"
+  }
+}
