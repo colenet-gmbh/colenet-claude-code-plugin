@@ -16,6 +16,21 @@ a standing invariant (see [Definition of Done](#definition-of-done)).
 One independently-grabbable **vertical slice** of a feature's realization — a tracer
 bullet through all layers, with its own test seam. The unit `/implement` picks up.
 
+## Convention
+
+A rule for how work is done in this repo that a cape skill must respect to do its job
+well. A convention is in cape's scope **only** when honouring it improves the output
+quality of some skill — a rule no skill needs to work better is not cape's concern. Every
+convention cape cares about is either **local** or **central**:
+
+- **Local convention** — belongs to a place in the code and lives there, in that place's
+  nested `CLAUDE.md`. The place is usually a **tier** (a section of the stack with its own
+  tech and rules, e.g. frontend or backend). Examples: frontend styling, a tier's test
+  practice.
+- **Central convention** — belongs to no single place, so it lives centrally in
+  `docs/agent-conventions/`, reachable by a stable path. Examples: which issue tracker is
+  used, the release process, the review checklist.
+
 ## Harness (three layers)
 
 Everything that shapes how the agent works. It falls into three layers, and any
