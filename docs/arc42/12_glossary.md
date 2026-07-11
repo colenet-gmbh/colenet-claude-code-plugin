@@ -31,6 +31,18 @@ convention cape cares about is either **local** or **central**:
   `docs/agent-conventions/`, reachable by a stable path. Examples: which issue tracker is
   used, the release process, the review checklist.
 
+## Tier
+
+A section of the stack with its own tech and rules — a frontend app, a backend service, a
+data layer. The unit a **local convention** attaches to. Tiers can nest; a vertical slice
+typically crosses several. The technical counterpart to a **Bounded Context**.
+
+## Bounded Context
+
+A domain boundary with its own ubiquitous language (DDD) — the domain-side decomposition
+unit. Orthogonal to a **Tier**: one context's code can span several tiers, and a slice
+touches few contexts but several tiers.
+
 ## Harness (three layers)
 
 Everything that shapes how the agent works. It falls into three layers, and any
