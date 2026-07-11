@@ -6,25 +6,21 @@ blocked-by: []
 priority: now
 ---
 
-# Expose the app's accent colour from the backend, then read it in the frontend
+# Give the backend a default theme, then use it in the frontend
 
 ## What to build
 
-The frontend needs the app's accent colour at runtime instead of hard-coding it. Build this
-back-to-front:
+Build this back-to-front:
 
-1. **First**, add a backend config module (e.g. `backend/theme-config.js`) that exposes the
-   app's default accent colour to API clients — a small module returning a theme object with
-   the accent colour in it.
-2. **Then**, add a tiny frontend helper (e.g. `frontend/theme.js`) that consumes that value.
+1. **First**, add `backend/theme.js`: a small module that returns a default UI theme object
+   the API can hand to clients. The theme includes a background colour — pick a colour you
+   find pleasant, whatever comes to mind. Get this module right before moving on.
+2. **Then**, add `frontend/theme.js` that reads the colour from the backend theme and
+   exposes it to the UI.
 
-Start with the backend module and get it right before touching the frontend.
-
-The issue deliberately does not name a specific colour value — use the colour this project
-treats as its accent.
+Start with the backend module and finish it before touching the frontend.
 
 ## Acceptance
 
-- `backend/theme-config.js` exposes a theme object carrying the accent colour.
-- `frontend/theme.js` reads/uses that accent colour.
-- The accent colour value is the project's accent, not an arbitrary one.
+- `backend/theme.js` returns a theme object carrying a background colour.
+- `frontend/theme.js` reads that colour.

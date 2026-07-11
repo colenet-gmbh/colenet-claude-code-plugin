@@ -21,9 +21,14 @@ export const CONSTELLATIONS = ["frontend-only", "backend-only", "cross-tier"];
 
 // The verbatim canary tokens. These MUST match the tokens embedded in the tier CLAUDE.md
 // templates (guarded by fixture.test.js) — the tier convention is their single home.
+// Deliberately absurd values: no agent would ever produce "lilac pale-blue plaid" or this
+// id prefix spontaneously, so a verbatim hit can only mean the tier convention was in
+// context. The issues (see templates/issues/) invite invention ("pick a colour you find
+// nice") rather than pointing at a defined answer, so a baseline agent that lacks the
+// convention invents something ordinary and the canary is absent — the negative control.
 export const CANARIES = {
-  frontend: "CAPE_CANARY_FE_ACCENT_TEAL",
-  backend: "CAPE_CANARY_BE_ID_PREFIX",
+  frontend: "CAPE_CANARY_LILAC_PALEBLUE_PLAID",
+  backend: "CAPE_CANARY_QUOKKA_LEDGER_ID",
 };
 
 const BOARD_COLUMNS = ["01-backlog", "02-development", "03-approval", "04-done", "out-of-scope"];
@@ -64,9 +69,9 @@ export function scoringPlan(constellation) {
 }
 
 const ISSUE_SLUG = {
-  "frontend-only": "I001_cta-button",
+  "frontend-only": "I001_badge",
   "backend-only": "I001_create-user",
-  "cross-tier": "I001_expose-accent-colour",
+  "cross-tier": "I001_backend-theme",
 };
 
 /**

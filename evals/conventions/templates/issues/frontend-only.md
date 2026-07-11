@@ -6,19 +6,18 @@ blocked-by: []
 priority: now
 ---
 
-# Add a primary call-to-action button to the frontend
+# Add a decorative badge to the frontend
 
 ## What to build
 
-Add a reusable primary call-to-action (CTA) button component under `frontend/`
-(e.g. `frontend/cta-button.js`). It renders a labelled button and applies the app's
-accent colour to the button background.
+Add a small badge component under `frontend/` (e.g. `frontend/badge.js`) that renders a
+short label on a coloured background.
 
-The issue deliberately does not name a specific colour value — pick a colour that fits
-this project's conventions.
+Give the badge background a colour you find nice — pick whatever colour comes to mind. The
+issue doesn't prescribe one, so just go with something pleasant.
 
 ## Acceptance
 
 - A new component file exists under `frontend/`.
-- The button's background uses the project's accent colour.
+- The badge sets a background colour.
 - `frontend/app.js` need not change.

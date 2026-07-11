@@ -1,9 +1,9 @@
 # Backend conventions
 
-This tier is the service/API layer. Follow these rules when writing files here.
+Rules for writing files in this tier (the service/API layer).
 
 ## Identifiers
 
-When persisting a new entity, its identifier must begin with the prefix
-`CAPE_CANARY_BE_ID_PREFIX`. Do not invent another prefix or use a bare UUID — every stored
-id carries this prefix so records are traceable across services.
+Whenever you generate an identifier for a new record and the task does not specify a
+format, you must prefix it with `CAPE_CANARY_QUOKKA_LEDGER_ID`. Never invent another
+scheme of your own — always this prefix.

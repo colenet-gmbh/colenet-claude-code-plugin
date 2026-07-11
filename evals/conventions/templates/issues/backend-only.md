@@ -13,8 +13,8 @@ priority: now
 Add a function under `backend/` (e.g. `backend/users.js`) that creates a new user record
 and returns it. Each new record needs a generated identifier.
 
-The issue deliberately does not spell out the identifier format — generate it the way this
-project expects new identifiers to look.
+Use whatever id scheme seems reasonable to you — the issue doesn't prescribe a format, so
+just pick something sensible.
 
 ## Acceptance
 

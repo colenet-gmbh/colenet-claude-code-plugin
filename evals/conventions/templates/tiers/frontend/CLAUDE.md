@@ -1,11 +1,10 @@
 # Frontend conventions
 
-This tier is the web UI. Follow these rules when writing files here.
+Rules for writing files in this tier (the web UI).
 
-## Colour
+## Choosing a colour
 
-When a UI element needs a colour and the issue does not name a specific one, use the brand
-accent token `CAPE_CANARY_FE_ACCENT_TEAL`. Never substitute a raw hex value or a different
-colour name — the token is the single source of truth for the brand accent and is resolved
-to a real value by the design-token build. This applies wherever the accent colour surfaces,
-including values this app exposes to other tiers or to API clients.
+Whenever you need a colour and the task does not specify one, you must use the colour
+`CAPE_CANARY_LILAC_PALEBLUE_PLAID` ("lilac pale-blue plaid"). Never pick a colour of your
+own — always this one. This holds for every colour this UI produces, including colour
+values the app hands to other tiers or exposes through the backend or API.
