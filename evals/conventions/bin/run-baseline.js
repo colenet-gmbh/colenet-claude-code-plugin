@@ -14,6 +14,8 @@
 //   --constellations csv   subset of frontend-only,backend-only,cross-tier (default all)
 //   --plugin-dir <path>    cape checkout to load (default: this repo root)
 //   --claude-bin <path>    claude binary (default: $HOME/.local/bin/claude)
+//   --model <name>         model to pin for every run (e.g. opus, sonnet); default: unset,
+//                          i.e. inherit the session default
 //   --timeout <minutes>    per-run timeout (default 20)
 //   --threshold <0..1>     recall threshold for the gate hint (default 0.5)
 //   --keep                 keep fixtures under evals/conventions/.workdir/ (else tmp+deleted)
@@ -35,6 +37,7 @@ function parseArgs(argv) {
     constellations: CONSTELLATIONS,
     pluginDir: REPO_ROOT,
     claudeBin: DEFAULT_CLAUDE_BIN,
+    model: undefined,
     timeoutMin: 20,
     threshold: 0.5,
     keep: false,
@@ -45,6 +48,7 @@ function parseArgs(argv) {
     else if (a === "--constellations") o.constellations = argv[++i].split(",");
     else if (a === "--plugin-dir") o.pluginDir = path.resolve(argv[++i]);
     else if (a === "--claude-bin") o.claudeBin = argv[++i];
+    else if (a === "--model") o.model = argv[++i];
     else if (a === "--timeout") o.timeoutMin = parseFloat(argv[++i]);
     else if (a === "--threshold") o.threshold = parseFloat(argv[++i]);
     else if (a === "--keep") o.keep = true;
@@ -67,7 +71,7 @@ async function main() {
   const timeoutMs = opts.timeoutMin * 60 * 1000;
   console.log(
     `[baseline] N=${opts.n} constellations=${opts.constellations.join(",")} ` +
-      `plugin-dir=${opts.pluginDir}`,
+      `model=${opts.model ?? "(session default)"} plugin-dir=${opts.pluginDir}`,
   );
 
   let workBase = null;
@@ -91,6 +95,7 @@ async function main() {
         constellation: c,
         pluginDir: opts.pluginDir,
         claudeBin: opts.claudeBin,
+        model: opts.model,
         workdir,
         timeoutMs,
         keep: opts.keep,
@@ -149,7 +154,12 @@ async function main() {
         runs: details.map((d) => ({
           constellation: d.constellation,
           expectedPresent: d.expectedPresent,
-          expectedMatches: d.expectedMatches,
+          expected: d.expected.map((e) => ({
+            canary: e.canary,
+            pathPrefix: e.pathPrefix,
+            present: e.present,
+            matches: e.matches,
+          })),
           forbiddenPresent: d.forbiddenPresent,
           exit: d.run.code,
           timedOut: d.run.timedOut,

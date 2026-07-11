@@ -90,10 +90,13 @@ at where the durable facts live. The domain vocabulary lives in the arc42 glossa
    - **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
    - **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model §8, decisions index §9).
    - **Decisions** — [docs/adr/](docs/adr/) — the ADRs, one file each.
+   - **Conventions** — [docs/agent-conventions/](docs/agent-conventions/) — Central conventions are defined in files in docs/agent-conventions.
    ```
 
-   If `CONTEXT.md` already exists, leave it; just make sure it points at the glossary, and
-   add the pointer if it's missing.
+   If `CONTEXT.md` already exists, leave it; just make sure it points at the glossary and at
+   `docs/agent-conventions/`, and add either pointer if it's missing. The conventions pointer
+   must carry the sentence `Central conventions are defined in files in docs/agent-conventions.`
+   so a skill can find them by a stable path.
 
 ## 4. Done
 

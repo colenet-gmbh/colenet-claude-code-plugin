@@ -73,15 +73,23 @@ test("each constellation lands exactly one issue in the development column", asy
   }
 });
 
-test("cross-tier expects the FRONTEND canary inside a BACKEND file (the discriminator)", () => {
+test("cross-tier expects BOTH canaries inside a BACKEND file (the discriminator)", () => {
   const plan = scoringPlan("cross-tier");
-  assert.equal(plan.expected.canary, CANARIES.frontend);
-  assert.equal(plan.expected.pathPrefix, "backend/");
+  // Both tiers' conventions must show up in the backend-first artifact: the frontend colour
+  // and the backend id prefix. Each is expected at the backend/ prefix.
+  const prefixByCanary = Object.fromEntries(
+    plan.expected.map((e) => [e.canary, e.pathPrefix]),
+  );
+  assert.equal(plan.expected.length, 2);
+  assert.equal(prefixByCanary[CANARIES.frontend], "backend/");
+  assert.equal(prefixByCanary[CANARIES.backend], "backend/");
 });
 
 test("frontend-only forbids the backend canary (precision / no tier leakage)", () => {
   const plan = scoringPlan("frontend-only");
-  assert.equal(plan.expected.canary, CANARIES.frontend);
+  assert.equal(plan.expected.length, 1);
+  assert.equal(plan.expected[0].canary, CANARIES.frontend);
+  assert.equal(plan.expected[0].pathPrefix, "frontend/");
   assert.equal(plan.forbidden.canary, CANARIES.backend);
 });
 

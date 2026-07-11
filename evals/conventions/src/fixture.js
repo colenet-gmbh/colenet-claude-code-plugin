@@ -35,32 +35,38 @@ const BOARD_COLUMNS = ["01-backlog", "02-development", "03-approval", "04-done",
 
 /**
  * What a constellation's run should show.
- * - `expected`: the canary that must appear (optionally scoped to a tier prefix) if the
- *   convention was consulted — this is the recall signal.
+ * - `expected`: an ARRAY of canaries that must ALL appear (each optionally scoped to a tier
+ *   prefix) if the conventions were consulted — this is the recall signal. Recall for the
+ *   cell is the conjunction: every expected canary present at its prefix.
  * - `forbidden`: a canary that must NOT appear (a wrong tier leaking in) — the precision
  *   signal. `null` when the constellation has no leakage counterpart.
- * - `tiers`: the tiers the issue touches (used by the nudge in I031; recorded here for clarity).
+ * - `tiers`: the tiers the issue touches (consulted by the I031 nudge; recorded here too).
  */
 export function scoringPlan(constellation) {
   switch (constellation) {
     case "frontend-only":
       return {
         tiers: ["frontend"],
-        expected: { canary: CANARIES.frontend, pathPrefix: "frontend/" },
+        expected: [{ canary: CANARIES.frontend, pathPrefix: "frontend/" }],
         forbidden: { canary: CANARIES.backend },
       };
     case "backend-only":
       return {
         tiers: ["backend"],
-        expected: { canary: CANARIES.backend, pathPrefix: "backend/" },
+        expected: [{ canary: CANARIES.backend, pathPrefix: "backend/" }],
         forbidden: { canary: CANARIES.frontend },
       };
     case "cross-tier":
-      // The real discriminator: a frontend convention must shape a backend artifact that
-      // is written FIRST. So the FRONTEND canary is expected inside a BACKEND file.
+      // The real discriminator: a FRONTEND convention (the colour) must shape a BACKEND
+      // artifact written FIRST, and the BACKEND convention (the id prefix) must shape that
+      // same artifact. So BOTH canaries are expected inside a BACKEND file — each proving a
+      // different tier's convention was consulted up front, at their correct path prefix.
       return {
         tiers: ["backend", "frontend"],
-        expected: { canary: CANARIES.frontend, pathPrefix: "backend/" },
+        expected: [
+          { canary: CANARIES.frontend, pathPrefix: "backend/" },
+          { canary: CANARIES.backend, pathPrefix: "backend/" },
+        ],
         forbidden: null,
       };
     default:

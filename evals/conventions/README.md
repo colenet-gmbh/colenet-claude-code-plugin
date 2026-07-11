@@ -12,8 +12,10 @@ owning tier's files are touched.
    canary (`CAPE_CANARY_*`). One issue per constellation lands in `docs/work/02-development/`.
    - `frontend-only` — expect FE canary in a `frontend/` file, no BE leakage.
    - `backend-only` — expect BE canary in a `backend/` file, no FE leakage.
-   - `cross-tier` — the discriminator: a **frontend** convention must shape a **backend**
-     artifact written *first*, so the FE canary is expected inside a `backend/` file.
+   - `cross-tier` — the discriminator: the backend-first artifact needs a colour (a
+     **frontend** convention) **and** a generated id (a **backend** convention), so **both**
+     canaries are expected inside a `backend/` file — each proving its own tier's convention
+     was consulted up front. Recall for the cell is the conjunction (both present).
 
    **Why the canary is a valid read-receipt (the negative control).** Two things must both
    hold, or a baseline pass proves nothing:
@@ -21,8 +23,9 @@ owning tier's files are touched.
      No agent produces it spontaneously, so a verbatim hit can *only* mean the convention was
      in context.
    - The issue **invites invention, never search**. It says "pick a colour you find nice,
-     whatever comes to mind" — it must not say "use the project's colour / the accent / the
-     way this project does it", which would send the agent hunting for a defined answer and
+     whatever comes to mind" (and, for the cross-tier id, "use whatever id scheme seems
+     reasonable to you") — it must not say "use the project's colour / id scheme / the way
+     this project does it", which would send the agent hunting for a defined answer and
      surface the convention regardless. An agent that lacks the convention must invent
      something ordinary, so the baseline reads *absent*.
 

@@ -18,11 +18,24 @@ architecture in `docs/arc42/`.
 - **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
 - **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model in §8, decisions index in §9).
 - **Decisions** — [docs/adr/](docs/adr/) — the ADRs themselves, one file each.
+- **Conventions** — [docs/agent-conventions/](docs/agent-conventions/) — the central conventions (issue tracker, release process, …).
 ```
 
 Keep it a map, not content. A skill that needs the vocabulary follows the glossary
 pointer; one that needs a decision follows the ADR pointer. If a doc lives somewhere
 non-standard, the pointer here is what makes it findable — so keep the pointers current.
+
+## The central conventions it points to
+
+Some conventions belong to no single place in the code — which issue tracker is used, the
+release process, a review checklist. They have nowhere to live in the source tree, so they
+sit together under `docs/agent-conventions/`, and the **Conventions** pointer above names
+that directory. A skill that needs one of these follows the pointer and reads the file.
+
+`/cape:setup` creates the directory and the central conventions cape depends on (the issue
+tracker is the first one), so the pointer always resolves. Conventions that *do* belong to a
+place in the code — a tier's rules — are **not** listed here: they live in that tier's own
+nested `CLAUDE.md` and load from there, so this pointer is only for the placeless ones.
 
 ## The glossary it points to
 

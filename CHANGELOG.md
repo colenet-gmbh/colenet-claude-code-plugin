@@ -4,6 +4,27 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.0] - 2026-07-11
+
+### Added
+
+- **Convention consultation (F006 / I031)** — cape skills now surface a repo's own
+  conventions before acting, so their output honours project rules as if the harness were
+  built for that repo:
+  - **`/implement`** reads the conventions of every **tier the issue names** — resolved via
+    each tier's conventional nested `CLAUDE.md` — up front, before it plans or acts. This
+    catches decisions (a colour, an id scheme) made *before* the owning tier's files are
+    touched, which Claude Code's native lazy loading misses. It consults only the named
+    tiers (no wrong-tier leakage), and dispatched sub-agents inherit the same obligation.
+  - **`/split`** now names the **tiers (and bounded contexts) each issue touches** — a new
+    "Tiers & contexts touched" section in the issue template plus drafting guidance — so
+    `/implement` knows which conventions to consult.
+  - **`/cape:setup`** adds a **Conventions** pointer to `CONTEXT.md`
+    (`Central conventions are defined in files in docs/agent-conventions.`) alongside the
+    `tracker.md` it already scaffolds, giving skills a stable path to the central conventions.
+  - **`context-format.md`** documents the central-conventions pointer as part of the
+    canonical `CONTEXT.md` contract.
+
 ## [0.7.8] - 2026-07-10
 
 ### Added

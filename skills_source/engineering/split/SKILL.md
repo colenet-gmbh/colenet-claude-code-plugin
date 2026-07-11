@@ -27,6 +27,7 @@ Break the spec into **tracer-bullet** issues. Each slice:
 - cuts through **all** layers end-to-end (schema, API, UI, tests) — a thin but COMPLETE path, never a horizontal slice of one layer;
 - is demoable or verifiable on its own;
 - names its **test seam and system under test (SUT)** — the boundary it is tested *through*, and what is **inside** the SUT versus **outside** it. A seam without its SUT doesn't define a test.
+- names the **tiers (and bounded contexts) it touches** — so `/implement` consults exactly those tiers' `CLAUDE.md` conventions up front, and no others. Prose in the issue, no schema.
 
 ## 4. Quiz the user
 
@@ -46,6 +47,9 @@ blocked-by: [I<id>, …]   # sibling issue ids, or [] if none
 
 ## What to build
 The end-to-end behaviour of this vertical slice — not layer-by-layer implementation. No file paths or code snippets (they go stale). Exception: a prototype snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape) — inline the decision-rich part and note it came from a prototype.
+
+## Tiers & contexts touched
+The tiers (and bounded contexts) this slice cuts through, named in prose — e.g. "frontend and backend" — so `/implement` knows which `CLAUDE.md` conventions to consult before it acts. No schema; just name them.
 
 ## Test seam & SUT
 The seam this slice is tested through, and what is inside versus outside its system under test.

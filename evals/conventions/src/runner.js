@@ -40,6 +40,7 @@ export function runClaude({
   pluginDir,
   claudeBin = DEFAULT_CLAUDE_BIN,
   timeoutMs = 20 * 60 * 1000,
+  model,
   extraArgs = [],
 }) {
   const args = [
@@ -51,6 +52,8 @@ export function runClaude({
     "bypassPermissions",
     "--add-dir",
     fixtureRoot,
+    // Pin the model for the matrix (Opus vs. Sonnet). Unset = inherit the session default.
+    ...(model ? ["--model", model] : []),
     ...extraArgs,
   ];
   return new Promise((resolve) => {
@@ -95,6 +98,7 @@ export async function runOnce({
   claudeBin = DEFAULT_CLAUDE_BIN,
   promptFor = baselinePrompt,
   timeoutMs,
+  model,
   keep = false,
 }) {
   const root =
@@ -111,6 +115,7 @@ export async function runOnce({
       pluginDir,
       claudeBin,
       timeoutMs,
+      model,
     });
     const after = await snapshotDir(root);
 
@@ -120,9 +125,14 @@ export async function runOnce({
       ignore: [".git/", "docs/work/"],
       ignoreBasenames: ["CLAUDE.md"],
     });
-    const expected = scoreCanary(changed, plan.expected.canary, {
-      pathPrefix: plan.expected.pathPrefix,
-    });
+    // A cell may expect several canaries (cross-tier expects both, one per tier). Score each
+    // at its own prefix; recall for the run is the conjunction — every expected canary present.
+    const expected = plan.expected.map((e) => ({
+      canary: e.canary,
+      pathPrefix: e.pathPrefix,
+      ...scoreCanary(changed, e.canary, { pathPrefix: e.pathPrefix }),
+    }));
+    const expectedPresent = expected.every((e) => e.present);
     const forbidden = plan.forbidden
       ? scoreCanary(changed, plan.forbidden.canary)
       : { present: false, matches: [] };
@@ -134,8 +144,8 @@ export async function runOnce({
       plan,
       run: { code: run.code, timedOut: run.timedOut },
       changedFiles: changed.map((f) => f.path),
-      expectedPresent: expected.present,
-      expectedMatches: expected.matches,
+      expectedPresent,
+      expected,
       forbiddenPresent: forbidden.present,
       forbiddenMatches: forbidden.matches,
       stdoutTail: run.stdout.slice(-2000),
