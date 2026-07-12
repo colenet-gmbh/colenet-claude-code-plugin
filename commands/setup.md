@@ -65,20 +65,24 @@ the file between columns.
 ## 3. Context map + glossary
 
 cape's `CONTEXT.md` is a **pointer map**, not a glossary: it names the project and points
-at where the durable facts live. The domain vocabulary lives in the arc42 glossary.
+at where the durable facts live. The domain vocabulary lives in the **domain glossary**
+(arc42 chapter 8); chapter 12 is a separate glossary for documentation/tooling terms.
 
-1. **Glossary** — look for an existing one (`docs/arc42/12_glossary.md`, or any
-   `*glossary*.md` under `docs/`). If none exists, create `docs/arc42/12_glossary.md`:
+1. **Domain glossary** — look for an existing one (`docs/arc42/08*.md`, or any
+   `*glossary*.md` under `docs/`). If none exists, create
+   `docs/arc42/08_crosscutting-concepts.md`:
 
    ```md
-   # Glossary
+   # Crosscutting Concepts
 
-   The project's ubiquitous language — one entry per term. Seeded and sharpened during
-   `/grill-with-docs` and `/architect` domain modelling.
+   ## Domain glossary
+
+   The project's ubiquitous language — one entry per term (concepts, actions, qualities).
+   Seeded and sharpened during `/grill-with-docs` and `/architect` domain modelling.
    ```
 
 2. **CONTEXT.md** — if a root `CONTEXT.md` (or `CONTEXT-MAP.md`) is missing, create
-   `CONTEXT.md` pointing at the glossary you found or created:
+   `CONTEXT.md` pointing at the domain glossary you found or created:
 
    ```md
    # {repo name} — Context
@@ -87,13 +91,12 @@ at where the durable facts live. The domain vocabulary lives in the arc42 glossa
 
    ## Pointers
 
-   - **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
-   - **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model §8, decisions index §9).
-   - **Decisions** — [docs/adr/](docs/adr/) — the ADRs, one file each.
+   - **arc42** — [docs/arc42/](docs/arc42/) — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+   - **ADRs** — [docs/adr/](docs/adr/) — one file per decision (arc42 chapter 9 only indexes them).
    - **Conventions** — [docs/agent-conventions/](docs/agent-conventions/) — Central conventions are defined in files in docs/agent-conventions.
    ```
 
-   If `CONTEXT.md` already exists, leave it; just make sure it points at the glossary and at
+   If `CONTEXT.md` already exists, leave it; just make sure it points at the domain glossary and at
    `docs/agent-conventions/`, and add either pointer if it's missing. The conventions pointer
    must carry the sentence `Central conventions are defined in files in docs/agent-conventions.`
    so a skill can find them by a stable path.

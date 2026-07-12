@@ -3,7 +3,7 @@
 `CONTEXT.md` is the repo's **context map** — a short pointer file that names the project's
 context and says *where* the durable facts live. It holds **no glossary and no
 implementation detail itself**; it points to them. The domain vocabulary lives in the
-arc42 glossary (`docs/arc42/12_glossary.md`), decisions in `docs/adr/`, the rest of the
+**domain glossary** (arc42 chapter 8), decisions in `docs/adr/`, the rest of the
 architecture in `docs/arc42/`.
 
 ## Structure
@@ -15,14 +15,13 @@ architecture in `docs/arc42/`.
 
 ## Pointers
 
-- **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
-- **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model in §8, decisions index in §9).
-- **Decisions** — [docs/adr/](docs/adr/) — the ADRs themselves, one file each.
+- **arc42** — [docs/arc42/](docs/arc42/) — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+- **ADRs** — [docs/adr/](docs/adr/) — one file per decision (arc42 chapter 9 only indexes them).
 - **Conventions** — [docs/agent-conventions/](docs/agent-conventions/) — the central conventions (issue tracker, release process, …).
 ```
 
-Keep it a map, not content. A skill that needs the vocabulary follows the glossary
-pointer; one that needs a decision follows the ADR pointer. If a doc lives somewhere
+Keep it a map, not content. A skill that needs the vocabulary follows the arc42
+pointer (to the domain glossary, chapter 8); one that needs a decision follows the ADRs pointer. If a doc lives somewhere
 non-standard, the pointer here is what makes it findable — so keep the pointers current.
 
 ## The central conventions it points to
@@ -37,9 +36,11 @@ tracker is the first one), so the pointer always resolves. Conventions that *do*
 place in the code — a tier's rules — are **not** listed here: they live in that tier's own
 nested `CLAUDE.md` and load from there, so this pointer is only for the placeless ones.
 
-## The glossary it points to
+## The domain glossary it points to
 
-The glossary file (arc42 §12) holds the ubiquitous language, one entry per term:
+The **domain glossary** (arc42 chapter 8) holds the ubiquitous language, one entry per term.
+(Chapter 12 is a *separate* glossary — for documentation and tooling terms, the surroundings,
+not the domain.)
 
 ```md
 **Order**:
@@ -51,7 +52,7 @@ A request for payment sent to a customer after delivery.
 _Avoid_: Bill, payment request
 ```
 
-Rules for the glossary:
+Rules for the domain glossary:
 
 - **Be opinionated.** When multiple words exist for one concept, pick the best and list the others under `_Avoid_`.
 - **Keep definitions tight.** One or two sentences max. Define what it IS, not what it does.
@@ -86,7 +87,7 @@ The skill infers which structure applies:
 
 - If `CONTEXT-MAP.md` exists, multi-context — read it to find the contexts.
 - If only a root `CONTEXT.md` exists, single context.
-- If neither exists, a root `CONTEXT.md` map (and the arc42 glossary it points to) is
+- If neither exists, a root `CONTEXT.md` map (and the domain glossary it points to) is
   created — eagerly by `/cape:setup`, or lazily when the first term is resolved.
 
 When multiple contexts exist, infer which one the current topic relates to. If unclear, ask.
