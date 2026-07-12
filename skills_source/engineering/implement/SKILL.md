@@ -7,9 +7,7 @@ Implement the one issue you've been handed — the file `docs/work/02-developmen
 
 The `docs/work/` board should have been provided to you — run `/cape:setup` if it's missing.
 
-Before you plan or act, read the conventions of every **tier the issue names** (`/split` records the touched tiers in the issue). Resolve each named tier to its conventional `CLAUDE.md` position — the `CLAUDE.md` in that tier's own directory — and read it. There is no separate tier index to look up; the directory's `CLAUDE.md` is the convention's home.
-
-Consult the **union** of the named tiers' conventions up front and let them shape **every** decision — including choices you make *before* you touch that tier's files (a colour, an id scheme, a shape decided in one tier but realised first in another). Claude Code loads a tier's `CLAUDE.md` on its own only once you edit a file in its subtree, which is too late for a decision taken earlier; reading the named tiers yourself, up front, closes that gap. Consult **only** the tiers the issue names — never pull in conventions of tiers it does not touch. When you dispatch a sub-agent to build part of the issue, it carries the same obligation: it consults the named tiers' conventions before it acts.
+Before you plan, read the `CLAUDE.md` of every tier the issue names (`/split` lists them) — up front, not when you first touch the tier: Claude Code loads it only once you edit a file there, too late to shape a decision taken earlier. Read only the named tiers, and have any sub-agent you dispatch do the same.
 
 Use `cape:tdd` where possible, at pre-agreed seams.
 
