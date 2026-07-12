@@ -19,10 +19,6 @@ Its job:
    If `CONTEXT.md` names no such place, put it somewhere sensible under `docs/` and say
    where.
 
-The note is the deliverable, not a chat reply: it stays in the repo so the interview and
-feature work downstream can build on it. This skill is the **feeder** for that downstream
-work — the reading legwork a sharp interview then leans on.
-
 ## Attribution
 
 Ported from Matt Pocock's [`research`](https://github.com/mattpocock/skills) skill
