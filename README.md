@@ -47,8 +47,8 @@ Most work travels the same route, from interactive at the front to autonomous at
 3. split into vertically-sliced issues — `/split`,
 4. built with tests and review at every step — `/build` (or `/implement` for a single issue).
 
-Supplemental skills — backlog triage, prototyping, session handoffs, architecture, TDD —
-plug into that route wherever they're needed.
+Supplemental skills — backlog triage, research against primary sources, prototyping,
+session handoffs, architecture, TDD — plug into that route wherever they're needed.
 
 ## Getting started
 

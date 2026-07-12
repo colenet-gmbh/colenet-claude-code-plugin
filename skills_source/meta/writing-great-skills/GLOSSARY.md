@@ -158,6 +158,18 @@ _Failure mode._ Ending the current step before it is genuinely done, because the
 
 _Avoid_: premature closure, the rush, rushing, shortcutting
 
+### Negation
+
+_Failure mode._ Steering by prohibition — telling the agent what _not_ to do — which drags the forbidden behaviour into context and makes it _more_ available, not less. _Don't think of an elephant_, and the elephant is all there is; _never write verbose comments_, and verbosity is the pattern the agent has just read. The negation is a weak modifier the strongly-activated concept overruns, so the ban half-reads as an instruction to do the thing. Its **leading word** is the _elephant_: whatever a prohibition names into the frame. Cure: prompt the **positive** — describe the target behaviour ("write one-line comments") so the banned one is never spoken. A prohibition earns its place only as a hard guardrail on a behaviour you cannot phrase positively; even then, pair it with the positive target so attention lands on what to do.
+
+_Avoid_: ironic rebound, don't-prompting, the pink elephant
+
+### Negative Space
+
+_Failure mode._ Blindness to the steering done by what you leave _out_. A skill steers not only through what it says but through every decision it declines to make — and each unfilled decision is delegated to the agent's priors rather than left neutral, so silence is never neutral. Its **leading word** is the _void_: the unstated space a reader's attention skates over. Cure: read a draft for its silences and decide each omission deliberately — either fill it (state the decision) or leave it open as a real **branch**, but choose rather than default. The twin of **negation**: negation mis-steers through what you say, negative space through what you don't.
+
+_Avoid_: the void, omission blindness, silent defaults
+
 ## Pruning
 
 Keeping a skill lean — each remedy paired with the failure it cures.

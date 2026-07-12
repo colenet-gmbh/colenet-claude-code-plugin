@@ -17,6 +17,12 @@ description: Test-driven development. Use when the user wants to build features 
 
 See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
 
+## Seams — where tests go
+
+A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals — that is what lets a test survive a refactor.
+
+**Test only at pre-agreed seams.** Before writing any test, name the seams under test and confirm them with the user; no test is written at an unconfirmed seam. Agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
+
 ## Anti-Pattern: Horizontal Slices
 
 **DO NOT write all tests first, then all implementation.** This is "horizontal slicing" - treating RED as "write all tests" and GREEN as "write all code."

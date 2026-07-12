@@ -8,6 +8,14 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- **`/research` skill (F001 / I032)** — a new engineering skill ported from Matt Pocock's
+  `research` (v1.1.0, MIT). It delegates reading legwork to a background agent: investigate
+  a question against high-trust **primary sources** (official docs, source code, specs,
+  first-party APIs) and leave a **cited Markdown note** in the repo, at the location
+  `CONTEXT.md` points to. It is the feeder upstream of `/grill-with-docs`; its `description`
+  distinguishes it from `deep-research` (broad multi-source web reports). Surfaced in
+  `ask-cape` and the README.
+
 - **Convention consultation (F006 / I031)** — cape skills now surface a repo's own
   conventions before acting, so their output honours project rules as if the harness were
   built for that repo:
@@ -24,6 +32,30 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
     `tracker.md` it already scaffolds, giving skills a stable path to the central conventions.
   - **`context-format.md`** documents the central-conventions pointer as part of the
     canonical `CONTEXT.md` contract.
+
+### Changed
+
+- **Matt v1.1.0 backports into existing skills (F001 / I033)** — targeted improvements Matt
+  made between v1.0 and v1.1.0 that cape was missing:
+  - **`grilling`** — the old blanket line "If a question can be answered by exploring the
+    codebase, explore the codebase instead" is **replaced** by two sharper rules: look up
+    *facts* in the codebase, but put every *decision* to the human and wait; and a
+    **confirmation gate** — do not enact the plan until the human confirms a shared
+    understanding. This matters because cape dispatches `grilling` from `feature` and others,
+    where the old line read as licence to answer decisions itself.
+  - **`writing-great-skills`** — two new steering failure modes, each a SKILL bullet plus a
+    `GLOSSARY.md` entry: **Negation** (prohibitions drag the banned behaviour into context —
+    steer positively) and **Negative Space** (every omitted decision is silently delegated to
+    the agent's priors — read a draft for its silences and choose each omission).
+  - **`split`** — a new **"Wide refactors / Expand–Contract"** rule: a mechanical change with
+    repo-wide blast radius is sequenced expand → migrate call sites in batches (each its own
+    issue, CI green batch to batch) → contract, instead of being forced into a vertical slice.
+  - **`tdd`** — adds the **seam** definition (the public boundary you test at, without
+    reaching inside; no test at an unconfirmed seam). The refactor step stays for now (see
+    I035).
+  - **Cosmetic** — `handoff` now says "specs" instead of "PRDs"; `skill-authoring.md` gains a
+    maintenance rule to re-check the `ask-cape` router on any skill add/rename/remove or flow
+    change.
 
 ## [0.7.8] - 2026-07-10
 

@@ -45,3 +45,6 @@ array declares the bucket paths and Claude Code scans each one level deep. See
 - Bump `version` in `.claude-plugin/plugin.json` and in the marketplace entry.
 - Update the skill table in the README.
 - If externally sourced: attribution per [`attribution.md`](attribution.md).
+- **Re-check the `ask-cape` router.** Any skill you add, rename, or remove — or any change
+  to how the skills flow together — must be reflected in `ask-cape`, so the router never
+  drifts from the actual skill set.

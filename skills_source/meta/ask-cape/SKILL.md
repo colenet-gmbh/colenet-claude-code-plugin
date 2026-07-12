@@ -47,6 +47,8 @@ A starting situation that generates work, then merges onto the main flow.
 
   Triage is **backlog management** for anything **not yet worked up** — bug reports, incoming feature requests, your own captured ideas, whatever their origin. Only what's already agent-ready is out: issues `/split` produced need no triage, so **don't re-triage them**.
 
+- **Facts missing before you can plan** → **`/research`**. It delegates the reading legwork to a background agent — investigate the question against **primary sources** (official docs, source code, specs, first-party APIs) and leave a **cited note in the repo**. That note then feeds **`/grill-with-docs`** upstream, so a sharp interview leans on facts rather than guesses. (For a broad, multi-source web report with adversarial fact-checking, that's `/deep-research`, not this.)
+
 ## Codebase health
 
 Not feature work — upkeep.
