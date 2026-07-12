@@ -19,9 +19,9 @@ Its job:
    If `CONTEXT.md` names no such place, put it somewhere sensible under `docs/` and say
    where.
 
-The note is the deliverable, not a chat reply: it stays in the repo so the grilling and
-feature work downstream can build on it. This skill is the feeder **upstream of
-`cape:grill-with-docs`** — the reading legwork that a sharp interview then leans on.
+The note is the deliverable, not a chat reply: it stays in the repo so the interview and
+feature work downstream can build on it. This skill is the **feeder** for that downstream
+work — the reading legwork a sharp interview then leans on.
 
 ## Attribution
 
