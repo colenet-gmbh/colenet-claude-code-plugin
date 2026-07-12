@@ -30,6 +30,19 @@ currently no other:
    location — before acting. A vertical slice touches a set of tiers — and few bounded
    contexts, the domain-axis counterpart — so the skill pulls the union up front.
 
+## Why the local touchpoint sits at the acting skill
+
+The local-convention touchpoint lives where the tier is known and about to be written — the
+**acting** skill (`/implement`), with the tiers named by `/split`. It is deliberately *not*
+placed at the conceptual skills (`/feature`, `/grill-with-docs`): those work above the tier
+breakdown — which tiers a slice touches is only fixed at `/split` — and what shapes work at
+their altitude are the *placeless* conventions (ADRs and the domain glossary in arc42
+chapter 8, and central conventions), which they already read via `CONTEXT.md`. A local
+convention is, by the definition above, bound to a place in the code and therefore
+implementation-level; consulting it at implementation, not during conceptual design, is the
+intended layering, not a gap. Extending the same up-front consultation to further acting
+skills is a deliberate, eval-gated step — F006 builds and proves it at `/implement` alone.
+
 ## No parallel store, no third touchpoint
 
 Beyond these two explicit references, cape adds **no parallel store**. Local conventions
