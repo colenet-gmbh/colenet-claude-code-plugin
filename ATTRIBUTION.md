@@ -20,7 +20,7 @@ Skills ported from or inspired by Matt Pocock's repo (© 2026 Matt Pocock). MIT 
 - `research` — from `research` (v1.1.0); the background-agent reading-legwork discipline
   adopted faithfully, then adapted to cape: the note's location coupled to the repo's
   `CONTEXT.md` convention, the description rewritten to distinguish it from `deep-research`,
-  German + English trigger phrases added, and a `grill-with-docs`-feeder framing.
+  German + English trigger phrases added, and a feeder framing for the downstream interview/spec work.
 - `teach` — from `teach` (v1.1.0); frontmatter adapted to cape conventions (German +
   English trigger phrases), otherwise adopted as-is.
 - `handoff` — from Matt Pocock's `handoff` skill.
