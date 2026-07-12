@@ -1,12 +1,12 @@
 ---
 name: feature
-description: Turn the grilled conversation into a reviewed, two-part feature spec — synthesis only, no fresh interview, reviewed until clean, then handed to /split.
+description: Turn the grilled conversation into a reviewed, two-part feature spec — synthesis only, no fresh interview, reviewed until clean.
 disable-model-invocation: true
 ---
 
 # Feature
 
-Turn what you've already worked out — the grilled conversation and your codebase understanding — into a **reviewed feature spec**. Do NOT re-interview; the interview already happened in `/grill-with-docs`. Synthesise what you know.
+Turn what you've already worked out — the grilled conversation and your codebase understanding — into a **reviewed feature spec**. Do NOT re-interview; the interview already happened. Synthesise what you know.
 
 Use the project's domain glossary throughout, and respect the ADRs in the area you're touching (locate both via the `CONTEXT.md` map).
 
@@ -18,7 +18,7 @@ Sketch the seams at which the feature will be tested. Prefer existing seams to n
 
 ## 2. Write the spec
 
-Write the spec in **two parts**, using the template below, into the feature's file `docs/work/02-development/F<id>_<slug>.md` — the two-part spec *is* that file. `/split` reads it from there.
+Write the spec in **two parts**, using the template below, into the feature's file `docs/work/02-development/F<id>_<slug>.md` — the two-part spec *is* that file.
 
 - **Top — what & decisions, for human sign-off.** The requirements and the decisions a human should consciously approve before anything is built.
 - **Bottom — how, the internal design for implementation.** Everything an agent needs to build it.
@@ -81,4 +81,4 @@ Run `cape:review-feature` on the spec. It reviews across parallel axes (Architec
 
 ## 4. Sign-off
 
-Present the finished spec, top part first, and get the user's sign-off on the key decisions before it goes to `cape:split`.
+Present the finished spec, top part first, and get the user's sign-off on the key decisions.

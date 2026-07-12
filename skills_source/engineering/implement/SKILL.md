@@ -7,7 +7,7 @@ Implement the one issue you've been handed — the file `docs/work/02-developmen
 
 The `docs/work/` board should have been provided to you — run `/cape:setup` if it's missing.
 
-Before you plan, read the `CLAUDE.md` of every tier the issue names (`/split` lists them) — up front, not when you first touch the tier: Claude Code loads it only once you edit a file there, too late to shape a decision taken earlier. Read only the named tiers, and have any sub-agent you dispatch do the same.
+Before you plan, read the `CLAUDE.md` of every tier the issue names — up front, not when you first touch the tier: Claude Code loads it only once you edit a file there, too late to shape a decision taken earlier. Read only the named tiers, and have any sub-agent you dispatch do the same.
 
 Use `cape:tdd` where possible, at pre-agreed seams.
 
@@ -19,4 +19,4 @@ Once done, review the work with `cape:review-implementation`. It reports feedbac
 
 Commit your work to the current branch.
 
-Then place the issue file: if `/build` dispatched you, leave placement to it; if you're building a **standalone** issue directly, move it to `docs/work/03-approval/` for the user's sign-off (they move it to `docs/work/04-done/`).
+Then place the issue file: if an orchestrator dispatched you (building a whole feature), leave placement to it; if you're building a **standalone** issue directly, move it to `docs/work/03-approval/` for the user's sign-off (they move it to `docs/work/04-done/`).
