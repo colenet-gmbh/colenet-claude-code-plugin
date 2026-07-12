@@ -19,11 +19,13 @@ jobs:
           node-version: "22"
       # Same hooks developers run locally. Fails (red) on any problem.
       - uses: pre-commit/action@v3.0.1
-      # On pull requests, also require the plugin version to be bumped vs. the
-      # base branch. BASE_REF is passed via env (not interpolated into the
+      # Require the plugin version to be bumped only on the RELEASE pull request
+      # — the one targeting `main`. Day-to-day PRs land on `develop` and must NOT
+      # each bump the version; the single bump happens when `develop` -> `main`
+      # ships a release. BASE_REF is passed via env (not interpolated into the
       # script) to avoid workflow injection.
-      - name: Require version bump
-        if: github.event_name == 'pull_request'
+      - name: Require version bump (release PR into main only)
+        if: github.event_name == 'pull_request' && github.base_ref == 'main'
         env:
           BASE_REF: ${{ github.base_ref }}
         run: |
