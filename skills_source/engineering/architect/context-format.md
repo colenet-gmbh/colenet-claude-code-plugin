@@ -4,7 +4,8 @@
 context and says *where* the durable facts live. It holds **no glossary and no
 implementation detail itself**; it points to them. The domain vocabulary lives in the
 **domain glossary** (arc42 chapter 8), decisions in the ADR-dir, the rest of the
-architecture in the arc42-docs.
+architecture in the arc-docs. It also lists the repo's **tiers** (name → path), so a
+slice knows which sections it can touch.
 
 ## Structure
 
@@ -15,12 +16,16 @@ architecture in the arc42-docs.
 
 ## Pointers
 
-- **arc42-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+- **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
 - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
 - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+
+## Tiers
+
+{0..N entries detected from THIS repo — each `- **Name** — path/`; **not** a fixed set of keys, the names are the repo's own; omit the whole section if there are no distinct tiers}
 ```
 
-Keep it a map, not content. A skill that needs the vocabulary follows the arc42-docs
+Keep it a map, not content. A skill that needs the vocabulary follows the arc-docs
 pointer (to the domain glossary, chapter 8); one that needs a decision follows the ADR-dir pointer. If a doc lives somewhere
 non-standard, the pointer here is what makes it findable — so keep the pointers current.
 
@@ -33,8 +38,29 @@ that directory. A skill that needs one of these follows the pointer and reads th
 
 `/cape:setup` creates the directory and the central conventions cape depends on (the issue
 tracker is the first one), so the pointer always resolves. Conventions that *do* belong to a
-place in the code — a tier's rules — are **not** listed here: they live in that tier's own
-nested `CLAUDE.md` and load from there, so this pointer is only for the placeless ones.
+place in the code — a tier's rules — are **not** stored here: they live in that tier's own
+nested `CLAUDE.md` and load from there. (Where those tiers *are* is listed separately, under
+`## Tiers` below — a path, never the rules.)
+
+## The tiers it lists
+
+A **tier** is a section of the stack with its own tech and rules — frontend, backend, a data
+layer — each carrying a nested `CLAUDE.md`. The `## Tiers` block lists them by a stable name
+and their path — `/cape:setup` **detects** them from the repo layout and records them here, so
+the list mirrors the actual repo, never a fixed assumption. It makes the local touchpoint work:
+`/split` picks the tiers a slice touches **from this list** (the canonical menu), and
+`/implement` resolves each named tier to its path here and reads that tier's `CLAUDE.md` before
+acting.
+
+Unlike the three **Pointers** above — a fixed set, always present, always the same three — the
+Tiers are an **open, detected list**: zero or more, each named after whatever the repo's own
+sections are, **not** keys to fill in. One repo with a TypeScript frontend and a Rust backend
+lists `Frontend → apps/web/` and `Backend → services/api/`; another lists `web`, `api`,
+`worker`; a single-package repo lists nothing and the section is dropped.
+
+This is a **pointer**, not a parallel store — it records *where* a tier lives, never its rules;
+those stay in the tier's own `CLAUDE.md` and load natively. A repo with no distinct tiers omits
+the section.
 
 ## The domain glossary it points to
 
@@ -62,7 +88,7 @@ Rules for the domain glossary:
 ## Single vs multi-context repos
 
 **Single context (most repos):** one `CONTEXT.md` at the repo root, pointing to the shared
-arc42-docs and ADR-dir.
+arc-docs and ADR-dir.
 
 **Multiple contexts:** a `CONTEXT-MAP.md` at the repo root lists the contexts, where they
 live, and how they relate; each context keeps its own `CONTEXT.md` pointer file.

@@ -62,7 +62,7 @@ Read the file by id or path (the user usually passes one directly). To change st
 the file between columns.
 ```
 
-## 3. Context map + glossary
+## 3. Context map, glossary & tiers
 
 cape's `CONTEXT.md` is a **pointer map**, not a glossary: it names the project and points
 at where the durable facts live. The domain vocabulary lives in the **domain glossary**
@@ -91,15 +91,30 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
 
    ## Pointers
 
-   - **arc42-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
    - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
    - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+
+   ## Tiers
+
+   {0..N — one `- **Name** — `path/`` per tier you detect (step 3); the names are the repo's own, **not** fixed keys; omit the section if the repo has none}
    ```
 
-   Each pointer is a **logical label** (`arc42-docs`, `ADR-dir`, `conventions-dir`) resolved to
+   Each pointer is a **logical label** (`arc-docs`, `ADR-dir`, `conventions-dir`) resolved to
    a concrete path here — this is the one place those paths live. If `CONTEXT.md` already exists,
    leave it; just make sure it carries all three labels resolved to their paths, and add any that
    are missing, so a skill can find each thing by its stable label.
+
+3. **Tiers** — **detect** the repo's tiers and record them under `## Tiers` (do not invent or
+   hardcode them). A **tier** is a section of the stack with its own tech and rules. Look for:
+   workspace/monorepo config (`package.json` `workspaces`, `pnpm-workspace.yaml`, a Cargo
+   workspace, nx/turbo), distinct top-level app/service/package directories, separate language
+   roots (e.g. a TypeScript frontend beside a Rust backend), and any existing nested `CLAUDE.md`.
+   Write each finding as `- **Name** — `path/``. A single undifferentiated codebase has no tiers
+   — omit the section. If the split is ambiguous, propose what you found and let the user
+   confirm. `/split` picks the touched tiers from this list; `/implement` resolves each to its
+   path. If `CONTEXT.md` already has a `## Tiers` block, reconcile it with what you detect rather
+   than overwriting.
 
 ## 4. Done
 

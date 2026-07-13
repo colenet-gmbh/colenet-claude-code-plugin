@@ -25,9 +25,10 @@ currently no other:
    location as a pointer in `CONTEXT.md`, so a skill reaches them by a stable path.
 2. **Local conventions do load natively, but lazily** — only once a file in the subtree is
    touched, which is too late to shape a decision made before that. → **the skill loads them
-   explicitly, before it acts**: `/split` names the tiers each issue touches, and `/implement`
-   reads those tiers' conventions — resolved via each tier's conventional `CLAUDE.md`
-   location — before acting. A vertical slice touches a set of tiers — and few bounded
+   explicitly, before it acts**: `/cape:setup` detects the repo's tiers and records them in
+   `CONTEXT.md` (name → path); `/split` names the tiers each issue touches by picking from that
+   list, and `/implement` resolves each named tier to its path through it and reads that tier's
+   nested `CLAUDE.md` before acting. A vertical slice touches a set of tiers — and few bounded
    contexts, the domain-axis counterpart — so the skill pulls the union up front.
 
 ## Why the local touchpoint sits at the acting skill
@@ -45,9 +46,11 @@ skills is a deliberate, eval-gated step — F006 builds and proves it at `/imple
 
 ## No parallel store, no third touchpoint
 
-Beyond these two explicit references, cape adds **no parallel store**. Local conventions
-otherwise ride Level 1's native nested `CLAUDE.md`; a central file may be `@import`ed into
-one to be ambient as well. Recording a newly-learned convention needs no dedicated
+Beyond these two explicit references, cape adds **no parallel store**. The tier list in
+`CONTEXT.md` is not one: it is a **pointer** — a tier's name and *where* it lives, so `/split`
+has a menu and `/implement` can resolve a name — never a copy of the tier's rules, which stay
+in its `CLAUDE.md`. Local conventions otherwise ride Level 1's native nested `CLAUDE.md`; a
+central file may be `@import`ed into one to be ambient as well. Recording a newly-learned convention needs no dedicated
 mechanism — it is proposed inline for human OK and written to its home (a tier's
 `CLAUDE.md`, `docs/agent-conventions/`, or the glossary via the existing modelling skills).
 Deliberate, retrospective harvesting of conventions is the harness-improvement flow's job

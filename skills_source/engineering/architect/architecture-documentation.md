@@ -2,13 +2,13 @@
 
 Maintain the project's architecture documentation in the **arc42** structure. arc42 is the *container*; fill it **lazily** — only what's decided, only when it's decided — and let the depth scale with the size of the system. A small project may only ever have chapters 1, 8, 9, and 12.
 
-Concrete file locations (arc42-docs, ADR-dir): look them up in `CONTEXT.md`. The chapter
+Concrete file locations (arc-docs, ADR-dir): look them up in `CONTEXT.md`. The chapter
 numbers and `NN_slug` / `NN-x_topic.md` names below are arc42's internal structure inside
-the arc42-docs.
+the arc-docs.
 
 ## The twelve chapters
 
-Files live in the arc42-docs, one per chapter, plus an index:
+Files live in the arc-docs, one per chapter, plus an index:
 
 | # | Chapter | Holds |
 |---|---|---|

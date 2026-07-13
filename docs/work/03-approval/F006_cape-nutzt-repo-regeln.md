@@ -35,7 +35,9 @@ der handelt, braucht es), aber F6 baut und beweist es an **einer** Stelle: `impl
 Ausrollen auf weitere Skills ist nicht Teil von F6 (s. „Nicht Teil davon").
 
 `/cape:setup` legt die projektweiten Regeln an eine feste Stelle und verweist in `CONTEXT.md`
-darauf; die tier-eigenen Regeln liest ein Skill an ihrem gewohnten Ort.
+darauf; zusätzlich **erkennt** es die Tiers des Repos und trägt sie dort ein (Name → Pfad).
+`/split` wählt die berührten Tiers aus dieser Liste; `/implement` löst jeden genannten Tier
+über die Liste in seinen Pfad auf und liest dessen `CLAUDE.md`, bevor es handelt.
 
 ## Beweis
 
@@ -70,3 +72,7 @@ Der Detail-Aufbau steht in den Issues: **I030** baut den Test und fährt den Ohn
 3. **Hypothese zuerst** — der Ohne-cape-Lauf ist ein Stopp-Gate.
 4. Am realen Ergebnis gemessen, über Läufe als Rate.
 5. Begriffe im Glossar, nicht hier — das Feature verweist nur.
+6. `/cape:setup` **erkennt die Tiers aus dem Repo** und trägt sie als Register (Name → Pfad)
+   in `CONTEXT.md` ein — die Auswahlmenge für `/split`, die Name→Pfad-Auflösung für
+   `/implement`. Ein Pointer, kein Parallel-Speicher (die Regeln bleiben in der `CLAUDE.md`
+   des Tiers).
