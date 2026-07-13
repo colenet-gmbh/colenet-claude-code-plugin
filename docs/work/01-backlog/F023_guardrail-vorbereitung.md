@@ -44,6 +44,24 @@ zunehmend früher abgefangen:
 Das ist "Shift Left" in Reinform — jetzt nicht zu bauen, nur das durchgearbeitete Beispiel,
 von dem dieses Feature später ausgehen soll.
 
+### Referenz: Matt Pococks `git-guardrails-claude-code` (Hinweis, nicht übernommen)
+
+Aus der Sichtung von Matt v1.1.0 (siehe F001) als Referenz für Schicht 1 vermerkt — bewusst
+**nicht** als Skill übernommen. Matts Skill richtet einen PreToolUse-Bash-Hook ein, der
+gefährliche git-Kommandos (`push` inkl. `--force`, `reset --hard`, `clean -f`, `branch -D`,
+`checkout .`, `restore .`) abfängt, bevor Claude sie ausführt. Zwei nützliche Punkte für
+dieses Feature:
+
+- Sein Muster ist **projekt-agnostisch** (die gefährlichen git-Muster sind universell) —
+  anders als Spaniers projektspezifische Hooks. Das ist genau die Art allgemeiner Kern, die
+  cape scaffolden könnte.
+- Aber Matt **blockiert** hart (Hook-Exit stoppt den Befehl), während cape's Seed-Strategie
+  in F015 bewusst **warnt, nicht blockiert**. Ein pauschaler push-Block beißt sich zudem mit
+  cape's Regel „pushen nur, wenn der Nutzer es verlangt". Falls cape hier etwas anbietet,
+  eher als warnende Variante und/oder mit klarer Ausnahme für ausdrücklich gewünschte Pushes.
+
+Quelle: `mattpocock/skills` v1.1.0, `skills/misc/git-guardrails-claude-code/` (MIT).
+
 ### Konkreter Aspekt: Selbstaktivierung der Git-Hook-Verdrahtung
 
 Spanier aktiviert geteilte Git-Hooks ohne manuellen Schritt: `.githooks/` ist ein normaler,

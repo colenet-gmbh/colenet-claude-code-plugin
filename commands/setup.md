@@ -62,23 +62,27 @@ Read the file by id or path (the user usually passes one directly). To change st
 the file between columns.
 ```
 
-## 3. Context map + glossary
+## 3. Context map, glossary & tiers
 
 cape's `CONTEXT.md` is a **pointer map**, not a glossary: it names the project and points
-at where the durable facts live. The domain vocabulary lives in the arc42 glossary.
+at where the durable facts live. The domain vocabulary lives in the **domain glossary**
+(arc42 chapter 8); chapter 12 is a separate glossary for documentation/tooling terms.
 
-1. **Glossary** — look for an existing one (`docs/arc42/12_glossary.md`, or any
-   `*glossary*.md` under `docs/`). If none exists, create `docs/arc42/12_glossary.md`:
+1. **Domain glossary** — look for an existing one (`docs/arc42/08*.md`, or any
+   `*glossary*.md` under `docs/`). If none exists, create
+   `docs/arc42/08_crosscutting-concepts.md`:
 
    ```md
-   # Glossary
+   # Crosscutting Concepts
 
-   The project's ubiquitous language — one entry per term. Seeded and sharpened during
-   `/grill-with-docs` and `/architect` domain modelling.
+   ## Domain glossary
+
+   The project's ubiquitous language — one entry per term (concepts, actions, qualities).
+   Seeded and sharpened during `/grill-with-docs` and `/architect` domain modelling.
    ```
 
 2. **CONTEXT.md** — if a root `CONTEXT.md` (or `CONTEXT-MAP.md`) is missing, create
-   `CONTEXT.md` pointing at the glossary you found or created:
+   `CONTEXT.md` pointing at the domain glossary you found or created:
 
    ```md
    # {repo name} — Context
@@ -87,13 +91,30 @@ at where the durable facts live. The domain vocabulary lives in the arc42 glossa
 
    ## Pointers
 
-   - **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
-   - **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model §8, decisions index §9).
-   - **Decisions** — [docs/adr/](docs/adr/) — the ADRs, one file each.
+   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+   - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
+   - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+
+   ## Tiers
+
+   {0..N — one `- **Name** — path/` line per tier you detect (step 3); the names are the repo's own, **not** fixed keys; omit the section if the repo has none}
    ```
 
-   If `CONTEXT.md` already exists, leave it; just make sure it points at the glossary, and
-   add the pointer if it's missing.
+   Each pointer is a **logical label** (`arc-docs`, `ADR-dir`, `conventions-dir`) resolved to
+   a concrete path here — this is the one place those paths live. If `CONTEXT.md` already exists,
+   leave it; just make sure it carries all three labels resolved to their paths, and add any that
+   are missing, so a skill can find each thing by its stable label.
+
+3. **Tiers** — **detect** the repo's tiers and record them under `## Tiers` (do not invent or
+   hardcode them). A **tier** is a section of the stack with its own tech and rules. Look for:
+   workspace/monorepo config (`package.json` `workspaces`, `pnpm-workspace.yaml`, a Cargo
+   workspace, nx/turbo), distinct top-level app/service/package directories, separate language
+   roots (e.g. a TypeScript frontend beside a Rust backend), and any existing nested `CLAUDE.md`.
+   Write each finding as `- **Name** — path/`. A single undifferentiated codebase has no tiers
+   — omit the section. If the split is ambiguous, propose what you found and let the user
+   confirm. `/split` picks the touched tiers from this list; `/implement` resolves each to its
+   path. If `CONTEXT.md` already has a `## Tiers` block, reconcile it with what you detect rather
+   than overwriting.
 
 ## 4. Done
 

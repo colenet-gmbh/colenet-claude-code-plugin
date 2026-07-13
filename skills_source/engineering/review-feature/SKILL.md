@@ -34,4 +34,4 @@ Send a single message with one `Agent` tool call per axis. Use the `general-purp
 
 Present one heading per axis, findings verbatim or lightly cleaned, HIGH/CRITICAL first **within** each axis. Do not merge or rerank across axes — keep them separate so one axis can't mask another. End with a one-line summary: findings per axis and the worst issue within each.
 
-The caller (`/feature`) integrates the findings and re-reviews in a loop until clean.
+The caller integrates the findings and re-reviews in a loop until clean.

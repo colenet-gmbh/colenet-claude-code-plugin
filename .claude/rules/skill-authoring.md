@@ -33,6 +33,15 @@ array declares the bucket paths and Claude Code scans each one level deep. See
   in both languages. Example: `… mentions "grill me", "grill mich", "tear my plan apart".`
 - No vague descriptions ("helps with planning") — name the triggering situations.
 
+## Referencing other skills
+
+- A skill that carries `disable-model-invocation: true` (the model cannot auto-invoke it —
+  it is a flow/entry step, run deliberately or dispatched) must be named **only in
+  `ask-cape`**, the flow router. Do **not** reference such a skill from any other skill:
+  naming a downstream, not-model-invokable step makes the model anticipate later work and
+  concentrate less on the task at hand. Model-invokable skills (no flag) may be referenced
+  normally. See [ADR 0003](../../docs/adr/0003-not-model-invokable-skills-only-in-ask-cape.md).
+
 ## Body
 
 - Addressed to Claude, in the imperative. An English instruction core is fine; user
@@ -45,3 +54,6 @@ array declares the bucket paths and Claude Code scans each one level deep. See
 - Bump `version` in `.claude-plugin/plugin.json` and in the marketplace entry.
 - Update the skill table in the README.
 - If externally sourced: attribution per [`attribution.md`](attribution.md).
+- **Re-check the `ask-cape` router.** Any skill you add, rename, or remove — or any change
+  to how the skills flow together — must be reflected in `ask-cape`, so the router never
+  drifts from the actual skill set.

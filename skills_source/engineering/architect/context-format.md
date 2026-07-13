@@ -3,8 +3,9 @@
 `CONTEXT.md` is the repo's **context map** — a short pointer file that names the project's
 context and says *where* the durable facts live. It holds **no glossary and no
 implementation detail itself**; it points to them. The domain vocabulary lives in the
-arc42 glossary (`docs/arc42/12_glossary.md`), decisions in `docs/adr/`, the rest of the
-architecture in `docs/arc42/`.
+**domain glossary** (arc42 chapter 8), decisions in the ADR-dir, the rest of the
+architecture in the arc-docs. It also lists the repo's **tiers** (name → path), so a
+slice knows which sections it can touch.
 
 ## Structure
 
@@ -15,18 +16,57 @@ architecture in `docs/arc42/`.
 
 ## Pointers
 
-- **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
-- **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model in §8, decisions index in §9).
-- **Decisions** — [docs/adr/](docs/adr/) — the ADRs themselves, one file each.
+- **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+- **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
+- **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+
+## Tiers
+
+{0..N entries detected from THIS repo — each `- **Name** — path/`; **not** a fixed set of keys, the names are the repo's own; omit the whole section if there are no distinct tiers}
 ```
 
-Keep it a map, not content. A skill that needs the vocabulary follows the glossary
-pointer; one that needs a decision follows the ADR pointer. If a doc lives somewhere
+Keep it a map, not content. A skill that needs the vocabulary follows the arc-docs
+pointer (to the domain glossary, chapter 8); one that needs a decision follows the ADR-dir pointer. If a doc lives somewhere
 non-standard, the pointer here is what makes it findable — so keep the pointers current.
 
-## The glossary it points to
+## The central conventions it points to
 
-The glossary file (arc42 §12) holds the ubiquitous language, one entry per term:
+Some conventions belong to no single place in the code — which issue tracker is used, the
+release process, a review checklist. They have nowhere to live in the source tree, so they
+sit together in the conventions-dir, and the **conventions-dir** pointer above names
+that directory. A skill that needs one of these follows the pointer and reads the file.
+
+`/cape:setup` creates the directory and the central conventions cape depends on (the issue
+tracker is the first one), so the pointer always resolves. Conventions that *do* belong to a
+place in the code — a tier's rules — are **not** stored here: they live in that tier's own
+nested `CLAUDE.md` and load from there. (Where those tiers *are* is listed separately, under
+`## Tiers` below — a path, never the rules.)
+
+## The tiers it lists
+
+A **tier** is a section of the stack with its own tech and rules — frontend, backend, a data
+layer — each carrying a nested `CLAUDE.md`. The `## Tiers` block lists them by a stable name
+and their path — `/cape:setup` **detects** them from the repo layout and records them here, so
+the list mirrors the actual repo, never a fixed assumption. It makes the local touchpoint work:
+`/split` picks the tiers a slice touches **from this list** (the canonical menu), and
+`/implement` resolves each named tier to its path here and reads that tier's `CLAUDE.md` before
+acting.
+
+Unlike the three **Pointers** above — a fixed set, always present, always the same three — the
+Tiers are an **open, detected list**: zero or more, each named after whatever the repo's own
+sections are, **not** keys to fill in. One repo with a TypeScript frontend and a Rust backend
+lists `Frontend → apps/web/` and `Backend → services/api/`; another lists `web`, `api`,
+`worker`; a single-package repo lists nothing and the section is dropped.
+
+This is a **pointer**, not a parallel store — it records *where* a tier lives, never its rules;
+those stay in the tier's own `CLAUDE.md` and load natively. A repo with no distinct tiers omits
+the section.
+
+## The domain glossary it points to
+
+The **domain glossary** (arc42 chapter 8) holds the ubiquitous language, one entry per term.
+(Chapter 12 is a *separate* glossary — for documentation and tooling terms, the surroundings,
+not the domain.)
 
 ```md
 **Order**:
@@ -38,7 +78,7 @@ A request for payment sent to a customer after delivery.
 _Avoid_: Bill, payment request
 ```
 
-Rules for the glossary:
+Rules for the domain glossary:
 
 - **Be opinionated.** When multiple words exist for one concept, pick the best and list the others under `_Avoid_`.
 - **Keep definitions tight.** One or two sentences max. Define what it IS, not what it does.
@@ -48,7 +88,7 @@ Rules for the glossary:
 ## Single vs multi-context repos
 
 **Single context (most repos):** one `CONTEXT.md` at the repo root, pointing to the shared
-`docs/arc42/` and `docs/adr/`.
+arc-docs and ADR-dir.
 
 **Multiple contexts:** a `CONTEXT-MAP.md` at the repo root lists the contexts, where they
 live, and how they relate; each context keeps its own `CONTEXT.md` pointer file.
@@ -73,7 +113,7 @@ The skill infers which structure applies:
 
 - If `CONTEXT-MAP.md` exists, multi-context — read it to find the contexts.
 - If only a root `CONTEXT.md` exists, single context.
-- If neither exists, a root `CONTEXT.md` map (and the arc42 glossary it points to) is
+- If neither exists, a root `CONTEXT.md` map (and the domain glossary it points to) is
   created — eagerly by `/cape:setup`, or lazily when the first term is resolved.
 
 When multiple contexts exist, infer which one the current topic relates to. If unclear, ask.

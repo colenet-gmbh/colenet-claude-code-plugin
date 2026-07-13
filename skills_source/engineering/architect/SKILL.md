@@ -13,11 +13,7 @@ The `CONTEXT.md` map (glossary, ADRs, arc42 pointers) should have been provided 
 
 ## Aspects
 
-- **Codebase design** — [codebase-design.md](codebase-design.md). The software design vocabulary and principles (deep modules at its core, room for more). Reach for it whenever you design or judge a module's interface, decide where a seam goes, or make code more testable. Techniques: deepening a cluster ([deep-modules-deepening.md](deep-modules-deepening.md)); exploring alternative interfaces ([design-it-twice.md](design-it-twice.md)).
-- **Domain modelling** — [domain-modeling.md](domain-modeling.md). The active discipline of building and sharpening the domain model: challenge terms, invent scenarios, write the glossary and ADRs down the moment they crystallise. Formats: [context-format.md](context-format.md), [adr-format.md](adr-format.md).
-- **arc42 documentation** — [arc42.md](arc42.md). Where architecture docs live and how to fill them lazily. The domain model, glossary, and ADRs land in arc42 chapters 8, 12, and 9.
-- **Deepening an existing codebase** — [improve-codebase.md](improve-codebase.md). The deliberate review: scan for friction, present deepening candidates as a visual report, then grill through the one the user picks (report scaffold: [improve-codebase-report.md](improve-codebase-report.md)). Picking a candidate _generates an idea_ you can take into the main flow at `/grill-with-docs`.
-
-## How it's reached
-
-`architect` is model-invoked, so other skills activate it mid-work — `/tdd` reaches for the codebase-design aspect at a design decision; `/feature` and `/review-feature` draw on the same vocabulary for their architecture concerns. You can also invoke it by hand for deliberate architectural work — most often the deepening review.
+- **Codebase design** — load codebase-design.md. The software design vocabulary and principles (deep modules at its core, room for more). Reach for it whenever you design or judge a module's interface, decide where a seam goes, or make code more testable. Techniques: deepening a cluster (deep-modules-deepening.md); exploring alternative interfaces (design-it-twice.md).
+- **Domain modelling** — load domain-modeling.md. The active discipline of building and sharpening the domain model: challenge terms, invent scenarios, write the glossary and ADRs down the moment they crystallise. Formats: context-format.md, adr-format.md.
+- **architecture documentation** — load architecture-documentation.md. Where architecture docs live and how to fill them lazily. The domain glossary (the ubiquitous language) is chapter 8; the documentation/tooling glossary is chapter 12; ADRs are chapter 9 (referenced from there).
+- **Deepening an existing codebase** — load improve-codebase.md. The deliberate review: scan for friction, present deepening candidates as a visual report, then grill through the one the user picks (report scaffold: improve-codebase-report.md). Picking a candidate _generates an idea_ you can take into the main flow.

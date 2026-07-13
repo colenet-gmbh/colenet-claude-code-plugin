@@ -5,6 +5,10 @@ skills for agentic product engineering in teams.
 
 ## Pointers
 
-- **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
-- **Architecture** — [docs/arc42/](docs/arc42/) — arc42 docs (domain model §8, decisions index §9).
-- **Decisions** — [docs/adr/](docs/adr/) — the ADRs, one file each.
+- **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+- **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
+- **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+
+## Tiers
+
+None — cape is a skills-and-docs repo; it has no code tiers with their own nested `CLAUDE.md`.

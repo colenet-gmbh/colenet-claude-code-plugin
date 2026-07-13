@@ -70,12 +70,14 @@ glossary), so those stay consistent and readable for everyone.
 
 ## Change workflow
 
-Changes land via **pull request** — but treat commit, push, and open-PR as three separate
+Changes land via **pull request into `develop`** — that is the integration branch for all
+day-to-day work. `main` is the **published state**; it changes only through a **release PR
+(`develop` → `main`)**, which carries the single version bump. Never commit to `main`, and
+don't target day-to-day PRs at it. Treat commit, push, and open-PR as three separate
 authorizations: a bare "commit" means commit only; **push or open a PR only when the user
-asks**. Direct pushes to `main` are blocked. `main` requires the `validate` check, which
-enforces a `plugin.json` version bump when a PR touches plugin-shipping files
-(`skills_source/`, `commands/`, `scripts/`, `.claude-plugin/`, `statusline/`,
-`settings.json`). Details in
+asks**. Direct pushes to `main` and `develop` are blocked. The `validate` check runs on
+every PR; the `plugin.json` version-bump requirement fires **only on the release PR into
+`main`**, not on `develop` PRs. Details in
 [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md).
 
 ## Response Style Defaults

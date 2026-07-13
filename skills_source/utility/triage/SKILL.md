@@ -10,7 +10,7 @@ Triage is **backlog management**: move items that aren't worked up yet — bug r
 feature requests, ideas, anything sitting raw in the backlog — through a small state
 machine until each is either an **agent-ready brief** or closed. Where an item came from
 doesn't matter; only that it hasn't been sorted yet. The one thing to skip is what is
-**already agent-ready** — e.g. issues `/split` produced — since there's nothing left to
+**already agent-ready** — e.g. issues already written out as vertical slices — since there's nothing left to
 triage.
 
 The `CONTEXT.md` map and the `docs/work/` board should have been provided to you — run
@@ -32,8 +32,8 @@ Each triaged item carries exactly one `type` and one `status`. An untriaged file
 
 ## Reference
 
-- [agent-brief.md](agent-brief.md) — how to write a durable, behavioural agent brief.
-- [out-of-scope.md](out-of-scope.md) — the `docs/work/out-of-scope/` knowledge base for
+- agent-brief.md — how to write a durable, behavioural agent brief.
+- out-of-scope.md — the `docs/work/out-of-scope/` knowledge base for
   rejected requests.
 
 ## The roles
@@ -81,7 +81,7 @@ that's where worked-up `ready-for-agent` / `ready-for-human` briefs now live.
    and ADRs inline as decisions land.
 5. **Apply the outcome**, updating the file's frontmatter `status` and moving the file to
    the column that matches how much energy it now carries (see `docs/work/CLAUDE.md`):
-   - `ready-for-agent` — write an agent brief into the file ([agent-brief.md](agent-brief.md)),
+   - `ready-for-agent` — write an agent brief into the file (agent-brief.md),
      then **move it to `docs/work/02-development/`**: a worked-up brief is a result, not a
      backlog item still under consideration.
    - `ready-for-human` — same brief, plus why it can't be delegated (judgment calls,
@@ -91,7 +91,7 @@ that's where worked-up `ready-for-agent` / `ready-for-human` briefs now live.
      carried forward yet. For `needs-info`, record triage notes in the file (template below).
    - `wontfix` — move the file to `docs/work/04-done/`. If **already implemented**, point
      to where it lives (do **not** write to out-of-scope). If a **rejected enhancement**,
-     record it in `docs/work/out-of-scope/` ([out-of-scope.md](out-of-scope.md)); a
+     record it in `docs/work/out-of-scope/` (out-of-scope.md); a
      rejected bug just gets a short explanation.
 
 ## Quick override

@@ -15,7 +15,13 @@ description: Test-driven development. Use when the user wants to build features 
 
 **Tautological tests** restate the implementation inside the assertion, so they pass by construction and give zero confidence. When the expected value is computed the way the code computes it — `expect(add(a, b)).toBe(a + b)`, snapshotting a figure you derived by hand the same way the code does, asserting a constant equals itself — the test can never disagree with the code: break the code wrong and the assertion breaks wrong with it. The expected value must come from an independent source of truth — a known-good literal, a worked example, the spec.
 
-See [tests.md](tests.md) for examples and [mocking.md](mocking.md) for mocking guidelines.
+See tests.md for examples and mocking.md for mocking guidelines.
+
+## Seams — where tests go
+
+A **seam** is the public boundary you test at: the interface where you observe behavior without reaching inside. Tests live at seams, never against internals — that is what lets a test survive a refactor.
+
+**Test only at pre-agreed seams.** Before writing any test, name the seams under test and confirm them with the user; no test is written at an unconfirmed seam. Agreeing the seams up front is how testing effort lands on the critical paths and complex logic instead of every edge case.
 
 ## Anti-Pattern: Horizontal Slices
 
