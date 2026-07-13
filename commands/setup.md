@@ -97,7 +97,7 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
 
    ## Tiers
 
-   {0..N — one `- **Name** — `path/`` per tier you detect (step 3); the names are the repo's own, **not** fixed keys; omit the section if the repo has none}
+   {0..N — one `- **Name** — path/` line per tier you detect (step 3); the names are the repo's own, **not** fixed keys; omit the section if the repo has none}
    ```
 
    Each pointer is a **logical label** (`arc-docs`, `ADR-dir`, `conventions-dir`) resolved to
@@ -110,7 +110,7 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
    workspace/monorepo config (`package.json` `workspaces`, `pnpm-workspace.yaml`, a Cargo
    workspace, nx/turbo), distinct top-level app/service/package directories, separate language
    roots (e.g. a TypeScript frontend beside a Rust backend), and any existing nested `CLAUDE.md`.
-   Write each finding as `- **Name** — `path/``. A single undifferentiated codebase has no tiers
+   Write each finding as `- **Name** — path/`. A single undifferentiated codebase has no tiers
    — omit the section. If the split is ambiguous, propose what you found and let the user
    confirm. `/split` picks the touched tiers from this list; `/implement` resolves each to its
    path. If `CONTEXT.md` already has a `## Tiers` block, reconcile it with what you detect rather
