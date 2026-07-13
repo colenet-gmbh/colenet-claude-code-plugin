@@ -22,4 +22,4 @@ Its job:
 ## Attribution
 
 Ported from Matt Pocock's [`research`](https://github.com/mattpocock/skills) skill
-(v1.1.0, MIT). See [`ATTRIBUTION.md`](../../../ATTRIBUTION.md).
+(v1.1.0, MIT). See `ATTRIBUTION.md`.

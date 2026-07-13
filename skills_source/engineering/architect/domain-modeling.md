@@ -54,7 +54,7 @@ When the user states how something works, check whether the code agrees. If you 
 
 ### Update the glossary inline
 
-When a term is resolved, add it to the glossary (arc42 chapter 8, `08_crosscutting-concepts.md` in the arc42-docs — path via `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in [context-format.md](./context-format.md).
+When a term is resolved, add it to the glossary (arc42 chapter 8, `08_crosscutting-concepts.md` in the arc42-docs — path via `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in context-format.md.
 
 The domain glossary holds domain language and nothing else — no implementation details, no spec, no scratch pad, no decisions. `CONTEXT.md` itself stays a pointer map: it points at the glossary, it doesn't contain it.
 
@@ -66,4 +66,4 @@ Only offer to create an ADR when all three are true:
 2. **Surprising without context** — a future reader will wonder "why did they do it this way?"
 3. **The result of a real trade-off** — there were genuine alternatives and you picked one for specific reasons
 
-If any of the three is missing, skip the ADR. Use the format in [adr-format.md](./adr-format.md).
+If any of the three is missing, skip the ADR. Use the format in adr-format.md.
