@@ -3,8 +3,8 @@
 `CONTEXT.md` is the repo's **context map** — a short pointer file that names the project's
 context and says *where* the durable facts live. It holds **no glossary and no
 implementation detail itself**; it points to them. The domain vocabulary lives in the
-**domain glossary** (arc42 chapter 8), decisions in `docs/adr/`, the rest of the
-architecture in `docs/arc42/`.
+**domain glossary** (arc42 chapter 8), decisions in the ADR-dir, the rest of the
+architecture in the arc42-docs.
 
 ## Structure
 
@@ -15,20 +15,20 @@ architecture in `docs/arc42/`.
 
 ## Pointers
 
-- **arc42** — [docs/arc42/](docs/arc42/) — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
-- **ADRs** — [docs/adr/](docs/adr/) — one file per decision (arc42 chapter 9 only indexes them).
-- **Conventions** — [docs/agent-conventions/](docs/agent-conventions/) — the central conventions (issue tracker, release process, …).
+- **arc42-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+- **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
+- **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
 ```
 
-Keep it a map, not content. A skill that needs the vocabulary follows the arc42
-pointer (to the domain glossary, chapter 8); one that needs a decision follows the ADRs pointer. If a doc lives somewhere
+Keep it a map, not content. A skill that needs the vocabulary follows the arc42-docs
+pointer (to the domain glossary, chapter 8); one that needs a decision follows the ADR-dir pointer. If a doc lives somewhere
 non-standard, the pointer here is what makes it findable — so keep the pointers current.
 
 ## The central conventions it points to
 
 Some conventions belong to no single place in the code — which issue tracker is used, the
 release process, a review checklist. They have nowhere to live in the source tree, so they
-sit together under `docs/agent-conventions/`, and the **Conventions** pointer above names
+sit together in the conventions-dir, and the **conventions-dir** pointer above names
 that directory. A skill that needs one of these follows the pointer and reads the file.
 
 `/cape:setup` creates the directory and the central conventions cape depends on (the issue
@@ -62,7 +62,7 @@ Rules for the domain glossary:
 ## Single vs multi-context repos
 
 **Single context (most repos):** one `CONTEXT.md` at the repo root, pointing to the shared
-`docs/arc42/` and `docs/adr/`.
+arc42-docs and ADR-dir.
 
 **Multiple contexts:** a `CONTEXT-MAP.md` at the repo root lists the contexts, where they
 live, and how they relate; each context keeps its own `CONTEXT.md` pointer file.

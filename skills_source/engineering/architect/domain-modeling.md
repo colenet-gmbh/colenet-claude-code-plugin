@@ -32,13 +32,13 @@ If a `CONTEXT-MAP.md` exists at the root, the repo has multiple contexts. The ma
 │       └── docs/adr/
 ```
 
-Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no `docs/adr/` exists, create it when the first ADR is needed.
+Create files lazily — only when you have something to write. If no `CONTEXT.md` exists, create one when the first term is resolved. If no ADR-dir exists, create it when the first ADR is needed (paths: see `CONTEXT.md`).
 
 ## During the session
 
 ### Challenge against the glossary
 
-When the user uses a term that conflicts with the existing language in the glossary (arc42 chapter 8, `docs/arc42/08_crosscutting-concepts.md`, located via `CONTEXT.md`), call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
+When the user uses a term that conflicts with the existing language in the glossary (arc42 chapter 8, `08_crosscutting-concepts.md` in the arc42-docs — path via `CONTEXT.md`), call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
 
 ### Sharpen fuzzy language
 
@@ -54,7 +54,7 @@ When the user states how something works, check whether the code agrees. If you 
 
 ### Update the glossary inline
 
-When a term is resolved, add it to the glossary (arc42 chapter 8, `docs/arc42/08_crosscutting-concepts.md`, located via `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in [context-format.md](./context-format.md).
+When a term is resolved, add it to the glossary (arc42 chapter 8, `08_crosscutting-concepts.md` in the arc42-docs — path via `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in [context-format.md](./context-format.md).
 
 The domain glossary holds domain language and nothing else — no implementation details, no spec, no scratch pad, no decisions. `CONTEXT.md` itself stays a pointer map: it points at the glossary, it doesn't contain it.
 

@@ -91,15 +91,15 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
 
    ## Pointers
 
-   - **arc42** — [docs/arc42/](docs/arc42/) — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
-   - **ADRs** — [docs/adr/](docs/adr/) — one file per decision (arc42 chapter 9 only indexes them).
-   - **Conventions** — [docs/agent-conventions/](docs/agent-conventions/) — Central conventions are defined in files in docs/agent-conventions.
+   - **arc42-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+   - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
+   - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
    ```
 
-   If `CONTEXT.md` already exists, leave it; just make sure it points at the domain glossary and at
-   `docs/agent-conventions/`, and add either pointer if it's missing. The conventions pointer
-   must carry the sentence `Central conventions are defined in files in docs/agent-conventions.`
-   so a skill can find them by a stable path.
+   Each pointer is a **logical label** (`arc42-docs`, `ADR-dir`, `conventions-dir`) resolved to
+   a concrete path here — this is the one place those paths live. If `CONTEXT.md` already exists,
+   leave it; just make sure it carries all three labels resolved to their paths, and add any that
+   are missing, so a skill can find each thing by its stable label.
 
 ## 4. Done
 
