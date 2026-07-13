@@ -4,11 +4,11 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.8.0] - 2026-07-11
+## [0.8.0] - 2026-07-13
 
 ### Added
 
-- **`/research` skill (F001 / I032)** — a new engineering skill ported from Matt Pocock's
+- **`/research` skill (F001 / I032)** — a new **utility** skill ported from Matt Pocock's
   `research` (v1.1.0, MIT). It delegates reading legwork to a background agent: investigate
   a question against high-trust **primary sources** (official docs, source code, specs,
   first-party APIs) and leave a **cited Markdown note** in the repo, at the location
@@ -16,24 +16,42 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   distinguishes it from `deep-research` (broad multi-source web reports). Surfaced in
   `ask-cape` and the README.
 
-- **Convention consultation (F006 / I031)** — cape skills now surface a repo's own
-  conventions before acting, so their output honours project rules as if the harness were
-  built for that repo:
-  - **`/implement`** reads the conventions of every **tier the issue names** — resolved via
-    each tier's conventional nested `CLAUDE.md` — up front, before it plans or acts. This
-    catches decisions (a colour, an id scheme) made *before* the owning tier's files are
-    touched, which Claude Code's native lazy loading misses. It consults only the named
-    tiers (no wrong-tier leakage), and dispatched sub-agents inherit the same obligation.
-  - **`/split`** now names the **tiers (and bounded contexts) each issue touches** — a new
-    "Tiers & contexts touched" section in the issue template plus drafting guidance — so
-    `/implement` knows which conventions to consult.
-  - **`/cape:setup`** adds a **Conventions** pointer to `CONTEXT.md`
-    (`Central conventions are defined in files in docs/agent-conventions.`) alongside the
-    `tracker.md` it already scaffolds, giving skills a stable path to the central conventions.
-  - **`context-format.md`** documents the central-conventions pointer as part of the
-    canonical `CONTEXT.md` contract.
+- **Convention consultation — the F6 mechanism (F006 / I030 / I031)** — cape skills now
+  surface a repo's own conventions before acting, so a Level-2 framework reaches the
+  progressive-disclosure quality of a harness hand-built for the repo:
+  - **`/cape:setup`** writes `CONTEXT.md` as a **pointer map** with three logical labels —
+    `arc-docs`, `ADR-dir`, `conventions-dir` — resolved to their paths in that one place, and
+    creates the central conventions cape depends on (the issue tracker first).
+  - **`/cape:setup` also detects the repo's tiers** and records them under a `## Tiers` section
+    (name → path) — a detected, open list, never a fixed set of keys.
+  - **`/split`** names the **tiers (and bounded contexts) each issue touches**, picked from that
+    `## Tiers` list (a new "Tiers & contexts touched" section in the issue template).
+  - **`/implement`** resolves each named tier to its path through the registry and reads that
+    tier's nested `CLAUDE.md` **up front, before it plans** — catching decisions (a colour, an
+    id scheme) made *before* the owning tier's files are touched, which Claude Code's native
+    lazy loading misses. Only the named tiers (no wrong-tier leakage); dispatched sub-agents
+    inherit the obligation.
+  - Proven **hypothesis-first** by an eval: a without-cape baseline as a stop-gate (I030), then
+    the nudge shown to close the gap (I031).
+  - Grounded in **ADR 0002** (conventions are local or central).
+
+- **arc42 architecture documentation** — cape documents itself in arc42, an exemplar of its own
+  conventions: chapter 1 (introduction & goals), 4 (solution strategy), 8 (crosscutting
+  concepts, holding the domain glossary), 11 (risks — eval/QA infrastructure as a base
+  challenge), 12 (documentation & tooling glossary). Chapter 9 references the ADRs.
+
+- **ADR 0003** — not-model-invokable skills are named only in `ask-cape`, so the model doesn't
+  anticipate downstream steps and lose focus.
 
 ### Changed
+
+- **Skills reference doc locations by logical label, not hardcoded path** — every skill names
+  `arc-docs` / `ADR-dir` / `conventions-dir` and resolves tiers via `## Tiers`; `CONTEXT.md` is
+  the single place those labels resolve to concrete paths, so skills stay path-free and portable.
+
+- **Not-model-invokable skills are referenced only in `ask-cape`** (ADR 0003) — removed such
+  references from `split`, `feature`, `build`, `implement`, `review-feature`, `architect`, and
+  `triage`.
 
 - **Matt v1.1.0 backports into existing skills (F001 / I033)** — targeted improvements Matt
   made between v1.0 and v1.1.0 that cape was missing:
@@ -56,6 +74,16 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   - **Cosmetic** — `handoff` now says "specs" instead of "PRDs"; `skill-authoring.md` gains a
     maintenance rule to re-check the `ask-cape` router on any skill add/rename/remove or flow
     change.
+
+- **Redundant links collapsed, a reference file renamed** — in LLM-read skill files, markdown
+  links whose visible text was just the target filename collapse to the plain name; the
+  architect's `arc42.md` reference is renamed to `architecture-documentation.md` (it teaches the
+  arc42 structure — baking the format name into the filename was too rigid).
+
+- **Release model & SemVer levels** — day-to-day work integrates on `develop`; a release is a
+  single `develop → main` PR carrying the one version bump. Version positions read as levels of
+  significance: PATCH = fixes/optimisations, MINOR = conceptual/structural, MAJOR = maturity
+  milestones.
 
 ## [0.7.8] - 2026-07-10
 
