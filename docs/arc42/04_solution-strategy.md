@@ -34,3 +34,15 @@ Beyond these, cape builds on Level 1's native loading — **no parallel store**.
 cape is prompt-shaped software: its behaviour claims can't be read off the code, only observed.
 So they are proven by **evals** — run the flow, measure the output — not asserted. The eval
 infrastructure this demands is a standing concern (chapter 11).
+
+## Improvement loops
+
+cape does not just execute a flow; it learns from running. An improvement loop is a first-class
+part of the framework: when a **guardrail** fires (chapter 8) — an event that, by definition, is
+not routine — that firing is the signal to improve, so the same guardrail need not trip again.
+
+The point that gets improved is often **not cape itself**. By layer discipline, a fix lands on
+the layer it belongs to and prefers the **local project layer (Level 3)** over changing a
+cape-owned skill; only a genuinely general improvement graduates back into cape. So the loop is
+part of the framework even when most of its outputs land outside the framework. cape's job is to
+notice the signal and route the fix to the right layer.
