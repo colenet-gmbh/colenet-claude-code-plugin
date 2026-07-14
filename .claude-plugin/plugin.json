@@ -1,6 +1,6 @@
 {
   "name": "cape",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "CAPE — Colenet Agentic Product Engineering. CAPE's Claude Code harness for agentic product engineering in teams. Bundles the best practices of our consultants and engineers as skills — growing step by step.",
   "skills": [
     "./skills_source/engineering/",
