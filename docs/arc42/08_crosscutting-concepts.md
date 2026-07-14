@@ -41,6 +41,26 @@ A vertical slice crosses several **tiers** and few **bounded contexts**. A skill
 conventions of the tiers it touches (local) plus the central ones — situationally, via cape's
 progressive-disclosure strategy (chapter 4).
 
+### Guardrail
+
+A guardrail is a quality-assurance measure that, ideally, never fires. The metaphor is the
+crash barrier on a road: it saves you from the worse consequences of a mishap, but hitting one
+is never routine — it is an alarming event. For any behaviour we want, a **convention** already
+prescribes it; the guardrail is only the detection that trips when the convention was not
+followed anyway. It therefore presupposes a convention — it is the backstop, never a
+replacement for the instruction that comes first.
+
+Guardrails take several forms, for example:
+
+- a **hook** that enforces or checks something (e.g. a PreToolUse hook that warns before a
+  commit),
+- a **review loop** or an **independent, topic-specific review** that acts as a check on one
+  defined concern.
+
+Because a guardrail firing is not routine, in a continuously improving framework each firing
+is a signal to improve the framework — strengthen the convention (or the harness) so that the
+same guardrail need not trip again.
+
 ### The flow
 
 Idea → `grill-with-docs` → `feature` → `split` → `build` (each issue via `implement`, then
