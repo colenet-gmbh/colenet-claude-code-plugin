@@ -2,7 +2,7 @@
 
 > colenet's Claude Code harness for **agentic product development**.
 
-Early stage (`v0.7.6`) — a small, curated set of skills, growing deliberately. Expect gaps
+Early stage — a small, curated set of skills, growing deliberately. Expect gaps
 and rough edges; the shape below is where it's heading.
 
 ## Why cape exists
