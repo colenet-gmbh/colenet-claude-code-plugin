@@ -4,6 +4,22 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.1] - 2026-07-14
+
+### Fixed
+
+- **README version drift** — the README carried the version a second time, hardcoded in prose
+  (`v0.7.6`), beside the single source of truth in `plugin.json`. The release checklist bumps
+  only `plugin.json`, so that number silently rotted. Removed it — "Early stage" carries the
+  meaning without a value that goes stale; `plugin.json` stays the only place a version lives.
+
+### Added
+
+- **arc42: guardrail concept & improvement loops** — chapter 8 defines a **guardrail** (a QA
+  backstop that ideally never fires, presupposing a convention rather than replacing it), and
+  chapter 4 adds **improvement loops**: a guardrail firing is the signal to improve, with the fix
+  routed to the layer it belongs to (preferring the local project layer over cape itself).
+
 ## [0.8.0] - 2026-07-13
 
 ### Added
