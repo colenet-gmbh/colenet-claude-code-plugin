@@ -10,6 +10,25 @@ The core move: in each situation, surface only the rules that matter and skip th
 few as possible, as many as necessary**. Too many or wrong rules dilute the model's focus, and
 the relevant ones get missed.
 
+## Appropriate complexity
+
+Progressive disclosure keeps the *project's rules* proportionate; the same discipline applies
+to **cape's own output**. Every artefact cape produces — how a feature is defined, how much
+documentation is written, how deep a flow runs — is sized to the complexity of the problem in
+front of it, not to a fixed maximum. As few as possible, as many as necessary, turned on cape
+itself.
+
+So a one-page arc42 that fixes the audience, the central goal, and the tech stack is a
+complete, professional start — not a stub; and a one-line change does not earn a full feature
+workflow. Professionalism shows in the minimal effort that fits, not in always running the
+heaviest apparatus.
+
+This is realised diffusely, never as a downscaling mode: a stance the acting skills carry (the
+`architect` above all, for both feature definition and documentation extent), seed templates
+that begin minimal, and nudges that scale the apparatus up only when the problem does. It pairs
+with the improvement loop below — when a project outgrows its minimal form, that is the signal
+to propose deepening, so starting small never means staying stuck small.
+
 ## Conventions: local or central
 
 A project's rules live where they belong. A **local** convention belongs to a place in the
