@@ -31,7 +31,7 @@ Die bisherige `CONTEXT-MAP.md` hatte einen **zweiten** Job: die Beziehungen zwis
 Contexts (wer emittiert welches Event, welche Typen werden geteilt). Das ist **echter
 Inhalt, kein Pointer**, und gehört damit nicht in die bewusst dünn gehaltene `CONTEXT.md`.
 Es wandert nach arc42 (Bausteinsicht), wo Bereichsgrenzen und ihr Zusammenspiel ohnehin
-hingehören. Verzahnung mit F008 (arc42-Tiefe).
+hingehören. Verzahnung mit F008 (angemessene Komplexität in der Architektur).
 
 ## Abgrenzung
 
@@ -53,5 +53,5 @@ hingehören. Verzahnung mit F008 (arc42-Tiefe).
 ## Verwandt
 
 - **F006** (cape nutzt Repo-Regeln) — liefert `CONTEXT.md` als einzige Tür + die drei Seams.
-- **F008** (arc42-Tiefe) — Zielort der Kontext-Beziehungen.
+- **F008** (angemessene Komplexität in der Architektur) — Zielort der Kontext-Beziehungen (arc42-Doku).
 - **F010** (projektspezifische Vorgaben).
