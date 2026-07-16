@@ -3,8 +3,8 @@ description: Set up cape in this repository — scaffold the docs the skills exp
 allowed-tools: Bash, Read, Write, Edit, Glob
 ---
 
-Set this repository up for cape. The skills load directly from the installed plugin as
-`cape:<name>`. This command **scaffolds** the durable docs the workflow skills read and
+Set this repository up for cape.
+This command **scaffolds** the durable docs the cape skills read and
 write. Every step is **find-or-create** — never overwrite what already exists, so this is
 safe to re-run and safe in a repo that already has some of these docs.
 
@@ -64,9 +64,8 @@ the file between columns.
 
 ## 3. Context map, glossary & tiers
 
-cape's `CONTEXT.md` is a **pointer map**, not a glossary: it names the project and points
-at where the durable facts live. The domain vocabulary lives in the **domain glossary**
-(arc42 chapter 8); chapter 12 is a separate glossary for documentation/tooling terms.
+cape's `CONTEXT.md` is a **pointer map**: it names the project and points
+at where the durable facts live.
 
 1. **Domain glossary** — look for an existing one (`docs/arc42/08*.md`, or any
    `*glossary*.md` under `docs/`). If none exists, create
@@ -78,45 +77,65 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
    ## Domain glossary
 
    The project's ubiquitous language — one entry per term (concepts, actions, qualities).
-   Seeded and sharpened during `/grill-with-docs` and `/architect` domain modelling.
+   Seeded and sharpened during domain modelling.
    ```
 
-2. **CONTEXT.md** — if a root `CONTEXT.md` (or `CONTEXT-MAP.md`) is missing, create
-   `CONTEXT.md` pointing at the domain glossary you found or created:
+2. **CONTEXT.md** — if a root `CONTEXT.md` is missing, create
+   `CONTEXT.md`:
+
+   Here is a template the locations of the context pointers are examples and recommendations.
+   Try to locate the information in the repo and use these values, otherwise stick to the recommendations.
 
    ```md
    # {repo name} — Context
 
-   {One sentence on what this project is.}
+   THE central place to look up where things are.
 
-   ## Pointers
+   ## Context Pointers
 
-   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
-   - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
-   - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language)
+   - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them)
+   - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …)
+   - **handoff-dir** — `/tmp/cape-handoffs` — where session handoffs live
 
    ## Tiers
 
-   {0..N — one `- **Name** — path/` line per tier you detect (step 3); the names are the repo's own, **not** fixed keys; omit the section if the repo has none}
+   A **tier** is a section of the tech stack with its own tech and rules (something like the frontend of an app).
+
+   Tiers in this repo:
+   {0..N  `- TIER one line per tier you detect (see below); the names are the repo's own, }
+   or `- NONE` if the repo has none
    ```
 
-   Each pointer is a **logical label** (`arc-docs`, `ADR-dir`, `conventions-dir`) resolved to
-   a concrete path here — this is the one place those paths live. If `CONTEXT.md` already exists,
-   leave it; just make sure it carries all three labels resolved to their paths, and add any that
-   are missing, so a skill can find each thing by its stable label.
+   If `CONTEXT.md` already exists, make sure it carries all four labels resolved to their paths,
+   and add any that are missing, so Cape can find each thing by its stable label. Resolve
+   `handoff-dir` as in step 4 below and use that path.
 
-3. **Tiers** — **detect** the repo's tiers and record them under `## Tiers` (do not invent or
-   hardcode them). A **tier** is a section of the stack with its own tech and rules. Look for:
+3. **Tiers** — **detect** the repo's tiers and record them under `## Tiers`.
+   Look for:
    workspace/monorepo config (`package.json` `workspaces`, `pnpm-workspace.yaml`, a Cargo
    workspace, nx/turbo), distinct top-level app/service/package directories, separate language
    roots (e.g. a TypeScript frontend beside a Rust backend), and any existing nested `CLAUDE.md`.
-   Write each finding as `- **Name** — path/`. A single undifferentiated codebase has no tiers
-   — omit the section. If the split is ambiguous, propose what you found and let the user
-   confirm. `/split` picks the touched tiers from this list; `/implement` resolves each to its
-   path. If `CONTEXT.md` already has a `## Tiers` block, reconcile it with what you detect rather
-   than overwriting.
+   Write each TIER as `- **Name** — path/   a few words describing what it is`.
+   A single undifferentiated codebase has no tiers —> NONE.
+   If the split is ambiguous, propose what you found and let the user confirm.
 
-## 4. Done
+## 4. Handoff directory
 
-Summarize what you actually did: e.g. board created, issue tracker recorded, `CONTEXT.md` + glossary in place —
-noting which were already present and left untouched. Then offer to commit the changes.
+Handoffs written by the `handoff` skill need a fixed spot that `CONTEXT.md` points at (the
+`handoff-dir` label from step 3). `mkdir -p` a session-independent dir and use its path as
+`handoff-dir`: `/tmp/cape-handoffs/` on Mac/Linux (the OS clears `/tmp` itself, so no cleanup
+is needed), or a `%TEMP%`-based dir on Windows. Find-or-create: if `CONTEXT.md` already carries
+a `handoff-dir`, leave it — never add a second.
+
+## 5. Point CLAUDE.md at CONTEXT.md
+
+Find-or-create the root `CLAUDE.md`; if it lacks this signpost, add it once (never duplicate):
+
+> Read `CONTEXT.md` to locate central project files and directories unknown to you.
+
+## 6. Done
+
+Summarize what you actually did: e.g. board created, issue tracker recorded, `CONTEXT.md` + glossary in place,
+handoff-dir created and pointed at from `CONTEXT.md`, `CLAUDE.md` signpost added — noting which were already
+present and left untouched. Then offer to commit the changes.
