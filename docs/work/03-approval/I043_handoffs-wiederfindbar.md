@@ -51,7 +51,7 @@ nicht, also ist ein bestimmtes Handoff nicht auffindbar. Genau daran ist ein Les
   `/cape:setup` schreibt sie"), keine neue Entscheidung.
 - Glossar bekommt einen Eintrag **Handoff** (separat, in diesem Zug erledigt).
 
-## Definition of Done
+## Akzeptanzkriterien
 
 - `CONTEXT.md`-Setup-Vorlage und die reale Repo-`CONTEXT.md` tragen `handoff-dir`.
 - `/cape:setup` legt den Ordner OS-abhängig an, trägt den Pointer ein und ergänzt die
@@ -59,9 +59,3 @@ nicht, also ist ein bestimmtes Handoff nicht auffindbar. Genau daran ist ein Les
 - `handoff`-Skill schreibt nach `handoff-dir` mit Themen-Slug-Dateinamen.
 - Ein frisch gestartetes „lies das Handoff zu X" findet die Datei über den Pfad in
   `CONTEXT.md`.
-
-## Bezug
-
-Ausgelöst beim erfolgreichen Test von F021 (Statusline-Prototyp): das Lesen des „Handoffs"
-scheiterte am unauffindbaren Ablageort. Bessere, allgemeine Antwort auf genau dieses
-Problem.

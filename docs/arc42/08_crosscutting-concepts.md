@@ -7,7 +7,7 @@ teams. This is its ubiquitous language: the terms (concepts, actions, qualities 
 entities) and how they relate. The three layers that frame it (Level 1 / 2 / 3) are in
 [chapter 1](01_introduction-and-goals.md).
 
-### Skills
+### Skill
 
 | Concept | What it is |
 |---|---|
@@ -27,7 +27,7 @@ entities) and how they relate. The three layers that frame it (Level 1 / 2 / 3) 
 A **Feature** is realized by splitting it into **Issues**; each Issue is built and reviewed;
 the whole is finished when it meets the **Definition of Done**.
 
-### Conventions
+### Convention
 
 | Concept | What it is |
 |---|---|
@@ -65,14 +65,20 @@ same guardrail need not trip again.
 
 | Concept | What it is |
 |---|---|
-| Handoff | a document one session writes so a fresh session can pick up the work — produced by the `handoff` skill. |
-| Handoff-dir | the session-independent directory handoffs live in; a `CONTEXT.md` pointer (like `arc-docs`), so any session finds them by a stable path. |
+| Handoff | The process of handing over some aspect of work to a different session. |
+| Handoff document | the document that carries the information transferred from one session to another (often informally called handoff). |
+| Handoff-dir | the session-independent directory handoff documents live in; a `CONTEXT.md` pointer |
 
-A **Handoff** crosses from one session to another, so its location must not encode the
-session. `/cape:setup` resolves the **Handoff-dir** for the OS and records it in `CONTEXT.md`;
-the `handoff` skill writes there under a topic-slug filename so a handoff is found by subject.
+The handoff is typically initiated by a user triggering the `handoff` skill. This skill writes a
+**Handoff document** to the **Handoff-dir**. The document is shortly afterwards read by another session. In the new session a short hint like `Read the handoff regarding xyz` is enough to locate the handoff document.
+Handoff documents older than 24h may be considered stale and safely removed. Cleaning the dir regularly makes it easier for sessions to locate the appropriate handoff document.
+A **Handoff** document should have an easy-to-identify topic-slug filename, so that a handoff can be found quickly looking at the handoff dir contents.
 
-### The flow
+### Main Flow
 
-Idea → `grill-with-docs` → `feature` → `split` → `build` (each issue via `implement`, then
-reviewed). `ask-cape` is the map over the skills.
+The main steps an idea goes through on its way from ideation to becoming part of the finished product. Cape supplies user-invoked skills for each step of the main flow.
+
+Idea created as feature → `triage` →  `grill-with-docs` → `feature` → `split` into multiple issues → `build` (each issue via `implement`).
+
+Not all steps are needed in every case. E.g. for small issues:
+Idea created as issues -> `triage` → `grill-with-docs` → `implement`
