@@ -94,16 +94,19 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
    - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
    - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
    - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+   - **handoff-dir** — `{resolved handoff dir}` — where session handoffs live, session-independent so a later session finds them by a stable path. OS-dependent, set below; reconfigure by editing this line.
 
    ## Tiers
 
    {0..N — one `- **Name** — path/` line per tier you detect (step 3); the names are the repo's own, **not** fixed keys; omit the section if the repo has none}
    ```
 
-   Each pointer is a **logical label** (`arc-docs`, `ADR-dir`, `conventions-dir`) resolved to
-   a concrete path here — this is the one place those paths live. If `CONTEXT.md` already exists,
-   leave it; just make sure it carries all three labels resolved to their paths, and add any that
-   are missing, so a skill can find each thing by its stable label.
+   Each pointer is a **logical label** (`arc-docs`, `ADR-dir`, `conventions-dir`, `handoff-dir`)
+   resolved to a concrete path here — this is the one place those paths live. If `CONTEXT.md`
+   already exists, leave it; just make sure it carries all four labels resolved to their paths,
+   and add any that are missing, so a skill can find each thing by its stable label. Resolve
+   `handoff-dir` as in step 4 below and use that path (never a session-encoded one — handoffs go
+   from one session to the next).
 
 3. **Tiers** — **detect** the repo's tiers and record them under `## Tiers` (do not invent or
    hardcode them). A **tier** is a section of the stack with its own tech and rules. Look for:
@@ -116,7 +119,43 @@ at where the durable facts live. The domain vocabulary lives in the **domain glo
    path. If `CONTEXT.md` already has a `## Tiers` block, reconcile it with what you detect rather
    than overwriting.
 
-## 4. Done
+## 4. Handoff directory & the CLAUDE.md pointer
 
-Summarize what you actually did: e.g. board created, issue tracker recorded, `CONTEXT.md` + glossary in place —
-noting which were already present and left untouched. Then offer to commit the changes.
+Handoffs written by the `handoff` skill must survive from one session to the next, so they
+live outside any session in a fixed spot that `CONTEXT.md` points at (the `handoff-dir`
+label from step 3).
+
+1. **Create the directory, OS-dependent.** Mac/Linux use `/tmp/cape-handoffs/` — the OS
+   clears `/tmp` itself, so no active cleanup is needed. Windows (or anything else) falls
+   back to a temp dir under `%TEMP%`; there is no guaranteed auto-cleanup there, which is
+   accepted — reconfigure `CONTEXT.md` if you want otherwise.
+
+   ```bash
+   cd "${CLAUDE_PROJECT_DIR:-$PWD}"
+   case "$(uname -s)" in
+     Darwin|Linux) HANDOFF_DIR="/tmp/cape-handoffs" ;;
+     *)            HANDOFF_DIR="${TEMP:-${TMP:-/tmp}}/cape-handoffs" ;;  # Windows / other
+   esac
+   mkdir -p "$HANDOFF_DIR"
+   echo "$HANDOFF_DIR"
+   ```
+
+   Use the printed path as the `handoff-dir` value in `CONTEXT.md` (step 3). Find-or-create:
+   if a `handoff-dir` pointer is already there, leave it — never add a second one.
+
+2. **Point `CLAUDE.md` at `CONTEXT.md`.** The root `CLAUDE.md` is loaded in every session, so
+   it is where a fresh session learns that `CONTEXT.md` is the map to the handoff-dir (and the
+   rest). Find-or-create the root `CLAUDE.md`; if it does not already carry this signpost, add
+   it once (never duplicate) — verbatim:
+
+   > Read `CONTEXT.md` first — it maps where the project's and the cape harness's key files
+   > and directories live.
+
+   This line is deliberately **general**, not handoff-specific: `CLAUDE.md` points at
+   `CONTEXT.md` as the map, and the concrete handoff path lives only there.
+
+## 5. Done
+
+Summarize what you actually did: e.g. board created, issue tracker recorded, `CONTEXT.md` + glossary in place,
+handoff-dir created and pointed at from `CONTEXT.md`, `CLAUDE.md` signpost added — noting which were already
+present and left untouched. Then offer to commit the changes.

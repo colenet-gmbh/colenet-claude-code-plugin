@@ -3,6 +3,9 @@
 Instructions for Claude when working **in this repository** — developing the plugin
 itself, not using it.
 
+Read `CONTEXT.md` first — it maps where the project's and the cape harness's key files
+and directories live.
+
 `cape` (Colenet Agentic Product Engineering) is colenet's curated Claude Code harness for
 agentic product engineering in teams: colenet's best practices as composable **skills**,
 grown deliberately — quality over breadth. Distributed via the separate

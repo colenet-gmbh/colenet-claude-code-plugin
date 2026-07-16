@@ -61,6 +61,17 @@ Because a guardrail firing is not routine, in a continuously improving framework
 is a signal to improve the framework — strengthen the convention (or the harness) so that the
 same guardrail need not trip again.
 
+### Handoff
+
+| Concept | What it is |
+|---|---|
+| Handoff | a document one session writes so a fresh session can pick up the work — produced by the `handoff` skill. |
+| Handoff-dir | the session-independent directory handoffs live in; a `CONTEXT.md` pointer (like `arc-docs`), so any session finds them by a stable path. |
+
+A **Handoff** crosses from one session to another, so its location must not encode the
+session. `/cape:setup` resolves the **Handoff-dir** for the OS and records it in `CONTEXT.md`;
+the `handoff` skill writes there under a topic-slug filename so a handoff is found by subject.
+
 ### The flow
 
 Idea → `grill-with-docs` → `feature` → `split` → `build` (each issue via `implement`, then

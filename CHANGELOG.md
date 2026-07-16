@@ -4,6 +4,19 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+
+- **Findable handoffs (I043)** — the `handoff` skill used to save to "the temporary directory of
+  the user's OS", which on macOS is a random per-boot `$TMPDIR` path no later session could
+  guess, with a filename that did not encode the topic. Handoffs now live in a **`handoff-dir`**
+  pointer in `CONTEXT.md` (a session-independent path, like `arc-docs`), written under a
+  topic-slug filename so a handoff is found by subject. `/cape:setup` creates the directory
+  OS-dependently (`/tmp/cape-handoffs/` on Mac/Linux, a `%TEMP%` fallback on Windows), records
+  the pointer, and adds a general signpost to the root `CLAUDE.md` telling every session to read
+  `CONTEXT.md` first. Arc42 chapter 8 gains a **Handoff** glossary entry.
+
 ## [0.8.1] - 2026-07-14
 
 ### Fixed
