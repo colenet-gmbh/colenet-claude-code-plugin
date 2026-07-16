@@ -1,7 +1,7 @@
 ---
 id: F021
 type: feature
-priority: later
+priority: now  # 1 — Transparenz zuerst
 ---
 
 # Die gebündelte Statuszeile ist getestet, zuverlässig und wird beim Setup angeboten

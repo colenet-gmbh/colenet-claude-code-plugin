@@ -1,7 +1,7 @@
 ---
 id: F037
 type: feature
-priority: next
+priority: next  # 4 — Right-Sizing-Cluster
 ---
 
 # cape wählt einen komplexitätsangemessenen Workflow

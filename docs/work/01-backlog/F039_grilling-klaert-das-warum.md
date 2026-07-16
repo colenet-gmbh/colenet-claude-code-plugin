@@ -1,7 +1,7 @@
 ---
 id: F039
 type: feature
-priority: next
+priority: next  # 4 — Right-Sizing-Cluster
 ---
 
 # grilling klärt auch das Warum (das höhere Ziel)

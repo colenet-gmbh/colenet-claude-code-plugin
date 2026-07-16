@@ -1,7 +1,7 @@
 ---
 id: F008
 type: feature
-priority: next
+priority: next  # 4 — Right-Sizing-Cluster
 ---
 
 # cape hält die Architektur komplexitätsangemessen

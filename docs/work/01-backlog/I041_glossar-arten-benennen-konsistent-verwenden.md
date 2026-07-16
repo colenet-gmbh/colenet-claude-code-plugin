@@ -1,7 +1,7 @@
 ---
 id: I041
 type: issue
-priority: next
+priority: now  # 2 — Quick Win, reduziert Verwirrung
 ---
 
 # „Glossar" ist mehrdeutig — Arten benennen und in Skills konsistent verwenden
