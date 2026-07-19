@@ -6,6 +6,15 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- **`session-retro` skill** — a new **utility** skill: a structured retrospective on
+  collaboration and process after a development session, deliberately scoped away from
+  code quality or subject-matter learning. Invocable manually (`/session-retro`) or
+  proactively suggested on a session's closing signal after substantial work; distills
+  1–3 concrete improvements into `feedback`-type memories so they carry into future
+  sessions.
+
 ### Fixed
 
 - **Findable handoffs (I043)** — a new `handoff-dir` pointer in `CONTEXT.md` gives handoffs a

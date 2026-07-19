@@ -48,7 +48,8 @@ Most work travels the same route, from interactive at the front to autonomous at
 4. built with tests and review at every step — `/build` (or `/implement` for a single issue).
 
 Supplemental skills — backlog triage, research against primary sources, prototyping,
-session handoffs, architecture, TDD — plug into that route wherever they're needed.
+session handoffs, session retrospectives, architecture, TDD — plug into that route
+wherever they're needed.
 
 ## Getting started
 
