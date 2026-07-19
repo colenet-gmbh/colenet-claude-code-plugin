@@ -57,6 +57,11 @@ Die erste Strategie-Datei. Inhalt, aus konkreter Recherche:
 
 ## Realization job
 
+- **Zuerst die bestehenden Ansätze zusammenführen** (siehe *Quellen* unten). Mehrere
+  Lösungen existieren schon — die Aufgabe ist **Synthese, nicht Auswahl**: die Ziele
+  nebeneinanderlegen, harmonisieren und daraus eine **neue, eigene Lösung** entwerfen, nicht
+  einen der Ansätze unverändert übernehmen. Wer dieses Issue angeht, muss sich **alle**
+  Quellen ansehen, bevor er entwirft.
 - Entwerfen, wie der Skill den letzten Flow / die aktuelle Session liest und
   Verbesserungs-Kandidaten aufzeigt.
 - Das Schicht-Routing entwerfen: erkennen, zu welcher Schicht eine Verbesserung gehört, und
@@ -64,10 +69,29 @@ Die erste Strategie-Datei. Inhalt, aus konkreter Recherche:
 - Die Glossar- + Strategie-Datei-Struktur entwerfen und mit der obigen Guardrail-Strategie
   seeden.
 
-## Open points / sources
+## Quellen — vor dem Entwurf alle ansehen und zusammenführen
 
-- **Fabian** hat so etwas gebaut — seinen Ansatz referenzieren.
-- **Pascal** hat etwas Ähnliches in OpenBrain — das referenzieren.
+Mehrere Ansätze existieren schon, aus verschiedenen Richtungen. Sie zeigen alle denselben
+Bedarf und liefern je ein Stück der Lösung. Genau deshalb ist der Auftrag **Synthese**: Ziele
+zusammenziehen, harmonisieren, eine neue Lösung schaffen — nicht einen Ansatz kopieren.
+
+- **`improve-framework`-Skill in Pascals OpenBrain-Repo** (`.claude/skills/improve-framework`).
+  Der ausgereifteste Ansatz und die reichste Vorlage für Ablauf und Maßnahmen-Katalog: Rolle
+  **„Framework-Architekt"**, **Ursachenanalyse** (Wurzelursache statt Symptom), ein
+  **Werkzeugkasten proportionaler Maßnahmen** (Triggering schärfen, Skill-Inhalt anpassen,
+  Doku/Regeln klären, neuer Skill, Leitplanke einziehen, Memory-Eintrag, Idee festhalten), das
+  Prinzip **„keine Leitplanke ohne Wegweiser"** (deckt sich mit cape's Guardrail-braucht-
+  Wegweiser, vgl. F009/F023) und ein **Ideen-Backlog** (`concepts/ideas-framework.md`) für noch
+  nicht konkrete Verbesserungen.
+- **PR #24 — `session-retro`-Skill** (Leiv Braun, Branch `feat/session-retro-skill`). Ein
+  reingekommener Kollegen-PR: ein Skill, der eine Session retrospektiv betrachtet — nah an der
+  **Beobachtungs-Hälfte** von `/improve-harness` (auf den letzten Flow / die Session schauen).
+  Der PR ist zugleich Lösungsvorschlag *und* Problemhinweis: auch wenn der Code nicht 1:1
+  übernommen wird, gehört seine Erkenntnis in die Synthese.
+- **Fabians Ansatz** — hat so etwas gebaut; Ansatz referenzieren (Quelle/Ort noch beschaffen).
+
+### Randbedingungen für die Synthese
+
 - Attribution: falls sich eine übernommene Quelle als extern (nicht-colenet) herausstellt,
   gemäß `ATTRIBUTION.md` crediten.
 - Die Grenze sauber halten gegenüber der `/architect`-Vertiefung (verbessert die
