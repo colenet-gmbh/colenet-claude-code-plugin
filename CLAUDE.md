@@ -72,15 +72,13 @@ glossary), so those stay consistent and readable for everyone.
 
 ## Change workflow
 
-Shippable and code changes land via **pull request into `develop`** — that is the integration
-branch for all day-to-day work. **Internal project-management material is the exception: board
-files (`docs/work/**`) and `requirements/**` go straight to `develop`, no PR** — a PR per card
-is needless overhead for material that never ships. `main` is the **published state**; it
-changes only through a **release PR (`develop` → `main`)**, which carries the single version
-bump. Never commit to `main`, and don't target day-to-day PRs at it. Treat commit, push, and
-open-PR as three separate authorizations: a bare "commit" means commit only; **push or open a
-PR only when the user asks** — the standing exception being board pushes to `develop`. The
-`validate` check runs on every PR. Details, including how the version bump works, in
+Code and shipped changes land via **pull request into `develop`** — the integration branch for
+all day-to-day work. Board files (`docs/work/**`) and `requirements/**` need no PR — commit
+them straight to `develop`. `main` is the **published state**; it changes only through a
+**release PR (`develop` → `main`)**, which carries the single version bump. Never commit to
+`main`, and don't target day-to-day PRs at it. Treat commit, push, and open-PR as three
+separate authorizations: a bare "commit" means commit only; **push or open a PR only when the
+user asks**. The `validate` check runs on every PR. Details in
 [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md).
 
 ## Response Style Defaults
