@@ -78,8 +78,7 @@ day-to-day work. `main` is the **published state**; it changes only through a **
 don't target day-to-day PRs at it. Treat commit, push, and open-PR as three separate
 authorizations: a bare "commit" means commit only; **push or open a PR only when the user
 asks**. Direct pushes to `main` and `develop` are blocked. The `validate` check runs on
-every PR; the `plugin.json` version-bump requirement fires **only on the release PR into
-`main`**, not on `develop` PRs. Details in
+every PR. Details, including how the version bump works, in
 [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md).
 
 ## Response Style Defaults
