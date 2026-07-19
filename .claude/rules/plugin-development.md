@@ -25,8 +25,15 @@ model below: **`main` must always be the released, stable state.**
 - **`develop` = the integration branch** for all continuous work. It may run ahead of
   `main` and hold unreleased features; that is expected and safe, because users are not
   served from `develop`.
-- **Every change lands via a PR into `develop`** — features, fixes, docs, everything.
-  Direct pushes to both `develop` and `main` are blocked.
+- **Everything that ships or is code lands via a PR into `develop`** — skills, commands,
+  manifest, scripts, and the code around them. That is where `validate` (CI) and review earn
+  their keep.
+- **Exception — internal project-management material goes straight to `develop`, no PR.**
+  Changes touching **only** the board (`docs/work/**`) or `requirements/**` are committed and
+  pushed directly. These are internal working material: they never ship, carry no CI or review
+  value, and a PR per card is pure overhead. `develop` is not branch-protected, so this needs
+  no special right — just commit and push. (If a change mixes board files with shippable/code
+  files, treat the whole thing as shippable and open a PR.)
 - **A release is a single PR `develop` → `main`.** Merging it is what ships to users, so
   releasing is a deliberate act — you decide *when* and *with which bundle of features* to
   cut it, not a side effect of merging day-to-day work. What that PR carries is in *One bump
