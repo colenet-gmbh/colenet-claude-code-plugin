@@ -1,7 +1,7 @@
 ---
 id: F010
 type: feature
-priority: next
+priority: next  # 3 — Fundament für Review/Security/Slicing
 ---
 
 # cape findet und nutzt die eigenen Technologie- und Konventions-Vorgaben eines Projekts

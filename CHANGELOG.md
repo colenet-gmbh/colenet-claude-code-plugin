@@ -4,6 +4,25 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.2] - 2026-07-19
+
+### Added
+
+- **Optional status line, installed by `/cape:setup`** — model, directory, git branch and rate
+  limits, plus a **200k context-window graphic** whose colour signals whether you're still in
+  the "smart zone" or the window is filling up (green → amber → orange → blinking red).
+
+### Changed
+
+- **`/cape:setup` reorganised around themes** — work tracking, documentation, orientation, and
+  the optional status line, so it's clearer what is being set up.
+
+### Fixed
+
+- **Findable handoffs (I043)** — a new `handoff-dir` pointer in `CONTEXT.md` gives handoffs a
+  stable, session-independent home, so the receiving session finds them by topic instead of
+  guessing a random temp path. `/cape:setup` also points the root `CLAUDE.md` at `CONTEXT.md`.
+
 ## [0.8.1] - 2026-07-14
 
 ### Fixed

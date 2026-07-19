@@ -29,3 +29,29 @@ und eine GitHub-Issues-Integration dahinter ergänzen.
   dann nach Development, wenn die Ausarbeitung ein Ergebnis liefert. Die
   GitHub-Issues-Integration muss diesen Übergang bewahren, statt eine separate Inbox wieder
   einzuführen.
+
+## Stand aus Feedback-Grilling (0.7.x, Leiv/Carsten/Bastian)
+
+Bastian übernimmt das Thema Tracker & Issues. Erarbeiteter Ansatz zum Mitgeben:
+
+- **Vorbild: Matts Setup-Skill** (`../../../../skills/skills/engineering/setup-matt-pocock-skills/`,
+  lokal in Pascals Harness). Es macht genau das, was F014 will, und ist erprobt: das Issue
+  lebt **komplett im Tracker** (kein Split Inhalt/Status). Setup erkundet das Repo
+  (`git remote -v`/`.git/config`), schlägt den passenden Tracker vor und hält in *einer*
+  kleinen Datei (`docs/agents/issue-tracker.md`) fest, wie man mit ihm redet. Vorlagen je
+  Backend: `issue-tracker-{github,gitlab,local}.md`. Skills sprechen neutrale Verben
+  ("Issue anlegen", "Ticket holen", "Status ändern"), die Datei übersetzt sie in konkrete
+  Befehle (`gh …`/`glab …`/Dateioperation).
+- **Backends:** GitHub, GitLab, lokale Dateien, "anderer" (als Prosa beschrieben).
+- **capes Ordner-als-Status-Board wird zur „lokale Dateien"-Variante** — eine Option von
+  mehreren, nicht mehr das feste Modell.
+- **Löst Bastians Branch-Schutz-Schmerz:** mit echtem Tracker ist ein Statuswechsel ein
+  API-Call (`gh issue edit/close`) — kein Commit, kein PR pro Übergang. Der PR-pro-Übergang
+  existierte nur, weil cape allen das Datei-Ordner-Modell aufzwang.
+- **Offener Design-Punkt:** Wo leben die Workflow-Regeln *rund um* den Weg eines Issues
+  (Branch mit Ticketnummer, Conventional Commits, Status-Übergänge „Start → In Progress,
+  PR → Code Review", Bug-vs-Feature)? Carstens andere Hälfte des Schmerzes — der Tracker
+  allein deckt sie nicht ab. Empfehlung aus dem Grilling: in dieselbe Tracker-Datei, damit
+  „so läuft ein Issue hier durch" an einem Ort steht statt in zwei synchron zu haltenden.
+- **Attribution beachten**, falls Matts Vorlagen übernommen werden (siehe
+  `.claude/rules/attribution.md`) — Herkunft prüfen (Matt Pocock vs. colenet-intern).

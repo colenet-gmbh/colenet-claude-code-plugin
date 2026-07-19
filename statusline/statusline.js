@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 // Claude Code Statusline
-// Shows: model | branch | dirname | context bar | RAM
+// Shows: Cape | model | dirname | branch | context bar | rate limits
 
 const path = require('path');
-const os = require('os');
 const { execFileSync } = require('child_process');
 
 let input = '';
@@ -14,53 +13,51 @@ process.stdin.on('end', () => {
     const data = JSON.parse(input);
 
     // Model (from actual runtime, not config)
-    const model = data.model?.display_name || 'Claude';
+    let model = data.model?.display_name || 'Claude';
     const modelId = data.model?.id || '';
-    // Don't append (1M) if display_name already contains it
-    const is1M = modelId.includes('1m') && !model.includes('1M');
+    const is1M = /1m/i.test(modelId) || /1m/i.test(model);
+    // Drop the runtime's verbose "(1M context)"/"(1M)" suffix, re-add a terse "(1M)".
+    model = model.replace(/\s*\(1m(?:\s+context)?\)\s*$/i, '').trim();
     const modelStr = is1M ? `${model} (1M)` : model;
 
     // Git branch
     const dir = data.workspace?.current_dir || process.cwd();
     let branch = '';
+    let dirty = false;
     try {
       branch = execFileSync('git', ['branch', '--show-current'], {
         cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
       }).trim();
+      dirty = execFileSync('git', ['status', '--porcelain'], {
+        cwd: dir, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'],
+      }).trim().length > 0;
     } catch (e) {}
-
-    // Worktree indicator
-    const worktree = data.worktree?.name;
 
     // Directory
     const dirname = path.basename(dir);
 
-    // Context window (used_percentage from runtime)
+    // Context window — colored by absolute tokens, bar scaled to the 200k
+    // practical limit (where context quality degrades regardless of window size)
     let ctx = '';
-    const used = data.context_window?.used_percentage;
-    if (used != null) {
-      const u = Math.round(used);
-      const filled = Math.floor(u / 10);
+    const tokens = data.context_window?.total_input_tokens;
+    if (tokens != null) {
+      const REF = 200000;
+      const frac = Math.min(tokens / REF, 1);
+      const filled = Math.round(frac * 10);
       const bar = '█'.repeat(filled) + '░'.repeat(10 - filled);
-      if (u < 50) ctx = `\x1b[32m${bar} ${u}%\x1b[0m`;
-      else if (u < 70) ctx = `\x1b[33m${bar} ${u}%\x1b[0m`;
-      else if (u < 85) ctx = `\x1b[38;5;208m${bar} ${u}%\x1b[0m`;
-      else ctx = `\x1b[5;31m${bar} ${u}%\x1b[0m`;
-    }
-
-    // RAM
-    let ram = '';
-    try {
-      const pct = Math.round(((os.totalmem() - os.freemem()) / os.totalmem()) * 100);
-      const color = pct < 70 ? '32' : pct < 85 ? '33' : '31';
-      ram = `\x1b[${color}mRAM ${pct}%\x1b[0m`;
-    } catch (e) {}
-
-    // Cost
-    let cost = '';
-    const totalCost = data.cost?.total_cost_usd;
-    if (totalCost != null) {
-      cost = `\x1b[2m$${totalCost.toFixed(3)}\x1b[0m`;
+      const label = `${Math.round(tokens / 1000)}k`;
+      // Escalate on whichever axis is hotter: absolute tokens or window %.
+      const p = data.context_window?.used_percentage ?? 0;
+      let level = 0; // 0 green, 1 yellow, 2 orange, 3 blinking red
+      if (tokens >= 150000 || p >= 50) level = 1;
+      if (p >= 70) level = 2;
+      if (p >= 85) level = 3;
+      // 256-color hues chosen to read on light *and* dark backgrounds: green, amber,
+      // orange, blinking red. Deep amber (not bright 214/ANSI-33 "yellow") because light
+      // yellows wash out on white and ANSI 33 renders greenish in some themes — a warning
+      // that looks reassuring is no warning.
+      const colors = ['\x1b[38;5;35m', '\x1b[38;5;178m', '\x1b[38;5;208m', '\x1b[5;38;5;196m'];
+      ctx = `${colors[level]}${bar} ${label}\x1b[0m`;
     }
 
     // Rate limits (5h and 7d, always shown)
@@ -70,8 +67,9 @@ process.stdin.on('end', () => {
     if (rl5h != null || rl7d != null) {
       const fmt = (pct) => {
         const p = Math.round(pct);
-        const color = p < 50 ? '32' : p < 80 ? '33' : '31';
-        return `\x1b[${color}m${p}%\x1b[0m`;
+        // deep gold for the mid band (bright yellow washes out on white)
+        const color = p < 50 ? '\x1b[32m' : p < 80 ? '\x1b[38;5;136m' : '\x1b[31m';
+        return `${color}${p}%\x1b[0m`;
       };
       const parts5h = rl5h != null ? fmt(rl5h) : '-';
       const parts7d = rl7d != null ? fmt(rl7d) : '-';
@@ -80,15 +78,14 @@ process.stdin.on('end', () => {
 
     // Assemble
     const parts = [];
-    parts.push(`\x1b[2m${modelStr}\x1b[0m`);
+    parts.push('\x1b[1mCape\x1b[0m');
+    parts.push(`\x1b[90m${modelStr}\x1b[0m`);
+    parts.push(`\x1b[90m${dirname}\x1b[0m`);
     if (branch) {
-      const branchDisplay = worktree ? `${branch} (${worktree})` : branch;
-      parts.push(`\x1b[36m${branchDisplay}\x1b[0m`);
+      const mark = dirty ? '\x1b[38;5;166m*\x1b[0m' : '';
+      parts.push(`\x1b[38;5;31m${branch}\x1b[0m${mark}`);
     }
-    parts.push(`\x1b[2m${dirname}\x1b[0m`);
     if (ctx) parts.push(ctx);
-    if (ram) parts.push(ram);
-    if (cost) parts.push(cost);
     if (rateLimits) parts.push(rateLimits);
 
     process.stdout.write(parts.join(' │ '));

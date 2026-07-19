@@ -27,10 +27,10 @@ model below: **`main` must always be the released, stable state.**
   served from `develop`.
 - **Every change lands via a PR into `develop`** — features, fixes, docs, everything.
   Direct pushes to both `develop` and `main` are blocked.
-- **A release is a single PR `develop` → `main`.** That PR carries the **one** version bump
-  and finalizes `CHANGELOG.md`. Merging it is what ships to users. Releasing is therefore a
-  deliberate act — you decide *when* and *with which bundle of features* to cut it, not a
-  side effect of merging day-to-day work.
+- **A release is a single PR `develop` → `main`.** Merging it is what ships to users, so
+  releasing is a deliberate act — you decide *when* and *with which bundle of features* to
+  cut it, not a side effect of merging day-to-day work. What that PR carries is in *One bump
+  per release* below.
 
 This is what lets us "merge but not release": day-to-day PRs merge into `develop` freely
 and reach nobody; the release happens only when we bring `develop` to `main`.
@@ -82,6 +82,10 @@ Run this once per release, as the `develop` → `main` PR:
    the bundle's changes grouped beneath it.
 4. Merge it (`main` is protected; CI must be green). Users with auto-update enabled receive
    the new version at their next startup; others via `/plugin update`.
+5. **Tag the merge commit on `main`** as `vMAJOR.MINOR.PATCH` and push the tag
+   (`git tag v0.8.2 <merge-sha> && git push origin v0.8.2`). The tag does **not** drive
+   distribution — that is `plugin.json` `version` on `main` (see above) — it is a stable,
+   addressable anchor for the released state (`git describe`, release comparisons, rollbacks).
 
 The marketplace repo only needs a push when its **listing** changes (description,
 keywords) — not for a version bump.
@@ -90,15 +94,14 @@ keywords) — not for a version bump.
 
 `validate` runs `pre-commit` (structure, manifest, doc links) on **every** PR. The
 **version-bump requirement fires only on the release PR into `main`** — there the
-`validate` check fails unless `plugin.json` `version` is greater than on `main`. PRs into
-`develop` never need a bump. Direct pushes to `main` bypass the gate (admins only) — use
-them only for changes that should not bump.
+`validate` check fails unless `plugin.json` `version` is greater than on `main`. Direct
+pushes to `main` bypass the gate (admins only) — use them only for changes that should not
+bump.
 
 ## Do not
 
 - Do not commit work directly to `main`, and do not target day-to-day PRs at `main` — they
   go to `develop`. `main` changes only through a release PR.
-- Do not bump `version` on a `develop` PR — the bump belongs on the release PR, once.
 - Do not push behavior changes to `main` without a version bump — installed users will not
   receive them, and it puts unreleased-looking state in the shop window.
 - Do not re-add a `version` to the marketplace entry — `plugin.json` is the single source
