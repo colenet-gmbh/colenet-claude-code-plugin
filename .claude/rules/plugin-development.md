@@ -82,6 +82,10 @@ Run this once per release, as the `develop` → `main` PR:
    the bundle's changes grouped beneath it.
 4. Merge it (`main` is protected; CI must be green). Users with auto-update enabled receive
    the new version at their next startup; others via `/plugin update`.
+5. **Tag the merge commit on `main`** as `vMAJOR.MINOR.PATCH` and push the tag
+   (`git tag v0.8.2 <merge-sha> && git push origin v0.8.2`). The tag does **not** drive
+   distribution — that is `plugin.json` `version` on `main` (see above) — it is a stable,
+   addressable anchor for the released state (`git describe`, release comparisons, rollbacks).
 
 The marketplace repo only needs a push when its **listing** changes (description,
 keywords) — not for a version bump.
