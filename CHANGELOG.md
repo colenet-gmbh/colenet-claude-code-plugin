@@ -6,6 +6,17 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- **Optional status line, installed by `/cape:setup`** — model, directory, git branch and rate
+  limits, plus a **200k context-window graphic** whose colour signals whether you're still in
+  the "smart zone" or the window is filling up (green → amber → orange → blinking red).
+
+### Changed
+
+- **`/cape:setup` reorganised around themes** — work tracking, documentation, orientation, and
+  the optional status line, so it's clearer what is being set up.
+
 ### Fixed
 
 - **Findable handoffs (I043)** — a new `handoff-dir` pointer in `CONTEXT.md` gives handoffs a
