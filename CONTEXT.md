@@ -7,7 +7,7 @@ skills for agentic product engineering in teams.
 
 - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
 - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
-- **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
+- **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, improvement conventions, …).
 - **handoff-dir** — `/tmp/cape-handoffs` — session handoffs temporarily live here
 
 ## Tiers

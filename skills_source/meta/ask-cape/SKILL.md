@@ -49,11 +49,12 @@ A starting situation that generates work, then merges onto the main flow.
 
 - **Facts missing before you can plan** → **`/research`**. It delegates the reading legwork to a background agent — investigate the question against **primary sources** (official docs, source code, specs, first-party APIs) and leave a **cited note in the repo**. That note then feeds **`/grill-with-docs`** upstream, so a sharp interview leans on facts rather than guesses. (For a broad, multi-source web report with adversarial fact-checking, that's `/deep-research`, not this.)
 
-## Codebase health
+## Codebase & harness health
 
 Not feature work — upkeep.
 
 - **`/architect`** — a deep skill for shaping structure, activated in context (and by hand). Its **deepening** aspect you run in a spare moment to keep the codebase good for agents to operate in: it surfaces opportunities, and picking one *generates an idea* you take into the main flow at `/grill-with-docs`. Its other aspects — codebase/software design, domain modelling, arc42 docs — fire *inside* other skills as the work needs them (e.g. `/tdd` reaching for design vocabulary, domain modelling during `/grill-with-docs`), several at once.
+- **`/improve`** — where `/architect` keeps the *codebase* good for agents, `/improve` keeps the *harness* good. Run it anytime a flow or session showed friction ("that should've gone better"): it finds the friction, traces the root cause, and applies a proportional fix on the right layer — preferring the local project harness, and graduating only genuinely general improvements back into cape.
 
 ## Crossing sessions
 
