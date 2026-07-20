@@ -78,7 +78,9 @@ them straight to `develop`. `main` is the **published state**; it changes only t
 **release PR (`develop` → `main`)**, which carries the single version bump. Never commit to
 `main`, and don't target day-to-day PRs at it. Treat commit, push, and open-PR as three
 separate authorizations: a bare "commit" means commit only; **push or open a PR only when the
-user asks**. The `validate` check runs on every PR. Details in
+user asks**. Open a PR only when it is **green locally** — run `pre-commit run --all-files`
+first; the git hook and CI `validate` are backstops that, in normal operation, should never
+fire. Details in
 [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md).
 
 ## Response Style Defaults
