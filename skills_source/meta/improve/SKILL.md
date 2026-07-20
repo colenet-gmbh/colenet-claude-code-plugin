@@ -18,6 +18,11 @@ The scope determines what to examine as the basis for potential improvements.
 
 If a parameter is passed it may contain a scope indication.
 
+**Read the signal — why was `/improve` called?** Two cases, and they set the tone:
+
+- **Routine check** — no particular trigger. Search the scope broadly.
+- **Something went wrong** — the user sounds frustrated, or a guardrail just fired (a hook, CI, or validation failed; a rejected commit; a crash). A guardrail hit in normal operation is a near-miss, never routine: treat it like an incident that demands investigation, and expect the fix to be a rule change so this class of accident cannot recur.
+
 ### 2. Identify friction elements
 
 Analyze the scope for friction elements.
@@ -26,6 +31,7 @@ Identify up to 5 friction elements. If you identify none, ask the user.
 
 Sources of friction might be:
 
+- a guardrail that fired — a failing hook/CI/validation, a rejected commit, a crash. The loudest signal: a guardrail should never trigger in normal operation, so its firing is evidence a rule is missing or wrong. Investigate and fix the rule, don't just clear the error.
 - a bug or problem detected (that shouldn't happen again!). What happened? When was it caught, and by whom? Agent, User, Production?
 - Agent sequence of actions. Unnecessary steps? Mis-guided by documentation?
 - Collaboration between agent and user (see checklist below)
