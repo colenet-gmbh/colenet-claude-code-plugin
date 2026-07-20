@@ -61,6 +61,17 @@ Because a guardrail firing is not routine, in a continuously improving framework
 is a signal to improve the framework — strengthen the convention (or the harness) so that the
 same guardrail need not trip again.
 
+### Improvement mode
+
+How far a repo may reach into **cape** when `improve` finds a general improvement — declared
+in its `improvement-conventions.md` and read as the skill's first step.
+
+| Mode | What it allows |
+|---|---|
+| `user` | Default. The repo uses cape but does not change it; improvements land in the project (Level 3). |
+| `cape-contributor` | The repo also aims to improve cape — filing an issue against cape is an option. |
+| `cape-development` | The repo develops cape itself — proposing cape improvements whenever sensible, and implementing them in cape now, are both options. |
+
 ### Handoff
 
 | Concept | What it is |
