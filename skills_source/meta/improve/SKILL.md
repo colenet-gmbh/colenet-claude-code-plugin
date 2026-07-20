@@ -11,9 +11,10 @@ If present, read the optional central convention improvement-conventions.md (see
 ### 1. Identify scope
 
 The scope determines what to examine as the basis for potential improvements.
-A a very current problem / bug / friction in the current session (if found, focus on it unless user suggests differently)
-B the flow from idea -> ship that just finished (if current session hints at it)
-C general interaction in the current session
+
+- **A** — a very current problem / bug / friction in the current session (if found, focus on it unless user suggests differently)
+- **B** — the flow from idea -> ship that just finished (if current session hints at it)
+- **C** — general interaction in the current session
 
 If a parameter is passed it may contain a scope indication.
 
@@ -24,6 +25,7 @@ If session content reads as personal, skip it. Look only at work and collaborati
 Identify up to 5 friction elements. If you identify none, ask the user.
 
 Sources of friction might be:
+
 - a bug or problem detected (that shouldn't happen again!). What happened? When was it caught, and by whom? Agent, User, Production?
 - Agent sequence of actions. Unnecessary steps? Mis-guided by documentation?
 - Collaboration between agent and user (see checklist below)
@@ -41,13 +43,15 @@ Read relevant documentation including cape (see SKILL.md of user-invocable skill
 
 ### 5. Let user decide
 
-Use a /grilling session to let the user decide on how to address each issue. Give a helpful recommendation as fix for each issue in line with the harness principles listed below. 
+Use a /grilling session to let the user decide on how to address each issue. Give a helpful recommendation as fix for each issue in line with the harness principles listed below.
 When giving a recommendation, pick an appropriate measure that is
+
 - actually suited to remove the root cause (would it have prevented the problem?)
 - proportional to the issue addressed
 - can actually be implemented (cape itself only if your improvement mode allows).
 
 Measures might be:
+
 - Create new project-specific skill
 - Sharpen triggering or improve existing skill
 - Add guidance for agent in central or local conventions
@@ -82,10 +86,10 @@ Friction in the collaboration is as real a signal as a broken build. Run over th
 - **Pace** — steps bundled too coarsely, or fragmented too finely?
 - **Preferences honoured** — were known preferences from prior sessions or memory respected?
 
-
-## Harness Guideline 
+## Harness Guideline
 
 **Principles**:
+
 - Progressive disclosure — surface only the information that matters, right when it matters.
 - cape is shared — focus on your project's setup; change cape only where the conventions allow.
 - Proportionality — the lightest measure that fits the problem.
@@ -94,6 +98,7 @@ Friction in the collaboration is as real a signal as a broken build. Run over th
 
 **Recipes:**
 A few recipe ideas:
+
 - Three-layer guardrail — enforce a rule at hook → pre-commit → CI.
 - Canary — hide a marker in a procedure, then check it was followed.
 - Graduate a feedback — move a memory lesson into the harness, then delete the memory.

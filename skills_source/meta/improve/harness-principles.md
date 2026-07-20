@@ -1,6 +1,6 @@
 # Harness principles
 
-It is helpful to knowthe principles and some recipipes used when creating cape and building a
+It is helpful to know the principles and some recipes used when creating cape and building a
 harness on top of it.
 
 ## Glossary
@@ -9,16 +9,15 @@ harness on top of it.
 
 **Level 1 harness** - the vendor harness (like Claude Code). Provides builtin prompts, tools and contains lots of Level 3 "callbacks" so you can customize the behavior (e.g. reading CLAUDE.md).
 
-**Level 2 harness** — project and context-independent framework (e.g. cape), a curated set of skills, configurations, usage principles and workflows. 
+**Level 2 harness** — project and context-independent framework (e.g. cape), a curated set of skills, configurations, usage principles and workflows.
 
 **Level 3 harness** — the project-specific configuration, e.g. project-level skills, CLAUDE.md contents, coding guidelines, claude or git hooks, etc. All the "stuff" you add to improve the performance of the coding agent in THIS project.
 
 **Improvement mode** — how far this repo may reach into cape when a general improvement is found:
+
 - **user** (default) — use cape, don't change it; improvements land in this project (Level 3).
 - **cape-contributor** — also aims to improve cape; filing an issue against cape is an option.
 - **cape-development** — develops cape itself; proposing cape improvements and implementing them in cape now are both options.
-
-
 
 ## Principles
 
