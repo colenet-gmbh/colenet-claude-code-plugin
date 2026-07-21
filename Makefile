@@ -3,13 +3,10 @@
 #
 #   make          # same as `make check`
 #   make check    # run every check across all files
-#   make test     # alias for check
 #
 # No options, no variants: one command that knows all the details.
 .DEFAULT_GOAL := check
-.PHONY: check test
+.PHONY: check
 
 check:
 	pre-commit run --all-files
-
-test: check

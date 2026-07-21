@@ -61,8 +61,7 @@ Run all checks manually any time — one command, identical to CI:
 make check
 ```
 
-(`make check` just runs `pre-commit run --all-files` under the hood; `make test` is an alias,
-and a bare `make` does the same.)
+(`make check` just runs `pre-commit run --all-files` under the hood; a bare `make` does the same.)
 
 ## What the hooks do
 
