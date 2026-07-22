@@ -72,13 +72,15 @@ glossary), so those stay consistent and readable for everyone.
 
 ## Change workflow
 
-Changes land via **pull request into `develop`** — that is the integration branch for all
-day-to-day work. `main` is the **published state**; it changes only through a **release PR
-(`develop` → `main`)**, which carries the single version bump. Never commit to `main`, and
-don't target day-to-day PRs at it. Treat commit, push, and open-PR as three separate
-authorizations: a bare "commit" means commit only; **push or open a PR only when the user
-asks**. Direct pushes to `main` and `develop` are blocked. The `validate` check runs on
-every PR. Details, including how the version bump works, in
+Code and shipped changes land via **pull request into `develop`** — the integration branch for
+all day-to-day work. Board files (`docs/work/**`) and `requirements/**` need no PR — commit
+them straight to `develop`. `main` is the **published state**; it changes only through a
+**release PR (`develop` → `main`)**, which carries the single version bump. Never commit to
+`main`, and don't target day-to-day PRs at it. Treat commit, push, and open-PR as three
+separate authorizations: a bare "commit" means commit only; **push or open a PR only when the
+user asks**. Open a PR only when it is **green locally** — run `make check` first (the one
+command, identical to CI); the git hook and CI `validate` are backstops that, in normal
+operation, should never fire. Details in
 [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md).
 
 ## Response Style Defaults

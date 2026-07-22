@@ -111,6 +111,13 @@ decisions, its way of tracking work. Those are essential, and they're specific t
 cape reaches into them lightly and flexibly rather than dictating them: `/cape:setup`
 scaffolds the touchpoints, and your team evolves them.
 
+Over time that second half becomes *yours*. cape is the shared baseline; the conventions,
+rules, and skills you add for your specific repo are a harness of your own, grown on top of
+it. `/improve` keeps that growth deliberate — a helper you reach for when a session didn't
+go the way it should have, or when you've just wrapped a feature. It looks back at the
+friction, traces it to the root cause, and lands the fix on the layer where it belongs — by
+default in your own project, so the lesson sticks right where the work happens.
+
 On the mechanics: cape is a **plugin**, so its skills live in their own namespace and are
 officially `cape:<name>`. In practice you call them by plain name (`/feature`) — the `cape:`
 prefix is only a fallback for when another installed skill happens to share a name.
@@ -122,6 +129,14 @@ prefix is only a fallback for when another installed skill happens to share a na
 
 Want to add a skill or extend `cape`? See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the
 setup, conventions, and quality checks.
+
+The lightest way to help is a **GitHub issue** — spot a gap or a rough edge, open one
+against the repo. `/improve` can take part in this too, gated by the **improvement mode**
+you set in your project's `improvement-conventions.md`. The default **`user`** leaves cape
+untouched and keeps every fix in your own project; **`cape-contributor`** also lets it
+suggest filing an issue against cape when it finds a genuinely general improvement; and
+**`cape-development`**, for active cape developers, lets it propose and implement those
+changes in cape directly.
 
 ## Marketplace
 

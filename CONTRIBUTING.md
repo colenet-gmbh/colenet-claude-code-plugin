@@ -18,7 +18,7 @@ attribution, and the release/versioning workflow.
    [`.claude/rules/attribution.md`](.claude/rules/attribution.md) in
    [`ATTRIBUTION.md`](ATTRIBUTION.md).
 4. Add it to the skill table in the README.
-5. Run `pre-commit run --all-files` (green) and release it per
+5. Run `make check` (green) and release it per
    [`.claude/rules/plugin-development.md`](.claude/rules/plugin-development.md).
 
 ## Prerequisites
@@ -55,11 +55,13 @@ pre-commit install
 Without this step the hooks do not run locally and you will only find out something is
 wrong when CI turns red (see below). So do it right after cloning.
 
-Run all checks manually any time:
+Run all checks manually any time — one command, identical to CI:
 
 ```bash
-pre-commit run --all-files
+make check
 ```
+
+(`make check` just runs `pre-commit run --all-files` under the hood; a bare `make` does the same.)
 
 ## What the hooks do
 
@@ -96,7 +98,7 @@ gate), problems are caught at both ends.
 
 ## Before opening a pull request
 
-1. `pre-commit run --all-files` is green.
+1. `make check` is green.
 2. New/changed skill follows [`.claude/rules/skill-authoring.md`](.claude/rules/skill-authoring.md);
    external sources are credited per [`.claude/rules/attribution.md`](.claude/rules/attribution.md).
 3. README skill table and `CHANGELOG.md` updated.

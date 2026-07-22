@@ -25,8 +25,8 @@ model below: **`main` must always be the released, stable state.**
 - **`develop` = the integration branch** for all continuous work. It may run ahead of
   `main` and hold unreleased features; that is expected and safe, because users are not
   served from `develop`.
-- **Every change lands via a PR into `develop`** — features, fixes, docs, everything.
-  Direct pushes to both `develop` and `main` are blocked.
+- **Code and shipped changes land via a PR into `develop`.** Board files (`docs/work/**`) and
+  `requirements/**` need no PR — commit them straight to `develop`.
 - **A release is a single PR `develop` → `main`.** Merging it is what ships to users, so
   releasing is a deliberate act — you decide *when* and *with which bundle of features* to
   cut it, not a side effect of merging day-to-day work. What that PR carries is in *One bump
