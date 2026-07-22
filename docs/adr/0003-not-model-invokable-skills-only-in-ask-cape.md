@@ -22,6 +22,13 @@ lesson.
 `disable-model-invocation: true` on itself, so reading the whole chain there does not put a
 "next step" into a working skill's context.
 
+**Exemption: reading as reference.** The rule targets *anticipation of downstream work* —
+naming a flagged skill as a step that comes later. Directing the agent to **read** a flagged
+skill's file as reference material (e.g. `improve` reading `ask-cape`'s SKILL.md to
+understand the flow map while root-causing flow friction) creates no next step and is
+allowed. Such a reference must use the real file path via `${CLAUDE_PLUGIN_ROOT}`, never a
+bare skill name.
+
 ## The current not-model-invokable set
 
 Defined by the `disable-model-invocation: true` flag (so the list stays derivable, not a

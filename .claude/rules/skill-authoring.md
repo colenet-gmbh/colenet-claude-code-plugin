@@ -5,6 +5,11 @@ directly from the installed plugin, namespaced as `cape:<name>`; the manifest's 
 array declares the bucket paths and Claude Code scans each one level deep. See
 [`../../CLAUDE.md`](../../CLAUDE.md).
 
+**Before working on any skill, read
+[`skills_source/meta/writing-great-skills/SKILL.md`](../../skills_source/meta/writing-great-skills/SKILL.md)** —
+the authoring standard. It is not model-invokable, so load it yourself; this rule here only
+covers the repo mechanics.
+
 ## Structure
 
 - One directory per skill, kebab-case, inside a bucket subfolder:
@@ -40,7 +45,9 @@ array declares the bucket paths and Claude Code scans each one level deep. See
   `ask-cape`**, the flow router. Do **not** reference such a skill from any other skill:
   naming a downstream, not-model-invokable step makes the model anticipate later work and
   concentrate less on the task at hand. Model-invokable skills (no flag) may be referenced
-  normally. See [ADR 0003](../../docs/adr/0003-not-model-invokable-skills-only-in-ask-cape.md).
+  normally. Exemption: directing the agent to **read** a flagged skill's file as reference
+  material (via its `${CLAUDE_PLUGIN_ROOT}` path, never a bare skill name) creates no next
+  step and is allowed. See [ADR 0003](../../docs/adr/0003-not-model-invokable-skills-only-in-ask-cape.md).
 
 ## Body
 

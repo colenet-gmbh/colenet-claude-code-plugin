@@ -64,7 +64,11 @@ significant change (a release adding a skill and fixing typos is a MINOR).
 
 The `version` marks a **release** — the bundle of changes shipped to users together — not
 an individual PR. Work on `develop` **does not touch `version`**; entries just accumulate
-in `CHANGELOG.md` under the next release's heading. The **release PR (`develop` → `main`)**
+in `CHANGELOG.md` under the next release's heading.
+
+CHANGELOG entries are written **for users, at flight height**: per change one bold claim
+and 1–3 sentences on what changed and why it matters. No file lists, no implementation
+detail, no side-quest inventory — the diff and the PR carry those. The **release PR (`develop` → `main`)**
 is where you bump `plugin.json` `version` once and stamp that CHANGELOG heading with the
 version and date.
 

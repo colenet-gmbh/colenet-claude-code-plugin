@@ -4,386 +4,264 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **`/improve` focuses on the user's project (I047)** — the improvement mode and
+  `improvement-conventions.md` are gone. Improvements always land in the project's own
+  harness; genuinely general ones become suggested GitHub issues to the cape community.
+  The agent now suggests `/improve` when it senses friction; the user starts it.
+- **Setup and README sharpened** — `/cape:setup` is leaner and hands users to `/ask-cape`
+  when done; the README explains cape's user-in-control invocation model.
+
 ## [0.9.0] - 2026-07-22
 
 ### Added
 
-- **`/improve` skill (F015)** — a deliberately-invoked **meta** skill that keeps the
-  *harness* good, the counterpart to `/architect` keeping the *codebase* good. Run it
-  whenever a flow or session showed friction. It first reads *why* it was called — a
-  routine check versus a guardrail that fired (a red hook/CI, a rejected commit, a crash),
-  the latter treated as a near-miss to investigate, not an error to clear away — then finds
-  the friction, traces the root cause, and applies a proportional fix on the right layer:
-  preferring the local project harness and graduating only genuinely general improvements
-  back into cape. Synthesized from several sources, credited in
-  [`ATTRIBUTION.md`](ATTRIBUTION.md).
+- **`/improve` skill (F015)** — keeps the *harness* good, the counterpart to `/architect`
+  keeping the *codebase* good. Run it when a flow or session showed friction: it finds the
+  friction, traces the root cause, and applies a proportional fix on the right layer.
+  Sources credited in [`ATTRIBUTION.md`](ATTRIBUTION.md).
 
 ### Changed
 
 - **One green gate for contributors** — a single `make check` runs the exact checks CI
-  runs, so a pull request is opened only once it is already green locally. The git hook and
-  CI `validate` become backstops that, in normal operation, never fire. `make check`
-  resolves `pre-commit` even when pipx's `~/.local/bin` is not on `PATH`.
-- **Lighter board flow** — board files (`docs/work/**`) and `requirements/**` now commit
-  straight to `develop` without a pull request; PRs stay for code and shipped changes.
+  runs, so a PR is opened only once it is already green locally.
+- **Lighter board flow** — board files and `requirements/**` commit straight to `develop`
+  without a pull request; PRs stay for code and shipped changes.
 
 ## [0.8.2] - 2026-07-19
 
 ### Added
 
-- **Optional status line, installed by `/cape:setup`** — model, directory, git branch and rate
-  limits, plus a **200k context-window graphic** whose colour signals whether you're still in
-  the "smart zone" or the window is filling up (green → amber → orange → blinking red).
+- **Optional status line, installed by `/cape:setup`** — model, directory, branch and rate
+  limits, plus a context-window graphic whose colour signals whether you're still in the
+  "smart zone".
 
 ### Changed
 
-- **`/cape:setup` reorganised around themes** — work tracking, documentation, orientation, and
-  the optional status line, so it's clearer what is being set up.
+- **`/cape:setup` reorganised around themes** — work tracking, documentation, orientation,
+  and the optional status line, so it's clearer what is being set up.
 
 ### Fixed
 
-- **Findable handoffs (I043)** — a new `handoff-dir` pointer in `CONTEXT.md` gives handoffs a
-  stable, session-independent home, so the receiving session finds them by topic instead of
-  guessing a random temp path. `/cape:setup` also points the root `CLAUDE.md` at `CONTEXT.md`.
+- **Findable handoffs (I043)** — a `handoff-dir` pointer in `CONTEXT.md` gives handoffs a
+  stable, session-independent home, so the receiving session finds them by topic.
 
 ## [0.8.1] - 2026-07-14
 
 ### Fixed
 
-- **README version drift** — the README carried the version a second time, hardcoded in prose
-  (`v0.7.6`), beside the single source of truth in `plugin.json`. The release checklist bumps
-  only `plugin.json`, so that number silently rotted. Removed it — "Early stage" carries the
-  meaning without a value that goes stale; `plugin.json` stays the only place a version lives.
+- **README version drift** — the README carried a second, hardcoded version beside the
+  single source of truth in `plugin.json` and silently rotted; removed.
 
 ### Added
 
-- **arc42: guardrail concept & improvement loops** — chapter 8 defines a **guardrail** (a QA
-  backstop that ideally never fires, presupposing a convention rather than replacing it), and
-  chapter 4 adds **improvement loops**: a guardrail firing is the signal to improve, with the fix
-  routed to the layer it belongs to (preferring the local project layer over cape itself).
+- **arc42: guardrail concept & improvement loops** — a guardrail is a QA backstop that
+  ideally never fires; when one fires, that is the signal to improve, with the fix routed
+  to the layer it belongs to.
 
 ## [0.8.0] - 2026-07-13
 
 ### Added
 
-- **`/research` skill (F001 / I032)** — a new **utility** skill ported from Matt Pocock's
-  `research` (v1.1.0, MIT). It delegates reading legwork to a background agent: investigate
-  a question against high-trust **primary sources** (official docs, source code, specs,
-  first-party APIs) and leave a **cited Markdown note** in the repo, at the location
-  `CONTEXT.md` points to. It is the feeder upstream of `/grill-with-docs`; its `description`
-  distinguishes it from `deep-research` (broad multi-source web reports). Surfaced in
-  `ask-cape` and the README.
-
-- **Convention consultation — the F6 mechanism (F006 / I030 / I031)** — cape skills now
-  surface a repo's own conventions before acting, so a Level-2 framework reaches the
-  progressive-disclosure quality of a harness hand-built for the repo:
-  - **`/cape:setup`** writes `CONTEXT.md` as a **pointer map** with three logical labels —
-    `arc-docs`, `ADR-dir`, `conventions-dir` — resolved to their paths in that one place, and
-    creates the central conventions cape depends on (the issue tracker first).
-  - **`/cape:setup` also detects the repo's tiers** and records them under a `## Tiers` section
-    (name → path) — a detected, open list, never a fixed set of keys.
-  - **`/split`** names the **tiers (and bounded contexts) each issue touches**, picked from that
-    `## Tiers` list (a new "Tiers & contexts touched" section in the issue template).
-  - **`/implement`** resolves each named tier to its path through the registry and reads that
-    tier's nested `CLAUDE.md` **up front, before it plans** — catching decisions (a colour, an
-    id scheme) made *before* the owning tier's files are touched, which Claude Code's native
-    lazy loading misses. Only the named tiers (no wrong-tier leakage); dispatched sub-agents
-    inherit the obligation.
-  - Proven **hypothesis-first** by an eval: a without-cape baseline as a stop-gate (I030), then
-    the nudge shown to close the gap (I031).
-  - Grounded in **ADR 0002** (conventions are local or central).
-
-- **arc42 architecture documentation** — cape documents itself in arc42, an exemplar of its own
-  conventions: chapter 1 (introduction & goals), 4 (solution strategy), 8 (crosscutting
-  concepts, holding the domain glossary), 11 (risks — eval/QA infrastructure as a base
-  challenge), 12 (documentation & tooling glossary). Chapter 9 references the ADRs.
-
-- **ADR 0003** — not-model-invokable skills are named only in `ask-cape`, so the model doesn't
-  anticipate downstream steps and lose focus.
+- **`/research` skill (F001 / I032)** — delegates reading legwork to a background agent:
+  investigate a question against primary sources and leave a cited note in the repo,
+  feeding `/grill-with-docs` upstream. Ported from Matt Pocock's `research` (MIT).
+- **Convention consultation (F006)** — cape skills now surface a repo's own conventions
+  before acting: `/cape:setup` writes `CONTEXT.md` as a pointer map and detects the repo's
+  tiers, `/split` names the tiers each issue touches, and `/implement` reads the named
+  tiers' conventions up front, before it plans. Proven hypothesis-first by an eval.
+- **arc42 architecture documentation** — cape documents itself in arc42, an exemplar of
+  its own conventions.
+- **ADR 0003** — not-model-invokable skills are named only in `ask-cape`, so the model
+  doesn't anticipate downstream steps and lose focus.
 
 ### Changed
 
-- **Skills reference doc locations by logical label, not hardcoded path** — every skill names
-  `arc-docs` / `ADR-dir` / `conventions-dir` and resolves tiers via `## Tiers`; `CONTEXT.md` is
-  the single place those labels resolve to concrete paths, so skills stay path-free and portable.
-
-- **Not-model-invokable skills are referenced only in `ask-cape`** (ADR 0003) — removed such
-  references from `split`, `feature`, `build`, `implement`, `review-feature`, `architect`, and
-  `triage`.
-
-- **Matt v1.1.0 backports into existing skills (F001 / I033)** — targeted improvements Matt
-  made between v1.0 and v1.1.0 that cape was missing:
-  - **`grilling`** — the old blanket line "If a question can be answered by exploring the
-    codebase, explore the codebase instead" is **replaced** by two sharper rules: look up
-    *facts* in the codebase, but put every *decision* to the human and wait; and a
-    **confirmation gate** — do not enact the plan until the human confirms a shared
-    understanding. This matters because cape dispatches `grilling` from `feature` and others,
-    where the old line read as licence to answer decisions itself.
-  - **`writing-great-skills`** — two new steering failure modes, each a SKILL bullet plus a
-    `GLOSSARY.md` entry: **Negation** (prohibitions drag the banned behaviour into context —
-    steer positively) and **Negative Space** (every omitted decision is silently delegated to
-    the agent's priors — read a draft for its silences and choose each omission).
-  - **`split`** — a new **"Wide refactors / Expand–Contract"** rule: a mechanical change with
-    repo-wide blast radius is sequenced expand → migrate call sites in batches (each its own
-    issue, CI green batch to batch) → contract, instead of being forced into a vertical slice.
-  - **`tdd`** — adds the **seam** definition (the public boundary you test at, without
-    reaching inside; no test at an unconfirmed seam). The refactor step stays for now (see
-    I035).
-  - **Cosmetic** — `handoff` now says "specs" instead of "PRDs"; `skill-authoring.md` gains a
-    maintenance rule to re-check the `ask-cape` router on any skill add/rename/remove or flow
-    change.
-
-- **Redundant links collapsed, a reference file renamed** — in LLM-read skill files, markdown
-  links whose visible text was just the target filename collapse to the plain name; the
-  architect's `arc42.md` reference is renamed to `architecture-documentation.md` (it teaches the
-  arc42 structure — baking the format name into the filename was too rigid).
-
-- **Release model & SemVer levels** — day-to-day work integrates on `develop`; a release is a
-  single `develop → main` PR carrying the one version bump. Version positions read as levels of
-  significance: PATCH = fixes/optimisations, MINOR = conceptual/structural, MAJOR = maturity
-  milestones.
+- **Skills reference doc locations by logical label, not hardcoded path** — `CONTEXT.md`
+  is the single place labels resolve to paths, so skills stay portable.
+- **ADR 0003 applied** — references to not-model-invokable skills removed from the
+  affected skills.
+- **Matt v1.1.0 backports (F001 / I033)** — targeted upstream improvements cape was
+  missing: `grilling` gains a decisions-to-the-human rule and a confirmation gate,
+  `writing-great-skills` two new steering failure modes, `split` an Expand–Contract rule
+  for wide refactors, `tdd` the seam definition.
+- **Release model & SemVer levels** — day-to-day work integrates on `develop`; a release
+  is a single `develop → main` PR carrying the one version bump.
 
 ## [0.7.8] - 2026-07-10
 
 ### Added
 
 - **`teach` skill** — turns the current directory into a stateful, multi-session teaching
-  workspace: a mission that grounds every lesson, curated trusted resources, learning
-  records (ADR-style), and beautiful self-contained HTML lessons built from reusable
-  components. Ported from Matt Pocock's `teach` (v1.1.0), with the frontmatter adapted to
-  cape conventions. Rationale: fast, continuous learning is a core challenge for teams
-  adopting AI-assisted work, so enablement belongs in cape (see `I029`).
+  workspace with a mission, curated resources, and self-contained HTML lessons. Ported
+  from Matt Pocock's `teach`.
 
 ## [0.7.6] - 2026-07-09
 
 ### Changed
 
-- **The bundled status line is withdrawn entirely, pending a future (V2) feature that ships
-  it with proper testing.** `/cape:setup` no longer offers to install it as the main (bottom)
-  status bar, and the automatic **subagent** status line (previously wired via a plugin
-  `settings.json`) is gone too — `settings.json` is removed. The `statusline/statusline.js`
-  script stays in the repo but is now dormant; both return once the V2 feature tests them.
-
-- **README rewritten** around a problem-first opener (the failure modes of handing work to
-  an agent), a named vision (align up front, then hand off), and the main flow as the
-  recognizable route. A "How cape works" section replaces the three-layer harness taxonomy,
-  and the status-line section is dropped along with the withdrawn feature.
+- **The bundled status line is withdrawn entirely**, pending a future feature that ships
+  it with proper testing; the script stays in the repo but is dormant.
+- **README rewritten** around a problem-first opener, a named vision (align up front,
+  then hand off), and the main flow as the recognizable route.
 
 ## [0.7.5] - 2026-07-08
 
 ### Added
 
 - **`/cape:setup` offers to install the bundled status line** as the user's main status
-  line — it copies the script into `~/.claude/` and merges the `statusLine` setting into
-  `~/.claude/settings.json`, asking first and preserving other settings.
+  line, asking first and preserving other settings.
 
 ### Changed
 
 - **Skills now load natively from the installed plugin** as `cape:<name>`, retiring the
-  per-repo vendoring. The manifest declares each bucket in a `skills` array; Claude Code
-  scans it one level deep. `/cape:setup` keeps only its doc-scaffolding role, and updates
-  reach users via `/plugin update`.
-- Inter-skill dispatches now use the explicit `cape:<name>` form (e.g. `implement` →
-  `cape:tdd` / `cape:review-implementation`, `build` → `cape:implement`, `feature` →
-  `cape:review-feature` / `cape:split`) so a skill resolves the skill it calls; plain
-  explanatory mentions keep the short form.
-- Workflow skills that depend on the scaffolding now carry a dry `run /cape:setup` hint for
-  when `CONTEXT.md` or the `docs/work/` board is missing.
-- Docs and rules (`CLAUDE.md`, `skill-authoring.md`, `plugin-development.md`, README,
-  `CONTRIBUTING.md`, glossary) rewritten to describe native plugin loading instead of
-  vendoring.
-- Board item IDs now use one shared counter across `F` and `I` (prefix marks type only),
-  with the next free number kept in `docs/work/.next-id`. `/cape:setup` creates that file
-  when scaffolding the work board. Documented in `docs/work/CLAUDE.md` and the issue-tracker
-  doc.
+  per-repo vendoring; `/cape:setup` keeps only its doc-scaffolding role and updates reach
+  users via `/plugin update`.
+- **Inter-skill dispatches use the explicit `cape:<name>` form**, so a skill reliably
+  resolves the skill it calls.
+- **Board item IDs use one shared counter** across `F` and `I`, kept in
+  `docs/work/.next-id`.
 
 ### Removed
 
-- `scripts/sync-harness.sh` and the `update-cape` skill — both belonged to the vendoring
-  mechanism, which no longer exists.
+- **The vendoring mechanism** — `scripts/sync-harness.sh` and the `update-cape` skill.
 
 ## [0.7.4] - 2026-07-08
 
 ### Changed
 
-- `triage` now moves a worked-up item along the board: when it produces a result — a
-  `ready-for-agent` or `ready-for-human` brief — the file moves `01-backlog` →
-  `02-development`, matching the board-as-energy model. Items still under consideration
-  (`needs-triage`, `needs-info`) stay in the backlog; `wontfix` is unchanged.
-- `triage` is reframed as **backlog management**: it applies to any not-yet-worked-up item
-  regardless of origin, not only bug reports and requests "you didn't create". The only
-  carve-out is work that is already agent-ready (e.g. issues `/split` produced).
+- **`triage` moves worked-up items along the board** — producing a brief moves the file
+  `01-backlog` → `02-development`, matching the board-as-energy model.
+- **`triage` reframed as backlog management** — it applies to any not-yet-worked-up item
+  regardless of origin; only agent-ready work is out.
 
 ## [0.7.3] - 2026-07-08
 
 ### Changed
 
-- `ask-cape` now names *where* the `/triage` on-ramp rejoins the main flow by item size —
-  a single slice joins at `/implement`, a feature-sized item via grilling → `/feature` →
-  `/split` → `/build`. Removes the imprecise wording that implied a triaged item could go
-  straight to `/build`.
+- **`ask-cape` names where the `/triage` on-ramp rejoins the main flow** by item size — a
+  single slice at `/implement`, a feature-sized item via the full feature route.
 
 ## [0.7.2] - 2026-07-07
 
 ### Added
 
-- **Per-repo vendoring** so skills are callable with flat, un-prefixed names
-  (`/ask-cape`, `/feature`, …) instead of `/cape:<skill>`. The plugin exposes one command,
-  **`/cape:setup`**, which vendors the skills into a repo's `.claude/skills/` (via the
-  self-locating `scripts/sync-harness.sh`) and scaffolds the docs the workflow expects: the
-  `docs/work/` board, `docs/agents/issue-tracker.md` (local files), and `CONTEXT.md` with
-  the arc42 glossary. `update-cape` re-syncs to a newer installed version as a reviewable
-  diff.
-- `triage` skill — sorts raw incoming items on the `docs/work/` board via a `status:`
-  frontmatter state machine, with `docs/work/out-of-scope/` for rejected requests
-  (adapted from Matt Pocock's `triage`).
-- `diagnosing-bugs` skill — the feedback-loop diagnosis discipline (from Matt Pocock).
+- **Per-repo vendoring** — one command, `/cape:setup`, vendors the skills into a repo and
+  scaffolds the docs the workflow expects (the `docs/work/` board, the issue-tracker
+  record, `CONTEXT.md`).
+- **`triage` skill** — sorts raw incoming items on the board (adapted from Matt Pocock).
+- **`diagnosing-bugs` skill** — the feedback-loop diagnosis discipline (from Matt Pocock).
 
 ### Changed
 
-- Skills now ship under `skills_source/` (grouped into buckets, flattened on vendor), **not**
-  `skills/`, so the plugin loader never registers them as active, namespaced plugin skills —
-  no namespaced/flat duplication.
-- `CONTEXT.md` reworked into a **pointer map**; the domain glossary lives in the arc42
-  glossary (`docs/arc42/12_glossary.md`) it points to, not inline.
+- **Skills ship under `skills_source/`**, so the plugin loader never registers them as
+  duplicate namespaced skills.
+- **`CONTEXT.md` reworked into a pointer map**; the domain glossary lives in the arc42
+  glossary it points to.
 
 ## [0.7.1] - 2026-07-07
 
 ### Changed
 
-- README now lists the actual 15-skill catalogue and no longer duplicates the Main Flow
-  (which lives in `ask-cape`); dropped the stale `brainstorm`/`software-architect` entries.
-- GLOSSARY brought in line with the shipped skills: points to `ask-cape` for the flow
-  instead of a hard-wired chain, `software-architect` → `architect`, `review` now names
-  `review-feature`/`review-implementation`, `agent-guidelines` replaced by `coding
-  standards`.
-- Feature board path corrected to **`docs/work/`** across the workflow skills (`split`,
-  `feature`, `build`, `implement`, `review-feature`) and the GLOSSARY.
+- **README and GLOSSARY brought in line with the shipped skills** — actual skill
+  catalogue, current names, and the corrected `docs/work/` board path across the workflow
+  skills.
 
 ## [0.6.0] - 2026-07-01
 
 ### Added
 
-- `software-architect` skill — establishes/evolves the project's architecture
+- **`software-architect` skill** — establishes and evolves the project's architecture
   documentation (arc42 + ADRs) and reviews a feature concept before build; adapted from
   Michael Spanier's coding harness.
-- cape **engineering rules** (`skills/build/references/engineering-rules.md`) —
-  opinionated, stack-agnostic code-quality rules enforced by `build`, checked by
-  `software-architect`.
-- Project-context conventions: a **feature board** in `docs/features/`
-  (`01-backlog → 02-development → 03-approval → 04-done`, IDs via `_counter.txt`),
-  **`agent-guidelines/`** for project-specific directives, and an arc42 reference.
-- `skills/ask-cape/references/main-flow.md` — the canonical Main Flow (board, HITL/AFK,
-  and the terms review / sign-off / approval).
+- **cape engineering rules** — opinionated, stack-agnostic code-quality rules enforced by
+  `build`.
+- **Project-context conventions** — a feature board in `docs/features/`,
+  `agent-guidelines/` for project directives, and an arc42 reference.
 
 ### Changed
 
-- Main Flow is now `brainstorm → grill-with-docs → feature → software-architect → split →
-  build`, run as one HITL stretch then one AFK stretch; `feature` and `split` became AFK.
-- GLOSSARY defines HITL, AFK, the feature board, review, sign-off, approval, and
-  acceptance criteria.
+- **Main Flow extended** to include `software-architect`, run as one HITL stretch then
+  one AFK stretch; the GLOSSARY defines the terms.
 
 ## [0.5.1] - 2026-07-01
 
 ### Added
 
-- `GLOSSARY.md` — defines the **Main Flow** (the guided path `brainstorm → grill-with-docs
-  → feature → split → build`; "workflow" used as a synonym).
+- **`GLOSSARY.md`** — defines the **Main Flow**, the guided path from idea to built slice.
 
 ### Changed
 
-- Standardized the term for the guided path (the **Main Flow** / workflow) across the
-  plugin and docs, replacing the previous jargon term.
+- **Standardized the term "Main Flow"** across the plugin and docs, replacing the previous
+  jargon term.
 
 ## [0.5.0] - 2026-07-01
 
 ### Added
 
-- The **cape workflow** (Phase 2): five workflow skills forming a guided path from
-  idea to built slice.
-  - `brainstorm` — port of `brainstorming` from `superpowers` (MIT, © Jesse Vincent).
-  - `grill-with-docs` — port of `grill-with-docs` / `domain-modeling` from
-    `mattpocock/skills` (MIT, © Matt Pocock).
-  - `feature` — synthesis: Pocock `to-prd` × Michael Spanier's traveling feature-file
-    convention (`docs/features/F###-slug.md`); ships a `references/feature-template.md`.
-  - `split` — port of `to-issues` from `mattpocock/skills` (MIT); records slices as repo
-    Markdown instead of tracker issues.
-  - `build` — synthesis: Pocock `tdd` / `implement` × Spanier `fullstack-orchestrator`;
-    lean and single-flow, honoring the `build` bright line (not an orchestration engine).
-- `ask-cape` — a router skill that walks the workflow (pattern inspired by Pocock `ask-matt`).
+- **The cape workflow (Phase 2)** — five workflow skills forming a guided path from idea
+  to built slice: `brainstorm`, `grill-with-docs`, `feature`, `split`, `build` — ported
+  and synthesized from `superpowers`, Matt Pocock's skills, and Michael Spanier's
+  conventions (all MIT, credited in `ATTRIBUTION.md`).
+- **`ask-cape`** — a router skill that walks the workflow.
 
 ### Changed
 
-- README skill tables now document the shipped workflow and the utility skills.
+- **README skill tables document the shipped workflow** and the utility skills.
 
 ## [0.4.0] - 2026-07-01
 
 ### Changed
 
-- cape now **owns its stack**: removed the `superpowers` runtime dependency from
-  `plugin.json`. Building blocks cape needs (e.g. `brainstorm`) are ported into cape with
-  attribution rather than pulled in as a dependency.
-- README restructured around two skill classes — **workflow** (guided, in
-  progress) and **utility** (`grill-me`) — and now documents the planned workflow
-  (`brainstorm → grill-with-docs → feature → split → build`).
-- README and CONTRIBUTING no longer describe `superpowers` as an auto-installed dependency.
+- **cape now owns its stack** — removed the `superpowers` runtime dependency; building
+  blocks cape needs are ported in with attribution instead.
+- **README restructured around two skill classes** — workflow (guided) and utility.
 
 ### Added
 
-- `.claude/rules/dod.md`: the **`build` bright line** — cape's own `build` stays a lean,
+- **The `build` bright line** in the DoD rule — cape's own `build` stays a lean,
   single-flow executor and must not reimplement `we`'s orchestration engine.
 
 ## [0.3.0] - 2026-06-10
 
 ### Added
 
-- `.claude/rules/dod.md` — Definition of Done & scope guardrail: the plugin's red thread
-  and explicit veto criteria for changes that drift from its mission.
-- CLAUDE.md: Claude's role as **plugin guardian & development advisor** with the
-  authority to veto off-mission additions and advise on direction.
+- **Definition of Done & scope guardrail** — the plugin's red thread and explicit veto
+  criteria for changes that drift from its mission; CLAUDE.md gives Claude the guardian
+  role.
 
 ### Changed
 
-- CONTRIBUTING prerequisites now include the `plugin-dev` plugin; README documents the
-  two official plugins `cape` builds on (`superpowers`, `plugin-dev`) and shows a sample
-  status line.
+- **Contributor docs name the plugins cape builds on** and show a sample status line.
 
 ## [0.2.2] - 2026-06-10
 
 ### Fixed
 
-- Plugin failed to load (`Dependency "superpowers@colenet" is not installed`). A bare
-  dependency name resolves against the plugin's **own** marketplace, so `"superpowers"`
-  was looked up as `superpowers@colenet`. Qualified it as
-  `superpowers@claude-plugins-official` (the built-in marketplace where superpowers
-  lives).
+- **Plugin failed to load** — a bare dependency name resolves against the plugin's own
+  marketplace; qualified it as `superpowers@claude-plugins-official`.
 
 ## [0.2.1] - 2026-06-10
 
 ### Changed
 
-- `plugin.json` `version` is now the single source of truth: removed the per-plugin
-  `version` from the marketplace entry, and relaxed the release rule and CLAUDE.md
-  accordingly (no more dual version bump).
+- **`plugin.json` `version` is the single source of truth** — removed the duplicate
+  version from the marketplace entry.
 
 ## [0.2.0] - 2026-06-10
 
 ### Added
 
-- Bundled status line script (`statusline/statusline.js`) showing model, branch,
-  directory, context-usage bar, RAM, cost, and rate limits.
-- Plugin `settings.json` wires it as `subagentStatusLine` (applied automatically while
-  the plugin is enabled). The main bottom status bar cannot be set by a plugin — see
-  the README for the opt-in.
+- **Bundled status line script** showing model, branch, directory, context usage, cost,
+  and rate limits, wired as the subagent status line while the plugin is enabled.
 
 ## [0.1.0] - 2026-06-10
 
 ### Added
 
-- Initial release of `cape` (Colenet Agentic Product Engineering).
-- `grill-me` skill — ported from [`mattpocock/skills`](https://github.com/mattpocock/skills)
-  (MIT, © Matt Pocock); see [`ATTRIBUTION.md`](ATTRIBUTION.md).
-- `superpowers` declared as an auto-installed dependency in `plugin.json`.
-- Development conventions in `.claude/rules/`: `skill-authoring.md`, `attribution.md`,
-  `plugin-development.md`.
-- Structural validation (`scripts/validate-plugin.sh`) run in CI on every push and PR.
+- **Initial release of `cape`** (Colenet Agentic Product Engineering) — the `grill-me`
+  skill (ported from Matt Pocock, MIT), development conventions in `.claude/rules/`, and
+  structural validation in CI.
