@@ -54,7 +54,7 @@ A starting situation that generates work, then merges onto the main flow.
 Not feature work — upkeep.
 
 - **`/architect`** — a deep skill for shaping structure, activated in context (and by hand). Its **deepening** aspect you run in a spare moment to keep the codebase good for agents to operate in: it surfaces opportunities, and picking one *generates an idea* you take into the main flow at `/grill-with-docs`. Its other aspects — codebase/software design, domain modelling, arc42 docs — fire *inside* other skills as the work needs them (e.g. `/tdd` reaching for design vocabulary, domain modelling during `/grill-with-docs`), several at once.
-- **`/improve`** — where `/architect` keeps the *codebase* good for agents, `/improve` keeps the *harness* good. Run it anytime a flow or session showed friction ("that should've gone better"): it finds the friction, traces the root cause, and applies a proportional fix on the right layer — preferring the local project harness, and graduating only genuinely general improvements back into cape.
+- **`/improve`** — where `/architect` keeps the *codebase* good for agents, `/improve` keeps the *harness* good. Run it anytime a flow or session showed friction ("that should've gone better"): it finds the friction, traces the root cause, and applies a proportional fix in the project's own harness. When it finds a genuinely general improvement, it suggests sending it to the cape community as a GitHub issue.
 
 ## Crossing sessions
 

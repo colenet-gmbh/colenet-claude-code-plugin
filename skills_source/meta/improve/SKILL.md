@@ -1,10 +1,9 @@
 ---
 name: improve
-description: improve your agentic coding setup. Use when the agent didn't act or produce the results you expect or you feel there is unnecessary friction.
-disable-model-invocation: true
+description: Improves the project's own agentic-coding harness (skills, conventions, hooks, memory). Use when the agent didn't act or produce results as expected, a guardrail fired, or the user names friction or wants the setup improved — mentions "improve the harness", "that should have gone better", "why didn't that work", "verbessere das Harness", "das lief nicht rund", "das sollte besser laufen".
 ---
 
-If present, read the optional central convention improvement-conventions.md (see CONTEXT.md) for repo-specific guidance and your improvement mode. If absent, your mode is **user** — use cape, don't change it.
+Improve **this project's harness** — the project-specific setup (skills, conventions, hooks, memory) that steers the agent. cape itself stays untouched: use it, don't change it. When an insight is genuinely general, it becomes a proposal to the cape community (step 7).
 
 ## Steps
 
@@ -54,7 +53,7 @@ When giving a recommendation, pick an appropriate measure that is
 
 - actually suited to remove the root cause (would it have prevented the problem?)
 - proportional to the issue addressed
-- can actually be implemented (cape itself only if your improvement mode allows).
+- implementable in this project — cape itself is not yours to change (see step 7).
 
 Measures might be:
 
@@ -71,7 +70,14 @@ Prefer a committed harness change over memory — memory is personal and opaque;
 
 Do the changes and commit them.
 
-### 7. Summarize
+### 7. Propose general improvements to the cape community
+
+If a fix (or the insight behind it) is genuinely general — it would help any team using
+cape, not just this project — suggest sending it to the cape community as a GitHub issue
+against the cape repository. Offer this below the actual result; the user decides. Never
+change cape skills locally instead.
+
+### 8. Summarize
 
 Give a very brief summary (for each identified issue: Problem / Cause / Measures) and what to expect in the future.
 
@@ -97,7 +103,7 @@ Friction in the collaboration is as real a signal as a broken build. Run over th
 **Principles**:
 
 - Progressive disclosure — surface only the information that matters, right when it matters.
-- cape is shared — focus on your project's setup; change cape only where the conventions allow.
+- cape is shared — improve your project's setup; genuinely general improvements become proposals to the cape community, never local changes to cape.
 - Proportionality — the lightest measure that fits the problem.
 - No guardrail without a signpost — a check only backs up guidance that already exists.
 - Prefer committable solutions — a committed fix benefits every user of the repo.

@@ -4,6 +4,18 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+
+- **`/improve` focuses on the user's project (I047)** — the **improvement mode** and the
+  optional `improvement-conventions.md` are gone. `/improve` now always targets the
+  project's own (Level 3) harness; cape itself is never changed locally. Instead, a new
+  always-on step suggests sending genuinely general improvements to the cape community as
+  a GitHub issue. The skill is now model-invokable (`disable-model-invocation` removed)
+  with a trigger-strong German + English description, and opens with a sentence stating
+  its intent.
+
 ## [0.9.0] - 2026-07-22
 
 ### Added

@@ -131,12 +131,9 @@ Want to add a skill or extend `cape`? See [`CONTRIBUTING.md`](CONTRIBUTING.md) f
 setup, conventions, and quality checks.
 
 The lightest way to help is a **GitHub issue** — spot a gap or a rough edge, open one
-against the repo. `/improve` can take part in this too, gated by the **improvement mode**
-you set in your project's `improvement-conventions.md`. The default **`user`** leaves cape
-untouched and keeps every fix in your own project; **`cape-contributor`** also lets it
-suggest filing an issue against cape when it finds a genuinely general improvement; and
-**`cape-development`**, for active cape developers, lets it propose and implement those
-changes in cape directly.
+against the repo. `/improve` takes part in this automatically: every fix it makes lands in
+your own project's harness, and whenever it finds a genuinely general improvement it
+suggests sending it to the cape community as a GitHub issue.
 
 ## Marketplace
 
