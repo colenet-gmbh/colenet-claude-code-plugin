@@ -22,6 +22,14 @@ number is capture order, not priority.
 
 Write a new `F…`/`I…` file into the right column. Create nothing external.
 
+## Worktree discipline
+
+Board files are committed straight to `develop`. In this repo's bare-repo/worktree layout
+that means: move or edit board files **only in the `develop` worktree**. A feature
+worktree carries its own copy of `docs/work/`; changes made there either strand
+uncommitted or land on the feature branch, and drift from the board's real state on
+`develop`.
+
 ## "Fetch the relevant issue"
 
 Read the file by id or path (the user usually passes one directly). To change state, move
