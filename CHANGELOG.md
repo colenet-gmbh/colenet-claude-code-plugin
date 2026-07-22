@@ -13,8 +13,14 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   project's own (Level 3) harness; cape itself is never changed locally. Instead, a new
   always-on step suggests sending genuinely general improvements to the cape community as
   a GitHub issue. The skill is now model-invokable (`disable-model-invocation` removed)
-  with a trigger-strong German + English description, and opens with a sentence stating
-  its intent.
+  with a trigger-strong German + English description that tells the agent to suggest —
+  never auto-run — it, opens with a sentence stating its intent, and ships its reference
+  as `improvement-guide.md`. Along the way: `/cape:setup` lost repeated and roadmap-only
+  prose and now points at `/ask-cape` as the next step, the README explains cape's
+  deliberate user-in-control invocation model and fills in the improvement-loop story,
+  and ADR 0003 gained an exemption — reading a not-model-invokable skill's file as
+  reference (via `${CLAUDE_PLUGIN_ROOT}`) is allowed; only naming it as an upcoming step
+  is not.
 
 ## [0.9.0] - 2026-07-22
 

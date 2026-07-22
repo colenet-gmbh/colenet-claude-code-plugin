@@ -1,4 +1,4 @@
-# Harness principles
+# Improvement guide
 
 Reference for the `improve` skill: the layer model, the principles, and a few recipes used
 when building a project harness on top of cape. Read it to pick measures that fix the root
@@ -71,3 +71,15 @@ A `feedback` memory is a sign friction happened — read it as input, never writ
 back to memory. Because feedbacks are individual, their home is the harness: move the lesson
 into a committed harness element (a convention, a skill edit, a guardrail) and delete the
 memory.
+
+### More context against hallucinated facts
+
+When the agent invented or guessed a fact, the real information usually existed but never
+reached it. Ensure it is present at the moment of the decision — a `CONTEXT.md` pointer, a
+reference loaded by the right skill step, a convention moved to where the work happens.
+
+### Less context against ignored facts
+
+When the agent had the rule but ignored it, the context was likely too crowded for the rule
+to register. Reduce what the agent sees: trim verbose docs, split oversized workflows or
+sessions, push detail into progressively disclosed reference files.
