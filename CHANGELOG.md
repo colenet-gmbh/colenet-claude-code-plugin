@@ -4,6 +4,29 @@ All notable changes to the `cape` plugin are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this
 project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2026-07-22
+
+### Added
+
+- **`/improve` skill (F015)** — a deliberately-invoked **meta** skill that keeps the
+  *harness* good, the counterpart to `/architect` keeping the *codebase* good. Run it
+  whenever a flow or session showed friction. It first reads *why* it was called — a
+  routine check versus a guardrail that fired (a red hook/CI, a rejected commit, a crash),
+  the latter treated as a near-miss to investigate, not an error to clear away — then finds
+  the friction, traces the root cause, and applies a proportional fix on the right layer:
+  preferring the local project harness and graduating only genuinely general improvements
+  back into cape. Synthesized from several sources, credited in
+  [`ATTRIBUTION.md`](ATTRIBUTION.md).
+
+### Changed
+
+- **One green gate for contributors** — a single `make check` runs the exact checks CI
+  runs, so a pull request is opened only once it is already green locally. The git hook and
+  CI `validate` become backstops that, in normal operation, never fire. `make check`
+  resolves `pre-commit` even when pipx's `~/.local/bin` is not on `PATH`.
+- **Lighter board flow** — board files (`docs/work/**`) and `requirements/**` now commit
+  straight to `develop` without a pull request; PRs stay for code and shipped changes.
+
 ## [0.8.2] - 2026-07-19
 
 ### Added
