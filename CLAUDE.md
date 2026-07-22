@@ -70,19 +70,6 @@ and slows us down. This covers the `docs/work/` board (features, issues, triage 
 (a skill, a shipped doc) or into the durable architecture record (`docs/arc42/`, ADRs, the
 glossary), so those stay consistent and readable for everyone.
 
-## Worktree layout
-
-This checkout is a **bare repo with one worktree per branch**: `../.bare`, `../develop`,
-`../main`, plus one worktree per feature branch. Two consequences:
-
-- **Merging a PR:** never pass `--delete-branch` to `gh pr merge` — the local branch is
-  checked out in its worktree and cannot be deleted. Instead: merge, pull in the
-  `develop` worktree, check the feature worktree for uncommitted changes, then
-  `git worktree remove <path>` and `git branch -d <branch>`.
-- **Board files** (`docs/work/**`): edit and commit them **only in the `develop`
-  worktree**, never in a feature worktree — see
-  [`docs/agent-conventions/tracker.md`](docs/agent-conventions/tracker.md).
-
 ## Change workflow
 
 Code and shipped changes land via **pull request into `develop`** — the integration branch for
