@@ -48,3 +48,10 @@ wird „glossary" teils lose verwendet, ohne zu sagen, welches gemeint ist.
 Feedback-Grilling 0.7.x, Leivs Glossar-Thema — der **Präzisierungs**-Faden. Getrennt von
 Leivs konkretem *Interpretations*-Problem (siehe Diskussion; braucht ein konkretes Beispiel,
 bevor es ein eigenes Work-Item wird).
+
+## Umsetzung (2026-07-23)
+
+Umgesetzt auf `feat/i46-glossar-referenzen` (zusammen mit I046, Commits 0a7c53e + 4d5bd14).
+Kapitel 8 definiert die drei Arten unter „### Glossary"; Kapitel 12 heißt im Intro jetzt
+environment glossary; das Root-`GLOSSARY.md` ist vollständig nach Kapitel 8 gemerged und
+gelöscht. Zwei-Achsen-Review gelaufen, Befunde (verlorene Details beim Merge) behoben.

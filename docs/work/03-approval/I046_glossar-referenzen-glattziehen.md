@@ -38,3 +38,12 @@ context-format, architecture-documentation, SKILL.md), `commands/setup.md`, `CON
 `docs/arc42/04+08+12`, `docs/adr/0002` und das Eval-Scaffold. Formen: nur Label, Label +
 hartkodierter Kapitel-Pfad (mehrfach in `domain-modeling.md`), lose Nennung („the
 glossary") ohne Ziel.
+
+## Umsetzung (2026-07-23)
+
+Umgesetzt auf `feat/i46-glossar-referenzen` (zusammen mit I041, Commits 0a7c53e + 4d5bd14).
+`CONTEXT.md` (cape, Format-Referenz, setup-Template, Eval-Scaffold) trägt die Pointer
+`domain-glossary` + `environment-glossary`; alle Skill-/Doc-Referenzen nennen die Art und
+lösen über `CONTEXT.md` auf, hartkodierte Kapitel-Pfade nur noch, wo sie die kanonischen
+Ziele definieren. Eval-Fixture: Glossar nach `08_crosscutting-concepts.md` umbenannt
+(Test angepasst, Suite grün). Review sauber.
