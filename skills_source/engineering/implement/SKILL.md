@@ -1,7 +1,7 @@
 ---
 name: implement
 description: Implement a single issue — using TDD if appropriate, then review. Use when implementation of an issue is needed by user or agent.
-when_to_use: Also when the user says "setz das Issue um", "implementiere das", "bau das Issue".
+when_to_use: Also when the user says "bau das Issue".
 ---
 
 Implement the one issue you've been handed until it is done.
