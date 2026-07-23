@@ -18,16 +18,10 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **`/implement` slimmed** — done = review clean + ticket updated (status, brief notes).
 - **Setup and README sharpened** — `/cape:setup` is leaner and hands users to `/ask-cape`
   when done; the README explains cape's user-in-control invocation model.
-- **Three named glossary kinds (I041)** — "glossary" alone was overloaded; the domain
-  glossary now defines **domain glossary** (chapter 8), **environment glossary** (chapter 12,
-  formerly "documentation & tooling glossary"), and **skill glossary** (vocabulary a skill
-  ships to be practiced, linked directly in the skill). The legacy root `GLOSSARY.md` was
-  merged into chapter 8 and removed.
-- **Consistent glossary references (I046)** — skills now reference glossaries by kind and
-  resolve them via `CONTEXT.md`, which gains two named pointers, `domain-glossary` and
-  `environment-glossary` (they may target the same file in single-glossary projects).
-  `/cape:setup`, the `CONTEXT.md` format reference, and the eval fixture follow suit; the
-  fixture's glossary was mislabeled as chapter 12 and is now the domain glossary.
+- **Three named glossary kinds (I041)** — domain, environment, and skill glossary, defined
+  in arc42 chapter 8; the legacy root `GLOSSARY.md` merged into chapter 8 and removed.
+- **Consistent glossary references (I046)** — skills reference glossaries by kind and
+  resolve them via the new `CONTEXT.md` pointers `domain-glossary` and `environment-glossary`.
 
 ## [0.9.0] - 2026-07-22
 
