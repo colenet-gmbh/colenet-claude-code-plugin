@@ -17,7 +17,24 @@ Setzt auf I041 auf (dort werden die Glossar-**Arten** benannt); hier geht es um 
 **konsistente Verwendung** dieser Benennung in allen Referenzen. Getrennt von I042 (Qualität
 beim *Erfassen* der Domänenbegriffe).
 
-## Offene Punkte
+## Entschieden (Grilling 2026-07-23)
 
-- Bestandsaufnahme: wo wird überhaupt auf ein Glossar verwiesen, und in welcher Form?
-- Reihenfolge zu I041: erst die Arten/Namen final, dann die Referenzen darauf glattziehen.
+- **Kanonische Referenzform:** Art-Name + Auflösung über die Map — „the domain glossary
+  (locate via `CONTEXT.md`)". Keine hartkodierten Kapitel-Pfade in Skills (im Nutzer-Repo
+  kann das Glossar woanders liegen). Ausnahme: **Skill glossaries** liegen im Skill selbst
+  und werden direkt verlinkt.
+- **`CONTEXT.md` führt zwei benannte Pointer:** `domain-glossary` und
+  `environment-glossary`. Beide dürfen auf dieselbe Datei zeigen, wenn das Projekt nur ein
+  Glossar hat. Nachziehen in: capes eigener `CONTEXT.md`, der Format-Referenz
+  `architect/context-format.md`, `commands/setup.md` (Scaffolding) und dem Eval-Scaffold
+  `evals/conventions/templates/scaffold/CONTEXT.md` (dort ist der Verweis heute falsch:
+  `12_glossary.md` als „ubiquitous language").
+
+## Bestandsaufnahme
+
+Referenzen quer durch `skills_source/` (ask-cape, split, feature, build, triage,
+grill-with-docs, architect: domain-modeling, improve-codebase, improve-codebase-report,
+context-format, architecture-documentation, SKILL.md), `commands/setup.md`, `CONTEXT.md`,
+`docs/arc42/04+08+12`, `docs/adr/0002` und das Eval-Scaffold. Formen: nur Label, Label +
+hartkodierter Kapitel-Pfad (mehrfach in `domain-modeling.md`), lose Nennung („the
+glossary") ohne Ziel.

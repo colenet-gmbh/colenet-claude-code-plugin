@@ -26,10 +26,22 @@ wird „glossary" teils lose verwendet, ohne zu sagen, welches gemeint ist.
 - Die **Arten von Glossar** mit ihren Rollen an *einer* Stelle benennen.
 - In den Skills durchgängig konsistent referenzieren — immer klar, welches Glossar gemeint ist.
 
-## Offener Punkt
+## Entschieden (Grilling 2026-07-23)
 
-- **Wo leben diese Einträge?** Doku/Tooling-Begriffe → Kapitel 12; aber „cape *ist* die
-  Domäne", also gehört cape-Mechanik nach Kapitel 8. Beim Umsetzen entscheiden.
+- **Drei Arten**, nicht eine pro Skill (sonst ufert es aus):
+  - **Domain glossary** — die ubiquitäre Sprache des Projekts, arc42 Kapitel 8.
+  - **Environment glossary** — die Umgebung, nicht die Domäne, arc42 Kapitel 12
+    (neuer Name, ersetzt „documentation & tooling glossary").
+  - **Skill glossary** — das Vokabular, das nötig ist, um einen bestimmten Skill zu
+    praktizieren; lebt beim Skill. Deckt `writing-great-skills/GLOSSARY.md`, das
+    Design-Vokabular in `architect/codebase-design.md` und die von `teach` erzeugten
+    Themen-Glossare ab.
+- **Wo die Arten benannt werden: Kapitel 8.** Glossare sind zentral für agentisches
+  Engineering — die Arten sind Domänenvokabular des Harness, keine Doku-Meta-Begriffe.
+  Glossar-Einträge genügen, kein ADR (Vokabular, keine Architekturentscheidung).
+- **`GLOSSARY.md` im Repo-Root** (Altbestand 0.7.x, nirgends referenziert) wird komplett
+  nach Kapitel 8 gemerged und gelöscht — alle Einträge, auch coding standards und
+  architecture documentation, sind Domänenbegriffe.
 
 ## Herkunft
 
