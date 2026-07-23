@@ -39,7 +39,7 @@ Repo name, date, and a compact legend: solid box = module, dashed line = seam, r
 
 ## Candidate card
 
-The diagrams carry the weight. Prose is sparse, plain, and uses the software design glossary terms (the skill glossary in codebase-design.md) without ceremony.
+The diagrams carry the weight. Prose is sparse, plain, and uses the software design glossary terms (in codebase-design.md) without ceremony.
 
 Each candidate is one `<article>`:
 

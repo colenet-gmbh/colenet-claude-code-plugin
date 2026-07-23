@@ -17,17 +17,21 @@ entities) and how they relate. The three layers that frame it (Level 1 / 2 / 3) 
 
 ### Glossary
 
-"Glossary" alone is ambiguous — cape distinguishes three kinds. Name the kind whenever you
+"Glossary" alone is ambiguous — cape distinguishes two kinds. Name the kind whenever you
 reference one.
 
 | Concept | What it is |
 |---|---|
 | Domain glossary | the project's ubiquitous language — arc42 chapter 8. Reached via the `domain-glossary` pointer in `CONTEXT.md`. |
 | Environment glossary | terms of the surroundings — documentation conventions, tooling — **not** the domain; arc42 chapter 12. Reached via the `environment-glossary` pointer in `CONTEXT.md`. |
-| Skill glossary | the vocabulary needed to practice one particular skill; lives inside that skill and is linked directly (e.g. `writing-great-skills/GLOSSARY.md`, the software design glossary in `architect/codebase-design.md`, the topic glossaries `teach` generates). |
 
 In a project with only one glossary, the `domain-glossary` and `environment-glossary`
 pointers may target the same file.
+
+A skill may additionally carry a local glossary — the vocabulary needed to practice it
+(e.g. `writing-great-skills/GLOSSARY.md`, the software design glossary in
+`architect/codebase-design.md`). That is part of the skill, not a cape glossary kind;
+it is linked directly from the skill.
 
 ### Work board
 
