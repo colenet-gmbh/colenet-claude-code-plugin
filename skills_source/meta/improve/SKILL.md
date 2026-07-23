@@ -43,9 +43,11 @@ To understand how cape's skills flow together, read `${CLAUDE_PLUGIN_ROOT}/skill
 Give a short structured summary and a concrete recommendation for a measure that prevents similar issues in the future.
 Ask the user if these are the relevant issues, or if they have others. Unless you see no friction, you proceed up to this point after the user invoked the skill.
 
+Confirming the analysis is **not** approval to change anything. Before touching a file, show the concrete measure — what changes, where, roughly what wording — and get an explicit go.
+
 ### 3. Apply and commit
 
-Do the changes the user wants (including a commit if that is appropriate for the agent in this project).
+Apply the changes the user approved (including a commit if that is appropriate for the agent in this project).
 
 ### 4. Propose general improvements to the cape community
 
