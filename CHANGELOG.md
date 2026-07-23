@@ -18,6 +18,10 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **`/implement` slimmed** — done = review clean + ticket updated (status, brief notes).
 - **Setup and README sharpened** — `/cape:setup` is leaner and hands users to `/ask-cape`
   when done; the README explains cape's user-in-control invocation model.
+- **Two named glossary kinds (I041)** — domain and environment glossary, defined in arc42
+  chapter 8; the legacy root `GLOSSARY.md` merged into chapter 8 and removed.
+- **Consistent glossary references (I046)** — skills reference glossaries by kind and
+  resolve them via the new `CONTEXT.md` pointers `domain-glossary` and `environment-glossary`.
 
 ## [0.9.0] - 2026-07-22
 

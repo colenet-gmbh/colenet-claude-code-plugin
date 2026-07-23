@@ -24,12 +24,12 @@ Files live in the arc-docs, one per chapter, plus an index:
 | 09 | Architecture Decisions | references all **ADRs** in the ADR-dir |
 | 10 | Quality Requirements | quality tree and scenarios |
 | 11 | Risks & Technical Debt | known risks, debt |
-| 12 | Glossary | the **documentation & tooling** glossary — the surroundings, **not** the domain |
+| 12 | Glossary | the **environment glossary** — the surroundings (documentation, tooling), **not** the domain |
 
 ## How it wires into the other aspects
 
-- **Domain glossary** — the ubiquitous language, from the domain-modeling aspect → chapter 8 (`08_crosscutting-concepts.md`).
-- **Glossary** — documentation & tooling terms, not the domain → chapter 12, as `12_glossary.md`.
+- **Domain glossary** — the ubiquitous language, from the domain-modeling aspect → chapter 8 (`08_crosscutting-concepts.md`); the `domain-glossary` pointer in `CONTEXT.md` targets it.
+- **Environment glossary** — documentation & tooling terms, not the domain → chapter 12, as `12_glossary.md`; the `environment-glossary` pointer targets it. (Both pointers may target the same file when a project has only one glossary.)
 - **ADRs** → live in their own ADR-dir, one file per decision. Chapter 9 does **not** copy them — it simply **references all ADRs in the ADR-dir**.
 
 Important arc42 chapters may split their content into sub-files named `NN-x_topic.md` (chapter number + sub-index + slug); the chapter's main file links to them. The top-level `CONTEXT.md` map does not hold this content — it points to where each thing lives.

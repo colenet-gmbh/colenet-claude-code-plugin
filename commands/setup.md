@@ -62,7 +62,8 @@ directory; it can grow into a full arc42 set. **Detect what already exists first
 
 1. **Domain glossary** — look for an existing one (`docs/arc42/08*.md`, or any
    `*glossary*.md` under `docs/`). If none exists, create
-   `docs/arc42/08_crosscutting-concepts.md`:
+   `docs/arc42/08_crosscutting-concepts.md` (this becomes the target of the
+   `domain-glossary` pointer below):
 
    ```md
    # Crosscutting Concepts
@@ -90,7 +91,9 @@ cape's `CONTEXT.md` is a **pointer map**: it points at where the durable facts l
 
    ## Context Pointers
 
-   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language)
+   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, concepts
+   - **domain-glossary** — `docs/arc42/08_crosscutting-concepts.md` — the ubiquitous language of the project
+   - **environment-glossary** — terms of the surroundings (documentation, tooling), not the domain — `docs/arc42/12_glossary.md` if it exists, otherwise the same file as `domain-glossary`
    - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them)
    - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …)
    - **handoff-dir** — `/tmp/cape-handoffs` — where session handoffs live
@@ -105,6 +108,8 @@ cape's `CONTEXT.md` is a **pointer map**: it points at where the durable facts l
    ```
 
    If it already exists, only **top up** the labels it's missing — never rewrite resolved ones.
+   If the repo has only one glossary, point both `domain-glossary` and
+   `environment-glossary` at that same file.
 
 2. **Tiers** — **detect** the repo's tiers and record them under `## Tiers`. Look for:
    workspace/monorepo config (`package.json` `workspaces`, `pnpm-workspace.yaml`, a Cargo

@@ -1,6 +1,6 @@
 # Domain Modeling — the active discipline
 
-Actively build and sharpen the project's domain model as you design. This is the *active* discipline — challenging terms, inventing edge-case scenarios, and writing the glossary and decisions down the moment they crystallise. (Merely *reading* `CONTEXT.md` for vocabulary is not this skill — that's a one-line habit any skill can do. This skill is for when you're changing the model, not just consuming it.)
+Actively build and sharpen the project's domain model as you design. This is the *active* discipline — challenging terms, inventing edge-case scenarios, and writing the domain glossary and decisions down the moment they crystallise. (Merely *reading* `CONTEXT.md` for vocabulary is not this skill — that's a one-line habit any skill can do. This skill is for when you're changing the model, not just consuming it.)
 
 ## File structure
 
@@ -36,9 +36,9 @@ Create files lazily — only when you have something to write. If no `CONTEXT.md
 
 ## During the session
 
-### Challenge against the glossary
+### Challenge against the domain glossary
 
-When the user uses a term that conflicts with the existing language in the glossary (arc42 chapter 8, `08_crosscutting-concepts.md` in the arc-docs — path via `CONTEXT.md`), call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
+When the user uses a term that conflicts with the existing language in the domain glossary (locate via the `domain-glossary` pointer in `CONTEXT.md`), call it out immediately. "Your glossary defines 'cancellation' as X, but you seem to mean Y — which is it?"
 
 ### Sharpen fuzzy language
 
@@ -52,11 +52,11 @@ When domain relationships are being discussed, stress-test them with specific sc
 
 When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible — which is right?"
 
-### Update the glossary inline
+### Update the domain glossary inline
 
-When a term is resolved, add it to the glossary (arc42 chapter 8, `08_crosscutting-concepts.md` in the arc-docs — path via `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in context-format.md.
+When a term is resolved, add it to the domain glossary (locate via the `domain-glossary` pointer in `CONTEXT.md`) right there. Don't batch these up — capture them as they happen. Use the format in context-format.md.
 
-The domain glossary holds domain language and nothing else — no implementation details, no spec, no scratch pad, no decisions. `CONTEXT.md` itself stays a pointer map: it points at the glossary, it doesn't contain it.
+The domain glossary holds domain language and nothing else — no implementation details, no spec, no scratch pad, no decisions. `CONTEXT.md` itself stays a pointer map: it points at the domain glossary, it doesn't contain it.
 
 ### Offer ADRs sparingly
 

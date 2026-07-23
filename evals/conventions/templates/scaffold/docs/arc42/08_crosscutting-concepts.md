@@ -1,4 +1,6 @@
-# Glossary
+# Crosscutting Concepts
+
+## Domain glossary
 
 The project's ubiquitous language — one entry per term.
 
