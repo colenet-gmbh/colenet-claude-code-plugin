@@ -28,14 +28,13 @@ wird „glossary" teils lose verwendet, ohne zu sagen, welches gemeint ist.
 
 ## Entschieden (Grilling 2026-07-23)
 
-- **Drei Arten**, nicht eine pro Skill (sonst ufert es aus):
+- **Zwei Arten** (revidiert nach Approval-Feedback 2026-07-23; ursprünglich drei):
   - **Domain glossary** — die ubiquitäre Sprache des Projekts, arc42 Kapitel 8.
   - **Environment glossary** — die Umgebung, nicht die Domäne, arc42 Kapitel 12
     (neuer Name, ersetzt „documentation & tooling glossary").
-  - **Skill glossary** — das Vokabular, das nötig ist, um einen bestimmten Skill zu
-    praktizieren; lebt beim Skill. Deckt `writing-great-skills/GLOSSARY.md`, das
-    Design-Vokabular in `architect/codebase-design.md` und die von `teach` erzeugten
-    Themen-Glossare ab.
+  - Skills können zusätzlich **lokale Glossare** tragen (z. B.
+    `writing-great-skills/GLOSSARY.md`, Design-Vokabular in `codebase-design.md`) — die
+    sind Teil des jeweiligen Skills, keine cape-Glossar-Art.
 - **Wo die Arten benannt werden: Kapitel 8.** Glossare sind zentral für agentisches
   Engineering — die Arten sind Domänenvokabular des Harness, keine Doku-Meta-Begriffe.
   Glossar-Einträge genügen, kein ADR (Vokabular, keine Architekturentscheidung).
