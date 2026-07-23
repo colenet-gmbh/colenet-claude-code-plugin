@@ -1,22 +1,26 @@
 ---
 name: implement
-description: Build a single, written-out issue in a fresh context — TDD at the seams, then review. Use when handed one specced issue to implement, or when another skill dispatches an issue to be built.
+description: Implement a single issue — using TDD if appropriate, then review. Use when implementation of an issue is needed by user or agent.
 ---
 
-Implement the one issue you've been handed — the file `docs/work/02-development/I<id>_<slug>.md`. Your input is that **written-out issue plus its spec** (the parent feature `F<id>` if it has one; otherwise the issue is its own spec) — never a live planning thread. You always start in a **fresh context**.
+Implement the one issue you've been handed until it is done.
 
-The `docs/work/` board should have been provided to you — run `/cape:setup` if it's missing.
+If you don't know where issues live, explain to user that setup is incomplete and ask to run `/cape:setup`.
 
-Before you plan, read the `CLAUDE.md` of every tier the issue names — up front, not when you first touch the tier: Claude Code loads it only once you edit a file there, too late to shape a decision taken earlier. Resolve each named tier to its path via the `## Tiers` list in `CONTEXT.md`, then read that tier's `CLAUDE.md`. Read only the named tiers, and have any sub-agent you dispatch do the same.
+Before you plan, read the `CLAUDE.md` of every tier the issue names (see CONTEXT.md for tiers and their paths).
 
-Use `cape:tdd` where possible, at pre-agreed seams.
+Use /cape:tdd for coding tasks where possible, at pre-agreed seams.
 
 Run typechecking regularly, single test files regularly, and the full test suite before you review.
 
-Once done, review the work with `cape:review-implementation`. It reports feedback across parallel axes (Standards, Spec, and more as they're added).
+Once implementing is done, run /cape:review-implementation.
 
-**Loop until clean:** address every finding, then re-review — repeat until a review comes back clean. A finding is settled when it is either fixed or consciously dismissed (a judgement call you've decided against); only hard violations and accepted findings gate the loop. The issue is done only when the review returns nothing left to act on.
+**Loop until review is clean:** address every finding, then re-review — repeat until a review comes back clean.
+A finding is settled when it is either fixed or consciously dismissed (a judgement call you've decided against); only hard violations and accepted findings gate the loop.
+
+The issue is done only when
+
+- the review returns nothing left to act on
+- AND when its ticket in the tracker has been updated with implementation notes (be brief!) and status.
 
 Commit your work to the current branch.
-
-The issue is done only when its ticket in the tracker has the matching status.
