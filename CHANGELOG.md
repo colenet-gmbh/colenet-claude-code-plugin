@@ -15,6 +15,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **`/improve` gets an explicit approval gate** — confirming the friction analysis is not
   approval to change anything; the skill now shows the concrete measure (what, where,
   wording) and waits for a go before touching a file.
+- **`/implement` slimmed** — done = review clean + ticket updated (status, brief notes).
 - **Setup and README sharpened** — `/cape:setup` is leaner and hands users to `/ask-cape`
   when done; the README explains cape's user-in-control invocation model.
 
