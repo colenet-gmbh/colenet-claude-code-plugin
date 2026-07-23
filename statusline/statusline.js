@@ -1,9 +1,36 @@
 #!/usr/bin/env node
 // Claude Code Statusline
-// Shows: Cape | model | dirname | branch | context bar | rate limits
+// Shows: Cape <version> | model/effort | dirname | branch | context bar | rate limits
 
 const path = require('path');
+const fs = require('fs');
+const os = require('os');
 const { execFileSync } = require('child_process');
+
+// Version of the cape install active for this project, from Claude Code's install
+// registry. "-dev" marks any source other than the official colenet marketplace.
+function capeVersion(dir) {
+  try {
+    const reg = JSON.parse(fs.readFileSync(
+      path.join(os.homedir(), '.claude', 'plugins', 'installed_plugins.json'), 'utf8'));
+    const capes = Object.entries(reg.plugins || {})
+      .filter(([key]) => key.startsWith('cape@'))
+      .flatMap(([key, entries]) => entries.map(e => ({ key, ...e })));
+    if (!capes.length) return '';
+    // Prefer the install scoped to this project (longest projectPath prefix wins),
+    // then user-scoped, then whatever exists.
+    const inDir = (p) => p && (dir === p || dir.startsWith(p + path.sep));
+    const pick =
+      capes.filter(e => inDir(e.projectPath))
+        .sort((a, b) => b.projectPath.length - a.projectPath.length)[0]
+      || capes.find(e => e.scope === 'user')
+      || capes[0];
+    if (!pick.version) return '';
+    return pick.key === 'cape@colenet' ? pick.version : `${pick.version}-dev`;
+  } catch (e) {
+    return '';
+  }
+}
 
 let input = '';
 process.stdin.setEncoding('utf8');
@@ -18,7 +45,8 @@ process.stdin.on('end', () => {
     const is1M = /1m/i.test(modelId) || /1m/i.test(model);
     // Drop the runtime's verbose "(1M context)"/"(1M)" suffix, re-add a terse "(1M)".
     model = model.replace(/\s*\(1m(?:\s+context)?\)\s*$/i, '').trim();
-    const modelStr = is1M ? `${model} (1M)` : model;
+    const effort = data.effort?.level ? `/${data.effort.level.toUpperCase()}` : '';
+    const modelStr = `${is1M ? `${model} (1M)` : model}${effort}`;
 
     // Git branch
     const dir = data.workspace?.current_dir || process.cwd();
@@ -78,7 +106,8 @@ process.stdin.on('end', () => {
 
     // Assemble
     const parts = [];
-    parts.push('\x1b[1mCape\x1b[0m');
+    const capeV = capeVersion(dir);
+    parts.push(`\x1b[1mCape${capeV ? ' ' + capeV : ''}\x1b[0m`);
     parts.push(`\x1b[90m${modelStr}\x1b[0m`);
     parts.push(`\x1b[90m${dirname}\x1b[0m`);
     if (branch) {

@@ -8,6 +8,9 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
+- **Status line shows the active cape version and effort (I048)** — `Cape 0.9.0-dev │
+  Fable 5/LOW │ …`; `-dev` marks a non-official plugin source.
+
 - **`/improve` focuses on the user's project (I047)** — the improvement mode and
   `improvement-conventions.md` are gone. Improvements always land in the project's own
   harness; genuinely general ones become suggested GitHub issues to the cape community.
