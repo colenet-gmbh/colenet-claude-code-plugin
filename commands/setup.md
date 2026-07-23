@@ -93,7 +93,7 @@ cape's `CONTEXT.md` is a **pointer map**: it points at where the durable facts l
 
    - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, concepts
    - **domain-glossary** — `docs/arc42/08_crosscutting-concepts.md` — the ubiquitous language of the project
-   - **environment-glossary** — `docs/arc42/12_glossary.md` — terms of the surroundings (documentation, tooling), not the domain
+   - **environment-glossary** — terms of the surroundings (documentation, tooling), not the domain — `docs/arc42/12_glossary.md` if it exists, otherwise the same file as `domain-glossary`
    - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them)
    - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …)
    - **handoff-dir** — `/tmp/cape-handoffs` — where session handoffs live

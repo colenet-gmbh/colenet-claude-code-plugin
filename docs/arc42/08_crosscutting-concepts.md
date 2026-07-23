@@ -24,7 +24,7 @@ reference one.
 |---|---|
 | Domain glossary | the project's ubiquitous language — arc42 chapter 8. Reached via the `domain-glossary` pointer in `CONTEXT.md`. |
 | Environment glossary | terms of the surroundings — documentation conventions, tooling — **not** the domain; arc42 chapter 12. Reached via the `environment-glossary` pointer in `CONTEXT.md`. |
-| Skill glossary | the vocabulary needed to practice one particular skill; lives inside that skill and is linked directly (e.g. `writing-great-skills/GLOSSARY.md`, the software design glossary in `architect/codebase-design.md`). |
+| Skill glossary | the vocabulary needed to practice one particular skill; lives inside that skill and is linked directly (e.g. `writing-great-skills/GLOSSARY.md`, the software design glossary in `architect/codebase-design.md`, the topic glossaries `teach` generates). |
 
 In a project with only one glossary, the `domain-glossary` and `environment-glossary`
 pointers may target the same file.
@@ -105,20 +105,21 @@ The main steps an idea goes through on its way from ideation to becoming part of
 
 Idea created as feature → `triage` →  `grill-with-docs` → `feature` → `split` into multiple issues → `build` (each issue via `implement`).
 
+"Workflow" is used as a synonym. The skills that make up the flow are the **workflow
+skills** (`grill-with-docs`, `feature`, `split`, `implement`/`build`); standalone skills
+off it (e.g. `grill-me`, `prototype`, `handoff`) are **utility skills**. The canonical,
+always-current description of the flow — order, branches, and how the skills hand off —
+lives in the `ask-cape` router; don't restate the chain elsewhere, point to it. (Never
+call it a "spine" — jargon.)
+
 Not all steps are needed in every case. E.g. for small issues:
 Idea created as issues -> `triage` → `grill-with-docs` → `implement`
-
-"Workflow" is used as a synonym. The skills that make up the flow are the **workflow
-skills**; standalone skills off it (e.g. `grill-me`, `prototype`, `handoff`) are **utility
-skills**. The canonical, always-current description of the flow — order, branches, and how
-the skills hand off — lives in the `ask-cape` router; don't restate the chain elsewhere,
-point to it. (Never call it a "spine" — jargon.)
 
 ### HITL & AFK
 
 | Concept | What it is |
 |---|---|
-| HITL — human-in-the-loop | the human contributes decisively: an active dialogue, one question at a time with a recommended answer, aimed at reaching human↔agent alignment efficiently. `grill-with-docs` (and standalone `grill-me`) are HITL. |
+| HITL — human-in-the-loop | the human contributes decisively: an active dialogue, one question at a time with a recommended answer, aimed at reaching human↔agent alignment efficiently, or helping the human reach their own clarity. `grill-with-docs` (and standalone `grill-me`) are HITL. |
 | AFK — away-from-keyboard | the agent works autonomously for a long stretch; the human returns only at consequence boundaries or when the agent genuinely escalates. `feature`, `split`, `implement`, and `build` run AFK. |
 
 The Main Flow is designed as one long HITL stretch, then one long AFK one.
@@ -128,4 +129,4 @@ The Main Flow is designed as one long HITL stretch, then one long AFK one.
 | Concept | What it is |
 |---|---|
 | coding standards | whatever the repo documents about how code should be written — e.g. `CODING_STANDARDS.md` or `CONTRIBUTING.md`. `review-implementation`'s Standards axis judges the built code against them. |
-| architecture documentation (arc42) | the durable **facts** the architect reasons against — the project's existing docs, or an [arc42](https://arc42.org) structure that `architect` creates and evolves lazily. ADRs live in arc42 chapter 9, under the ADR-dir. Distinct from `docs/work/` (per-feature specs and issues). |
+| architecture documentation (arc42) | the durable **facts** the architect reasons against — the project's existing docs, or an [arc42](https://arc42.org) structure that `architect` creates and evolves lazily (a small project may only ever fill chapters 1, 8, 9, and 12). ADRs live in arc42 chapter 9, under the ADR-dir. Distinct from `docs/work/` (per-feature specs and issues). |

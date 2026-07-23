@@ -52,6 +52,6 @@ has a menu and `/implement` can resolve a name — never a copy of the tier's ru
 in its `CLAUDE.md`. Local conventions otherwise ride Level 1's native nested `CLAUDE.md`; a
 central file may be `@import`ed into one to be ambient as well. Recording a newly-learned convention needs no dedicated
 mechanism — it is proposed inline for human OK and written to its home (a tier's
-`CLAUDE.md`, `docs/agent-conventions/`, or the glossary via the existing modelling skills).
+`CLAUDE.md`, `docs/agent-conventions/`, or the domain glossary via the existing modelling skills).
 Deliberate, retrospective harvesting of conventions is the harness-improvement flow's job
 (F015), not this one.
