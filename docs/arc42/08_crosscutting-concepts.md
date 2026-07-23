@@ -15,6 +15,20 @@ entities) and how they relate. The three layers that frame it (Level 1 / 2 / 3) 
 | Bucket | a group of skills (engineering, meta, utility); each is a path in the manifest's `skills` array. |
 | Model-invokable | a skill the model may auto-trigger; a skill with `disable-model-invocation: true` is named only in `ask-cape` (ADR 0003). |
 
+### Glossary
+
+"Glossary" alone is ambiguous — cape distinguishes three kinds. Name the kind whenever you
+reference one.
+
+| Concept | What it is |
+|---|---|
+| Domain glossary | the project's ubiquitous language — arc42 chapter 8. Reached via the `domain-glossary` pointer in `CONTEXT.md`. |
+| Environment glossary | terms of the surroundings — documentation conventions, tooling — **not** the domain; arc42 chapter 12. Reached via the `environment-glossary` pointer in `CONTEXT.md`. |
+| Skill glossary | the vocabulary needed to practice one particular skill; lives inside that skill and is linked directly (e.g. `writing-great-skills/GLOSSARY.md`, the software design glossary in `architect/codebase-design.md`). |
+
+In a project with only one glossary, the `domain-glossary` and `environment-glossary`
+pointers may target the same file.
+
 ### Work board
 
 | Concept | What it is |
@@ -25,7 +39,18 @@ entities) and how they relate. The three layers that frame it (Level 1 / 2 / 3) 
 | Definition of Done | the standing invariants a change must meet to be finished. |
 
 A **Feature** is realized by splitting it into **Issues**; each Issue is built and reviewed;
-the whole is finished when it meets the **Definition of Done**.
+the whole is finished when it meets the **Definition of Done**. Features are files
+`F<NNN>_<slug>.md`, issues `I<NNN>_<slug>.md` (carrying `parent: F<NNN>` and `blocked-by`);
+the IDs are identifiers, not workflow positions.
+
+### Review & gates
+
+| Concept | What it is |
+|---|---|
+| review | an internal quality-assurance step by agent lenses *within* `02-development`, each lens in its own sub-agent (`review-feature`: Architecture, Security; `review-implementation`: Standards, Spec). Not a board state. |
+| sign-off | the human approving the **concept** — after the review, before building. A gate within development, not a board state. |
+| approval | the human approving the **built result** — the `03-approval` gate, before `04-done`. The human's broad judgment on the delivered feature. |
+| acceptance criteria | the machine-verified yardstick (Gherkin, written in `feature`, verified by tests in `build`) — "did we build it right". Distinct from *approval*, the human's broader "did we build the right thing". |
 
 ### Convention
 
@@ -82,3 +107,25 @@ Idea created as feature → `triage` →  `grill-with-docs` → `feature` → `s
 
 Not all steps are needed in every case. E.g. for small issues:
 Idea created as issues -> `triage` → `grill-with-docs` → `implement`
+
+"Workflow" is used as a synonym. The skills that make up the flow are the **workflow
+skills**; standalone skills off it (e.g. `grill-me`, `prototype`, `handoff`) are **utility
+skills**. The canonical, always-current description of the flow — order, branches, and how
+the skills hand off — lives in the `ask-cape` router; don't restate the chain elsewhere,
+point to it. (Never call it a "spine" — jargon.)
+
+### HITL & AFK
+
+| Concept | What it is |
+|---|---|
+| HITL — human-in-the-loop | the human contributes decisively: an active dialogue, one question at a time with a recommended answer, aimed at reaching human↔agent alignment efficiently. `grill-with-docs` (and standalone `grill-me`) are HITL. |
+| AFK — away-from-keyboard | the agent works autonomously for a long stretch; the human returns only at consequence boundaries or when the agent genuinely escalates. `feature`, `split`, `implement`, and `build` run AFK. |
+
+The Main Flow is designed as one long HITL stretch, then one long AFK one.
+
+### Project artefacts
+
+| Concept | What it is |
+|---|---|
+| coding standards | whatever the repo documents about how code should be written — e.g. `CODING_STANDARDS.md` or `CONTRIBUTING.md`. `review-implementation`'s Standards axis judges the built code against them. |
+| architecture documentation (arc42) | the durable **facts** the architect reasons against — the project's existing docs, or an [arc42](https://arc42.org) structure that `architect` creates and evolves lazily. ADRs live in arc42 chapter 9, under the ADR-dir. Distinct from `docs/work/` (per-feature specs and issues). |

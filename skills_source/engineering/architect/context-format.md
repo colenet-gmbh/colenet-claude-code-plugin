@@ -3,8 +3,8 @@
 `CONTEXT.md` is the repo's **context map** — a short pointer file that names the project's
 context and says *where* the durable facts live. It holds **no glossary and no
 implementation detail itself**; it points to them. The domain vocabulary lives in the
-**domain glossary** (arc42 chapter 8), decisions in the ADR-dir, the rest of the
-architecture in the arc-docs. It also lists the repo's **tiers** (name → path), so a
+**domain glossary** (the `domain-glossary` pointer), decisions in the ADR-dir, the rest of
+the architecture in the arc-docs. It also lists the repo's **tiers** (name → path), so a
 slice knows which sections it can touch.
 
 ## Structure
@@ -16,7 +16,9 @@ slice knows which sections it can touch.
 
 ## Pointers
 
-- **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language).
+- **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, concepts.
+- **domain-glossary** — `docs/arc42/08_crosscutting-concepts.md` — the ubiquitous language of the project.
+- **environment-glossary** — `docs/arc42/12_glossary.md` — terms of the surroundings (documentation, tooling), not the domain.
 - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them).
 - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …).
 
@@ -25,9 +27,10 @@ slice knows which sections it can touch.
 {0..N entries detected from THIS repo — each `- **Name** — path/`; **not** a fixed set of keys, the names are the repo's own; omit the whole section if there are no distinct tiers}
 ```
 
-Keep it a map, not content. A skill that needs the vocabulary follows the arc-docs
-pointer (to the domain glossary, chapter 8); one that needs a decision follows the ADR-dir pointer. If a doc lives somewhere
-non-standard, the pointer here is what makes it findable — so keep the pointers current.
+Keep it a map, not content. A skill that needs the vocabulary follows the
+`domain-glossary` pointer; one that needs a decision follows the ADR-dir pointer. If a doc
+lives somewhere non-standard, the pointer here is what makes it findable — so keep the
+pointers current.
 
 ## The central conventions it points to
 
@@ -52,7 +55,7 @@ the list mirrors the actual repo, never a fixed assumption. It makes the local t
 `/implement` resolves each named tier to its path here and reads that tier's `CLAUDE.md` before
 acting.
 
-Unlike the three **Pointers** above — a fixed set, always present, always the same three — the
+Unlike the **Pointers** above — a fixed set, always present — the
 Tiers are an **open, detected list**: zero or more, each named after whatever the repo's own
 sections are, **not** keys to fill in. One repo with a TypeScript frontend and a Rust backend
 lists `Frontend → apps/web/` and `Backend → services/api/`; another lists `web`, `api`,
@@ -62,11 +65,13 @@ This is a **pointer**, not a parallel store — it records *where* a tier lives,
 those stay in the tier's own `CLAUDE.md` and load natively. A repo with no distinct tiers omits
 the section.
 
-## The domain glossary it points to
+## The glossaries it points to
 
-The **domain glossary** (arc42 chapter 8) holds the ubiquitous language, one entry per term.
-(Chapter 12 is a *separate* glossary — for documentation and tooling terms, the surroundings,
-not the domain.)
+The **domain glossary** (`domain-glossary` pointer; in arc42 that is chapter 8) holds the
+ubiquitous language, one entry per term. The **environment glossary**
+(`environment-glossary` pointer; arc42 chapter 12) is a *separate* glossary — for
+documentation and tooling terms, the surroundings, not the domain. In a project with only
+one glossary, both pointers may target the same file.
 
 ```md
 **Order**:
@@ -113,7 +118,7 @@ The skill infers which structure applies:
 
 - If `CONTEXT-MAP.md` exists, multi-context — read it to find the contexts.
 - If only a root `CONTEXT.md` exists, single context.
-- If neither exists, a root `CONTEXT.md` map (and the domain glossary it points to) is
+- If neither exists, a root `CONTEXT.md` map (and the glossaries it points to) is
   created — eagerly by `/cape:setup`, or lazily when the first term is resolved.
 
 When multiple contexts exist, infer which one the current topic relates to. If unclear, ask.

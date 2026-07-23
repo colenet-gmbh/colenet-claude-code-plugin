@@ -1,7 +1,7 @@
 # Glossary
 
-A glossary for the **documentation and its surroundings** — arc42 conventions, cape mechanics,
-and file details that help when writing or reading these docs. It is **not** the project's
+The **environment glossary** — terms of the surroundings: arc42 conventions, tooling, and
+file details that help when writing or reading these docs. It is **not** the project's
 domain: the ubiquitous language lives in the **domain glossary**
 ([chapter 8](08_crosscutting-concepts.md)).
 

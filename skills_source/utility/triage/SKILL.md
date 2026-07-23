@@ -66,7 +66,7 @@ that's where worked-up `ready-for-agent` / `ready-for-human` briefs now live.
 ## Triage one item
 
 1. **Gather context.** Read the whole file and any prior triage notes (don't re-ask
-   resolved questions). Explore the codebase in the project's glossary vocabulary
+   resolved questions). Explore the codebase in the project's domain glossary vocabulary
    (via `CONTEXT.md`), respecting ADRs in the area. Run two checks: **(a) redundancy** —
    search for an existing implementation by domain concept, not just the request's wording;
    if it already exists, it's an already-implemented `wontfix`. **(b) prior rejection** —
@@ -77,7 +77,7 @@ that's where worked-up `ready-for-agent` / `ready-for-human` briefs now live.
    reporter's steps. Report confirmed (with the code path), failed, or insufficient detail
    (a strong `needs-info` signal). A confirmed verification makes a far stronger brief.
 4. **Grill if needed.** If the request needs fleshing out, run `cape:grilling` together with
-   `cape:architect` domain modelling — sharpen it one question at a time, updating the glossary
+   `cape:architect` domain modelling — sharpen it one question at a time, updating the domain glossary
    and ADRs inline as decisions land.
 5. **Apply the outcome**, updating the file's frontmatter `status` and moving the file to
    the column that matches how much energy it now carries (see `docs/work/CLAUDE.md`):

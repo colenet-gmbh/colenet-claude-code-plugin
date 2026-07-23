@@ -39,7 +39,7 @@ test("generateFixture lays down a scaffolded board and both tiers", async () => 
     "CLAUDE.md",
     "CONTEXT.md",
     "docs/agent-conventions/tracker.md",
-    "docs/arc42/12_glossary.md",
+    "docs/arc42/08_crosscutting-concepts.md",
     "docs/work/.next-id",
     "docs/work/01-backlog/.gitkeep",
     "docs/work/02-development/.gitkeep",

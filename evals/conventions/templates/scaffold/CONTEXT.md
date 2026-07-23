@@ -4,7 +4,8 @@ A throwaway two-tier app used by the cape convention-consultation eval. Not a re
 
 ## Pointers
 
-- **Glossary** — [docs/arc42/12_glossary.md](docs/arc42/12_glossary.md) — the ubiquitous language.
+- **domain-glossary** — [docs/arc42/08_crosscutting-concepts.md](docs/arc42/08_crosscutting-concepts.md) — the ubiquitous language.
+- **environment-glossary** — [docs/arc42/08_crosscutting-concepts.md](docs/arc42/08_crosscutting-concepts.md) — the fixture has a single glossary; both pointers target it.
 - **Issue tracker** — [docs/agent-conventions/tracker.md](docs/agent-conventions/tracker.md) — local files on the `docs/work/` board.
 
 ## Tiers

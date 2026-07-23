@@ -14,7 +14,7 @@ A **flow** is a path through the skills. Most work runs along one **main flow**;
 
 The route most work travels. You have an idea and want it built, reviewed, and shipped.
 
-1. **`/grill-with-docs`** — sharpen the idea by interview. Start here when you **have a codebase**: it's stateful, seeding and retaining what it learns in the documentation referenced in the `CONTEXT.md` map — like arc42 and the glossary. (No codebase? Use `/grill-me` — see Standalone.)
+1. **`/grill-with-docs`** — sharpen the idea by interview. Start here when you **have a codebase**: it's stateful, seeding and retaining what it learns in the documentation referenced in the `CONTEXT.md` map — like arc42 and the domain glossary. (No codebase? Use `/grill-me` — see Standalone.)
 2. **Branch — can you settle every question in conversation?** If a question needs a runnable answer (state, business logic, a UI you have to see), detour through a prototype, bridged by **`/handoff`** in both directions (see Crossing sessions):
    - **`/handoff`** out, then open a fresh session against that file,
    - **`/prototype`** to answer the question with throwaway code,
@@ -70,7 +70,7 @@ Off the main flow entirely.
 
 ## Precondition
 
-- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, the arc42 glossary, and the `CONTEXT.md` map pointing at them.
+- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the domain glossary.
 
 ---
 
