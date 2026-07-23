@@ -15,22 +15,19 @@ Every step is **find-or-create** — never overwrite what exists, so it's safe t
 
 ## 1. Work tracking — board & issue tracker
 
-The queue lives in the filesystem — the folder a file sits in is its state. Find-or-create the
+The queue lives in the filesystem — the folder a file sits in is its state. Create the
 five board columns under `docs/work/`, each with a `.gitkeep` so empty ones commit:
 `01-backlog`, `02-development`, `03-approval`, `04-done`, and `out-of-scope` (which holds
 `/triage`'s records of rejected enhancement requests). Also create `docs/work/.next-id`
-holding `1` if it's missing — the single shared item counter.
+holding `1` — the single shared item counter.
 
-The tracker choice will be configurable later; for now cape assumes **local files** on the
-board above. `docs/agent-conventions/` holds project-specific directives that cape skills
-look up — this is the first file in it. If `docs/agent-conventions/tracker.md` does **not**
-exist, create it with:
+`docs/agent-conventions/` holds project-specific directives that cape skills look up —
+this is the first file in it. Create `docs/agent-conventions/tracker.md` with:
 
 ```md
 # Issue tracker: local files
 
-Issues live as markdown files in this repo, on the `docs/work/` board. No external tracker
-yet — that choice will become configurable; for now it is local files.
+Issues live as markdown files in this repo, on the `docs/work/` board.
 
 ## Board
 
@@ -65,7 +62,8 @@ directory; it can grow into a full arc42 set. **Detect what already exists first
 
 1. **Domain glossary** — look for an existing one (`docs/arc42/08*.md`, or any
    `*glossary*.md` under `docs/`). If none exists, create
-   `docs/arc42/08_crosscutting-concepts.md`:
+   `docs/arc42/08_crosscutting-concepts.md` (this becomes the target of the
+   `domain-glossary` pointer below):
 
    ```md
    # Crosscutting Concepts
@@ -76,7 +74,7 @@ directory; it can grow into a full arc42 set. **Detect what already exists first
    Seeded and sharpened during domain modelling.
    ```
 
-2. **ADR directory** — find-or-create the directory the map's `ADR-dir` label points at, with a `.gitkeep` so the empty directory commits.
+2. **ADR directory** — create the directory the map's `ADR-dir` label points at, with a `.gitkeep` so the empty directory commits.
 
 ## 3. Orientation — the context map
 
@@ -93,7 +91,9 @@ cape's `CONTEXT.md` is a **pointer map**: it points at where the durable facts l
 
    ## Context Pointers
 
-   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, and the domain glossary (chapter 8 — the ubiquitous language)
+   - **arc-docs** — `docs/arc42/` — the architecture documentation: goals, solution strategy, concepts
+   - **domain-glossary** — `docs/arc42/08_crosscutting-concepts.md` — the ubiquitous language of the project
+   - **environment-glossary** — terms of the surroundings (documentation, tooling), not the domain — `docs/arc42/12_glossary.md` if it exists, otherwise the same file as `domain-glossary`
    - **ADR-dir** — `docs/adr/` — one file per decision (arc42 chapter 9 only indexes them)
    - **conventions-dir** — `docs/agent-conventions/` — the central conventions (issue tracker, release process, …)
    - **handoff-dir** — `/tmp/cape-handoffs` — where session handoffs live
@@ -108,6 +108,8 @@ cape's `CONTEXT.md` is a **pointer map**: it points at where the durable facts l
    ```
 
    If it already exists, only **top up** the labels it's missing — never rewrite resolved ones.
+   If the repo has only one glossary, point both `domain-glossary` and
+   `environment-glossary` at that same file.
 
 2. **Tiers** — **detect** the repo's tiers and record them under `## Tiers`. Look for:
    workspace/monorepo config (`package.json` `workspaces`, `pnpm-workspace.yaml`, a Cargo
@@ -117,16 +119,14 @@ cape's `CONTEXT.md` is a **pointer map**: it points at where the durable facts l
    A single undifferentiated codebase has no tiers → NONE.
    If the split is ambiguous, propose what you found and let the user confirm.
 
-3. **Handoff directory** — handoffs written by the `handoff` skill need a fixed spot that
-   `CONTEXT.md` points at (the `handoff-dir` label). `mkdir -p` a session-independent dir and
-   use its path: `/tmp/cape-handoffs/` on Mac/Linux (the OS clears `/tmp` itself, so no cleanup
-   is needed), or a `%TEMP%`-based dir on Windows. Find-or-create: if `CONTEXT.md` already
-   carries a `handoff-dir`, leave it — never add a second.
+3. **Handoff directory** — create the dir the `handoff-dir` label points at:
+   `/tmp/cape-handoffs/` on Mac/Linux, a `%TEMP%`-based dir on Windows.
 
-4. **Point CLAUDE.md at CONTEXT.md** — find-or-create the root `CLAUDE.md`; if it lacks this
-   signpost, add it once (never duplicate):
+4. **Point CLAUDE.md at CONTEXT.md** — add this signpost to the root `CLAUDE.md`
+   (creating the file if needed):
 
    > Read `CONTEXT.md` to locate central project files and directories unknown to you.
+   > A "handoff" is a document that contains essential further guidance for you. Look for it in the handoff-dir. Read it first.
 
 ## 4. Status line
 
@@ -145,7 +145,6 @@ A plugin cannot ship the main `statusLine`, so setup installs it into the projec
 
 ## Done
 
-Summarize what you actually did, grouped by theme: work board & tracker, documentation
-(glossary, ADR-dir), orientation (`CONTEXT.md` + tiers, handoff-dir, `CLAUDE.md` signpost),
-status line (installed or skipped) — noting which were already present and left untouched.
-Then offer to commit the changes.
+Summarize what you actually did per theme, noting what was already present and left
+untouched, then offer to commit the changes. Point the user at `/ask-cape` as their next
+step — it explains how the cape skills fit together.

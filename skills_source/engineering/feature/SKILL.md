@@ -53,7 +53,7 @@ The architectural / implementation decisions a human should approve: modules bui
 # BOTTOM — Internal Design (implementation)
 
 ## Domain & Data Model
-Entities, relationships, schema — in the project's glossary vocabulary.
+Entities, relationships, schema — in the project's domain glossary vocabulary.
 
 ## Interfaces & API Contracts
 The module interfaces and contracts the implementation will expose or consume.

@@ -1,7 +1,8 @@
-# Harness principles
+# Improvement guide
 
-It is helpful to know the principles and some recipes used when creating cape and building a
-harness on top of it.
+Reference for the `improve` skill: the layer model, the principles, and a few recipes used
+when building a project harness on top of cape. Read it to pick measures that fix the root
+cause on the right layer.
 
 ## Glossary
 
@@ -12,12 +13,6 @@ harness on top of it.
 **Level 2 harness** — project and context-independent framework (e.g. cape), a curated set of skills, configurations, usage principles and workflows.
 
 **Level 3 harness** — the project-specific configuration, e.g. project-level skills, CLAUDE.md contents, coding guidelines, claude or git hooks, etc. All the "stuff" you add to improve the performance of the coding agent in THIS project.
-
-**Improvement mode** — how far this repo may reach into cape when a general improvement is found:
-
-- **user** (default) — use cape, don't change it; improvements land in this project (Level 3).
-- **cape-contributor** — also aims to improve cape; filing an issue against cape is an option.
-- **cape-development** — develops cape itself; proposing cape improvements and implementing them in cape now are both options.
 
 ## Principles
 
@@ -31,8 +26,9 @@ are structured, what `CONTEXT.md` points at, and where a rule lives all follow f
 
 ### cape is shared
 
-Your primary focus should be on optimizing the level 3 harness of your project by utilizing level 2 and level 1 capabilities.
-Unless noted otherwise in improvement-conventions.md, assume you cannot modify cape skills.
+Your focus is the Level 3 harness of your project, utilizing Level 2 and Level 1 capabilities.
+cape skills are not yours to modify — a genuinely general improvement becomes a proposal to
+the cape community (a GitHub issue against the cape repository), never a local change.
 
 ### Proportionality
 
@@ -75,3 +71,15 @@ A `feedback` memory is a sign friction happened — read it as input, never writ
 back to memory. Because feedbacks are individual, their home is the harness: move the lesson
 into a committed harness element (a convention, a skill edit, a guardrail) and delete the
 memory.
+
+### More context against hallucinated facts
+
+When the agent invented or guessed a fact, the real information usually existed but never
+reached it. Ensure it is present at the moment of the decision — a `CONTEXT.md` pointer, a
+reference loaded by the right skill step, a convention moved to where the work happens.
+
+### Less context against ignored facts
+
+When the agent had the rule but ignored it, the context was likely too crowded for the rule
+to register. Reduce what the agent sees: trim verbose docs, split oversized workflows or
+sessions, push detail into progressively disclosed reference files.

@@ -1,85 +1,89 @@
 ---
 name: improve
-description: improve your agentic coding setup. Use when the agent didn't act or produce the results you expect or you feel there is unnecessary friction.
-disable-model-invocation: true
+description: Improves the project's own agentic-coding harness (skills, conventions, hooks, memory). Suggest invoking it — never auto-run it — when the user expresses discontent that the agent didn't act as expected, a guardrail fired, or the user names friction or wants the setup improved — mentions "improve the flow", "why did you do that", "verbessere das Harness", "das lief nicht rund", "das sollte besser laufen".
 ---
 
-If present, read the optional central convention improvement-conventions.md (see CONTEXT.md) for repo-specific guidance and your improvement mode. If absent, your mode is **user** — use cape, don't change it.
+Suggest concrete improvements to **this project's harness** — the project-specific setup (skills, conventions, hooks, memory) that steers the agent. Assume that the user setup is at least partially based on cape, which cannot be modified directly, since it is an installed plugin.
+
+When an insight is genuinely general, it becomes a proposal to the cape community (step 4).
+
+Follow these steps internally but don't bother the user with them.
 
 ## Steps
 
-### 1. Identify scope
+### 1. Identify friction elements
 
-The scope determines what to examine as the basis for potential improvements.
+The user mentioned this reason for calling improve: $ARGUMENTS
 
-- **A** — a very current problem / bug / friction in the current session (if found, focus on it unless user suggests differently)
-- **B** — the flow from idea -> ship that just finished (if current session hints at it)
-- **C** — general interaction in the current session
-
-If a parameter is passed it may contain a scope indication.
-
-**Read the signal — why was `/improve` called?** Two cases, and they set the tone:
-
-- **Routine check** — no particular trigger. Search the scope broadly.
-- **Something went wrong** — the user sounds frustrated, or a guardrail just fired (a hook, CI, or validation failed; a rejected commit; a crash). A guardrail hit in normal operation is a near-miss, never routine: treat it like an incident that demands investigation, and expect the fix to be a rule change so this class of accident cannot recur.
-
-### 2. Identify friction elements
-
-Analyze the scope for friction elements.
+Now make your best guess as to why the user invoked improve. There might be an obvious single reason, or several independent sources of friction.
 If session content reads as personal, skip it. Look only at work and collaboration friction.
-Identify up to 5 friction elements. If you identify none, ask the user.
 
-Sources of friction might be:
+- Is it a very current problem or friction in the preceding part of the current session (e.g. the user sounds frustrated, or a guardrail just fired)? Then that is part of the scope, but there might be other issues.
+- the flow from idea -> ship that just finished (maybe the current session hints at that)
+- general interaction in the current session
+- a routine check without a particular trigger. (There is always something to improve)
 
-- a guardrail that fired — a failing hook/CI/validation, a rejected commit, a crash. The loudest signal: a guardrail should never trigger in normal operation, so its firing is evidence a rule is missing or wrong. Investigate and fix the rule, don't just clear the error.
+If you identify none, ask the user.
+
+Opportunities for improvement might be:
+
+- a guardrail that fired — a failing hook/CI/validation, a rejected commit (a guardrail should never trigger in normal operation, so its firing is evidence a rule is missing, wrong or has been ignored)
 - a bug or problem detected (that shouldn't happen again!). What happened? When was it caught, and by whom? Agent, User, Production?
-- Agent sequence of actions. Unnecessary steps? Mis-guided by documentation?
+- Agent sequence of actions. Unnecessary steps? Misunderstandings or mis-guided by documentation, configuration, prompting in rules or skills?
 - Collaboration between agent and user (see checklist below)
-- Previous friction stored as feedback in memory.
+- Feedback stored in memory. Moving it from user-specific memory into the harness is an improvement, too.
 
-### 3. Confirm with user
+### 2. Confirm reasons and ways to address them with the user
 
-Create a shortlist of the most significant items, no more than 3.
-Summarise in 2–3 sentences, confirm with the user.
-
-### 4. Root Cause analysis
+Create a shortlist of the most significant items that can be addressed by modifying the harness or changing collaboration flows, no more than 3.
 
 For each friction item, find the **root cause** — don't fix a symptom, but understand why the process/harness setup did not prevent it.
-Read relevant documentation including cape (see SKILL.md of user-invocable skill ask-cape!) central conventions or repo-specific configuration as necessary.
+To understand how cape's skills flow together, read `${CLAUDE_PLUGIN_ROOT}/skills_source/meta/ask-cape/SKILL.md`. Also check relevant files like CLAUDE.md, central conventions or other configuration as necessary.
 
-### 5. Let user decide
+Give a short structured summary and a concrete recommendation for a measure that prevents similar issues in the future.
+Ask the user if these are the relevant issues, or if they have others. Unless you see no friction, you proceed up to this point after the user invoked the skill.
 
-Use a /grilling session to let the user decide on how to address each issue. Give a helpful recommendation as fix for each issue in line with the harness principles listed below.
-When giving a recommendation, pick an appropriate measure that is
+Confirming the analysis is **not** approval to change anything. Before touching a file, show the concrete measure — what changes, where, roughly what wording — and get an explicit go.
+
+### 3. Apply and commit
+
+Apply the changes the user approved (including a commit if that is appropriate for the agent in this project).
+
+### 4. Propose general improvements to the cape community
+
+If a fix (or the insight behind it) is genuinely general — it would help any team using
+cape, not just this project — suggest sending it to the cape community as a GitHub issue
+against the cape repository. Offer this below the actual result; the user decides. Never
+change cape skills locally instead.
+
+### 5. Summarize
+
+Give a very brief summary (for each identified issue: Problem / Cause / Measures) and what to expect in the future.
+Ask the user if they would like further improvements.
+
+## Reference material
+
+### Appropriate Improvement Measures
+
+When giving a recommendation, pick a measure that is
 
 - actually suited to remove the root cause (would it have prevented the problem?)
 - proportional to the issue addressed
-- can actually be implemented (cape itself only if your improvement mode allows).
+- implementable in this project — cape itself is not yours to change (see step 4).
 
 Measures might be:
 
 - Create new project-specific skill
 - Sharpen triggering or improve existing skill
-- Add guidance for agent in central or local conventions
+- Add guidance for agent in central or local conventions, in CLAUDE.md.
 - Add guardrail (and include guidance to avoid unnecessary rework)
-- convert memory into other harness elements
+- convert memory into other harness elements (because a committed harness change is better than feedback stored in memory which is personal and opaque)
 - any other as appropriate
-
-Prefer a committed harness change over memory — memory is personal and opaque; use it only for individual interaction preferences, never to steer process (see the principles below).
-
-### 6. Apply and commit
-
-Do the changes and commit them.
-
-### 7. Summarize
-
-Give a very brief summary (for each identified issue: Problem / Cause / Measures) and what to expect in the future.
-
-## Reference material
+- NOTE: Don't use memory to steer agent process behavior; use it only for individual interaction preferences.
 
 ### Collaboration checklist
 
-Friction in the collaboration is as real a signal as a broken build. Run over the session:
+Friction in the collaboration is as real a signal as a broken build. Are there signs of:
 
 - **Correction loops** — did the user have to clarify the same thing more than once?
 - **Feedback cycle length** - wrong assumptions/decisions of the agent not caught until much later
@@ -94,20 +98,22 @@ Friction in the collaboration is as real a signal as a broken build. Run over th
 
 ## Harness Guideline
 
+Here is a preview of the content in improvement-guide.md. If this sounds interesting, look up the details there.
+
 **Principles**:
 
-- Progressive disclosure — surface only the information that matters, right when it matters.
-- cape is shared — focus on your project's setup; change cape only where the conventions allow.
+- Progressive disclosure — optimize the context the agent sees. Surface only the information that matters, right when it matters.
+- cape is shared — sharing suggestions to improve cape, improves the cape experience for everybody
 - Proportionality — the lightest measure that fits the problem.
 - No guardrail without a signpost — a check only backs up guidance that already exists.
 - Prefer committable solutions — a committed fix benefits every user of the repo.
 
-**Recipes:**
-A few recipe ideas:
+**Improvement Recipes:**
+A few very specific recipe ideas:
 
 - Three-layer guardrail — enforce a rule at hook → pre-commit → CI.
 - Canary — hide a marker in a procedure, then check it was followed.
 - Graduate a feedback — move a memory lesson into the harness, then delete the memory.
+- More context against hallucinated facts — ensure the information is present when needed.
+- Less context against ignored facts — change workflows to reduce context size.
 Many more exist. Don't feel restricted to these.
-
-See corresponding sections in harness-principles.md for details.

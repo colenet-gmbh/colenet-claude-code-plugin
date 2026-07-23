@@ -45,7 +45,7 @@ Present the breakdown as a numbered list. Per slice show **Title**, **Blocked by
 
 Write each approved slice out as its own issue file `docs/work/02-development/I<id>_<slug>.md`, using the template below, in **dependency order** (blockers first) so "Blocked by" can reference real ids. Each issue carries `parent: F<id>` (the feature it came from) and `blocked-by: [I<id>, …]`. A written-out issue plus its parent feature spec is exactly `/implement`'s contract — so this is the input `/implement` picks up.
 
-Publishing to an external issue tracker is deferred (roadmap A). For now the queue lives in the filesystem: issues wander through `docs/work/01-backlog → 02-development → 03-approval → 04-done`.
+The queue lives in the filesystem: issues wander through `docs/work/01-backlog → 02-development → 03-approval → 04-done`.
 
 ```markdown
 ---

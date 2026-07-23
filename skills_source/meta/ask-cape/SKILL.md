@@ -14,7 +14,7 @@ A **flow** is a path through the skills. Most work runs along one **main flow**;
 
 The route most work travels. You have an idea and want it built, reviewed, and shipped.
 
-1. **`/grill-with-docs`** — sharpen the idea by interview. Start here when you **have a codebase**: it's stateful, seeding and retaining what it learns in the documentation referenced in the `CONTEXT.md` map — like arc42 and the glossary. (No codebase? Use `/grill-me` — see Standalone.)
+1. **`/grill-with-docs`** — sharpen the idea by interview. Start here when you **have a codebase**: it's stateful, seeding and retaining what it learns in the documentation referenced in the `CONTEXT.md` map — like arc42 and the domain glossary. (No codebase? Use `/grill-me` — see Standalone.)
 2. **Branch — can you settle every question in conversation?** If a question needs a runnable answer (state, business logic, a UI you have to see), detour through a prototype, bridged by **`/handoff`** in both directions (see Crossing sessions):
    - **`/handoff`** out, then open a fresh session against that file,
    - **`/prototype`** to answer the question with throwaway code,
@@ -54,7 +54,7 @@ A starting situation that generates work, then merges onto the main flow.
 Not feature work — upkeep.
 
 - **`/architect`** — a deep skill for shaping structure, activated in context (and by hand). Its **deepening** aspect you run in a spare moment to keep the codebase good for agents to operate in: it surfaces opportunities, and picking one *generates an idea* you take into the main flow at `/grill-with-docs`. Its other aspects — codebase/software design, domain modelling, arc42 docs — fire *inside* other skills as the work needs them (e.g. `/tdd` reaching for design vocabulary, domain modelling during `/grill-with-docs`), several at once.
-- **`/improve`** — where `/architect` keeps the *codebase* good for agents, `/improve` keeps the *harness* good. Run it anytime a flow or session showed friction ("that should've gone better"): it finds the friction, traces the root cause, and applies a proportional fix on the right layer — preferring the local project harness, and graduating only genuinely general improvements back into cape.
+- **`/improve`** — where `/architect` keeps the *codebase* good for agents, `/improve` keeps the *harness* good. The two also run very differently: `/architect` is model-invokable and mostly fires *inside* other skills as the work needs it, while `/improve` is an interactive session that the **user always starts** — the agent may suggest it, never launch it. Run it anytime a flow or session showed friction ("that should've gone better"): it finds the friction, traces the root cause, and applies a proportional fix in the project's own harness. When it finds a genuinely general improvement, it suggests sending it to the cape community as a GitHub issue.
 
 ## Crossing sessions
 
@@ -70,7 +70,7 @@ Off the main flow entirely.
 
 ## Precondition
 
-- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the arc42 glossary.
+- **`/cape:setup`** — run once per repo before your first engineering flow: it scaffolds the docs the skills assume — the `docs/work/` board, the issue tracker, and `CONTEXT.md` with the domain glossary.
 
 ---
 

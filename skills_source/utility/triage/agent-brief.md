@@ -40,5 +40,5 @@ contract an AFK agent works from.
 - adjacent thing that must NOT be changed here
 ```
 
-Use the glossary's vocabulary for any domain concept you name, so the brief reads in the
+Use the domain glossary's vocabulary for any domain concept you name, so the brief reads in the
 project's own language.
