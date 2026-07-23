@@ -51,6 +51,10 @@ covers the repo mechanics.
 
 ## Body
 
+- **Radically terse.** Harness text loads into every agent context — every word costs.
+  Cut anything that doesn't improve the outcome; write, then halve. Applies to skill
+  bodies, descriptions (one trigger phrase per language, no synonym lists), and any other
+  harness text.
 - Addressed to Claude, in the imperative. An English instruction core is fine; user
   communication happens in German regardless.
 - All content in English (see CLAUDE.md). No sensitive data, no hardcoded absolute paths.
